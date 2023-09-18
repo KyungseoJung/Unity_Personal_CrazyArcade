@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour // #1 
 {
+    SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
 // #1 플레이어 기본 이동 =============================
     [SerializeField]
     private bool dirRight = false;           // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
@@ -18,6 +19,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     void Awake()
     {
         rBody = GetComponent<Rigidbody>();
+        sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
     }
 
     void Update()
@@ -27,6 +29,8 @@ public class PlayerCtrl : MonoBehaviour // #1
         else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             PlayerMove(false);
 
+        // #2 y축 기준으로 밑에 있을수록 더 위에 그려져야 하므로 반비례 -> -1
+        sprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
     }
 
 
