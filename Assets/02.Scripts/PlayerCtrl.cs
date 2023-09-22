@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour // #1 
 {
-    SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
 // #1 플레이어 기본 이동 =============================
     [SerializeField]
-    private bool dirRight = false;           // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
+    private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
     private float moveSpeed = 30f;         // 이동 속도 (50 > 20)
     private float maxSpeed = 5f;
@@ -15,11 +14,15 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float v;
 
     private Rigidbody rBody;               // 2D에서 3D로 변경
+    private SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
+
+    private Animator anim;                 // #3 플레이어 애니메이터
 
     void Awake()
     {
         rBody = GetComponent<Rigidbody>();
         sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
+        anim = GetComponent<Animator>();    // #3
     }
 
     void Update()
@@ -88,24 +91,24 @@ public class PlayerCtrl : MonoBehaviour // #1
         }
 */        
 
-        // #1 플레이어 이미지 뒤집기 ===============================
-        if(((h>0) && !dirRight) || ((h<0) && dirRight))// 움직이는 방향과 바라보는 방향이 다르다면
-        {
-            Flip();
-        } 
+        // // #1 플레이어 이미지 뒤집기 =============================== --> // #3 애니메이터로 조작해서 Flip 기능 필요 없어짐
+        // if(((h>0) && !dirRight) || ((h<0) && dirRight))// 움직이는 방향과 바라보는 방향이 다르다면
+        // {
+        //     Flip();
+        // } 
 
     }
 
-    void Flip() // #1 플레이어 바라보는 방향에 따라 적용
-    {
-        Debug.Log("//#2 플레이어 뒤집어");
+    // void Flip() // #1 플레이어 바라보는 방향에 따라 적용  --> // #3 애니메이터로 조작해서 Flip 기능 필요 없어짐
+    // {
+    //     Debug.Log("//#2 플레이어 뒤집어");
 
-        dirRight = !dirRight;   //바라보는 방향 변경
+    //     dirRight = !dirRight;   //바라보는 방향 변경
 
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
+    //     Vector3 theScale = transform.localScale;
+    //     theScale.x *= -1;
+    //     transform.localScale = theScale;
+    // }
 
     void PlayerMove(bool moveHorizontal)
     {
@@ -113,6 +116,11 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         if(moveHorizontal)
         {
+            if((h<0) && anim.GetInteger("MoveDir")!=0 ) // #3   // 중복 방지 - 이미 0인 값을 또 0이라 설정하지 않도록 
+                anim.SetInteger("MoveDir", 0);  //왼쪽 쳐다보도록
+            else if((h>0) && anim.GetInteger("MoveDir")!=1)     // 중복 방지
+                anim.SetInteger("MoveDir", 1);  //오른쪽 쳐다보도록
+
             // #1 좌우 움직임 
                 // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
                 // h(-1.0f~1.0f)는 velocity.x를 다르게 표시한다
@@ -129,11 +137,16 @@ public class PlayerCtrl : MonoBehaviour // #1
         }
         else
         {
+            if((v>0) && anim.GetInteger("MoveDir")!=2 ) // #3
+                anim.SetInteger("MoveDir", 2);  //위쪽 쳐다보도록
+            else if((v<0) && anim.GetInteger("MoveDir")!=3 )
+                anim.SetInteger("MoveDir", 3);  //아래쪽 쳐다보도록
+
             // #1 상하 움직임 
                 if(v * rBody.velocity.y < maxSpeed)
                     rBody.AddForce(moveDirection * moveSpeed);
 
-                Debug.Log(moveDirection.magnitude);
+                // Debug.Log(moveDirection.magnitude);
                     // rBody.AddForce(Vector2.up * v * moveSpeed);
                     // 걱정: rigidBody2D인데 Vector3가 적용될까?
 
