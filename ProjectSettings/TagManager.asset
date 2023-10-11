@@ -47,3 +47,6 @@ TagManager:
   - name: Obstacle
     uniqueID: 4221654241
     locked: 0
+  - name: FX
+    uniqueID: 1383539729
+    locked: 0
