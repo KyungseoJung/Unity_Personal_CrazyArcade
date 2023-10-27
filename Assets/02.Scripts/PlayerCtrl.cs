@@ -18,11 +18,15 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     private Animator anim;                 // #3 플레이어 애니메이터
 
+    private MapManager mapMgr;             // #4 물풍선 놓기 위함
+
     void Awake()
     {
         rBody = GetComponent<Rigidbody>();
         sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
         anim = GetComponent<Animator>();    // #3
+
+        mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #4 
     }
 
     void Update()
@@ -34,6 +38,13 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         // #2 y축 기준으로 밑에 있을수록 더 위에 그려져야 하므로 반비례 -> -1
         sprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
+
+
+        // #4 물풍선 놓기
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
+        }
     }
 
 
