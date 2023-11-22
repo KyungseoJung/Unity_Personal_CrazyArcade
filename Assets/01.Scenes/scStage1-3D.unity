@@ -1556,5 +1556,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeObj
       objectReference: {fileID: 0}
+    - target: {fileID: 4809381372970195599, guid: 697aadd840874514f95187068283dd06,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809381373149938561, guid: 697aadd840874514f95187068283dd06,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697aadd840874514f95187068283dd06, type: 3}
