@@ -9,7 +9,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
     private float moveSpeed = 30f;         // 이동 속도 (50 > 20)
-    private float slideSpeed = 50f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
+    private float slideSpeed = 10f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
     private float maxSpeed = 5f;
     private float h;
     private float v;
@@ -111,26 +111,38 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionStay(Collision other) 
     {
 
         if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
         {
+            SlideAlongObstacle(other.contacts[0].normal);   // #5 fix
+
             Debug.Log("//#5 장애물 부딪힘");
 
-            if(transform.position.x > other.gameObject.transform.position.x) // x 위치 값 비교해서 - 오른쪽 or 왼쪽으로 미끄러지기
-            {
-                Debug.Log("//#5 플레이어 오른쪽으로 밀기");
+            // if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            // {
+            //     if(transform.position.x > other.gameObject.transform.position.x) // x 위치 값 비교해서 - 오른쪽 or 왼쪽으로 미끄러지기
+            //     {
+            //         Debug.Log("//#5 플레이어 오른쪽으로 밀기");
 
-                rBody.AddForce(Vector3.right * slideSpeed);
-            }    
-            else
-            {
-                Debug.Log("//#5 플레이어 왼쪽으로 밀기");
+            //         rBody.AddForce(Vector3.right * slideSpeed);
+            //     }    
+            //     else
+            //     {
+            //         Debug.Log("//#5 플레이어 왼쪽으로 밀기");
 
-                rBody.AddForce(Vector3.left * slideSpeed);                
-            }
+            //         rBody.AddForce(Vector3.left * slideSpeed);                
+            //     }
+            // }
         }    
+    }
+
+    void SlideAlongObstacle(Vector2 obstacleNormal) // #5 fix
+    {
+        // 장애물의 법선 벡터를 기반으로 옆으로 미끄러지는 효과 적용
+        Vector2 slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+        transform.Translate(slideDirection * slideSpeed * Time.deltaTime);
     }
 
     // void Flip() // #1 플레이어 바라보는 방향에 따라 적용  --> // #3 애니메이터로 조작해서 Flip 기능 필요 없어짐
