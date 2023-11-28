@@ -9,7 +9,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
     private float moveSpeed = 30f;         // 이동 속도 (50 > 20)
-    private float slideSpeed = 10f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
+    private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
     private float maxSpeed = 5f;
     private float h;
     private float v;
@@ -20,6 +20,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     private Animator anim;                 // #3 플레이어 애니메이터
 
     private MapManager mapMgr;             // #4 물풍선 놓기 위함
+
+    private Vector2 slideDirection = new Vector2(0, 0); // #5
 
     void Awake()
     {
@@ -116,7 +118,18 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
         {
-            SlideAlongObstacle(other.contacts[0].normal);   // #5 fix
+            if(Input.GetKey(KeyCode.DownArrow)) // #5 fix
+            {
+                if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
+                {
+                    SlideAlongObstacle(other.contacts[0].normal, true);   // #5 fix
+                }
+                else    // 플레이어가 장애물보다 왼쪽에 있으면
+                {
+                    SlideAlongObstacle(other.contacts[0].normal, false);   // #5 fix   
+                }
+            }
+            
 
             Debug.Log("//#5 장애물 부딪힘");
 
@@ -138,10 +151,18 @@ public class PlayerCtrl : MonoBehaviour // #1
         }    
     }
 
-    void SlideAlongObstacle(Vector2 obstacleNormal) // #5 fix
+    void SlideAlongObstacle(Vector2 obstacleNormal, bool _dir) // #5 fix
     {
+        switch(_dir)
+        {
+            case true : 
+                slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                break;
+            case false:
+                slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                break;
+        }
         // 장애물의 법선 벡터를 기반으로 옆으로 미끄러지는 효과 적용
-        Vector2 slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
         transform.Translate(slideDirection * slideSpeed * Time.deltaTime);
     }
 
