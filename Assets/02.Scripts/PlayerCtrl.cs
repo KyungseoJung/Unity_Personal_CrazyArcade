@@ -118,7 +118,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
         {
-            if(Input.GetKey(KeyCode.DownArrow)) // #5 fix
+            if(Input.GetKey(KeyCode.DownArrow)) // #5 fix 플레이어가 장애물 위에서 아래로 가려고 할 때
             {
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
                 {
@@ -127,6 +127,17 @@ public class PlayerCtrl : MonoBehaviour // #1
                 else    // 플레이어가 장애물보다 왼쪽에 있으면
                 {
                     SlideAlongObstacle(other.contacts[0].normal, false);   // #5 fix   
+                }
+            }
+            if(Input.GetKey(KeyCode.UpArrow))   // #5 fix 플레이어가 장애물 아래에서 위로 가려고 할 때
+            {
+                if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
+                {
+                    SlideAlongObstacle(other.contacts[0].normal, false);   // #5 fix
+                }
+                else
+                {
+                    SlideAlongObstacle(other.contacts[0].normal, true);   // #5 fix   
                 }
             }
             
