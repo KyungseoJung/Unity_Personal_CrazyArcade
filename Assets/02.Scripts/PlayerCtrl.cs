@@ -7,6 +7,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 // #1 플레이어 기본 이동 =============================
     [SerializeField]
     private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
+    private bool slideDir = false;         // #5 플레이어 미끄러지는 방향 설ㅈ정
 
     private float moveSpeed = 30f;         // 이동 속도 (50 > 20)
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
@@ -121,26 +122,21 @@ public class PlayerCtrl : MonoBehaviour // #1
             if(Input.GetKey(KeyCode.DownArrow)) // #5 fix 플레이어가 장애물 위에서 아래로 가려고 할 때
             {
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
-                {
-                    SlideAlongObstacle(other.contacts[0].normal, true);   // #5 fix
-                }
+                    slideDir = true;
                 else    // 플레이어가 장애물보다 왼쪽에 있으면
-                {
-                    SlideAlongObstacle(other.contacts[0].normal, false);   // #5 fix   
-                }
+                    slideDir = false;
             }
-            if(Input.GetKey(KeyCode.UpArrow))   // #5 fix 플레이어가 장애물 아래에서 위로 가려고 할 때
+            else if(Input.GetKey(KeyCode.UpArrow))   // #5 fix 플레이어가 장애물 아래에서 위로 가려고 할 때
             {
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
-                {
-                    SlideAlongObstacle(other.contacts[0].normal, false);   // #5 fix
-                }
+                    slideDir = false;
                 else
-                {
-                    SlideAlongObstacle(other.contacts[0].normal, true);   // #5 fix   
-                }
+                    slideDir = true;
             }
+
             
+            SlideAlongObstacle(other.contacts[0].normal, slideDir);   // #5 refactor 코드 효율적으로 정리
+
 
             Debug.Log("//#5 장애물 부딪힘");
 
