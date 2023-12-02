@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerCtrl : MonoBehaviour // #1 
 {
 // #1 플레이어 기본 이동 =============================
+    private enum MOVE_ARROW {UP = 1, DOWN, RIGHT, LEFT};    // #5 refactor: 플레이어 움직이는 방향
+    private MOVE_ARROW moveArrow = MOVE_ARROW.UP;
+    private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // #5 refactor: 플레이어의 위치 - 장애물과 비교했을 때
+    private PLAYER_POS playerPos = PLAYER_POS.UP;
+    
     [SerializeField]
     private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
-    private bool slideDir = false;         // #5 플레이어 미끄러지는 방향 설ㅈ정
 
     private float moveSpeed = 30f;         // 이동 속도 (50 > 20)
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
@@ -122,21 +126,17 @@ public class PlayerCtrl : MonoBehaviour // #1
             if(Input.GetKey(KeyCode.DownArrow)) // #5 fix 플레이어가 장애물 위에서 아래로 가려고 할 때
             {
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
-                    slideDir = true;
+                    SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.DOWN, PLAYER_POS.RIGHT);    
                 else    // 플레이어가 장애물보다 왼쪽에 있으면
-                    slideDir = false;
+                    SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.DOWN, PLAYER_POS.LEFT);    
             }
             else if(Input.GetKey(KeyCode.UpArrow))   // #5 fix 플레이어가 장애물 아래에서 위로 가려고 할 때
             {
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
-                    slideDir = false;
+                    SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.UP, PLAYER_POS.RIGHT);    
                 else
-                    slideDir = true;
+                    SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.UP, PLAYER_POS.LEFT);    
             }
-
-            
-            SlideAlongObstacle(other.contacts[0].normal, slideDir);   // #5 refactor 코드 효율적으로 정리
-
 
             Debug.Log("//#5 장애물 부딪힘");
 
@@ -158,16 +158,27 @@ public class PlayerCtrl : MonoBehaviour // #1
         }    
     }
 
-    void SlideAlongObstacle(Vector2 obstacleNormal, bool _dir) // #5 fix
+    void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos) // #5 fix   
+    //# refactor 플레이어가 누르는 방향 키와, 플레이어의 위치(장애물과 비교했을 때 상대적 위치)를 parameter로 받기
     {
-        switch(_dir)
+        switch(moveArrow)
         {
-            case true : 
-                slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+            case MOVE_ARROW.UP:
+                if(playerPos == PLAYER_POS.RIGHT)
+                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                else if(playerPos == PLAYER_POS.LEFT)
+                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                
                 break;
-            case false:
-                slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                
+            case MOVE_ARROW.DOWN:
+                if(playerPos == PLAYER_POS.RIGHT)
+                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                else if(playerPos == PLAYER_POS.LEFT)
+                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+
                 break;
+
         }
         // 장애물의 법선 벡터를 기반으로 옆으로 미끄러지는 효과 적용
         transform.Translate(slideDirection * slideSpeed * Time.deltaTime);
