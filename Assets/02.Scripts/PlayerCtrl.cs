@@ -137,6 +137,13 @@ public class PlayerCtrl : MonoBehaviour // #1
                 else
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.UP, PLAYER_POS.LEFT);    
             }
+            else if(Input.GetKey(KeyCode.RightArrow))   // #5 fix 플레이어가 장애물 왼쪽에서 오른쪽으로 가려고 할 때
+            {
+                if(transform.position.y > other.transform.position.y)   // 플레이어가 장애물보다 위쪽에 있으면
+                    SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.RIGHT, PLAYER_POS.UP);
+                else
+                    SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.RIGHT, PLAYER_POS.DOWN);
+            }
 
             Debug.Log("//#5 장애물 부딪힘");
 
@@ -176,6 +183,14 @@ public class PlayerCtrl : MonoBehaviour // #1
                     slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.LEFT)
                     slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+
+                break;
+
+            case MOVE_ARROW.RIGHT:
+                if(playerPos == PLAYER_POS.UP)
+                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
+                else if(playerPos == PLAYER_POS.DOWN)
+                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
 
                 break;
 
