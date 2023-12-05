@@ -18,6 +18,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float maxSpeed = 5f;
     private float h;
     private float v;
+    private float distX;                     // #5 플레이어와 장애물 간의 거리 (X축)
+    private float distY;                     // #5 플레이어와 장애물 간의 거리 (Y축)
 
     private Rigidbody rBody;               // 2D에서 3D로 변경
     private SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
@@ -123,8 +125,13 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
         {
+            distX = (transform.position.x - other.transform.position.x)*(transform.position.x - other.transform.position.x);
+            
             if(Input.GetKey(KeyCode.DownArrow)) // #5 fix 플레이어가 장애물 위에서 아래로 가려고 할 때
             {
+                if(distX < (0.2)*(0.2))   //#5 x축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
+                    return;
+
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.DOWN, PLAYER_POS.RIGHT);    
                 else    // 플레이어가 장애물보다 왼쪽에 있으면
@@ -132,6 +139,9 @@ public class PlayerCtrl : MonoBehaviour // #1
             }
             else if(Input.GetKey(KeyCode.UpArrow))   // #5 fix 플레이어가 장애물 아래에서 위로 가려고 할 때
             {
+                if(distX < (0.2)*(0.2))   //#5 x축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
+                    return;
+
                 if(transform.position.x > other.transform.position.x)   // 플레이어가 장애물보다 오른쪽에 있으면
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.UP, PLAYER_POS.RIGHT);    
                 else
