@@ -126,6 +126,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
         {
             distX = (transform.position.x - other.transform.position.x)*(transform.position.x - other.transform.position.x);
+            distY = (transform.position.y - other.transform.position.y)*(transform.position.y - other.transform.position.y);
             
             if(Input.GetKey(KeyCode.DownArrow)) // #5 fix 플레이어가 장애물 위에서 아래로 가려고 할 때
             {
@@ -149,6 +150,9 @@ public class PlayerCtrl : MonoBehaviour // #1
             }
             else if(Input.GetKey(KeyCode.RightArrow))   // #5 fix 플레이어가 장애물 왼쪽에서 오른쪽으로 가려고 할 때
             {
+                if(distY < (0.2)*(0.2))   //#5 Y축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
+                    return;
+
                 if(transform.position.y > other.transform.position.y)   // 플레이어가 장애물보다 위쪽에 있으면
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.RIGHT, PLAYER_POS.UP);
                 else
@@ -156,6 +160,9 @@ public class PlayerCtrl : MonoBehaviour // #1
             }
             else if(Input.GetKey(KeyCode.LeftArrow))    // #5 fix 플레이어가 장애물 오른쪽에서 왼쪽으로 가려고 할 때
             {
+                if(distY < (0.2)*(0.2))   //#5 Y축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
+                    return;
+                    
                 if(transform.position.y > other.transform.position.y)   // 플레이어가 장애물보다 위쪽에 있으면
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.LEFT, PLAYER_POS.UP);
                 else
