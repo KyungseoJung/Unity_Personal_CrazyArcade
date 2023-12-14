@@ -160,9 +160,11 @@ public class PlayerCtrl : MonoBehaviour // #1
             }
             else if(Input.GetKey(KeyCode.LeftArrow))    // #5 fix 플레이어가 장애물 오른쪽에서 왼쪽으로 가려고 할 때
             {
-                if(distY < (0.2)*(0.2))   //#5 Y축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
+                if((distY < (0.2)*(0.2)))   //#5 Y축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
                     return;
-                    
+                
+                Debug.Log("//#5 LeftArrow: 장애물과 미끄러지는 중 | distY" + distY);
+
                 if(transform.position.y > other.transform.position.y)   // 플레이어가 장애물보다 위쪽에 있으면
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.LEFT, PLAYER_POS.UP);
                 else
@@ -198,13 +200,13 @@ public class PlayerCtrl : MonoBehaviour // #1
                 if(playerPos == PLAYER_POS.RIGHT)
                     slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.LEFT)
-                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
                 
                 break;
                 
             case MOVE_ARROW.DOWN:
                 if(playerPos == PLAYER_POS.RIGHT)
-                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.LEFT)
                     slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
 
@@ -214,12 +216,12 @@ public class PlayerCtrl : MonoBehaviour // #1
                 if(playerPos == PLAYER_POS.UP)
                     slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.DOWN)
-                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
 
                 break;
             case MOVE_ARROW.LEFT:
                 if(playerPos == PLAYER_POS.UP)
-                    slideDirection = new Vector2(obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.DOWN)
                     slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
 
