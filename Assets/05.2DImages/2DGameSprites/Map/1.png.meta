@@ -13,7 +13,7 @@ TextureImporter:
     second: house2
   - first:
       213: -5167413608083449488
-    second: grass1
+    second: bush1
   - first:
       213: -8408763834710030297
     second: 1_4
@@ -207,13 +207,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grass1
+      name: bush1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 460
+        x: 0
+        y: 452
         width: 30
-        height: 35
+        height: 43
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
