@@ -210,7 +210,7 @@ TextureImporter:
       name: bush1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 452
         width: 30
         height: 43

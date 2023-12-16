@@ -191,6 +191,21 @@ public class PlayerCtrl : MonoBehaviour // #1
         }    
     }
 
+    private void OnTriggerEnter(Collider other)     // #6 
+    {
+        if(other.gameObject.tag == "Bush")
+        {
+            SetAlpha(sprite, 0f);
+        }    
+    }
+
+    private void OnTriggerExit(Collider other)      // #6 
+    {
+        if(other.gameObject.tag == "Bush")
+        {
+            SetAlpha(sprite, 1f);
+        }    
+    }
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos) // #5 fix   
     //# refactor 플레이어가 누르는 방향 키와, 플레이어의 위치(장애물과 비교했을 때 상대적 위치)를 parameter로 받기
     {
@@ -294,5 +309,9 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     }
 
+    void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
+    {
+        _sprite.color = new Color(1f, 1f, 1f, _alpha);
+    }
 
 }

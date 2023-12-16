@@ -1575,6 +1575,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6884074034393793472, guid: db7c2ec555de380478f2adf8bb31621b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bush
+      objectReference: {fileID: 0}
     - target: {fileID: 6884074034393793475, guid: db7c2ec555de380478f2adf8bb31621b,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1584,6 +1589,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BushObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884074034489137870, guid: db7c2ec555de380478f2adf8bb31621b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bush
       objectReference: {fileID: 0}
     - target: {fileID: 6884074034489137871, guid: db7c2ec555de380478f2adf8bb31621b,
         type: 3}
