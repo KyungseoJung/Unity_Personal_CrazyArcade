@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\02.Scripts\LayerSetting.cs" />
      <Compile Include="Assets\02.Scripts\MapManager.cs" />
+     <Compile Include="Assets\02.Scripts\Obstacle.cs" />
      <Compile Include="Assets\02.Scripts\PlayerCtrl.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.40f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

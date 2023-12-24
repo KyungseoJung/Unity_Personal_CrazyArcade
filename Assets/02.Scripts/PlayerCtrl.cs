@@ -27,7 +27,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private Animator anim;                 // #3 플레이어 애니메이터
 
     private MapManager mapMgr;             // #4 물풍선 놓기 위함
-
+    private Obstacle obstacle;             // #6 플레이어가 숨을 수 있는 덤불
     private Vector2 slideDirection = new Vector2(0, 0); // #5
 
     void Awake()
@@ -191,19 +191,33 @@ public class PlayerCtrl : MonoBehaviour // #1
         }    
     }
 
-    private void OnTriggerEnter(Collider other)     // #6 
+    private void OnTriggerEnter(Collider other)     
     {
-        if(other.gameObject.tag == "Bush")
+        if(other.gameObject.tag == "Bush")  // #6 
         {
             SetAlpha(sprite, 0f);
+
+            obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
+
+            if(obstacle != null)
+            {
+                obstacle.BushShake();
+            }
         }    
     }
 
-    private void OnTriggerExit(Collider other)      // #6 
+    private void OnTriggerExit(Collider other)      
     {
-        if(other.gameObject.tag == "Bush")
+        if(other.gameObject.tag == "Bush")  // #6 
         {
             SetAlpha(sprite, 1f);
+
+            obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
+
+            if(obstacle != null)
+            {
+                obstacle.BushShake();
+            }        
         }    
     }
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos) // #5 fix   

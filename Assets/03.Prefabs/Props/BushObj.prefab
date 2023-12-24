@@ -106,6 +106,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6884074034489137871}
   - component: {fileID: 6884074034489137865}
+  - component: {fileID: 8480341727048375377}
+  - component: {fileID: 5940275978819298445}
   m_Layer: 0
   m_Name: BushObj
   m_TagString: Bush
@@ -138,5 +140,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d65510dd18d1ee418ef8654dfe5ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8480341727048375377
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6884074034489137870}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8afdf582290531640ba158bbd2042987, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5940275978819298445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6884074034489137870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e86aff00d326e40a981c0bd3837b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
