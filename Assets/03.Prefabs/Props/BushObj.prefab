@@ -173,4 +173,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e86aff00d326e40a981c0bd3837b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleType: 2
   anim: {fileID: 0}

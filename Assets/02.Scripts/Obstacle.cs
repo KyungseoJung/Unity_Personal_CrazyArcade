@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+
+    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH}    // #7 Obstacle마다 TYPE 설정하기
+    public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
+
     [SerializeField]
     private Animator anim;  // #6 덤불 Animator 조정
 
