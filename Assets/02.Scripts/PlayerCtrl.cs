@@ -171,7 +171,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.LEFT, PLAYER_POS.DOWN);                
             }
 
-            Debug.Log("//#5 장애물 부딪힘");
+            // Debug.Log("//#5 장애물 부딪힘");
 
             // if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             // {
