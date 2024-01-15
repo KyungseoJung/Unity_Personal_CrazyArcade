@@ -13,7 +13,160 @@ TextureImporter:
     second: bombwater_2
   - first:
       213: -829741155331688352
-    second: bombwater_shadow
+    second: bombwater_3
+  - first:
+      213: 5499243582699167591
+    second: waterCenter_0
+  - first:
+      213: -1532896878651109736
+    second: waterCenter_1
+  - first:
+      213: -7445918085156312132
+    second: waterCenter_2
+  - first:
+      213: -7091844345612371576
+    second: waterUp_0
+  - first:
+      213: -2173538798126241255
+    second: waterUp_1
+  - first:
+      213: -6307988169820150772
+    second: waterUp_2
+  - first:
+      213: 3641589484946826966
+    second: bombwater_10
+  - first:
+      213: -5277246399779932658
+    second: waterRight_0
+  - first:
+      213: -2452022989352428462
+    second: waterRight_1
+  - first:
+      213: 1268637836425794611
+    second: waterRight_2
+  - first:
+      213: -7250725757521162153
+    second: bombwater_14
+  - first:
+      213: 1037989081511313752
+    second: waterRight_3
+  - first:
+      213: 1338210593351925102
+    second: bombwater_16
+  - first:
+      213: 4859692586384625791
+    second: waterUp_3
+  - first:
+      213: 6100188441241469115
+    second: bombwater_18
+  - first:
+      213: -2633747431159407922
+    second: bombwater_19
+  - first:
+      213: -322066043086728655
+    second: bombwater_20
+  - first:
+      213: 6132416230902893911
+    second: waterDown_0
+  - first:
+      213: 5726644647013808274
+    second: waterDown_1
+  - first:
+      213: -3086227225000154024
+    second: waterDown_2
+  - first:
+      213: 2220802586547958068
+    second: waterDown_3
+  - first:
+      213: -817436372218655585
+    second: bombwater_25
+  - first:
+      213: -5252787041437522352
+    second: bombwater_26
+  - first:
+      213: -2032523320427919577
+    second: bombwater_27
+  - first:
+      213: -4461461294545664749
+    second: waterLeft_0
+  - first:
+      213: -4628511130895821501
+    second: waterLeft_1
+  - first:
+      213: -469684416297942730
+    second: waterLeft_2
+  - first:
+      213: 8647473681605985476
+    second: bombwater_31
+  - first:
+      213: -7996393493421491967
+    second: bombwater_32
+  - first:
+      213: -629371670936624477
+    second: waterLeft_3
+  - first:
+      213: -2034302599633106248
+    second: bombwater_34
+  - first:
+      213: 8331915463183444818
+    second: waterUp_4
+  - first:
+      213: -5574327451441332498
+    second: waterUp_5
+  - first:
+      213: 2857642931530053058
+    second: waterUp_6
+  - first:
+      213: 3363926513009337910
+    second: waterUp_7
+  - first:
+      213: 6810870357702986488
+    second: bombwater_39
+  - first:
+      213: 171375365914047184
+    second: bombwater_40
+  - first:
+      213: -3447141209129018266
+    second: bombwater_41
+  - first:
+      213: -203793120598335203
+    second: bombwater_42
+  - first:
+      213: 2878236508299468681
+    second: bombwater_43
+  - first:
+      213: 5970676704619600845
+    second: bombwater_44
+  - first:
+      213: 1867776151580610242
+    second: bombwater_45
+  - first:
+      213: -7959283965071980970
+    second: bombwater_46
+  - first:
+      213: 6441235491404910882
+    second: bombwater_47
+  - first:
+      213: 4909643295173116344
+    second: bombwater_48
+  - first:
+      213: 7668155887089948945
+    second: bombwater_49
+  - first:
+      213: -4308454689463017693
+    second: bombwater_50
+  - first:
+      213: 960828426288015823
+    second: bombwater_51
+  - first:
+      213: -4199979732364927832
+    second: bombwater_52
+  - first:
+      213: 4545689105604554162
+    second: bombwater_53
+  - first:
+      213: -2668307432741134939
+    second: bombwater_54
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -186,11 +339,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_shadow
+      name: bombwater_3
       rect:
         serializedVersion: 2
-        x: 196
-        y: 414
+        x: 195
+        y: 415
         width: 44
         height: 44
       alignment: 0
@@ -202,6 +355,846 @@ TextureImporter:
       bones: []
       spriteID: 068beecb0da2c74f0800000000000000
       internalID: -829741155331688352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterCenter_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 346
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f5128f6ec315c40800000000000000
+      internalID: 5499243582699167591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterCenter_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 346
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e02b6196e0abae0800000000000000
+      internalID: -1532896878651109736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterCenter_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 346
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbbe993a3f8caa890800000000000000
+      internalID: -7445918085156312132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88979615425b49d90800000000000000
+      internalID: -7091844345612371576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ae720aaf906d1e0800000000000000
+      internalID: -2173538798126241255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c04e0824e268578a0800000000000000
+      internalID: -6307988169820150772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterRight_0
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0678e40c5473c6b0800000000000000
+      internalID: -5277246399779932658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterRight_1
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c9e82251aa8fdd0800000000000000
+      internalID: -2452022989352428462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterRight_2
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33497c4046b1b9110800000000000000
+      internalID: 1268637836425794611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterRight_3
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8514734f19da76e00800000000000000
+      internalID: 1037989081511313752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 275
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f701e09d8a8117340800000000000000
+      internalID: 4859692586384625791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_20
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 276
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1329993e3aac78bf0800000000000000
+      internalID: -322066043086728655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterDown_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75d8ec13218ba1550800000000000000
+      internalID: 6132416230902893911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterDown_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 199
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 298762427f0297f40800000000000000
+      internalID: 5726644647013808274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterDown_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ce9bdb0b48b25d0800000000000000
+      internalID: -3086227225000154024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterDown_3
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 431b577af20e1de10800000000000000
+      internalID: 2220802586547958068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterLeft_0
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31583772794b512c0800000000000000
+      internalID: -4461461294545664749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterLeft_1
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 345530c36a934cfb0800000000000000
+      internalID: -4628511130895821501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterLeft_2
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 631460a03885b79f0800000000000000
+      internalID: -469684416297942730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterLeft_3
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 200
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2e022ccc50447f0800000000000000
+      internalID: -629371670936624477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_34
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 200
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba07375094b4c3e0800000000000000
+      internalID: -2034302599633106248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 116
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b22a928f8e0a370800000000000000
+      internalID: 8331915463183444818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_5
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 116
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee712b87b204a2b0800000000000000
+      internalID: -5574327451441332498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_6
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 116
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c531c41b1368a720800000000000000
+      internalID: 2857642931530053058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: waterUp_7
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 116
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 636a07a37511fae20800000000000000
+      internalID: 3363926513009337910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_39
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 135
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8facf1a3182158e50800000000000000
+      internalID: 6810870357702986488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_40
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 116
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d23f80ccf8d06200800000000000000
+      internalID: 171375365914047184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_41
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 116
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c1143855b4920d0800000000000000
+      internalID: -3447141209129018266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_42
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 116
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11611f8c3bfb2df0800000000000000
+      internalID: -203793120598335203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_43
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 116
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f10c0dadc81f720800000000000000
+      internalID: 2878236508299468681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_44
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 118
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb1d8f24da1cd250800000000000000
+      internalID: 5970676704619600845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_45
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce88e2938cabe910800000000000000
+      internalID: 1867776151580610242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_46
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 49
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6560c636761fa8190800000000000000
+      internalID: -7959283965071980970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_47
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22114d36d8dd36950800000000000000
+      internalID: 6441235491404910882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_48
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b10ca6809e822440800000000000000
+      internalID: 4909643295173116344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_49
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1191154d623ca6a60800000000000000
+      internalID: 7668155887089948945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_50
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32fd0bf794b4534c0800000000000000
+      internalID: -4308454689463017693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_51
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9aefeec5c855d00800000000000000
+      internalID: 960828426288015823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_52
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 41
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ac5c849faca6b5c0800000000000000
+      internalID: -4199979732364927832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bombwater_54
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 57
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad1ee7f68448fad0800000000000000
+      internalID: -2668307432741134939
       vertices: []
       indices: 
       edges: []

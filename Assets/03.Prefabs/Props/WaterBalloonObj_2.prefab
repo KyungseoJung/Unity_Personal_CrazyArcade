@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 1
   anim: {fileID: 0}
+  waterLength: 0
 --- !u!1 &8007891908761632960
 GameObject:
   m_ObjectHideFlags: 0
