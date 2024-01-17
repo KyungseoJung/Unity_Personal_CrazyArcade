@@ -13,7 +13,7 @@ TextureImporter:
     second: bombwater_2
   - first:
       213: -829741155331688352
-    second: bombwater_3
+    second: shadow
   - first:
       213: 5499243582699167591
     second: waterCenter_0
@@ -339,10 +339,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_3
+      name: shadow
       rect:
         serializedVersion: 2
-        x: 195
+        x: 196
         y: 415
         width: 44
         height: 44

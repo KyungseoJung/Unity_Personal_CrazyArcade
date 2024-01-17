@@ -6,7 +6,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 {
 // #1 플레이어 기본 이동 =============================
     private enum MOVE_ARROW {UP = 1, DOWN, RIGHT, LEFT};    // #5 refactor: 플레이어 움직이는 방향
-    private MOVE_ARROW moveArrow = MOVE_ARROW.UP;
+    // private MOVE_ARROW moveArrow = MOVE_ARROW.UP;
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // #5 refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
     
@@ -163,7 +163,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 if((distY < (0.2)*(0.2)))   //#5 Y축을 기준으로 플레이어와 장애물 간의 거리 차가 별로 없다면, 미끄러지지 않도록 = 플레이어가 장애물에 계속 걸리도록
                     return;
                 
-                Debug.Log("//#5 LeftArrow: 장애물과 미끄러지는 중 | distY" + distY);
+                // Debug.Log("//#5 LeftArrow: 장애물과 미끄러지는 중 | distY" + distY);
 
                 if(transform.position.y > other.transform.position.y)   // 플레이어가 장애물보다 위쪽에 있으면
                     SlideAlongObstacle(other.contacts[0].normal, MOVE_ARROW.LEFT, PLAYER_POS.UP);
