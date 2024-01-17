@@ -50,9 +50,9 @@ public class Obstacle : MonoBehaviour
         mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y);
     }
 
-    public void DestroyWaterBalloon()   // #9 애니메이터 Clips에서 접근 및 실행
-    {
-        Destroy(this.gameObject);    // #9 물풍선 파괴
-    }
+    // public void DestroyWaterBalloon()   // #9 애니메이터 Clips에서 접근 및 실행 // #9 fix: Destructor.cs 스크립트 자체를 이용하도록
+    // {
+    //     Destroy(this.gameObject);    // #9 물풍선 파괴
+    // }
 
 }   

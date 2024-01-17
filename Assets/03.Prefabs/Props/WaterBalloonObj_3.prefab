@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 8617705400216813930}
   - component: {fileID: 1474230733921668017}
   - component: {fileID: 7585929973136312510}
+  - component: {fileID: 1937214824240987941}
   m_Layer: 0
   m_Name: WaterBalloonObj_3
   m_TagString: Obstacle
@@ -605,3 +606,19 @@ MonoBehaviour:
   obstacleType: 1
   anim: {fileID: 0}
   waterLength: 0
+--- !u!114 &1937214824240987941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617705400216813924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a408c5e5e802f45959d7999a62d456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyOnAwake: 0
+  awakeDestroyDelay: 0
+  findChild: 0
+  namedChild: 

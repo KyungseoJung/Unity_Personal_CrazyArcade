@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\02.Scripts\Destructor.cs" />
      <Compile Include="Assets\02.Scripts\LayerSetting.cs" />
      <Compile Include="Assets\02.Scripts\MapManager.cs" />
      <Compile Include="Assets\02.Scripts\Obstacle.cs" />
