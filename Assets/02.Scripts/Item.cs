@@ -10,16 +10,17 @@ public class Item : MonoBehaviour   // #10
     
     private void OnTriggerEnter(Collider other)     // #10 플레이어에 닿으면 사라지도록 
     {
-        Debug.Log("//#10 OnTriggerEnter");    
+        Debug.Log("//#10 OnTriggerEnter");   
+        if(other.gameObject.tag == "Player")    // 플레이어에 닿으면
+        {
+            Debug.Log("//#10 플레이어 - 물풍선 먹음");
+            Destroy(this.gameObject);
+        }  
     }
 
     private void OnCollisionEnter(Collision other) 
     {
         Debug.Log("//#10 OnCollisionEnter");   
-        if(other.gameObject.tag == "Player")    // 플레이어에 닿으면
-        {
-            Debug.Log("//#10 플레이어 - 물풍선 먹음");
-            Destroy(this.gameObject);
-        } 
+
     }
 }
