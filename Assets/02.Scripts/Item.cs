@@ -14,6 +14,7 @@ public class Item : MonoBehaviour   // #10
         if(other.gameObject.tag == "Player")    // 플레이어에 닿으면
         {
             Debug.Log("//#10 플레이어 - 물풍선 먹음");
+            PlayerGameMgr.Mgr.fluid +=1;  // #10 플레이어가 물병 하나 먹을 때마다, 물줄기 하나씩 증가하도록
             Destroy(this.gameObject);
         }  
     }

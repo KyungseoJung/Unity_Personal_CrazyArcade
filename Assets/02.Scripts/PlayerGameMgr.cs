@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class SkillInfo
+{
+    public int fluid = 1;   // 물줄기 세기
+}
+
+
 public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관리 
 {
-    public class SkillInfo
-    {
-        public int fluid = 1;   // 물줄기 세기
-    }
 
     private SkillInfo skillInfo;
 
