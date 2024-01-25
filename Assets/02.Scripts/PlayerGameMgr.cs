@@ -1,9 +1,16 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관리 
 {
+    public class SkillInfo
+    {
+        public int fluid = 1;   // 물줄기 세기
+    }
+
+    private SkillInfo skillInfo;
+
     private static PlayerGameMgr mgr = null;  // 싱글톤 객체 (인스턴스)
     public static PlayerGameMgr Mgr           // 싱글톤 프로퍼티
     {
@@ -23,8 +30,16 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
             return mgr;
         }
     }
+    void Awake()    //Start에 적으면 다른 것들보다 늦게 실행돼서 Null 에러 발생함.
+    {
+        skillInfo = new SkillInfo();
+    }
 
-
+    public int fluid
+    {
+        get {return skillInfo.fluid; }
+        set {skillInfo.fluid = value; }
+    }
 
 
 }
