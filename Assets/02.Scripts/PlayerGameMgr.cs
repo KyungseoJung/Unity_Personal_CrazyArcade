@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkillInfo
 {
+    public int waterballoonNum = 0; // 물풍선 개수
     public int fluid = 1;   // 물줄기 세기
 }
 
@@ -35,6 +36,12 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     void Awake()    //Start에 적으면 다른 것들보다 늦게 실행돼서 Null 에러 발생함.
     {
         skillInfo = new SkillInfo();
+    }
+
+    public int waterballoonNum  // #13
+    {
+        get {return skillInfo.waterballoonNum; }
+        set {skillInfo.waterballoonNum = value; }
     }
 
     public int fluid
