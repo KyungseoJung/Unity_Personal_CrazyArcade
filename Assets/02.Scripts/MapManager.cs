@@ -8,6 +8,8 @@ public class MapManager : MonoBehaviour
 
     private Vector3 balloonPos;         // #4 물풍선 배치 위치
 
+    private int waterBalloonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
+
     int row, col;   // #4 선언 위치만 바꿈
 
     [SerializeField]
@@ -42,8 +44,8 @@ public class MapManager : MonoBehaviour
         balloonPos.y = Mathf.RoundToInt(_y);
         Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
-        PlayerGameMgr.Mgr.waterballoonNum += 1; // #13 물풍선 개수 하나 증가
-        Debug.Log("//#13 물풍선 개수: " + PlayerGameMgr.Mgr.waterballoonNum);
+        waterBalloonPlaceNum += 1; // #13 물풍선 개수 하나 증가
+        Debug.Log("//#13 물풍선 개수: " + waterBalloonPlaceNum);
     }
 
     public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐
@@ -55,8 +57,8 @@ public class MapManager : MonoBehaviour
 
         waterBalloonArr[row, col] = 0;  // 배열 설정
 
-        PlayerGameMgr.Mgr.waterballoonNum -= 1; // #13 물풍선 개수 하나 감소
-        Debug.Log("//#13 물풍선 개수: " + PlayerGameMgr.Mgr.waterballoonNum);
+        waterBalloonPlaceNum -= 1; // #13 물풍선 개수 하나 감소
+        Debug.Log("//#13 물풍선 개수: " + waterBalloonPlaceNum);
 
     }
 
