@@ -22,7 +22,8 @@ public class Item : MonoBehaviour   // #10
                     Destroy(this.gameObject);
                     break;
                 
-                case ITEM_TYPE.BUBBLE :     // #13 물풍선 개수 늘어나는 아이템
+                case ITEM_TYPE.BUBBLE :     // #13 놓을 수 있는 물풍선 개수 늘어나는 아이템
+                    PlayerGameMgr.Mgr.waterballoonNum += 1;
                     Destroy(this.gameObject);       
                     break;
             }

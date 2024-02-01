@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillInfo
 {
-    public int waterballoonNum = 0; // 물풍선 개수
+    public int waterballoonNum = 1; // 놓을 수 있는 물풍선 개수
     public int fluid = 1;   // 물줄기 세기
 }
 
