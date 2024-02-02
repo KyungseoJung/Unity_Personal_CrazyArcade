@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH}    // #7 Obstacle마다 TYPE 설정하기
+    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK)
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
 
     private MapManager mapMgr;             // #8 물풍선 지우기 위함
