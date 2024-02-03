@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383722405888142382}
   - component: {fileID: 9093284918410968110}
-  - component: {fileID: 383722405888142380}
+  - component: {fileID: 8445183298299189040}
   m_Layer: 0
   m_Name: Obj_WoodBlock
   m_TagString: Obstacle
@@ -130,7 +130,7 @@ MonoBehaviour:
   obstacleType: 3
   anim: {fileID: 0}
   waterLength: 0
---- !u!65 &383722405888142380
+--- !u!65 &8445183298299189040
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,5 +141,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.2, z: 1}
+  m_Center: {x: 0, y: 0.1, z: 0}

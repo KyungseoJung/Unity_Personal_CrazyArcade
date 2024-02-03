@@ -9,10 +9,23 @@ public class Obstacle : MonoBehaviour
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
 
     private MapManager mapMgr;             // #8 물풍선 지우기 위함
+    
 
-    [SerializeField]    private Animator anim;  // #6 덤불 Animator 조정
+    [SerializeField]    
+    private Animator anim;  // #6 덤불 Animator 조정
 
-    [SerializeField]    private int waterLength;    // #9 물풍선 터질 때 길이
+    Vector3 playerTransform;  // #14 장애물과 부딪힌 플레이어의 위치
+    Vector3 woodPos;          // #14 
+
+    [SerializeField]    
+    private int waterLength;    // #9 물풍선 터질 때 길이
+
+    float pushForce = 10f;
+
+    float xPosDiff;              // #14 WOODBLOCK 밀기: 장애물과 플레이어와의 x축 거리 차
+
+    float yPosDiff;              // #14 WOODBLOCK 밀기: 장애물과 플레이어와의 y축 거리 차
+ 
 
     void Awake()
     {
@@ -31,6 +44,59 @@ public class Obstacle : MonoBehaviour
                 break;
         }
     }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        Debug.Log("//#14 Obstacle 충돌 처리");
+
+        // #14 플레이어가 WoodBlock 밀 수 있도록
+        if(other.gameObject.tag == "Player")
+        {
+            // 플레이어가 미는 방향 확인
+            Debug.Log("//#14 플레이어가 " + obstacleType + " 밀고 있음");
+            playerTransform = other.gameObject.transform.position;
+            woodPos = this.gameObject.transform.position;
+
+            xPosDiff = woodPos.x - playerTransform.x;
+            yPosDiff = woodPos.y - playerTransform.y;
+
+            Debug.Log("yPosDiff: " + yPosDiff);
+            Debug.Log("xPosDiff: " + xPosDiff);
+
+            if(xPosDiff * xPosDiff < 0.25)  //  위 or 아래로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
+            {
+                if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
+                {
+                    Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
+                    woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
+                }
+                else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
+                {
+                    Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
+                    woodPos.y +=1;
+                }
+            }
+
+            if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
+            {
+                if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
+                {
+                    Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
+                    woodPos.x -=1;
+                }
+                else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
+                {
+                    Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
+                    woodPos.x +=1;
+                }
+            }
+
+            this.gameObject.transform.position = woodPos; 
+
+        }
+    }
+
+         
 
     public void BushShake() // #6 애니메이터 설정: 플레이어가 덤불에 숨으면, 덤불 흔들리도록 
     {
