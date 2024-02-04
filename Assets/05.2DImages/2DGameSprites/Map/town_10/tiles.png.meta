@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -6614373457484812694
     second: Obj_Bush
+  - first:
+      213: 1639214462598301798
+    second: Obj_House_Blue
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -178,6 +181,27 @@ TextureImporter:
       bones: []
       spriteID: a6e68d682660534a0800000000000000
       internalID: -6614373457484812694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obj_House_Blue
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 668cad96ed8afb610800000000000000
+      internalID: 1639214462598301798
       vertices: []
       indices: 
       edges: []
