@@ -10,12 +10,12 @@ public class PlayerCtrl : MonoBehaviour // #1
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // #5 refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
     
-    [SerializeField]
-    private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
+    // [SerializeField]
+    // private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
-    private float moveSpeed = 30f;         // 이동 속도 (50 > 20)
+    private float moveForce = 30f;         // 이동할 때 주는 힘 (50 > 20)
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
-    private float maxSpeed = 5f;
+    private float maxSpeed = 5f;            // 가속도 적용 속도
     private float h;
     private float v;
     private float distX;                     // #5 플레이어와 장애물 간의 거리 (X축)
@@ -87,14 +87,14 @@ public class PlayerCtrl : MonoBehaviour // #1
         // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
         // h(-1.0f~1.0f)는 velocity.x를 다르게 표시한다
         if(h * rBody.velocity.x < maxSpeed)	// h가 음수이면-> rigidbody2d.velocity.x도 음수. // h가 양수이면-> 양수
-            rBody.AddForce(Vector3.right * h * moveSpeed);	//오른쪽방향(1,0) * 방향 * 힘 <-> 왼쪽 방향이면 (-1, 0)
+            rBody.AddForce(Vector3.right * h * moveForce);	//오른쪽방향(1,0) * 방향 * 힘 <-> 왼쪽 방향이면 (-1, 0)
 
     // #1 상하 움직임 
         if(v * rBody.velocity.y < maxSpeed)
-            rBody.AddForce(moveDirection * moveSpeed);
+            rBody.AddForce(moveDirection * moveForce);
 
         Debug.Log(moveDirection.magnitude);
-            // rBody.AddForce(Vector2.up * v * moveSpeed);
+            // rBody.AddForce(Vector2.up * v * moveForce);
             // 걱정: rigidBody2D인데 Vector3가 적용될까?
 
     // #1 좌우 움직임 
@@ -287,7 +287,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
                 // h(-1.0f~1.0f)는 velocity.x를 다르게 표시한다
                 if(h * rBody.velocity.x < maxSpeed)	// h가 음수이면-> rigidbody2d.velocity.x도 음수. // h가 양수이면-> 양수
-                    rBody.AddForce(Vector3.right * h * moveSpeed);	//오른쪽방향(1,0) * 방향 * 힘 <-> 왼쪽 방향이면 (-1, 0)
+                    rBody.AddForce(Vector3.right * h * moveForce);	//오른쪽방향(1,0) * 방향 * 힘 <-> 왼쪽 방향이면 (-1, 0)
             // #1 좌우 움직임 
                 // 가속도해서 더래진 플레이어의 <<수평>> 속도가 maxSpeed 보다 커지면 maxSpeed로 속도 유지
                 if(Mathf.Abs(rBody.velocity.x) > maxSpeed)  
@@ -306,10 +306,10 @@ public class PlayerCtrl : MonoBehaviour // #1
 
             // #1 상하 움직임 
                 if(v * rBody.velocity.y < maxSpeed)
-                    rBody.AddForce(moveDirection * moveSpeed);
+                    rBody.AddForce(moveDirection * moveForce);
 
                 // Debug.Log(moveDirection.magnitude);
-                    // rBody.AddForce(Vector2.up * v * moveSpeed);
+                    // rBody.AddForce(Vector2.up * v * moveForce);
                     // 걱정: rigidBody2D인데 Vector3가 적용될까?
 
             // #1 상하 움직임 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour   // #10
 {
-    public enum ITEM_TYPE {FLUID = 1, BUBBLE = 2}   // #10 Item마다 TYPE 설정하기   (#13 BUBBLE 추가)
+    public enum ITEM_TYPE {FLUID = 1, BUBBLE, ROLLER}   // #10 Item마다 TYPE 설정하기   (추가: #13 BUBBLE #15 ROLLER)
     public ITEM_TYPE itemType = ITEM_TYPE.FLUID;    // #10 디폴트 = 물병
 
     
