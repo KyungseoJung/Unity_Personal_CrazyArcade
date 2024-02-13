@@ -6,6 +6,7 @@ public class SkillInfo
 {
     public int waterballoonNum = 1; // 놓을 수 있는 물풍선 개수
     public int fluid = 1;   // 물줄기 세기
+    public int roller = 1;   // #15 플레이어 달리는 속도
 }
 
 
@@ -48,6 +49,12 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     {
         get {return skillInfo.fluid; }
         set {skillInfo.fluid = value; }
+    }
+
+    public int roller   // #15
+    {
+        get {return skillInfo.roller; }
+        set {skillInfo.roller = value; }
     }
 
 

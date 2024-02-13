@@ -28,6 +28,7 @@ public class Item : MonoBehaviour   // #10
                     break;
                 
                 case ITEM_TYPE.ROLLER :     // #15 ROLLER 아이템
+                    PlayerGameMgr.Mgr.roller += 1;  
                     Destroy(this.gameObject);   // 플레이어 획득
                     break;
 
