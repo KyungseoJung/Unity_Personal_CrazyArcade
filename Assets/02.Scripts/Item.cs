@@ -15,7 +15,7 @@ public class Item : MonoBehaviour   // #10
         {
             Debug.Log("//#10 플레이어 - " + itemType + " 먹음");
 
-            switch(itemType)
+            switch(itemType) 
             {
                 case ITEM_TYPE.FLUID : 
                     PlayerGameMgr.Mgr.fluid +=1;  // #10 플레이어가 물병 하나 먹을 때마다, 물줄기 하나씩 증가하도록
@@ -26,6 +26,11 @@ public class Item : MonoBehaviour   // #10
                     PlayerGameMgr.Mgr.waterballoonNum += 1;
                     Destroy(this.gameObject);       
                     break;
+                
+                case ITEM_TYPE.ROLLER :     // #15 ROLLER 아이템
+                    Destroy(this.gameObject);   // 플레이어 획득
+                    break;
+
             }
 
         }  
