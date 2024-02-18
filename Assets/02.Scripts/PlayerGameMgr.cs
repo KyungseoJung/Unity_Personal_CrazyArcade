@@ -7,6 +7,7 @@ public class SkillInfo
     public int waterballoonNum = 1; // 놓을 수 있는 물풍선 개수
     public int fluid = 1;   // 물줄기 세기
     public int roller = 1;   // #15 플레이어 달리는 속도
+    public bool turtle = false; // #16 거북을 타고 있는지 확인
 }
 
 
@@ -57,5 +58,10 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
         set {skillInfo.roller = value; }
     }
 
+    public bool turtle  // #16
+    {
+        get {return skillInfo.turtle; }
+        set {skillInfo.turtle = value;}
+    }
 
 }
