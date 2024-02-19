@@ -31,7 +31,11 @@ public class Item : MonoBehaviour   // #10
                     PlayerGameMgr.Mgr.roller += 1;  
                     Destroy(this.gameObject);   // 플레이어 획득
                     break;
-
+                
+                case ITEM_TYPE.TURTLE :     // #16 TURTLE 아이템
+                    PlayerGameMgr.Mgr.turtle = true;
+                    Destroy(this.gameObject);   // 플레이어 획득
+                    break;
             }
 
         }  
