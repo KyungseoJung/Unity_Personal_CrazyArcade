@@ -297,7 +297,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 271}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 166
+  controlID: 163
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -791,10 +791,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 70b838bce9ccf384cb9fa8b91ec5e773,
+  m_AnimatorController: {fileID: 9100000, guid: 298c1387e7883434188f5101145fcd19,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -8609884014678009418, guid: 70b838bce9ccf384cb9fa8b91ec5e773,
+  - m_Target: {fileID: 2908863598062693481, guid: 298c1387e7883434188f5101145fcd19,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -863,8 +863,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d83c0000
-      m_LastClickedID: 0
+      m_SelectedIDs: 5e3c0000
+      m_LastClickedID: 15454
       m_ExpandedIDs: 5efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -928,7 +928,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/03.Prefabs/Props
+    - Assets/02.Scripts
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -1061,7 +1061,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 43.5
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52

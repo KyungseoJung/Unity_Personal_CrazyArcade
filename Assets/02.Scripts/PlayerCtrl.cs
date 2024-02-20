@@ -328,4 +328,13 @@ public class PlayerCtrl : MonoBehaviour // #1
         _sprite.color = new Color(1f, 1f, 1f, _alpha);
     }
 
+    public void PlayerSpeedUp(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
+    {
+        // ROLLER 아이템 획득 개수에 따라 플레이어 이동 속도 설정
+        // moveForce 디폴트 값: 30f, maxSpeed 디폴트 값: 5f
+        moveForce = 30f + (rollerCount-1) * 3;
+        maxSpeed = 5f + (rollerCount-1);
+
+        Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
+    }
 }

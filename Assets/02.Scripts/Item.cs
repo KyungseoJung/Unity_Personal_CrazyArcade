@@ -7,7 +7,13 @@ public class Item : MonoBehaviour   // #10
     public enum ITEM_TYPE {FLUID = 1, BUBBLE, ROLLER, TURTLE}   // #10 Item마다 TYPE 설정하기   (추가: #13 BUBBLE #15 ROLLER #16 TURTLE)
     public ITEM_TYPE itemType = ITEM_TYPE.FLUID;    // #10 디폴트 = 물병
 
-    
+    private PlayerCtrl playerCtrl;                  // #15
+
+    void Awake()
+    {
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>(); // #4 
+    }
+
     private void OnTriggerEnter(Collider other)     // #10 플레이어에 닿으면 사라지도록 
     {
         Debug.Log("//#10 OnTriggerEnter");   
@@ -29,6 +35,7 @@ public class Item : MonoBehaviour   // #10
                 
                 case ITEM_TYPE.ROLLER :     // #15 ROLLER 아이템
                     PlayerGameMgr.Mgr.roller += 1;  
+                    playerCtrl.PlayerSpeedUp(PlayerGameMgr.Mgr.roller); // #15 플레이어 이동 속도 증가
                     Destroy(this.gameObject);   // 플레이어 획득
                     break;
                 
