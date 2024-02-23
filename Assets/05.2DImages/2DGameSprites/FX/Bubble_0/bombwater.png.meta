@@ -124,22 +124,22 @@ TextureImporter:
     second: bombwater_39
   - first:
       213: 171375365914047184
-    second: bombwater_40
+    second: waterRight_4
   - first:
       213: -3447141209129018266
-    second: bombwater_41
+    second: waterRight_5
   - first:
       213: -203793120598335203
-    second: bombwater_42
+    second: waterRight_6
   - first:
       213: 2878236508299468681
-    second: bombwater_43
+    second: waterRight_7
   - first:
       213: 5970676704619600845
     second: bombwater_44
   - first:
       213: 1867776151580610242
-    second: bombwater_45
+    second: waterDown_4
   - first:
       213: -7959283965071980970
     second: bombwater_46
@@ -151,7 +151,7 @@ TextureImporter:
     second: bombwater_48
   - first:
       213: 7668155887089948945
-    second: bombwater_49
+    second: waterLeft_4
   - first:
       213: -4308454689463017693
     second: bombwater_50
@@ -828,7 +828,7 @@ TextureImporter:
         x: 85
         y: 116
         width: 40
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -906,7 +906,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_40
+      name: waterRight_4
       rect:
         serializedVersion: 2
         x: 271
@@ -927,7 +927,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_41
+      name: waterRight_5
       rect:
         serializedVersion: 2
         x: 335
@@ -948,12 +948,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_42
+      name: waterRight_6
       rect:
         serializedVersion: 2
         x: 389
         y: 116
-        width: 34
+        width: 40
         height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -969,7 +969,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_43
+      name: waterRight_7
       rect:
         serializedVersion: 2
         x: 446
@@ -1011,7 +1011,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_45
+      name: waterDown_4
       rect:
         serializedVersion: 2
         x: 28
@@ -1095,7 +1095,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bombwater_49
+      name: waterLeft_4
       rect:
         serializedVersion: 2
         x: 271

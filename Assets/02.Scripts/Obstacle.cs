@@ -17,8 +17,8 @@ public class Obstacle : MonoBehaviour
     Vector3 playerTransform;  // #14 장애물과 부딪힌 플레이어의 위치
     Vector3 woodPos;          // #14 
 
-    [SerializeField]    
-    private int waterLength;    // #9 물풍선 터질 때 길이
+    // [SerializeField]    
+    // private int waterLength;    // #9 물풍선 터질 때 길이->  PlayerGameMgr.Mgr.fluid로 설정하면 되니까 필요 x.
 
     float pushForce = 10f;
 
@@ -39,8 +39,9 @@ public class Obstacle : MonoBehaviour
         switch(obstacleType)    // #8 시간이 지남에 따라 물풍선 터짐
         {
             case OBSTACLE_TYPE.WATERBALLOON :
-                StartCoroutine(WaterBalloonBursts());
-                waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정
+                StartCoroutine(WaterBalloonBursts(PlayerGameMgr.Mgr.fluid));    
+                // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: PlayerGameMgr.Mgr.fluid로 설정
+                // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
                 break;
         }
     }
@@ -104,14 +105,14 @@ public class Obstacle : MonoBehaviour
         anim.SetTrigger("Shake");
     }
 
-    IEnumerator WaterBalloonBursts()    // #8 3초 뒤에 해당 물풍선 파괴
+    IEnumerator WaterBalloonBursts(int _waterLength)    // #8 3초 뒤에 해당 물풍선 파괴
     {
         Debug.Log("//#8 3초 기다림 시작");
         yield return new WaitForSeconds(3.0f);
         
         Debug.Log("//#8 파괴 | 위치는" + transform.position.x + ", " + transform.position.y);
         anim.SetTrigger("Bursts");
-        anim.SetInteger("WaterLength", waterLength);  // #9 물줄기 길이 설정
+        anim.SetInteger("WaterLength",  _waterLength);  // #9 물줄기 길이 설정
 
         mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y);
     }
