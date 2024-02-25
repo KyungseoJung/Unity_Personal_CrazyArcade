@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383722405888142382}
   - component: {fileID: 9093284918410968110}
+  - component: {fileID: 7796715154310552157}
   - component: {fileID: 8445183298299189040}
   m_Layer: 0
   m_Name: Obj_WoodBlock
@@ -129,7 +130,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 3
   anim: {fileID: 0}
-  waterLength: 0
+--- !u!114 &7796715154310552157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383722405888142383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d65510dd18d1ee418ef8654dfe5ba6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &8445183298299189040
 BoxCollider:
   m_ObjectHideFlags: 0
