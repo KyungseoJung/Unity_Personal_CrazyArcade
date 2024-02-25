@@ -38,7 +38,11 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #4 
     }
-
+    
+    void Start()
+    {
+        anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
+    }
     void Update()
     {
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
@@ -278,10 +282,10 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         if(moveHorizontal)
         {
-            if((h<0) && anim.GetInteger("MoveDir")!=0 ) // #3   // 중복 방지 - 이미 0인 값을 또 0이라 설정하지 않도록 
-                anim.SetInteger("MoveDir", 0);  //왼쪽 쳐다보도록
-            else if((h>0) && anim.GetInteger("MoveDir")!=1)     // 중복 방지
-                anim.SetInteger("MoveDir", 1);  //오른쪽 쳐다보도록
+            if((h<0) && anim.GetInteger("MoveDir")!=3 ) // #3   // 중복 방지 - 이미 0인 값을 또 0이라 설정하지 않도록 
+                anim.SetInteger("MoveDir", 3);  //왼쪽 쳐다보도록
+            else if((h>0) && anim.GetInteger("MoveDir")!=4)     // 중복 방지
+                anim.SetInteger("MoveDir", 4);  //오른쪽 쳐다보도록
 
             // #1 좌우 움직임 
                 // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
@@ -299,10 +303,10 @@ public class PlayerCtrl : MonoBehaviour // #1
         }
         else
         {
-            if((v>0) && anim.GetInteger("MoveDir")!=2 ) // #3
-                anim.SetInteger("MoveDir", 2);  //위쪽 쳐다보도록
-            else if((v<0) && anim.GetInteger("MoveDir")!=3 )
-                anim.SetInteger("MoveDir", 3);  //아래쪽 쳐다보도록
+            if((v>0) && anim.GetInteger("MoveDir")!=1 ) // #3
+                anim.SetInteger("MoveDir", 1);  //위쪽 쳐다보도록
+            else if((v<0) && anim.GetInteger("MoveDir")!=2 )
+                anim.SetInteger("MoveDir", 2);  //아래쪽 쳐다보도록
 
             // #1 상하 움직임 
                 if(v * rBody.velocity.y < maxSpeed)
