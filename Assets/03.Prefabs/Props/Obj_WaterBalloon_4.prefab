@@ -221,6 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7976298873352104553}
   - component: {fileID: 5868135491584928291}
+  - component: {fileID: 3215046581423566441}
   m_Layer: 0
   m_Name: left2
   m_TagString: WaterWeapon
@@ -293,6 +294,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &3215046581423566441
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595915466580696699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1009143805390540422
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8238100308612799907}
   - component: {fileID: 5607462403795666602}
+  - component: {fileID: 8210279598123427717}
   m_Layer: 0
   m_Name: left1
   m_TagString: WaterWeapon
@@ -375,6 +390,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &8210279598123427717
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009143805390540422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1721096024136176895
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6185150548525826932}
   - component: {fileID: 7620883033166125758}
+  - component: {fileID: 2974787251935812173}
   m_Layer: 0
   m_Name: down1
   m_TagString: WaterWeapon
@@ -489,6 +518,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &2974787251935812173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998231684668981931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2850442741426300058
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +686,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4382561834919339682}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
@@ -659,6 +701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275072510214249321}
   - component: {fileID: 7805713478662925488}
+  - component: {fileID: 4871721986236650481}
   m_Layer: 0
   m_Name: right1
   m_TagString: WaterWeapon
@@ -731,6 +774,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &4871721986236650481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053649144061674259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5460548052157077811
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 16999458937195804}
   - component: {fileID: 2633991435064053961}
+  - component: {fileID: 1576336633786492666}
   m_Layer: 0
   m_Name: down2
   m_TagString: WaterWeapon
@@ -845,6 +902,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1576336633786492666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366503762764505576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8008236995297518930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 929887181095006056}
   - component: {fileID: 2751681179406826543}
+  - component: {fileID: 1918212602014062586}
   m_Layer: 0
   m_Name: right2
   m_TagString: WaterWeapon
@@ -1104,3 +1175,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1918212602014062586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583230559608737737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
