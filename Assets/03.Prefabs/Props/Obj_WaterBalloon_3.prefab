@@ -896,7 +896,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 1
   anim: {fileID: 0}
-  waterLength: 0
 --- !u!114 &1937214824240987941
 MonoBehaviour:
   m_ObjectHideFlags: 0
