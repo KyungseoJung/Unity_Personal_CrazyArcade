@@ -16,8 +16,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float moveForce = 30f;         // 이동할 때 주는 힘 (50 > 20)
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
     private float maxSpeed = 5f;            // 가속도 적용 속도
-    private float h;
-    private float v;
+    private float h;                        // 좌우 버튼 누르는 것 감지
+    private float v;                        // 상하 버튼 누르는 것 감지
     private float distX;                     // #5 플레이어와 장애물 간의 거리 (X축)
     private float distY;                     // #5 플레이어와 장애물 간의 거리 (Y축)
 
@@ -49,7 +49,17 @@ public class PlayerCtrl : MonoBehaviour // #1
             PlayerMove(true);
         else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             PlayerMove(false);
+        
+        // #1 플레이어 방향키 누르는 값 Set - 방향키 누르고 있다면, 달리는 애니메이션 재생
+        // Debug.Log("//#1 rBody.velocity.x: " + rBody.velocity.x );
+        // Debug.Log("//#1 h: " + h);
+        anim.SetFloat("horizontalSpeed", h);    
+        anim.SetFloat("verticalSpeed", v);      
 
+        if(Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            anim.SetFloat("horizontalSpeed", 0);
+        }
         // #2 y축 기준으로 밑에 있을수록 더 위에 그려져야 하므로 반비례 -> -1
         sprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
 
@@ -279,6 +289,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     void PlayerMove(bool moveHorizontal)
     {
         Vector3 moveDirection = new Vector3(0, v);
+        
+        // Debug.Log("//#1 PlayerMove");
 
         if(moveHorizontal)
         {
