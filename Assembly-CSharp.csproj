@@ -14,7 +14,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <TargetFramework>net7.0</TargetFramework>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -41,6 +40,7 @@
      <Compile Include="Assets\02.Scripts\Item.cs" />
      <Compile Include="Assets\02.Scripts\LayerSetting.cs" />
      <Compile Include="Assets\02.Scripts\MapManager.cs" />
+     <Compile Include="Assets\02.Scripts\Music.cs" />
      <Compile Include="Assets\02.Scripts\Obstacle.cs" />
      <Compile Include="Assets\02.Scripts\PlayerCtrl.cs" />
      <Compile Include="Assets\02.Scripts\PlayerGameMgr.cs" />
