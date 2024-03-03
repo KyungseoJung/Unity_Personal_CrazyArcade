@@ -726,6 +726,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
+        type: 3}
+      propertyPath: waterBalloonObj
+      value: 
+      objectReference: {fileID: 64075234703464415, guid: 90721ebc9bd565440ab8a717f75483fe,
+        type: 3}
     - target: {fileID: 1150674633024040523, guid: 32000292283fa9945ae482bb558a33f5,
         type: 3}
       propertyPath: m_Name
