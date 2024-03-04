@@ -40,6 +40,7 @@
      <Compile Include="Assets\02.Scripts\Destructor.cs" />
      <Compile Include="Assets\02.Scripts\Item.cs" />
      <Compile Include="Assets\02.Scripts\LayerSetting.cs" />
+     <Compile Include="Assets\02.Scripts\LobbyManager.cs" />
      <Compile Include="Assets\02.Scripts\MapManager.cs" />
      <Compile Include="Assets\02.Scripts\Music.cs" />
      <Compile Include="Assets\02.Scripts\Obstacle.cs" />
