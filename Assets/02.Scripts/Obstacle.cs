@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
 
     private MapManager mapMgr;             // #8 물풍선 지우기 위함
+    private LayerSetting layerSetting;      // #2 WOODBLOCK 층 번호 설정
     
 
     [SerializeField]    
@@ -30,7 +31,7 @@ public class Obstacle : MonoBehaviour
     void Awake()
     {
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #8
-
+        layerSetting = this.GetComponent<LayerSetting>();   // #2
         anim = transform.GetComponent<Animator>();     
     }
     
@@ -50,49 +51,57 @@ public class Obstacle : MonoBehaviour
     {
         Debug.Log("//#14 Obstacle 충돌 처리");
 
-        // #14 플레이어가 WoodBlock 밀 수 있도록
-        if(other.gameObject.tag == "Player")
+        switch(obstacleType)
         {
-            // 플레이어가 미는 방향 확인
-            Debug.Log("//#14 플레이어가 " + obstacleType + " 밀고 있음");
-            playerTransform = other.gameObject.transform.position;
-            woodPos = this.gameObject.transform.position;
-
-            xPosDiff = woodPos.x - playerTransform.x;
-            yPosDiff = woodPos.y - playerTransform.y;
-
-            Debug.Log("yPosDiff: " + yPosDiff);
-            Debug.Log("xPosDiff: " + xPosDiff);
-
-            if(xPosDiff * xPosDiff < 0.25)  //  위 or 아래로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
-            {
-                if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
+            case OBSTACLE_TYPE.WOODBLOCK:
+                // #14 플레이어가 WoodBlock 밀 수 있도록
+                if(other.gameObject.tag == "Player")
                 {
-                    Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
-                    woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
-                }
-                else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
-                {
-                    Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
-                    woodPos.y +=1;
-                }
-            }
+                    // 플레이어가 미는 방향 확인
+                    Debug.Log("//#14 플레이어가 " + obstacleType + " 밀고 있음");
 
-            if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
-            {
-                if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
-                {
-                    Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
-                    woodPos.x -=1;
-                }
-                else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
-                {
-                    Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
-                    woodPos.x +=1;
-                }
-            }
+                    playerTransform = other.gameObject.transform.position;
+                    woodPos = this.gameObject.transform.position;
 
-            this.gameObject.transform.position = woodPos; 
+                    xPosDiff = woodPos.x - playerTransform.x;
+                    yPosDiff = woodPos.y - playerTransform.y;
+
+                    Debug.Log("yPosDiff: " + yPosDiff);
+                    Debug.Log("xPosDiff: " + xPosDiff);
+
+                    if(xPosDiff * xPosDiff < 0.25)  //  위 or 아래로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
+                    {
+                        if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
+                        {
+                            Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
+                            woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
+                        }
+                        else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
+                        {
+                            Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
+                            woodPos.y +=1;
+                        }
+                    }
+
+                    if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
+                    {
+                        if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
+                        {
+                            Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
+                            woodPos.x -=1;
+                        }
+                        else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
+                        {
+                            Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
+                            woodPos.x +=1;
+                        }
+                    }
+
+                    this.gameObject.transform.position = woodPos; 
+                    layerSetting.SetSortingOrder(); // #2 WOODBLOCK 위치 바뀔 때마다 Layer 번호 설정
+
+                }
+                break;
 
         }
     }
