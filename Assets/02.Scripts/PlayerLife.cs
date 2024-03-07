@@ -11,6 +11,11 @@ public class PlayerLife : MonoBehaviour
         anim = GetComponent<Animator>();    // #17
     }
 
+    void Start()
+    {
+        anim.SetBool("canMove", true);  // #17 첫 설정은 true로 해서 애니메이션 정상 작동하도록
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "WaterWeapon")    // #17 플레이어가 물풍선에 닿으면 플레이어 물풍선에 갇힘
