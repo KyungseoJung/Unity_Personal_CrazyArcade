@@ -26,10 +26,14 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    private void Start()
+    {
+        waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
+    }
 
     public void PlaceWaterBalloon(float _x, float _y)    // #4
     {
-        if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
+        if(waterballoonPlaceNum+1 >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
             return;
 
         row = -Mathf.RoundToInt(_y) + 3;
