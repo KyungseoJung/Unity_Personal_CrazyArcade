@@ -15,11 +15,11 @@ public class Music : MonoBehaviour
     0 : BGSound1
 
     - 효과음 -
-    
+    0 : bomb_set
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
-    public enum EFFECT_TYPE {PLACEWATERBALLOON = 1};    // #21 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1};    // #21 효과음 종류
 
     void Awake()
     {

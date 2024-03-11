@@ -61,7 +61,7 @@ public class MapManager : MonoBehaviour
         Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
         waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가
-        music.SoundEffect(Music.EFFECT_TYPE.PLACEWATERBALLOON); // #21 물풍선 놓을 때의 효과음
+        music.SoundEffect(Music.EFFECT_TYPE.BOMB_SET); // #21 물풍선 놓을 때의 효과음
 
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
