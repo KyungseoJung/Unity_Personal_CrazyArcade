@@ -6,7 +6,10 @@ public class Music : MonoBehaviour
 {
     // #18 Musics.cs 스크립트 생성
     public AudioSource gameMusicArr;
+    public AudioSource soundEffectArr;  // #21
     public AudioClip[] audioClips;
+    public AudioClip[] effectClips;
+
     /*
     - 배경음 -
     0 : BGSound1
@@ -16,11 +19,12 @@ public class Music : MonoBehaviour
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
+    public enum EFFECT_TYPE {PLACEWATERBALLOON = 1};    // #21 효과음 종류
 
     void Awake()
     {
         gameMusicArr = gameObject.AddComponent<AudioSource>();  // #18 오디오소스 없기 때문에, 추가해서 지정해줘야 함
-
+        soundEffectArr = gameObject.AddComponent<AudioSource>();    // #21 효과음 - 오디오소스 없기 때문에, 추가해서 지정해줘야 함
     }
 
     void Start()
@@ -38,4 +42,11 @@ public class Music : MonoBehaviour
 
     }
 
+    public void SoundEffect(EFFECT_TYPE _type)
+    {
+        Debug.Log("//#21 효과음 시작");
+        soundEffectArr.Stop();
+        soundEffectArr.clip = effectClips[(int)_type -1];
+        soundEffectArr.Play();
+    }
 }

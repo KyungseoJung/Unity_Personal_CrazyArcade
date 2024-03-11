@@ -26,6 +26,13 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    private Music music;    
+
+    private void Awake()
+    {
+        music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #21
+    }
+
     private void Start()
     {
         waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
@@ -44,6 +51,8 @@ public class MapManager : MonoBehaviour
         if (waterBalloonArr[row, col] == 1) // 이미 그 자리에 물풍선이 있다면 - 중복해서 물풍선을 놓지 못하도록
             return;
 
+        // 위 조건들 모두 만족하면, 물풍선 놓기
+
         waterBalloonArr[row, col] = 1;  // 배열 설정
 
         // 물풍선 놓기
@@ -52,6 +61,8 @@ public class MapManager : MonoBehaviour
         Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
         waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가
+        music.SoundEffect(Music.EFFECT_TYPE.PLACEWATERBALLOON); // #21 물풍선 놓을 때의 효과음
+
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
 
