@@ -8,11 +8,14 @@ public class Item : MonoBehaviour   // #10
     public ITEM_TYPE itemType = ITEM_TYPE.FLUID;    // #10 디폴트 = 물병
 
     private PlayerCtrl playerCtrl;                  // #15
+    private Music music;                            // #22
 
     void Awake()
     {
         playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>(); // #4 
+        music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #22
     }
+    
 
     private void OnTriggerEnter(Collider other)     // #10 플레이어에 닿으면 사라지도록 
     {
@@ -45,6 +48,7 @@ public class Item : MonoBehaviour   // #10
                     break;
             }
 
+            music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP);  // #22 플레이어 아이템 획득시 효과음
         }  
     }
 

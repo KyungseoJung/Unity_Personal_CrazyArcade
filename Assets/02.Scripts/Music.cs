@@ -19,7 +19,7 @@ public class Music : MonoBehaviour
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
-    public enum EFFECT_TYPE {BOMB_SET = 1};    // #21 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP };    // #21 #22 효과음 종류
 
     void Awake()
     {
