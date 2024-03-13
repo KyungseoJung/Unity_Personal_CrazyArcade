@@ -48,7 +48,7 @@ public class Item : MonoBehaviour   // #10
                     break;
             }
 
-            music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP);  // #22 플레이어 아이템 획득시 효과음
+            music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
     }
 

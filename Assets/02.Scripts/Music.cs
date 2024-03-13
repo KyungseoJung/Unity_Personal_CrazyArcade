@@ -42,11 +42,15 @@ public class Music : MonoBehaviour
 
     }
 
-    public void SoundEffect(EFFECT_TYPE _type)
+    public void SoundEffect(EFFECT_TYPE _type, float _volume = 1f)
+    // #21 효과음 크기도 설정
     {
         Debug.Log("//#21 효과음 시작");
         soundEffectArr.Stop();
         soundEffectArr.clip = effectClips[(int)_type -1];
+
+        soundEffectArr.volume = _volume;
+            
         soundEffectArr.Play();
     }
 }
