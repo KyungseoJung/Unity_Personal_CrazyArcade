@@ -259,6 +259,7 @@ MonoBehaviour:
   effectClips:
   - {fileID: 8300000, guid: a3e4c82a41a843a40ac1469bc483dd7e, type: 3}
   - {fileID: 8300000, guid: 54f42d26f7a59014da56d32865c9bc0f, type: 3}
+  - {fileID: 8300000, guid: a612b9f1a6dc33248a348a3e7b7b99e9, type: 3}
 --- !u!1 &2001250118
 GameObject:
   m_ObjectHideFlags: 0

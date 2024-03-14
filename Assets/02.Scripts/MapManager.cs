@@ -76,6 +76,8 @@ public class MapManager : MonoBehaviour
         waterBalloonArr[row, col] = 0;  // 배열 설정
 
         waterballoonPlaceNum -= 1; // #13 물풍선 개수 하나 감소
+        music.SoundEffect(Music.EFFECT_TYPE.BUBBLE_BOOM); // #21 물풍선 터질 때의 효과음
+
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
 
     }
