@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -26,11 +27,13 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
-    private Music music;    
+    private Music music; 
+    private PlayerLife playerLife;   
 
     private void Awake()
     {
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #21
+        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>(); // #4
     }
 
     private void Start()
@@ -40,6 +43,8 @@ public class MapManager : MonoBehaviour
 
     public void PlaceWaterBalloon(float _x, float _y)    // #4
     {
+        if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
+            return;
         if(waterballoonPlaceNum+1 >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
             return;
 
