@@ -22,6 +22,11 @@ public class Item : MonoBehaviour   // #10
         Debug.Log("//#10 OnTriggerEnter");   
         if(other.gameObject.tag == "Player")    // 플레이어에 닿으면
         {
+
+            // #10 만약 플레이어가 물풍선 안에 갇혀 있다면, 아이템 획득 불가능
+            if(other.gameObject.GetComponent<PlayerLife>().trappedInWater == true)  
+                return;
+
             Debug.Log("//#10 플레이어 - " + itemType + " 먹음");
 
             switch(itemType) 
