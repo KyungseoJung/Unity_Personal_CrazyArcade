@@ -20,7 +20,10 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float v;                        // 상하 버튼 누르는 것 감지
     private float distX;                     // #5 플레이어와 장애물 간의 거리 (X축)
     private float distY;                     // #5 플레이어와 장애물 간의 거리 (Y축)
+    private float lastMoveTime;             // #23 플레이어가 움직임을 보인 마지막 시각
+    private float checkTimeInterval = 2f;   // #23 2초
 
+    private bool lookingAhead = false;              // #23 정면 바라보는지 체크
     private Rigidbody rBody;               // 2D에서 3D로 변경
     private SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
 
@@ -49,6 +52,19 @@ public class PlayerCtrl : MonoBehaviour // #1
             PlayerMove(true);
         else if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
             PlayerMove(false);
+
+        // #23 플레이어가 2초동안 움직이지 않고 있다면, 정면을 바라보는 애니메이션 실행되도록
+        if((Time.time - lastMoveTime > checkTimeInterval) && !lookingAhead)
+        {
+            lookingAhead = true;
+            anim.SetInteger("MoveDir", 0);  //상하좌우 어느쪽도 쳐다보지 않도록
+
+            anim.SetBool("LookingAhead", true);
+            Debug.Log("//#23 플레이어 정면 바라보기");
+            // Debug.Log("Time.time: " + Time.time);
+            // Debug.Log("시간차: " + (Time.time - lastMoveTime));
+        }
+
         
         // #1 플레이어 방향키 누르는 값 Set - 방향키 누르고 있다면, 달리는 애니메이션 재생
         // Debug.Log("//#1 rBody.velocity.x: " + rBody.velocity.x );
@@ -292,6 +308,11 @@ public class PlayerCtrl : MonoBehaviour // #1
         
         // Debug.Log("//#1 PlayerMove");
 
+        lastMoveTime = Time.time;   // #23 플레이어가 움직임을 보인 마지막 시각
+        lookingAhead = false;       // #23
+        anim.SetBool("LookingAhead", false);
+
+
         if(moveHorizontal)
         {
             if((h<0) && anim.GetInteger("MoveDir")!=3 ) // #3   // 중복 방지 - 이미 0인 값을 또 0이라 설정하지 않도록 
@@ -334,8 +355,6 @@ public class PlayerCtrl : MonoBehaviour // #1
                     rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(rBody.velocity.y) * maxSpeed);
                 }
         }
-
-
 
     }
 

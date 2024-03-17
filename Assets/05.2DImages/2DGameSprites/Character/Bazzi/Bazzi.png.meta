@@ -82,7 +82,7 @@ TextureImporter:
     second: Bazzi_25
   - first:
       213: 7193600331317469248
-    second: Bazzi_26
+    second: Bazzi_Laugh1
   - first:
       213: -648103335445030527
     second: Bazzi_27
@@ -148,7 +148,7 @@ TextureImporter:
     second: Bazzi_47
   - first:
       213: -5847848417106166818
-    second: Bazzi_48
+    second: Bazzi_Laugh
   - first:
       213: 3869553138088204960
     second: Bazzi_49
@@ -879,7 +879,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_26
+      name: Bazzi_Laugh1
       rect:
         serializedVersion: 2
         x: 329
@@ -1341,7 +1341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_48
+      name: Bazzi_Laugh
       rect:
         serializedVersion: 2
         x: 458
