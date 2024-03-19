@@ -32,6 +32,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private MapManager mapMgr;             // #4 물풍선 놓기 위함
     private Obstacle obstacle;             // #6 플레이어가 숨을 수 있는 덤불
     private Vector2 slideDirection = new Vector2(0, 0); // #5
+    private Vector3 pos;                   // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
 
     void Awake()
     {
@@ -95,6 +96,8 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         h = Input.GetAxis("Horizontal");  // 좌우 키
         v = Input.GetAxis("Vertical");    // 상하 키
+
+        CheckBorder();  // #24 플레이어가 경계선 넘어가지 않도록 확인
 
 // #1 fix : 플레이어 이동 방법 바꾸자
 /*
@@ -301,6 +304,27 @@ public class PlayerCtrl : MonoBehaviour // #1
     //     theScale.x *= -1;
     //     transform.localScale = theScale;
     // }
+
+    private void CheckBorder()
+    {
+        // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
+        if((transform.position.x) * (transform.position.x) > 16 )
+        {
+            Debug.Log("// #24 플레이어가 x좌표 경계선 넘어감");
+            pos = this.transform.position;
+            pos.x = (int)this.transform.position.x; // -4 또는 4로 지정
+            this.transform.position = pos;
+        }
+        
+        if((transform.position.y) * (transform.position.y) > 9)
+        {
+            Debug.Log("// #24 플레이어가 y좌표 경계선 넘어감");
+            pos = this.transform.position;
+            pos.y = (int)this.transform.position.y; // -3 또는 3으로 지정
+            this.transform.position = pos;
+        }
+
+    }
 
     void PlayerMove(bool moveHorizontal)
     {
