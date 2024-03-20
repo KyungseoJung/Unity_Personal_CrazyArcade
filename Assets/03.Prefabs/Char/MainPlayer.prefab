@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab55aed821300f44e928c142c7747619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trappedInWater: 0
 --- !u!54 &7450175162993383026
 Rigidbody:
   m_ObjectHideFlags: 0

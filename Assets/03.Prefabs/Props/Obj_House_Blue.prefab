@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 3207420165771801351}
   m_Layer: 0
   m_Name: house_blue
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
