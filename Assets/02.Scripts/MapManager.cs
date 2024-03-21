@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
-    int[,] obstacleArr =                // #25 장애물 배열 - 7행 9열 이차원 배열
+    public int[,] obstacleArr =                // #25 장애물 배열 - 7행 9열 이차원 배열
     {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -59,6 +59,15 @@ public class MapManager : MonoBehaviour
 
     }
 
+    public int ReturnRowInMatrix(float _y)  // #26 Transform의 y좌표를 바탕으로 배열의 row(행) 값 얻기
+    {
+        return ( -Mathf.RoundToInt(_y) + 3);
+    }
+    public int ReturnColInMatrix(float _x)  // #26 Transform의 x좌표를 바탕으로 배열의 col(열) 값 얻기
+    {
+        return (-Mathf.RoundToInt(_x) + 4);
+    }
+
     private void CheckObstaclePos() // #25 장애물 위치 - 배열 확인
     {
         Debug.Log("//#25 CheckObstaclePos");
@@ -68,8 +77,8 @@ public class MapManager : MonoBehaviour
         // #25 
         for(int i=0; i<obstacles.Length; i++)
         {
-            row = -Mathf.RoundToInt(obstacles[i].transform.position.y) + 3;
-            col = Mathf.RoundToInt(obstacles[i].transform.position.x) + 4;
+            row = ReturnRowInMatrix(obstacles[i].transform.position.y);     // #26 함수 이용
+            col =  ReturnColInMatrix(obstacles[i].transform.position.x);    // #26 함수 이용
             Debug.Log("//#25 Obstacle 존재 - row: " + row + ", col: " + col);
             Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + obstacles[i].gameObject.name);
         }
@@ -82,8 +91,8 @@ public class MapManager : MonoBehaviour
         if(waterballoonPlaceNum+1 >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
             return;
 
-        row = -Mathf.RoundToInt(_y) + 3;
-        col = Mathf.RoundToInt(_x) + 4;
+        row = ReturnRowInMatrix(_y);    // #26 함수 이용
+        col = ReturnColInMatrix(_x);    // #26 함수 이용
 
         Debug.Log("//#8 물풍선 생성: row = " + row + "/ col = " + col);
 
@@ -111,8 +120,8 @@ public class MapManager : MonoBehaviour
     {
         Debug.Log("//#8 물풍선 소멸: row = " + row + "/ col = " + col);
 
-        row = -Mathf.RoundToInt(_y) + 3;
-        col = Mathf.RoundToInt(_x) + 4;
+        row = ReturnRowInMatrix(_y);
+        col = ReturnColInMatrix(_x);
 
         waterBalloonArr[row, col] = 0;  // 배열 설정
         obstacleArr[row, col] = 0;      // #25 배열 설정
