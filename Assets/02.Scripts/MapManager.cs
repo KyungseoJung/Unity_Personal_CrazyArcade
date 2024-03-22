@@ -81,6 +81,8 @@ public class MapManager : MonoBehaviour
             col =  ReturnColInMatrix(obstacles[i].transform.position.x);    // #26 함수 이용
             Debug.Log("//#25 Obstacle 존재 - row: " + row + ", col: " + col);
             Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + obstacles[i].gameObject.name);
+            obstacleArr[row, col] = 1;  // #25 
+
         }
     }
 
