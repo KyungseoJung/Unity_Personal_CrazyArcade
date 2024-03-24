@@ -26,7 +26,10 @@ public class Obstacle : MonoBehaviour
     float xPosDiff;              // #14 WOODBLOCK 밀기: 장애물과 플레이어와의 x축 거리 차
 
     float yPosDiff;              // #14 WOODBLOCK 밀기: 장애물과 플레이어와의 y축 거리 차
- 
+
+    int row;                     // #14 row, col: WOODBLOCK 밀 때, 밀고자 하는 위치 좌표에 장애물 있는지 확인용
+    int col;
+
 
     void Awake()
     {
@@ -73,11 +76,25 @@ public class Obstacle : MonoBehaviour
                     {
                         if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
                         {
+                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
+                            row = mapMgr.ReturnRowInMatrix(woodPos.y-1);
+                            col = mapMgr.ReturnColInMatrix(woodPos.x);
+
+                            if(mapMgr.obstacleArr[row, col] ==1)
+                                return;
+
                             Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
                             woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
                         }
                         else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
                         {
+                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
+                            row = mapMgr.ReturnRowInMatrix(woodPos.y+1);
+                            col = mapMgr.ReturnColInMatrix(woodPos.x);
+
+                            if(mapMgr.obstacleArr[row, col] ==1)
+                                return;
+
                             Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
                             woodPos.y +=1;
                         }
@@ -87,11 +104,25 @@ public class Obstacle : MonoBehaviour
                     {
                         if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
                         {
+                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
+                            row = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            col = mapMgr.ReturnColInMatrix(woodPos.x-1);
+
+                            if(mapMgr.obstacleArr[row, col] ==1)
+                                return;
+
                             Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
                             woodPos.x -=1;
                         }
                         else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
                         {
+                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
+                            row = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            col = mapMgr.ReturnColInMatrix(woodPos.x+1);
+
+                            if(mapMgr.obstacleArr[row, col] ==1)
+                                return;
+
                             Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
                             woodPos.x +=1;
                         }
