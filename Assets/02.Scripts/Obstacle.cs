@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -76,11 +77,7 @@ public class Obstacle : MonoBehaviour
                     {
                         if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
                         {
-                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
-                            row = mapMgr.ReturnRowInMatrix(woodPos.y-1);
-                            col = mapMgr.ReturnColInMatrix(woodPos.x);
-
-                            if(mapMgr.obstacleArr[row, col] ==1)
+                            if(IsThereObstacle(KeyCode.DownArrow) == true)  // #14
                                 return;
 
                             Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
@@ -88,11 +85,7 @@ public class Obstacle : MonoBehaviour
                         }
                         else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
                         {
-                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
-                            row = mapMgr.ReturnRowInMatrix(woodPos.y+1);
-                            col = mapMgr.ReturnColInMatrix(woodPos.x);
-
-                            if(mapMgr.obstacleArr[row, col] ==1)
+                            if(IsThereObstacle(KeyCode.UpArrow) == true)  // #14
                                 return;
 
                             Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
@@ -104,11 +97,7 @@ public class Obstacle : MonoBehaviour
                     {
                         if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
                         {
-                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
-                            row = mapMgr.ReturnRowInMatrix(woodPos.y);
-                            col = mapMgr.ReturnColInMatrix(woodPos.x-1);
-
-                            if(mapMgr.obstacleArr[row, col] ==1)
+                            if(IsThereObstacle(KeyCode.LeftArrow) == true)  // #14
                                 return;
 
                             Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
@@ -116,11 +105,7 @@ public class Obstacle : MonoBehaviour
                         }
                         else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
                         {
-                            // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
-                            row = mapMgr.ReturnRowInMatrix(woodPos.y);
-                            col = mapMgr.ReturnColInMatrix(woodPos.x+1);
-
-                            if(mapMgr.obstacleArr[row, col] ==1)
+                            if(IsThereObstacle(KeyCode.RightArrow) == true)  // #14
                                 return;
 
                             Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
@@ -137,6 +122,42 @@ public class Obstacle : MonoBehaviour
         }
     }
 
+    private bool IsThereObstacle(KeyCode _arrow)    // #14 해당 위치에 Obstacle 있는지 확인
+    {
+        // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
+        switch(_arrow)
+        {
+            case KeyCode.DownArrow:
+                row = mapMgr.ReturnRowInMatrix(woodPos.y-1);
+                col = mapMgr.ReturnColInMatrix(woodPos.x);
+                if(mapMgr.obstacleArr[row, col] ==1)
+                    return true;
+                break;
+
+            case KeyCode.UpArrow:
+                row = mapMgr.ReturnRowInMatrix(woodPos.y+1);
+                col = mapMgr.ReturnColInMatrix(woodPos.x);
+                if(mapMgr.obstacleArr[row, col] ==1)
+                    return true;
+                break;
+
+            case KeyCode.LeftArrow:
+                row = mapMgr.ReturnRowInMatrix(woodPos.y);
+                col = mapMgr.ReturnColInMatrix(woodPos.x-1);
+                if(mapMgr.obstacleArr[row, col] ==1)
+                    return true;
+                break;
+
+            case KeyCode.RightArrow:
+                row = mapMgr.ReturnRowInMatrix(woodPos.y);
+                col = mapMgr.ReturnColInMatrix(woodPos.x+1);
+                if(mapMgr.obstacleArr[row, col] ==1)
+                    return true;
+                break;
+            
+        }
+        return false;
+    }
          
 
     public void BushShake() // #6 애니메이터 설정: 플레이어가 덤불에 숨으면, 덤불 흔들리도록 
