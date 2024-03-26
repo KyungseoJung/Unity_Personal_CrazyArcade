@@ -130,33 +130,34 @@ public class Obstacle : MonoBehaviour
             case KeyCode.DownArrow:
                 row = mapMgr.ReturnRowInMatrix(woodPos.y-1);
                 col = mapMgr.ReturnColInMatrix(woodPos.x);
-                if(mapMgr.obstacleArr[row, col] ==1)
-                    return true;
+ 
                 break;
 
             case KeyCode.UpArrow:
                 row = mapMgr.ReturnRowInMatrix(woodPos.y+1);
                 col = mapMgr.ReturnColInMatrix(woodPos.x);
-                if(mapMgr.obstacleArr[row, col] ==1)
-                    return true;
+
                 break;
 
             case KeyCode.LeftArrow:
                 row = mapMgr.ReturnRowInMatrix(woodPos.y);
                 col = mapMgr.ReturnColInMatrix(woodPos.x-1);
-                if(mapMgr.obstacleArr[row, col] ==1)
-                    return true;
+
                 break;
 
             case KeyCode.RightArrow:
                 row = mapMgr.ReturnRowInMatrix(woodPos.y);
                 col = mapMgr.ReturnColInMatrix(woodPos.x+1);
-                if(mapMgr.obstacleArr[row, col] ==1)
-                    return true;
+
                 break;
-            
         }
-        return false;
+        if((mapMgr.obstacleArr[row, col] ==1) || (row > 6) || (row < 0) || (col > 8) || (col < 0) )   
+        {
+            // #14 아예 배열 바운더리를 넘어가도 장애물 있는 것으로 판단
+            return true;
+        }
+        else
+            return false;
     }
          
 
