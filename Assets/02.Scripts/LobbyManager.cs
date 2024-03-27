@@ -4,8 +4,12 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;          // #19 Scene 전환 목적
 
+using UnityEngine.UI;                       // #27 플레이어 목숨 표시
+
 public class LobbyManager : MonoBehaviour
 {
+    public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
+
     void Start()
     {
         StartGame();
