@@ -106,13 +106,13 @@ TextureImporter:
     second: Bazzi_33
   - first:
       213: 4354187423963972782
-    second: Bazzi_34
+    second: Bazzi_Die0
   - first:
       213: -4852590197325010082
-    second: Bazzi_35
+    second: Bazzi_Die1
   - first:
       213: -509904988438403961
-    second: Bazzi_36
+    second: Bazzi_Die4
   - first:
       213: 5822005486780684477
     second: Bazzi_37
@@ -124,10 +124,10 @@ TextureImporter:
     second: Bazzi_39
   - first:
       213: -6314002676625583138
-    second: Bazzi_40
+    second: Bazzi_Die2
   - first:
       213: 2530541064597771907
-    second: Bazzi_41
+    second: Bazzi_Die3
   - first:
       213: -5359564187955994901
     second: Bazzi_42
@@ -1047,13 +1047,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_34
+      name: Bazzi_Die0
       rect:
         serializedVersion: 2
-        x: 77
+        x: 74
         y: 308
-        width: 66
-        height: 71
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1068,13 +1068,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_35
+      name: Bazzi_Die1
       rect:
         serializedVersion: 2
-        x: 152
-        y: 309
-        width: 44
-        height: 61
+        x: 143
+        y: 308
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1089,13 +1089,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_36
+      name: Bazzi_Die4
       rect:
         serializedVersion: 2
         x: 222
-        y: 341
-        width: 34
-        height: 34
+        y: 307
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1110,76 +1110,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_37
+      name: Bazzi_Die2
       rect:
         serializedVersion: 2
-        x: 257
-        y: 365
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db810f7d42bebc050800000000000000
-      internalID: 5822005486780684477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_38
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 328
-        width: 24
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9a8681e1954c9110800000000000000
-      internalID: 1268965687867902620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_39
-      rect:
-        serializedVersion: 2
-        x: 222
-        y: 328
-        width: 8
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 85e6f75cd816b6d60800000000000000
-      internalID: 7884502834173931096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_40
-      rect:
-        serializedVersion: 2
-        x: 358
-        y: 321
-        width: 42
-        height: 37
+        x: 347
+        y: 308
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1194,13 +1131,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bazzi_41
+      name: Bazzi_Die3
       rect:
         serializedVersion: 2
-        x: 454
-        y: 321
-        width: 42
-        height: 38
+        x: 441
+        y: 310
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1210,27 +1147,6 @@ TextureImporter:
       bones: []
       spriteID: 38693ecd0b94e1320800000000000000
       internalID: 2530541064597771907
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_42
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 317
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bee5af964c00f95b0800000000000000
-      internalID: -5359564187955994901
       vertices: []
       indices: 
       edges: []
@@ -1252,69 +1168,6 @@ TextureImporter:
       bones: []
       spriteID: 7d5055335ce0cb250800000000000000
       internalID: 5961656246864250327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_44
-      rect:
-        serializedVersion: 2
-        x: 236
-        y: 308
-        width: 13
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe560549eb92a0690800000000000000
-      internalID: -7635244319744432657
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_45
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 307
-        width: 12
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51fc6e2485885acf0800000000000000
-      internalID: -241637092333531371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bazzi_46
-      rect:
-        serializedVersion: 2
-        x: 267
-        y: 311
-        width: 16
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5993a22862f940710800000000000000
-      internalID: 1658625550520564117
       vertices: []
       indices: 
       edges: []
