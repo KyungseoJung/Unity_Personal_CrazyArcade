@@ -10,11 +10,17 @@ public class SkillInfo
     public bool turtle = false; // #16 거북을 타고 있는지 확인
 }
 
+public class GivenQuota
+{
+    public int life = 3;  // #28 플레이어에게 주어진 목숨 할당량
+}
+
 
 public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관리 
 {
 
     private SkillInfo skillInfo;
+    private GivenQuota givenQuota;  // #28
 
     private static PlayerGameMgr mgr = null;  // 싱글톤 객체 (인스턴스)
     public static PlayerGameMgr Mgr           // 싱글톤 프로퍼티
@@ -38,6 +44,7 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     void Awake()    //Start에 적으면 다른 것들보다 늦게 실행돼서 Null 에러 발생함.
     {
         skillInfo = new SkillInfo();
+        givenQuota = new GivenQuota();  // #28
     }
 
     public int waterballoonNum  // #13
@@ -62,6 +69,12 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     {
         get {return skillInfo.turtle; }
         set {skillInfo.turtle = value;}
+    }
+
+    public int life // #28
+    {
+        get {return givenQuota.life; }
+        set {givenQuota.life = value;}
     }
 
 }

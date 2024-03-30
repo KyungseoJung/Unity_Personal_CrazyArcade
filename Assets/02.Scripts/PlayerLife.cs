@@ -37,5 +37,12 @@ public class PlayerLife : MonoBehaviour
 
         }
     }
+
+    private void PlayerDie()   // 애니메이션 끝 부분에 연결
+    {
+        // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
+        PlayerGameMgr.Mgr.life -=1;
+        Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
+    }
     
 }
