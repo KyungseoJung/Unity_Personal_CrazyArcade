@@ -45,6 +45,14 @@ public class PlayerLife : MonoBehaviour
         Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
         
         trappedInWater = false; // #28 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
+
+        PlayerRespawn();    // #29
+    }
+
+    private void PlayerRespawn()    // #29 플레이어 부활
+    {
+        // #29 플레이어 죽은 후, 부활할 때
+        anim.SetBool("canMove", true);  // #29 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
     }
     
 }
