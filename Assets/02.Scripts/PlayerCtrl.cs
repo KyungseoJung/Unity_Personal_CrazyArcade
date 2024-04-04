@@ -402,7 +402,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         // #17 플레이어가 물풍선에 갇히면, 플레이어 이동 속도 느려지도록
         Debug.Log("//#17 플레이어 이동 속도 느려지도록");
 
-        moveForce -= 15f;
-        maxSpeed -= 4f;
+        moveForce = 15f;    // 30f - 15f;
+        maxSpeed = 1f;      // 5f - 4f;
     }
 }
