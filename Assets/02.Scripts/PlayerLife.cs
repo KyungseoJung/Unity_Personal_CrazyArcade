@@ -53,6 +53,7 @@ public class PlayerLife : MonoBehaviour
     {
         // #29 플레이어 죽은 후, 부활할 때
         anim.SetBool("canMove", true);  // #29 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
+        playerCtrl.PlayerSpeedDown(false);  // #29 플레이어 본래 속도로 돌아가기
     }
     
 }

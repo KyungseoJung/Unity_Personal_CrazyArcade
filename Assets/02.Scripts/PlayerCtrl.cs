@@ -397,12 +397,23 @@ public class PlayerCtrl : MonoBehaviour // #1
         Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
 
-    public void PlayerSpeedDown()
+    public void PlayerSpeedDown(bool _down = true)
     {
-        // #17 플레이어가 물풍선에 갇히면, 플레이어 이동 속도 느려지도록
-        Debug.Log("//#17 플레이어 이동 속도 느려지도록");
+        switch(_down)
+        {
+            case true:
+                // #17 플레이어가 물풍선에 갇히면, 플레이어 이동 속도 느려지도록
+                Debug.Log("//#17 플레이어 이동 속도 느려지도록");
 
-        moveForce = 15f;    // 30f - 15f;
-        maxSpeed = 1f;      // 5f - 4f;
+                moveForce = 15f;    // 30f - 15f;
+                maxSpeed = 1f;      // 5f - 4f;
+                break;
+            case false: 
+            // #29 플레이어 본래 (디폴트) 속도로
+                moveForce = 30f;    // 30f - 15f;
+                maxSpeed = 5f;      // 5f - 4f;
+                break;
+        }
+
     }
 }
