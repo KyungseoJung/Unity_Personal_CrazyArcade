@@ -9,7 +9,18 @@ public class PlayerCtrl : MonoBehaviour // #1
     // private MOVE_ARROW moveArrow = MOVE_ARROW.UP;
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // #5 refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
-    
+
+    private Rigidbody rBody;               // 2D에서 3D로 변경
+    private SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
+
+    private Animator anim;                 // #3 플레이어 애니메이터
+
+    private PlayerLife playerLife;         // #28 플레이어 기절 확인
+    private MapManager mapMgr;             // #4 물풍선 놓기 위함
+    private Obstacle obstacle;             // #6 플레이어가 숨을 수 있는 덤불
+    private Vector2 slideDirection = new Vector2(0, 0); // #5
+    private Vector3 pos;                   // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
+
     // [SerializeField]
     // private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
@@ -24,15 +35,6 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float checkTimeInterval = 2f;   // #23 2초
 
     private bool lookingAhead = false;              // #23 정면 바라보는지 체크
-    private Rigidbody rBody;               // 2D에서 3D로 변경
-    private SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
-
-    private Animator anim;                 // #3 플레이어 애니메이터
-
-    private MapManager mapMgr;             // #4 물풍선 놓기 위함
-    private Obstacle obstacle;             // #6 플레이어가 숨을 수 있는 덤불
-    private Vector2 slideDirection = new Vector2(0, 0); // #5
-    private Vector3 pos;                   // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
 
     void Awake()
     {
@@ -40,6 +42,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
         anim = GetComponent<Animator>();    // #3
 
+        playerLife = GetComponent<PlayerLife>();    // #28
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #4 
     }
     
@@ -328,6 +331,8 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     void PlayerMove(bool moveHorizontal)
     {
+        if(playerLife.playerFaint) // #28 플레이어 기절하고 있다면, 움직일 수 없도록
+            return; 
         Vector3 moveDirection = new Vector3(0, v);
         
         // Debug.Log("//#1 PlayerMove");

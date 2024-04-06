@@ -9,6 +9,8 @@ public class PlayerLife : MonoBehaviour
     private PlayerCtrl playerCtrl;  // #17 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
 
     public bool trappedInWater = false;    // #17 플레이어 물풍선에 갇혔는지 확인용 bool형 변수
+    public bool playerFaint = false;       // #28 플레이어 기절했는지 확인
+    private bool playerDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
 
     void Awake()
     {
@@ -45,12 +47,13 @@ public class PlayerLife : MonoBehaviour
         Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
         
         trappedInWater = false; // #28 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
-
+        playerFaint = true;     // #28 플레이어 기절 - 움직임 불가능
         PlayerRespawn();    // #29
     }
 
     private void PlayerRespawn()    // #29 플레이어 부활
     {
+        playerFaint = false;    // #28 플레이어 기절 종료 - 움직임 가능
         // #29 플레이어 죽은 후, 부활할 때
         anim.SetBool("canMove", true);  // #29 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
         playerCtrl.PlayerSpeedDown(false);  // #29 플레이어 본래 속도로 돌아가기
