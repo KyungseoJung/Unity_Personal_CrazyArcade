@@ -40,15 +40,17 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private void PlayerDie()   // 애니메이션 끝 부분에 연결
+    private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
+        Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
+        // #28 PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         PlayerGameMgr.Mgr.life -=1;
         Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
         
         trappedInWater = false; // #28 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
         playerFaint = true;     // #28 플레이어 기절 - 움직임 불가능
-        PlayerRespawn();    // #29
+        // PlayerRespawn();    // #29 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     }
 
     private void PlayerRespawn()    // #29 플레이어 부활
