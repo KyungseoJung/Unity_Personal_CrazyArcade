@@ -8,13 +8,13 @@ public class Obstacle : MonoBehaviour
 
     public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK)
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
+    
+    [SerializeField]    
+    private Animator anim;  // #6 덤불 Animator 조정
 
     private MapManager mapMgr;             // #8 물풍선 지우기 위함
     private LayerSetting layerSetting;      // #2 WOODBLOCK 층 번호 설정
-    
-
-    [SerializeField]    
-    private Animator anim;  // #6 덤불 Animator 조정
+    private Transform playerTrans;          // #17 플레이어가 물줄기에 닿았는지 확인
 
     Vector3 playerTransform;  // #14 장애물과 부딪힌 플레이어의 위치
     Vector3 woodPos;          // #14 
@@ -35,8 +35,11 @@ public class Obstacle : MonoBehaviour
     void Awake()
     {
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #8
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;   // #17 
+
         layerSetting = this.GetComponent<LayerSetting>();   // #2
-        anim = transform.GetComponent<Animator>();     
+        anim = transform.GetComponent<Animator>();    
+        
     }
     
     void Start()
@@ -177,6 +180,13 @@ public class Obstacle : MonoBehaviour
         anim.SetInteger("WaterLength",  _waterLength);  // #9 물줄기 길이 설정
 
         mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y);
+
+
+        // #17 플레이어가 물풍선의 물줄기와 닿았나 확인
+        Debug.Log("//#17 플레이어의 좌표: " + playerTrans.position);
+        mapMgr.CheckPlayerTouchFluid(this.transform.position.x, this.transform.position.y, 
+                                    playerTrans.position.x, playerTrans.position.y, _waterLength);
+                                    
     }
 
     // public void DestroyWaterBalloon()   // #9 애니메이터 Clips에서 접근 및 실행 // #9 fix: Destructor.cs 스크립트 자체를 이용하도록

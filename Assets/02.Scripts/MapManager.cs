@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour
     private int waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
 
     int row, col;   // #4 선언 위치만 바꿈
+    int playerRow, playerCol;   // #17
     int rowNum = 4; // #25
     int colNum = 3; // #25
 
@@ -86,15 +87,15 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void PlaceWaterBalloon(float _x, float _y)    // #4
+    public void PlaceWaterBalloon(float _x, float _y)    // #4 받아오는 parameter는 플레이어의 좌표
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
             return;
         if(waterballoonPlaceNum+1 >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
             return;
 
-        row = ReturnRowInMatrix(_y);    // #26 함수 이용
-        col = ReturnColInMatrix(_x);    // #26 함수 이용
+        playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
+        playerCol = ReturnColInMatrix(_x);    // #26 함수 이용
 
         Debug.Log("//#8 물풍선 생성: row = " + row + "/ col = " + col);
 
@@ -118,7 +119,7 @@ public class MapManager : MonoBehaviour
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
 
-    public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐
+    public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
     {
         Debug.Log("//#8 물풍선 소멸: row = " + row + "/ col = " + col);
 
@@ -135,4 +136,36 @@ public class MapManager : MonoBehaviour
 
     }
 
+    public void CheckPlayerTouchFluid(float _balloonX, float _balloonY, float _playerX, float _playerY, int _waterLength)   
+    // #17 플레이어가 물풍선의 물줄기와 닿았나 확인
+    {
+        row = ReturnRowInMatrix(_balloonY);
+        col = ReturnColInMatrix(_balloonX);
+
+        playerRow = ReturnRowInMatrix(_playerY);
+        playerCol = ReturnColInMatrix(_playerX);
+
+        // 만약 플레이어가 터지는 물풍선과 같은 행이라면
+        // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
+        if((row == playerRow) && 
+            ((playerCol - col)*(playerCol - col) <= (_waterLength)*(_waterLength)))
+        {
+            Debug.Log("//#17 같은 행 - 플레이어가 물줄기에 닿음");
+            Debug.Log("//#17 물줄기 길이: " + _waterLength);
+            Debug.Log("//#17 물줄기와 플레이어 간의 거리: " + (playerCol-col));
+        }
+
+        if((col == playerCol) &&
+            ((playerRow-row)*(playerRow-row) <= (_waterLength)*(_waterLength)))
+        {
+            Debug.Log("//#17 같은 열 - 플레이어가 물줄기에 닿음");
+            Debug.Log("//#17 물줄기 길이: " + _waterLength);
+            Debug.Log("//#17 물줄기와 플레이어 간의 거리: " + (playerRow-row));
+        }
+
+
+        // 만약 플레이어가 터지는 물풍선과 같은 열이라면
+        // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
+
+    }
 }
