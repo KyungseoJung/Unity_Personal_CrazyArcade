@@ -24,19 +24,15 @@ public class PlayerLife : MonoBehaviour
         trappedInWater = false;         // #17
     }
 
-    private void OnTriggerEnter(Collider col)
+    public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
     {
-        if(col.gameObject.tag == "WaterWeapon")    // #17 플레이어가 물풍선에 닿으면 플레이어 물풍선에 갇힘
+        if(!trappedInWater)
         {
-            if(!trappedInWater)
-            {
-                trappedInWater = true;  // #17 중복 실행 방지
-                Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
-                anim.SetBool("canMove", false);
-                anim.SetTrigger("trappedInWater");
-                playerCtrl.PlayerSpeedDown();           // #17 플레이어 속도 느려짐
-            }
-
+            trappedInWater = true;  // #17 중복 실행 방지
+            Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
+            anim.SetBool("canMove", false);
+            anim.SetTrigger("trappedInWater");
+            playerCtrl.PlayerSpeedDown();           // #17 플레이어 속도 느려짐
         }
     }
 

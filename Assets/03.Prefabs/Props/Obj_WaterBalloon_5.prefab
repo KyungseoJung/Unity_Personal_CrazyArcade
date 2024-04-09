@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 280099744993125472}
   m_Layer: 0
   m_Name: waterLeft
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4566390951550755939}
   m_Layer: 0
   m_Name: down1
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 7487023916864215467}
   m_Layer: 0
   m_Name: left1
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 4218085638103552071}
   m_Layer: 0
   m_Name: left2
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 772472929359596491}
   m_Layer: 0
   m_Name: up2
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 155459949587594741}
   m_Layer: 0
   m_Name: waterUp
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 6193494141180374644}
   m_Layer: 0
   m_Name: waterDown
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 285908825968761044}
   m_Layer: 0
   m_Name: down2
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 6164389999066983903}
   m_Layer: 0
   m_Name: right1
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 924337620169977993}
   m_Layer: 0
   m_Name: waterRight
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 903351521729243604}
   m_Layer: 0
   m_Name: right2
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 4772426212382126044}
   m_Layer: 0
   m_Name: up1
-  m_TagString: WaterWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

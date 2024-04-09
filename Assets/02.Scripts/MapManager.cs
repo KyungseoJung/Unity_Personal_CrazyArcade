@@ -153,19 +153,24 @@ public class MapManager : MonoBehaviour
             Debug.Log("//#17 같은 행 - 플레이어가 물줄기에 닿음");
             Debug.Log("//#17 물줄기 길이: " + _waterLength);
             Debug.Log("//#17 물줄기와 플레이어 간의 거리: " + (playerCol-col));
+
+            playerLife.PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
 
+        // 만약 플레이어가 터지는 물풍선과 같은 열이라면
+        // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
         if((col == playerCol) &&
             ((playerRow-row)*(playerRow-row) <= (_waterLength)*(_waterLength)))
         {
             Debug.Log("//#17 같은 열 - 플레이어가 물줄기에 닿음");
             Debug.Log("//#17 물줄기 길이: " + _waterLength);
             Debug.Log("//#17 물줄기와 플레이어 간의 거리: " + (playerRow-row));
+
+            playerLife.PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
 
 
-        // 만약 플레이어가 터지는 물풍선과 같은 열이라면
-        // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
+
 
     }
 }
