@@ -8,6 +8,7 @@ public class SkillInfo
     public int fluid = 1;   // 물줄기 세기
     public int roller = 0;   // #15 플레이어 달리는 속도
     public bool turtle = false; // #16 거북을 타고 있는지 확인
+    public int coin = 0;    // #30
 }
 
 public class GivenQuota
@@ -69,6 +70,12 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     {
         get {return skillInfo.turtle; }
         set {skillInfo.turtle = value;}
+    }
+
+    public int coin     // #30
+    {
+        get {return skillInfo.coin;}
+        set {skillInfo.coin = value;}
     }
 
     public int life // #28
