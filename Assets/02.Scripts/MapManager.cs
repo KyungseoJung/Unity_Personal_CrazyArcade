@@ -91,22 +91,23 @@ public class MapManager : MonoBehaviour
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
             return;
-        if(waterballoonPlaceNum+1 >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
+        Debug.Log("//#4 fix | 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
+        if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
             return;
 
         playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
         playerCol = ReturnColInMatrix(_x);    // #26 함수 이용
 
-        Debug.Log("//#8 물풍선 생성: row = " + row + "/ col = " + col);
+        Debug.Log("//#8 #4 물풍선 생성: row = " + playerRow + "/ col = " + playerCol);
 
-        if ((waterBalloonArr[row, col] == 1) || (obstacleArr[row, col] == 1)) 
+        if ((waterBalloonArr[playerRow, playerCol] == 1) || (obstacleArr[playerRow, playerCol] == 1)) 
         // 이미 그 자리에 물풍선 or 장애물이 있다면 - 중복해서 물풍선을 놓지 못하도록
             return;
 
         // 위 조건들 모두 만족하면, 물풍선 놓기
 
-        waterBalloonArr[row, col] = 1;  // 배열 설정
-        obstacleArr[row, col] = 1;      // #25 배열 설정
+        waterBalloonArr[playerRow, playerCol] = 1;  // 배열 설정
+        obstacleArr[playerRow, playerCol] = 1;      // #25 배열 설정
 
         // 물풍선 놓기
         balloonPos.x = Mathf.RoundToInt(_x);    
@@ -168,9 +169,7 @@ public class MapManager : MonoBehaviour
 
             playerLife.PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
-
-
-
-
     }
+
+
 }

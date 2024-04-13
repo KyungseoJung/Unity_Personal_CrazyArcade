@@ -87,6 +87,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         // #4 물풍선 놓기
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("//#4 fix x좌표: " + transform.position.x + ", y좌표: " + transform.position.y);
             mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
     }
