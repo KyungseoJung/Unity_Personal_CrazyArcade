@@ -170,6 +170,23 @@ public class MapManager : MonoBehaviour
             playerLife.PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
     }
-
+    public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
+    // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
+    {
+        row = ReturnRowInMatrix(_balloon.position.y);
+        col = ReturnColInMatrix(_balloon.position.x);
+        // #31 물풍선의 상하좌우 파악
+        // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
+        for(int i=0; i<_waterLength; i++)
+        {
+            if(waterBalloonArr[row-i-1, col]==1)
+            {
+                Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
+            }
+        }
+        // 물풍선의 하(아래)
+        // 물풍선의 좌(왼쪽)
+        // 물풍선의 우(오른쪽)
+    }
 
 }

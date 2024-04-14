@@ -186,6 +186,8 @@ public class Obstacle : MonoBehaviour
         Debug.Log("//#17 플레이어의 좌표: " + playerTrans.position);
         mapMgr.CheckPlayerTouchFluid(this.transform.position.x, this.transform.position.y, 
                                     playerTrans.position.x, playerTrans.position.y, _waterLength);
+        // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
+        mapMgr.CheckBubbleTouchFluid(this.transform, _waterLength); 
                                     
     }
 
