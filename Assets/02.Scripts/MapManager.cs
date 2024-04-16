@@ -183,6 +183,10 @@ public class MapManager : MonoBehaviour
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
             }
+            if(waterBalloonArr[row+i+1, col]==1)
+            {
+                Debug.Log("//#31 물풍선의 물줄기가 다른 \"아래쪽\" 물풍선에 닿음");
+            }
         }
         // 물풍선의 하(아래)
         // 물풍선의 좌(왼쪽)
