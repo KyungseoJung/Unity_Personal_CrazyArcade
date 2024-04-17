@@ -17,7 +17,7 @@ public class MapManager : MonoBehaviour
     int colNum = 3; // #25
 
     // [SerializeField]
-    int[,] waterBalloonArr =            // #4 7행 9열 이차원 배열    
+    int[,] waterBalloonArr =            // #4 7행 9열 이차원 배열 - 0행 0열부터 시작
     {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -176,20 +176,25 @@ public class MapManager : MonoBehaviour
         row = ReturnRowInMatrix(_balloon.position.y);
         col = ReturnColInMatrix(_balloon.position.x);
         // #31 물풍선의 상하좌우 파악
-        // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
         for(int i=0; i<_waterLength; i++)
         {
-            if(waterBalloonArr[row-i-1, col]==1)
+            if(waterBalloonArr[row-i-1, col]==1)    // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
             }
-            if(waterBalloonArr[row+i+1, col]==1)
+            if(waterBalloonArr[row+i+1, col]==1)    // 물풍선의 하(아래)
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"아래쪽\" 물풍선에 닿음");
             }
+            if(waterBalloonArr[row, col-i-1]==1)    // 물풍선의 좌(왼쪽)
+            {
+                Debug.Log("//#31 물풍선의 물줄기가 다른 \"왼쪽\" 물풍선에 닿음");
+                Debug.Log("//#31 터진 물풍선 위치| 행: " + row + ", 열: " + col);
+                Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ row + ", 열: " + (col-i-1));
+            }
         }
-        // 물풍선의 하(아래)
-        // 물풍선의 좌(왼쪽)
+        
+        
         // 물풍선의 우(오른쪽)
     }
 
