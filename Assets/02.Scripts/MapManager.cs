@@ -66,7 +66,7 @@ public class MapManager : MonoBehaviour
     }
     public int ReturnColInMatrix(float _x)  // #26 Transform의 x좌표를 바탕으로 배열의 col(열) 값 얻기
     {
-        return (-Mathf.RoundToInt(_x) + 4);
+        return (Mathf.RoundToInt(_x) + 4);
     }
 
     private void CheckObstaclePos() // #25 장애물 위치 - 배열 확인
