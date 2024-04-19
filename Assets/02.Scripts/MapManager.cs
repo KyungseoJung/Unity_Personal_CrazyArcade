@@ -192,6 +192,12 @@ public class MapManager : MonoBehaviour
                 Debug.Log("//#31 터진 물풍선 위치| 행: " + row + ", 열: " + col);
                 Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ row + ", 열: " + (col-i-1));
             }
+            if(waterBalloonArr[row, col+i+1]==1)    // 물풍선의 우(오른쪽)
+            {
+                Debug.Log("//#31 물풍선의 물줄기가 다른 \"오른쪽\" 물풍선에 닿음");
+                Debug.Log("//#31 터진 물풍선 위치| 행: " + row + ", 열: " + col);
+                Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ row + ", 열: " + (col-i-1));
+            }
         }
         
         
