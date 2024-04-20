@@ -31,6 +31,8 @@ public class Obstacle : MonoBehaviour
     int row;                     // #14 row, col: WOODBLOCK 밀 때, 밀고자 하는 위치 좌표에 장애물 있는지 확인용
     int col;
 
+    bool alreadyBurst = false;           // #31 물풍선이 터졌는지 확인 - 다른 물풍선에 의해 터지는 경우를 구분하기 위함
+
 
     void Awake()
     {
@@ -172,6 +174,12 @@ public class Obstacle : MonoBehaviour
 
     IEnumerator WaterBalloonBursts(int _waterLength)    // #8 3초 뒤에 해당 물풍선 파괴
     {
+        // #31 3초 뒤에 자동으로 터지는 경우와 다른 물풍선에 의해 터지는 경우 둘 중 하나만 실행되도록 하기 위함
+        if(alreadyBurst == false)   // #31 처음 물풍선이 터지는 거면, 그대로 아래 함수들 실행
+            alreadyBurst = true;
+        else                        
+            yield break;
+
         Debug.Log("//#8 3초 기다림 시작");
         yield return new WaitForSeconds(3.0f);
         

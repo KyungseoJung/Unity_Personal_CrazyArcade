@@ -181,27 +181,47 @@ public class MapManager : MonoBehaviour
             if(waterBalloonArr[row-i-1, col]==1)    // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
+                CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y+i+1); // #32
             }
             if(waterBalloonArr[row+i+1, col]==1)    // 물풍선의 하(아래)
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"아래쪽\" 물풍선에 닿음");
+                CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y-i-1); // #32
             }
             if(waterBalloonArr[row, col-i-1]==1)    // 물풍선의 좌(왼쪽)
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"왼쪽\" 물풍선에 닿음");
                 Debug.Log("//#31 터진 물풍선 위치| 행: " + row + ", 열: " + col);
                 Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ row + ", 열: " + (col-i-1));
+                CheckIsThereWaterBalloon(_balloon.position.x-i-1, _balloon.position.y); // #32
             }
             if(waterBalloonArr[row, col+i+1]==1)    // 물풍선의 우(오른쪽)
             {
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"오른쪽\" 물풍선에 닿음");
                 Debug.Log("//#31 터진 물풍선 위치| 행: " + row + ", 열: " + col);
                 Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ row + ", 열: " + (col-i-1));
+                CheckIsThereWaterBalloon(_balloon.position.x+i+1, _balloon.position.y); // #32
             }
         }
-        
-        
-        // 물풍선의 우(오른쪽)
+    }
+
+    private void CheckIsThereWaterBalloon(float _row, float _col) // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인
+    {
+        Vector3 targetPos = new Vector3(_row, _col, 0);
+        Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
+
+
+        // "WAterBalloon" 태그를 가진 오브젝트들을 모두 찾기
+        GameObject[] waterBalloons = GameObject.FindGameObjectsWithTag("WaterBalloon");
+
+        // 특정 위치에 위치한 오브젝트가 있는지 확인
+        foreach(GameObject obj in waterBalloons)
+        {
+            if(obj.transform.position == targetPos)
+            {
+                Debug.Log("//#32 (" + _row + ", " + _col + ") 위치에 물풍선이 있습니다." );
+            }
+        }
     }
 
 }

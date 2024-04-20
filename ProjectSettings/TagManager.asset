@@ -7,8 +7,8 @@ TagManager:
   - MapManager
   - Obstacle
   - Bush
-  - WaterWeapon
   - Music
+  - WaterBalloon
   layers:
   - Default
   - TransparentFX

@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1653983559865952759}
   m_Layer: 0
   m_Name: Obj_WaterBalloon_5
-  m_TagString: Obstacle
+  m_TagString: WaterBalloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
