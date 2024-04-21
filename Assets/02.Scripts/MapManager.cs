@@ -220,6 +220,7 @@ public class MapManager : MonoBehaviour
             if(obj.transform.position == targetPos)
             {
                 Debug.Log("//#32 (" + _row + ", " + _col + ") 위치에 물풍선이 있습니다." );
+                obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
             }
         }
     }

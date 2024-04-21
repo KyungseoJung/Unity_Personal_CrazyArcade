@@ -172,16 +172,29 @@ public class Obstacle : MonoBehaviour
         anim.SetTrigger("Shake");
     }
 
-    IEnumerator WaterBalloonBursts(int _waterLength)    // #8 3초 뒤에 해당 물풍선 파괴
+    public void StartWaterBalloonBursts(bool _burstedByAnoterBalloon = false)   // #31 Manager.cs에서 실행하기 위함
     {
+        Debug.Log("//#31 WaterBalloonBursts 코루틴 실행");
+        StartCoroutine(WaterBalloonBursts(PlayerGameMgr.Mgr.fluid, _burstedByAnoterBalloon));    
+    }
+
+    IEnumerator WaterBalloonBursts(int _waterLength, bool _burstedByAnoterBalloon = false)    // #8 3초 뒤에 해당 물풍선 파괴
+    {
+        if(_burstedByAnoterBalloon == true)
+        {
+            Debug.Log("//#31 다른 물풍선에 의해 터짐");
+        }
+        if(_burstedByAnoterBalloon == false)
+        {
+            Debug.Log("//#8 3초 기다림 시작");
+            yield return new WaitForSeconds(3.0f);
+        }
+
         // #31 3초 뒤에 자동으로 터지는 경우와 다른 물풍선에 의해 터지는 경우 둘 중 하나만 실행되도록 하기 위함
         if(alreadyBurst == false)   // #31 처음 물풍선이 터지는 거면, 그대로 아래 함수들 실행
             alreadyBurst = true;
         else                        
             yield break;
-
-        Debug.Log("//#8 3초 기다림 시작");
-        yield return new WaitForSeconds(3.0f);
         
         Debug.Log("//#8 파괴 | 위치는" + transform.position.x + ", " + transform.position.y);
         anim.SetTrigger("Bursts");
