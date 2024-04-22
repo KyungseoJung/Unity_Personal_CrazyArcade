@@ -30,6 +30,7 @@ public class Obstacle : MonoBehaviour
 
     int row;                     // #14 row, col: WOODBLOCK 밀 때, 밀고자 하는 위치 좌표에 장애물 있는지 확인용
     int col;
+    int fluidLength;             // #8 물풍선 터지는 길이는 터지는 순간에 정해지는 게 아니라, 물풍선을 놓는 순간에 정해지도록
 
     bool alreadyBurst = false;           // #31 물풍선이 터졌는지 확인 - 다른 물풍선에 의해 터지는 경우를 구분하기 위함
 
@@ -49,7 +50,8 @@ public class Obstacle : MonoBehaviour
         switch(obstacleType)    // #8 시간이 지남에 따라 물풍선 터짐
         {
             case OBSTACLE_TYPE.WATERBALLOON :
-                StartCoroutine(WaterBalloonBursts(PlayerGameMgr.Mgr.fluid));    
+                fluidLength = PlayerGameMgr.Mgr.fluid;
+                StartCoroutine(WaterBalloonBursts(fluidLength));    
                 // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: PlayerGameMgr.Mgr.fluid로 설정
                 // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
                 break;
@@ -175,7 +177,7 @@ public class Obstacle : MonoBehaviour
     public void StartWaterBalloonBursts(bool _burstedByAnoterBalloon = false)   // #31 Manager.cs에서 실행하기 위함
     {
         Debug.Log("//#31 WaterBalloonBursts 코루틴 실행");
-        StartCoroutine(WaterBalloonBursts(PlayerGameMgr.Mgr.fluid, _burstedByAnoterBalloon));    
+        StartCoroutine(WaterBalloonBursts(fluidLength, _burstedByAnoterBalloon));    
     }
 
     IEnumerator WaterBalloonBursts(int _waterLength, bool _burstedByAnoterBalloon = false)    // #8 3초 뒤에 해당 물풍선 파괴
