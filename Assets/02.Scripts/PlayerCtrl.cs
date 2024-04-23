@@ -264,32 +264,32 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             case MOVE_ARROW.UP:
                 if(playerPos == PLAYER_POS.RIGHT)
-                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(-obstacleNormal.y, 0);
                 else if(playerPos == PLAYER_POS.LEFT)
-                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
+                    slideDirection = new Vector2(obstacleNormal.y, 0);
                 
                 break;
                 
             case MOVE_ARROW.DOWN:
                 if(playerPos == PLAYER_POS.RIGHT)
-                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
+                    slideDirection = new Vector2(obstacleNormal.y, 0);
                 else if(playerPos == PLAYER_POS.LEFT)
-                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(-obstacleNormal.y, 0);
 
                 break;
 
             case MOVE_ARROW.RIGHT:
                 if(playerPos == PLAYER_POS.UP)
-                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
+                    slideDirection = new Vector2(0, -obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.DOWN)
-                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(0, obstacleNormal.x);
 
                 break;
             case MOVE_ARROW.LEFT:
                 if(playerPos == PLAYER_POS.UP)
-                    slideDirection = new Vector2(-obstacleNormal.y, obstacleNormal.x);
+                    slideDirection = new Vector2(0, obstacleNormal.x);
                 else if(playerPos == PLAYER_POS.DOWN)
-                    slideDirection = new Vector2(obstacleNormal.y, -obstacleNormal.x);
+                    slideDirection = new Vector2(0, -obstacleNormal.x);
 
                 break;
 
