@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    public enum CHECK_TYPE {BALLOONBURST = 1, PLAYERMOVE}   // #33 물풍선 확인하는 TYPE 설정하기
+    public CHECK_TYPE checkType = CHECK_TYPE.BALLOONBURST;    // #33 
     public GameObject waterBalloonObj;  // 배치할 물풍선 프리팹
 
     private Vector3 balloonPos;         // #4 물풍선 배치 위치
@@ -45,11 +47,14 @@ public class MapManager : MonoBehaviour
 
     private Music music; 
     private PlayerLife playerLife;   
+    private PlayerCtrl playerCtrl;                  // #33
+
 
     private void Awake()
     {
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #21
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>(); // #4
+        playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>(); // #4 
     }
 
     private void Start()
@@ -205,9 +210,9 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    private void CheckIsThereWaterBalloon(float _row, float _col) // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인
+    public void CheckIsThereWaterBalloon(float posX, float posY, CHECK_TYPE _type = CHECK_TYPE.BALLOONBURST) // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
     {
-        Vector3 targetPos = new Vector3(_row, _col, 0);
+        Vector3 targetPos = new Vector3(posX, posY, 0);
         Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
 
 
@@ -219,8 +224,17 @@ public class MapManager : MonoBehaviour
         {
             if(obj.transform.position == targetPos)
             {
-                Debug.Log("//#32 (" + _row + ", " + _col + ") 위치에 물풍선이 있습니다." );
-                obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
+                Debug.Log("//#32 (" + posX + ", " + posY + ") 위치에 물풍선이 있습니다." );
+                switch(_type)
+                {
+                    case CHECK_TYPE.BALLOONBURST:
+                        obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
+                        break;
+                    case CHECK_TYPE.PLAYERMOVE:
+                        Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
+                        playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음
+                        break;
+                }
             }
         }
     }

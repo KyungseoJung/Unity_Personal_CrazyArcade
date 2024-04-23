@@ -34,6 +34,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float lastMoveTime;             // #23 플레이어가 움직임을 보인 마지막 시각
     private float checkTimeInterval = 2f;   // #23 2초
 
+    private float posX, posY;               // #33
     private bool lookingAhead = false;              // #23 정면 바라보는지 체크
 
     void Awake()
@@ -226,6 +227,11 @@ public class PlayerCtrl : MonoBehaviour // #1
             //     }
             // }
         }    
+    
+        if(other.gameObject.tag == "WaterBalloon")
+        {
+            CheckObstacleBalloon();    // #33 플레이어가 이동하고자 하는 방향에 물풍선이 있는지 확인
+        }
     }
 
     private void OnTriggerEnter(Collider other)     
@@ -332,8 +338,10 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     void PlayerMove(bool moveHorizontal)
     {
+
         if(playerLife.playerFaint) // #28 플레이어 기절하고 있다면, 움직일 수 없도록
             return; 
+
         Vector3 moveDirection = new Vector3(0, v);
         
         // Debug.Log("//#1 PlayerMove");
@@ -386,6 +394,39 @@ public class PlayerCtrl : MonoBehaviour // #1
                 }
         }
 
+    }
+
+    public void PlayerStandsStill()         // #33 플레이어 제자리걸음
+    {
+        pos = this.transform.position;
+        pos.x = Mathf.RoundToInt(this.transform.position.x);
+        pos.y = Mathf.RoundToInt(this.transform.position.y);
+        this.transform.position = pos;
+
+    }
+
+    private void CheckObstacleBalloon()    // #33 플레이어가 가려고 하는 방향에 물풍선이 있는지 확인
+    {
+        posX = Mathf.RoundToInt(transform.position.x);
+        posY = Mathf.RoundToInt(transform.position.y);
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            mapMgr.CheckIsThereWaterBalloon(posX, posY+1, MapManager.CHECK_TYPE.PLAYERMOVE);
+        }
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+
+        }
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+
+        }
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+
+        }
+
+        mapMgr.CheckIsThereWaterBalloon(1, 1, MapManager.CHECK_TYPE.PLAYERMOVE);    // #33 플레이어가 가려고 하는 위치에 물풍선이 있는지 확인
     }
 
     void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
