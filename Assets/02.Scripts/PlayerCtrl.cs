@@ -409,13 +409,13 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         posX = Mathf.RoundToInt(transform.position.x);
         posY = Mathf.RoundToInt(transform.position.y);
-        if(Input.GetKey(KeyCode.UpArrow))
+        if(Input.GetKey(KeyCode.UpArrow))   // 상하좌우 중 상
         {
             mapMgr.CheckIsThereWaterBalloon(posX, posY+1, MapManager.CHECK_TYPE.PLAYERMOVE);
         }
-        if(Input.GetKey(KeyCode.DownArrow))
+        if(Input.GetKey(KeyCode.DownArrow)) // 상하좌우 중 하
         {
-
+            mapMgr.CheckIsThereWaterBalloon(posX, posY-1, MapManager.CHECK_TYPE.PLAYERMOVE);
         }
         if(Input.GetKey(KeyCode.LeftArrow))
         {
@@ -425,8 +425,6 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
 
         }
-
-        mapMgr.CheckIsThereWaterBalloon(1, 1, MapManager.CHECK_TYPE.PLAYERMOVE);    // #33 플레이어가 가려고 하는 위치에 물풍선이 있는지 확인
     }
 
     void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
