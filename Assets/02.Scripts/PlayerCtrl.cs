@@ -417,9 +417,9 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             mapMgr.CheckIsThereWaterBalloon(posX, posY-1, MapManager.CHECK_TYPE.PLAYERMOVE);
         }
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow)) // 상하좌우 중 좌
         {
-
+            mapMgr.CheckIsThereWaterBalloon(posX-1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
         }
         if(Input.GetKey(KeyCode.RightArrow))
         {
