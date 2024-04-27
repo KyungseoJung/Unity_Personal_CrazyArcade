@@ -210,7 +210,9 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void CheckIsThereWaterBalloon(float posX, float posY, CHECK_TYPE _type = CHECK_TYPE.BALLOONBURST) // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
+    public void CheckIsThereWaterBalloon(float posX, float posY, CHECK_TYPE _type = CHECK_TYPE.BALLOONBURST) 
+    // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
+    // #33 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 플레이어 제자리걸음
     {
         Vector3 targetPos = new Vector3(posX, posY, 0);
         Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );

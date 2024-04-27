@@ -405,7 +405,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     }
 
-    private void CheckObstacleBalloon()    // #33 플레이어가 가려고 하는 방향에 물풍선이 있는지 확인
+    private void CheckObstacleBalloon()    // #33 플레이어가 가려고 하는 방향에 물풍선이 있는지 확인 - 있다면 물풍선 위로 못 지나가도록
     {
         posX = Mathf.RoundToInt(transform.position.x);
         posY = Mathf.RoundToInt(transform.position.y);
@@ -421,9 +421,9 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             mapMgr.CheckIsThereWaterBalloon(posX-1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
         }
-        if(Input.GetKey(KeyCode.RightArrow))
+        if(Input.GetKey(KeyCode.RightArrow)) // 상하좌우 중 우
         {
-
+            mapMgr.CheckIsThereWaterBalloon(posX+1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
         }
     }
 
