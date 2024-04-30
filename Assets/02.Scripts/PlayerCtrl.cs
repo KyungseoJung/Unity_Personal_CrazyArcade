@@ -10,9 +10,11 @@ public class PlayerCtrl : MonoBehaviour // #1
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // #5 refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
 
+    [SerializeField]
+    private GameObject bazziObj;        // #6 fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
+    private GameObject shadowObj;       // #6 fix: 'shadow' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     private Rigidbody rBody;               // 2D에서 3D로 변경
-    private SpriteRenderer sprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
-
+    private SpriteRenderer bazziSprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
     private Animator anim;                 // #3 플레이어 애니메이터
 
     private PlayerLife playerLife;         // #28 플레이어 기절 확인
@@ -41,8 +43,10 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     void Awake()
     {
+        bazziObj = transform.GetChild(0).gameObject;    // #6 fix
+        shadowObj = transform.GetChild(1).gameObject;   // #6 fix
         rBody = GetComponent<Rigidbody>();
-        sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
+        bazziSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
         anim = GetComponent<Animator>();    // #3
 
         playerLife = GetComponent<PlayerLife>();    // #28
@@ -86,7 +90,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             anim.SetFloat("horizontalSpeed", 0);
         }
         // #2 y축 기준으로 밑에 있을수록 더 위에 그려져야 하므로 반비례 -> -1
-        sprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
+        bazziSprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
 
 
         // #4 물풍선 놓기
@@ -237,7 +241,9 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         if(other.gameObject.tag == "Bush")  // #6 
         {
-            SetAlpha(sprite, 0f);
+            // SetAlpha(bazziSprite, 0f);    // #6 fix
+            ObjSetActive(bazziObj, false);        // #6 fix
+            ObjSetActive(shadowObj, false);       // #6 fix
 
             obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
 
@@ -260,7 +266,9 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         if(other.gameObject.tag == "Bush")  // #6 
         {
-            SetAlpha(sprite, 1f);
+            // SetAlpha(bazziSprite, 1f);    // #6 fix
+            ObjSetActive(bazziObj, true);         // #6 fix
+            ObjSetActive(shadowObj, true);        // #6 fix
 
             obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
 
@@ -435,9 +443,17 @@ public class PlayerCtrl : MonoBehaviour // #1
         }
     }
 
-    void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
+    // #6 fix: 플레이어가 덤불에 숨는 것처럼 보이도록 하기 위한 방법으로 Alpha를 설정하는 게 아닌, 오브젝트 자체를 비활성화 하는 방법을 채택해보자
+    // void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
+    // {
+    //     Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
+    //     _sprite.color = new Color(1f, 1f, 1f, _alpha);
+    // }
+
+    private void ObjSetActive(GameObject _obj, bool _active)
     {
-        _sprite.color = new Color(1f, 1f, 1f, _alpha);
+        Debug.Log("//#6 fix: "+ _obj + "를 활성화한다?: " + _active);
+        _obj.SetActive(_active);
     }
 
     public void PlayerSpeedUp(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
