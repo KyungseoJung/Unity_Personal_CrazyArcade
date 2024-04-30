@@ -231,11 +231,6 @@ public class PlayerCtrl : MonoBehaviour // #1
             //     }
             // }
         }    
-    
-        if(other.gameObject.tag == "WaterBalloon")
-        {
-            CheckObstacleBalloon();    // #33 플레이어가 이동하고자 하는 방향에 물풍선이 있는지 확인
-        }
     }
 
     private void OnTriggerEnter(Collider other)     
@@ -253,6 +248,14 @@ public class PlayerCtrl : MonoBehaviour // #1
         }    
     }
 
+    private void OnTriggerStay(Collider other) 
+    {
+        if(other.gameObject.tag == "WaterBalloon")
+        {
+            CheckObstacleBalloon();    // #33 플레이어가 이동하고자 하는 방향에 물풍선이 있는지 확인
+        }    
+    }
+    
     private void OnTriggerExit(Collider other)      
     {
         if(other.gameObject.tag == "Bush")  // #6 
@@ -267,6 +270,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             }        
         }    
     }
+    
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos) // #5 fix   
     //# refactor 플레이어가 누르는 방향 키와, 플레이어의 위치(장애물과 비교했을 때 상대적 위치)를 parameter로 받기
     {
