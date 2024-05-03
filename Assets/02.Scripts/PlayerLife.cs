@@ -55,6 +55,18 @@ public class PlayerLife : MonoBehaviour
         // #29 플레이어 죽은 후, 부활할 때
         anim.SetBool("canMove", true);  // #29 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
         playerCtrl.PlayerSpeedDown(false);  // #29 플레이어 본래 속도로 돌아가기
+
+        SkillReset();           // #29
+    }
+
+    private void SkillReset()   // #29 부활 시, 스킬 & 할당량 설정
+    {
+        // 스킬 리셋
+        PlayerGameMgr.Mgr.waterballoonNum = 1;
+        PlayerGameMgr.Mgr.fluid = 1;
+        PlayerGameMgr.Mgr.roller = 0;
+        PlayerGameMgr.Mgr.coin = 0;
+
     }
     
 }
