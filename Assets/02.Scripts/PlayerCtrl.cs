@@ -26,7 +26,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     // [SerializeField]
     // private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
-    private float moveForce = 7f;         // 이동할 때 주는 힘 (50 > 20)
+    private float moveForce = 40f;         // 이동할 때 주는 힘
     private float originMoveForce;          // #1 fix 처음 설정 값 가져오기
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
     private float maxSpeed = 2f;            // 가속도 적용 속도
