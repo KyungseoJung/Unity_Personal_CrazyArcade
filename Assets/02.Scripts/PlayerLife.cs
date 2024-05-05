@@ -49,7 +49,11 @@ public class PlayerLife : MonoBehaviour
         // PlayerRespawn();    // #29 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     }
 
-    private void PlayerRespawn()    // #29 플레이어 부활
+    private void SpecifyLocation()  // #29
+    {
+        this.gameObject.transform.position = new Vector3(4, -3, 0); // #29 리스폰 위치 지정
+    }
+    private void PlayerRespawn()    // #29 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {
         playerFaint = false;    // #28 플레이어 기절 종료 - 움직임 가능
         // #29 플레이어 죽은 후, 부활할 때
@@ -66,7 +70,6 @@ public class PlayerLife : MonoBehaviour
         PlayerGameMgr.Mgr.fluid = 1;
         PlayerGameMgr.Mgr.roller = 0;
         PlayerGameMgr.Mgr.coin = 0;
-
     }
     
 }
