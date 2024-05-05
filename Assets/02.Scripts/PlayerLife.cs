@@ -8,6 +8,7 @@ public class PlayerLife : MonoBehaviour
 
     private PlayerCtrl playerCtrl;  // #17 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
 
+    private Vector3 respawnPos;     // #29 리스폰 위치 지정
     public bool trappedInWater = false;    // #17 플레이어 물풍선에 갇혔는지 확인용 bool형 변수
     public bool playerFaint = false;       // #28 플레이어 기절했는지 확인
     private bool playerDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
@@ -20,6 +21,7 @@ public class PlayerLife : MonoBehaviour
 
     void Start()
     {
+        respawnPos = new Vector3(4, -3, -0.05f); // #29 리스폰 위치 지정
         anim.SetBool("canMove", true);  // #17 첫 설정은 true로 해서 애니메이션 정상 작동하도록
         trappedInWater = false;         // #17
     }
@@ -51,7 +53,7 @@ public class PlayerLife : MonoBehaviour
 
     private void SpecifyLocation()  // #29
     {
-        this.gameObject.transform.position = new Vector3(4, -3, 0); // #29 리스폰 위치 지정
+        this.gameObject.transform.position = respawnPos; // #29 리스폰 위치 지정
     }
     private void PlayerRespawn()    // #29 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {
