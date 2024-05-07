@@ -91,6 +91,14 @@ public class MapManager : MonoBehaviour
 
         }
     }
+    
+    public void RemoveObstaclePos(Transform _trans) // #10 아이템 획득하면 - 해당 아이템의 ObstacleArr을 0으로 전황
+    {
+        row = ReturnRowInMatrix(_trans.position.y);     
+        col =  ReturnColInMatrix(_trans.position.x);    
+        Debug.Log("// #10 아이템 획득 - 해당 위치 배열을 0으로 전환");
+        obstacleArr[row, col] = 0;  // #10 
+    }
 
     public void PlaceWaterBalloon(float _x, float _y)    // #4 받아오는 parameter는 플레이어의 좌표
     {
@@ -105,9 +113,18 @@ public class MapManager : MonoBehaviour
 
         Debug.Log("//#8 #4 물풍선 생성: row = " + playerRow + "/ col = " + playerCol);
 
-        if ((waterBalloonArr[playerRow, playerCol] == 1) || (obstacleArr[playerRow, playerCol] == 1)) 
-        // 이미 그 자리에 물풍선 or 장애물이 있다면 - 중복해서 물풍선을 놓지 못하도록
+        if ((waterBalloonArr[playerRow, playerCol] == 1)) 
+        {
+            // 이미 그 자리에 물풍선 or 장애물이 있다면 - 중복해서 물풍선을 놓지 못하도록
+            Debug.Log("//#4 fix: 물풍선 이미 있음");
             return;
+
+        }
+        else if((obstacleArr[playerRow, playerCol] == 1))
+        {
+            Debug.Log("//#4 fix 장애물 이미 있음");
+            return;
+        }
 
         // 위 조건들 모두 만족하면, 물풍선 놓기
 

@@ -9,11 +9,14 @@ public class Item : MonoBehaviour   // #10
 
     private PlayerCtrl playerCtrl;                  // #15
     private Music music;                            // #22
+    private MapManager mapMgr;                      // #10 아이템 획득시 - ObstacleArr 배열을 0으로 만들기 위함
+
 
     void Awake()
     {
         playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>(); // #4 
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #22
+        mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #10
     }
     
 
@@ -58,6 +61,7 @@ public class Item : MonoBehaviour   // #10
                     break;
             }
 
+            mapMgr.RemoveObstaclePos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정
             music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
     }
