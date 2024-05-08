@@ -33,7 +33,21 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    // #25 obstacleArr은 waterBalloonArr을 포함하고 있음 - 즉, waterBalloonArr 배열값이 1인 행열은 obstacleArr 배열값에서도 1임
     public int[,] obstacleArr =                // #25 장애물 배열 - 7행 9열 이차원 배열
+    {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
+
+    public int[,] itemArr =                    // #25 아이템 배열 - 7행 9열 이차원 배열
     {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -75,11 +89,12 @@ public class MapManager : MonoBehaviour
         return (Mathf.RoundToInt(_x) + 4);
     }
 
-    private void CheckObstaclePos() // #25 장애물 위치 - 배열 확인
+    private void CheckObstaclePos() // #25 장애물 위치 - 배열 확인 -> Start에서 1번 실행
     {
         Debug.Log("//#25 CheckObstaclePos");
         // #25 Obstacle 태그를 가진 모든 오브젝트에 접근
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
 
         // #25 
         for(int i=0; i<obstacles.Length; i++)
@@ -91,17 +106,28 @@ public class MapManager : MonoBehaviour
             obstacleArr[row, col] = 1;  // #25 
 
         }
+
+        // #25 아이템 배열
+        for(int i=0; i<items.Length; i++)
+        {
+            row = ReturnRowInMatrix(items[i].transform.position.y);     // #26 함수 이용
+            col =  ReturnColInMatrix(items[i].transform.position.x);    // #26 함수 이용
+            Debug.Log("//#25 Obstacle 존재 - row: " + row + ", col: " + col);
+            Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + items[i].gameObject.name);
+            itemArr[row, col] = 1;  // #25 
+
+        }
     }
     
-    public void RemoveObstaclePos(Transform _trans) // #10 아이템 획득하면 - 해당 아이템의 ObstacleArr을 0으로 전황
+    public void RemoveItemPos(Transform _trans) // #10 아이템 획득하면 - 해당 아이템의 ItemArr을 0으로 전황
     {
         row = ReturnRowInMatrix(_trans.position.y);     
         col =  ReturnColInMatrix(_trans.position.x);    
         Debug.Log("// #10 아이템 획득 - 해당 위치 배열을 0으로 전환");
-        obstacleArr[row, col] = 0;  // #10 
+        itemArr[row, col] = 0;  // #10 
     }
 
-    public void PlaceWaterBalloon(float _x, float _y)    // #4 받아오는 parameter는 플레이어의 좌표
+    public void PlaceWaterBalloon(float _x, float _y)    // #4 플레이어 물풍선 놓기 - 받아오는 parameter는 플레이어의 좌표
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
             return;
@@ -130,7 +156,7 @@ public class MapManager : MonoBehaviour
         // 위 조건들 모두 만족하면, 물풍선 놓기
 
         waterBalloonArr[playerRow, playerCol] = 1;  // 배열 설정
-        obstacleArr[playerRow, playerCol] = 1;      // #25 배열 설정
+        obstacleArr[playerRow, playerCol] = 1;      // #25 배열 설정 - 물풍선이 놓여지면 obstacleArr 배열값도 1로 설정
 
         // 물풍선 놓기
         balloonPos.x = Mathf.RoundToInt(_x);    

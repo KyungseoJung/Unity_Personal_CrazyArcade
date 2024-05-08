@@ -61,7 +61,7 @@ public class Item : MonoBehaviour   // #10
                     break;
             }
 
-            mapMgr.RemoveObstaclePos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정
+            mapMgr.RemoveItemPos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정
             music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
     }

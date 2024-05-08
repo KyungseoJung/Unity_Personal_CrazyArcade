@@ -9,6 +9,7 @@ TagManager:
   - Bush
   - Music
   - WaterBalloon
+  - Item
   layers:
   - Default
   - TransparentFX

@@ -100,7 +100,7 @@ public class Obstacle : MonoBehaviour
                         }
                     }
 
-                    if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
+                    if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: y축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
                         if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
                         {
