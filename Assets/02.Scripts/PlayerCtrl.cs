@@ -40,6 +40,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     private float posX, posY;               // #33
     private bool lookingAhead = false;              // #23 정면 바라보는지 체크
+    public bool balloonInFront = false;    // #33 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
 
     void Awake()
     {
@@ -258,6 +259,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         if(other.gameObject.tag == "WaterBalloon")
         {
+            // Debug.Log("//#33 OnTriggerStay - WaterBalloon 닿음");
             CheckObstacleBalloon();    // #33 플레이어가 이동하고자 하는 방향에 물풍선이 있는지 확인
         }    
     }
@@ -277,6 +279,11 @@ public class PlayerCtrl : MonoBehaviour // #1
                 obstacle.BushShake();
             }        
         }    
+        
+        // if(other.gameObject.tag == "WaterBalloon")  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+        // {
+        //     CheckObstacleBalloon(); // #33 fix
+        // }
     }
     
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos) // #5 fix   
@@ -374,6 +381,9 @@ public class PlayerCtrl : MonoBehaviour // #1
             else if((h>0) && anim.GetInteger("MoveDir")!=4)     // 중복 방지
                 anim.SetInteger("MoveDir", 4);  //오른쪽 쳐다보도록
 
+            if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+                return;
+
             // #1 좌우 움직임 
                 // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
                 // h(-1.0f~1.0f)는 velocity.x를 다르게 표시한다
@@ -395,36 +405,44 @@ public class PlayerCtrl : MonoBehaviour // #1
             else if((v<0) && anim.GetInteger("MoveDir")!=2 )
                 anim.SetInteger("MoveDir", 2);  //아래쪽 쳐다보도록
 
-            // #1 상하 움직임 
-                if(v * rBody.velocity.y < maxSpeed)
-                    rBody.AddForce(moveDirection * moveForce);
-
-                // Debug.Log(moveDirection.magnitude);
-                    // rBody.AddForce(Vector2.up * v * moveForce);
-                    // 걱정: rigidBody2D인데 Vector3가 적용될까?
+            if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+                return;
 
             // #1 상하 움직임 
-                if(Mathf.Abs(rBody.velocity.y) > maxSpeed)
-                {
-                    rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(rBody.velocity.y) * maxSpeed);
-                }
+            if(v * rBody.velocity.y < maxSpeed)
+                rBody.AddForce(moveDirection * moveForce);
+
+            // Debug.Log(moveDirection.magnitude);
+                // rBody.AddForce(Vector2.up * v * moveForce);
+                // 걱정: rigidBody2D인데 Vector3가 적용될까?
+
+            // #1 상하 움직임 
+            if(Mathf.Abs(rBody.velocity.y) > maxSpeed)
+            {
+                rBody.velocity = new Vector2(rBody.velocity.x, Mathf.Sign(rBody.velocity.y) * maxSpeed);
+            }
         }
 
     }
 
-    public void PlayerStandsStill()         // #33 플레이어 제자리걸음
-    {
-        pos = this.transform.position;
-        pos.x = Mathf.RoundToInt(this.transform.position.x);
-        pos.y = Mathf.RoundToInt(this.transform.position.y);
-        this.transform.position = pos;
-
-    }
+    // public void PlayerStandsStill()         // #33 플레이어 제자리걸음 - 정수 좌표에 맞춰서
+    // {
+    //     pos = this.transform.position;
+    //     pos.x = Mathf.RoundToInt(this.transform.position.x);
+    //     pos.y = Mathf.RoundToInt(this.transform.position.y);
+    //     this.transform.position = pos;
+    // }
 
     private void CheckObstacleBalloon()    // #33 플레이어가 가려고 하는 방향에 물풍선이 있는지 확인 - 있다면 물풍선 위로 못 지나가도록
     {
         posX = Mathf.RoundToInt(transform.position.x);
         posY = Mathf.RoundToInt(transform.position.y);
+
+        // if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        // {
+        //     Debug.Log("//#33 CheckObstacleBalloon 실행");
+        // }
+
         if(Input.GetKey(KeyCode.UpArrow))   // 상하좌우 중 상
         {
             mapMgr.CheckIsThereWaterBalloon(posX, posY+1, MapManager.CHECK_TYPE.PLAYERMOVE);

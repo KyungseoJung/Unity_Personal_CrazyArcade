@@ -17,6 +17,7 @@ public class MapManager : MonoBehaviour
     int playerRow, playerCol;   // #17
     int rowNum = 4; // #25
     int colNum = 3; // #25
+    int checkNum = 0;   // # 33 fix: 특정 위치에 물풍선 있는지, 몇 개 있는지 확인하는 변수
 
     // [SerializeField]
     int[,] waterBalloonArr =            // #4 7행 9열 이차원 배열 - 0행 0열부터 시작
@@ -231,6 +232,8 @@ public class MapManager : MonoBehaviour
     // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
     // #33 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 플레이어 제자리걸음
     {
+        checkNum = 0;   // #33 특정 위치에 물풍선이 있는지 확인하기 위함 - 0으로 초기화
+
         Vector3 targetPos = new Vector3(posX, posY, 0);
         Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
 
@@ -243,7 +246,9 @@ public class MapManager : MonoBehaviour
         {
             if(obj.transform.position == targetPos)
             {
-                Debug.Log("//#32 (" + posX + ", " + posY + ") 위치에 물풍선이 있습니다." );
+                checkNum++; // #33 fix
+
+                Debug.Log("//#32 (" + posX + ", " + posY + ") 좌표에 물풍선이 있습니다." );
                 switch(_type)
                 {
                     case CHECK_TYPE.BALLOONBURST:
@@ -251,10 +256,22 @@ public class MapManager : MonoBehaviour
                         break;
                     case CHECK_TYPE.PLAYERMOVE:
                         Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
-                        playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음
+                        // playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음 // #33 fix 주석 처리
+                        playerCtrl.balloonInFront = true;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
                         break;
                 }
             }
+        }
+
+        // #33 fix: 플레이어가 가고자 하는 방향에 물풍선이 하나도 없다면, 플레이어 이동 가능하도록
+        if(checkNum == 0)   
+        {
+            // Debug.Log("//#33 (" + posX + ", " + posY + ") 위치에 물풍선이 없습니다." );
+            playerCtrl.balloonInFront = false;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가/ 없다면, 플레이어 이동 가능
+        }
+        else
+        {
+            Debug.Log("//#33 checkNum이 0이 아님: "+ checkNum);
         }
     }
 
