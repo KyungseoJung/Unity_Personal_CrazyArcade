@@ -8,6 +8,7 @@ public class MapManager : MonoBehaviour
     public enum CHECK_TYPE {BALLOONBURST = 1, PLAYERMOVE}   // #33 물풍선 확인하는 TYPE 설정하기
     public CHECK_TYPE checkType = CHECK_TYPE.BALLOONBURST;    // #33 
     public GameObject waterBalloonObj;  // 배치할 물풍선 프리팹
+    private GameObject[] items;         // #34
 
     private Vector3 balloonPos;         // #4 물풍선 배치 위치
 
@@ -94,7 +95,7 @@ public class MapManager : MonoBehaviour
         Debug.Log("//#25 CheckObstaclePos");
         // #25 Obstacle 태그를 가진 모든 오브젝트에 접근
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
-        GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+        items = GameObject.FindGameObjectsWithTag("Item");
 
         // #25 
         for(int i=0; i<obstacles.Length; i++)
@@ -219,6 +220,18 @@ public class MapManager : MonoBehaviour
             playerLife.PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
     }
+
+    public void CheckItemTouchFluid()   // #34
+    {
+        items = GameObject.FindGameObjectsWithTag("Item");
+
+        for(int i=0; i<items.Length; i++)
+        {
+            // 배열 확인
+            // 아이템 오브젝트 Destroy
+        }
+    } 
+
     public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
     // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
     {
