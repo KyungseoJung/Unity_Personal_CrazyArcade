@@ -187,14 +187,14 @@ public class MapManager : MonoBehaviour
 
     }
 
-    public void CheckPlayerTouchFluid(Transform _balloon, float _playerX, float _playerY, int _waterLength)   
+    public void CheckPlayerTouchFluid(Transform _balloonTrans, Transform _playerTrans, int _waterLength)   
     // #17 플레이어가 물풍선의 물줄기와 닿았나 확인
     {
-        row = ReturnRowInMatrix(_balloon.position.y);
-        col = ReturnColInMatrix(_balloon.position.x);
+        row = ReturnRowInMatrix(_balloonTrans.position.y);
+        col = ReturnColInMatrix(_balloonTrans.position.x);
 
-        playerRow = ReturnRowInMatrix(_playerY);
-        playerCol = ReturnColInMatrix(_playerX);
+        playerRow = ReturnRowInMatrix(_playerTrans.position.y);
+        playerCol = ReturnColInMatrix(_playerTrans.position.x);
 
         // 만약 플레이어가 터지는 물풍선과 같은 행이라면
         // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
