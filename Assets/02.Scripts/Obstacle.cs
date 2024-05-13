@@ -213,7 +213,7 @@ public class Obstacle : MonoBehaviour
         mapMgr.CheckBubbleTouchFluid(this.transform, _waterLength); 
 
         // #34 물풍선의 물줄기가 아이템에 닿았나 확인 - 닿았으면 아이템 Destroy
-        mapMgr.CheckItemTouchFluid();
+        mapMgr.CheckItemTouchFluid(this.transform, _waterLength);
                                     
     }
 

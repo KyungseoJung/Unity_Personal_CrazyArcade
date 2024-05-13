@@ -218,17 +218,35 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void CheckItemTouchFluid()   // #34
+    public void CheckItemTouchFluid(Transform _balloonTrans, int _waterLength)   // #34
     {
         items = GameObject.FindGameObjectsWithTag("Item");
-
         for(int i=0; i<items.Length; i++)
         {
             // 배열 확인
-            // 아이템 오브젝트 Destroy
+            balloonRow = ReturnRowInMatrix(_balloonTrans.position.y);
+            balloonCol = ReturnColInMatrix(_balloonTrans.position.x);
+            itemRow = ReturnRowInMatrix(items[i].transform.position.y);
+            itemCol = ReturnColInMatrix(items[i].transform.position.x);
+            // 만약 아이템이 '터지는 물풍선'과 같은 행이라면
+            // && 아이템과 물풍선과의 거리가 _waterLength보다 가깝다면
+            if((balloonRow == itemRow) && 
+                ((itemCol - balloonCol)*(itemCol - balloonCol) <= (_waterLength)*(_waterLength)))
+            {
+                Debug.Log("//#34 같은 행 - 아이템이 물줄기에 닿음");
+                items[i].gameObject.GetComponent<Item>().DestroyItem(); // 아이템 오브젝트 Destroy
+            }
+            // 만약 플레이어가 터지는 물풍선과 같은 열이라면
+            // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
+            if((balloonCol == itemCol) &&
+                ((itemRow-balloonRow)*(itemRow-balloonRow) <= (_waterLength)*(_waterLength)))
+            {
+                Debug.Log("//#17 같은 열 - 아이템이 물줄기에 닿음");
+                items[i].gameObject.GetComponent<Item>().DestroyItem(); // 아이템 오브젝트 Destroy
+            }
         }
     } 
-
+    
     public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
     // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
     {

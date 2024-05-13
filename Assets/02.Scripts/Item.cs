@@ -71,4 +71,10 @@ public class Item : MonoBehaviour   // #10
         Debug.Log("//#10 OnCollisionEnter");   
 
     }
+
+    public void DestroyItem()   // #34
+    {
+        Debug.Log("//#34: " + this.gameObject.name + "아이템 삭제");
+        Destroy(this.gameObject);
+    }
 }
