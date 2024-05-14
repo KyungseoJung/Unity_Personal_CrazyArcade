@@ -506,4 +506,13 @@ public class PlayerCtrl : MonoBehaviour // #1
         }
 
     }
+
+    public void TurtleMount(bool _mount = true) // #35 플레이어가 거북에 올라탐
+    {
+        if(_mount)
+        {
+            Debug.Log("//#35 플레이어가 거북에 올라탐");
+            anim.SetBool("turtleMount", true);
+        }
+    }
 }
