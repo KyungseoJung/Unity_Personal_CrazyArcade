@@ -26,11 +26,16 @@ public class PlayerCtrl : MonoBehaviour // #1
     // [SerializeField]
     // private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
-    private float moveForce = 20f;         // 이동할 때 주는 힘
-    private float originMoveForce;          // #1 fix 처음 설정 값 가져오기
+    private float moveForce = 20f;         // 이동할 때 주는 힘 - 처음 설정 값은 20
+    private float originMoveForce;          // #1 fix 처음 설정 값 가져오기 - 처음 설정 값 저장용
+    private float turtleMountMoveForce;     // #35 거북에 탔을 때, 이동 속도
+
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
+
     private float maxSpeed = 2f;            // 가속도 적용 속도
     private float originMaxSpeed;           // #1 fix 처음 설정 값 가져오기
+    private float turtleMountMaxSpeed;      // #35 거북에 탔을 때, 가속도
+
     private float h;                        // 좌우 버튼 누르는 것 감지
     private float v;                        // 상하 버튼 누르는 것 감지
     private float distX;                     // #5 플레이어와 장애물 간의 거리 (X축)
@@ -58,6 +63,10 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         originMoveForce = moveForce;    // #1 fix
         originMaxSpeed = maxSpeed;      // #1 fix
+
+        turtleMountMoveForce = moveForce - 7;  // #35 거북에 탔을 때 속도 설정
+        turtleMountMaxSpeed = maxSpeed - 1;   // #35 거북에 탔을 때 가속도 설정
+
         anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
     }
     void Update()
@@ -512,6 +521,10 @@ public class PlayerCtrl : MonoBehaviour // #1
         if(_mount)
         {
             Debug.Log("//#35 플레이어가 거북에 올라탐");
+
+            moveForce = turtleMountMoveForce;
+            maxSpeed = turtleMountMaxSpeed;
+
             anim.SetBool("turtleMount", true);
         }
     }
