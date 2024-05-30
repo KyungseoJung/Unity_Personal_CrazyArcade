@@ -283,8 +283,8 @@ public class MapManager : MonoBehaviour
     }
 
     public void CheckIsThereWaterBalloon(float posX, float posY, CHECK_TYPE _type = CHECK_TYPE.BALLOONBURST) 
-    // #32 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
-    // #33 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 플레이어 제자리걸음
+    // #32 CHECK_TYPE.BALLOONBURST의 경우: 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
+    // #33 CHECK_TYPE.PLAYERMOVE 경우: 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 플레이어 제자리걸음
     {
         checkNum = 0;   // #33 특정 위치에 물풍선이 있는지 확인하기 위함 - 0으로 초기화
 
@@ -305,10 +305,10 @@ public class MapManager : MonoBehaviour
                 Debug.Log("//#32 (" + posX + ", " + posY + ") 좌표에 물풍선이 있습니다." );
                 switch(_type)
                 {
-                    case CHECK_TYPE.BALLOONBURST:
+                    case CHECK_TYPE.BALLOONBURST:   // 다른 물풍선도 터지도록
                         obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
                         break;
-                    case CHECK_TYPE.PLAYERMOVE:
+                    case CHECK_TYPE.PLAYERMOVE: // 
                         Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
                         // playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음 // #33 fix 주석 처리
                         playerCtrl.balloonInFront = true;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가

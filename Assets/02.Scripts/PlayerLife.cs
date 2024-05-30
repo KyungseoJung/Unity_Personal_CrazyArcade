@@ -30,6 +30,14 @@ public class PlayerLife : MonoBehaviour
     {
         if(!trappedInWater)
         {
+            // #35 플레이어가 거북에 타고 있었다면 - 거북에서만 내려오게 하고 함수 탈출
+            if(playerCtrl.turtleMount) 
+            {
+                Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
+                anim.SetBool("turtleMount", false);
+
+                return;
+            }
             trappedInWater = true;  // #17 중복 실행 방지
             Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
             anim.SetBool("canMove", false);

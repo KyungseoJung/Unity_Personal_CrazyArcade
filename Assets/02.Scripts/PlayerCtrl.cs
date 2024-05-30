@@ -46,6 +46,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float posX, posY;               // #33
     private bool lookingAhead = false;              // #23 정면 바라보는지 체크
     public bool balloonInFront = false;    // #33 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+    public bool turtleMount = false;       // #35 거북에 올라탐
 
     void Awake()
     {
@@ -520,6 +521,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         if(_mount)
         {
+            turtleMount = true;
             Debug.Log("//#35 플레이어가 거북에 올라탐");
 
             moveForce = turtleMountMoveForce;
