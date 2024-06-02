@@ -31,8 +31,6 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
@@ -169,10 +167,10 @@ public class MapManager : MonoBehaviour
 
     public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
     {
-        Debug.Log("//#8 물풍선 소멸: balloonRow = " + balloonRow + "/ balloonCol = " + balloonCol);
-
         balloonRow = ReturnRowInMatrix(_y);
         balloonCol = ReturnColInMatrix(_x);
+
+        Debug.Log("//#8 //#31 fix: 물풍선 소멸: balloonRow = " + balloonRow + "/ balloonCol = " + balloonCol);
 
         waterBalloonArr[balloonRow, balloonCol] = 0;  // 배열 설정
         obstacleArr[balloonRow, balloonCol] = 0;      // #25 배열 설정
