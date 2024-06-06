@@ -498,6 +498,12 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     public void PlayerSpeedUp(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
     {
+        if(turtleMount) // #35 만약 플레이어가 거북에 타고 있었다면
+        {
+            LimitToTurtleSpeed();
+            return;
+        }
+
         // ROLLER 아이템 획득 개수에 따라 플레이어 이동 속도 설정
         // moveForce 디폴트 값: 30f, maxSpeed 디폴트 값: 5f
         moveForce = originMoveForce + (rollerCount) * 3;
@@ -520,6 +526,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 break;
             case false: 
             // #29 플레이어 본래 (디폴트) 속도로
+            // - 플레이어 부활할 때
 
                 // #29 fix
                 moveForce = originMoveForce;    // 7f
@@ -537,10 +544,14 @@ public class PlayerCtrl : MonoBehaviour // #1
             
             Debug.Log("//#35 플레이어가 거북에 올라탐");
 
-            moveForce = turtleMountMoveForce;
-            maxSpeed = turtleMountMaxSpeed;
-
+            LimitToTurtleSpeed();
             anim.SetBool("turtleMount", true);
         }
+    }
+
+    private void LimitToTurtleSpeed()   // #35 플레이어의 움직임 속도를 거북 탔을 때 속도로 설정
+    {
+        moveForce = turtleMountMoveForce;
+        maxSpeed = turtleMountMaxSpeed;
     }
 }
