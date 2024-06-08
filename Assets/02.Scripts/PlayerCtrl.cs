@@ -512,7 +512,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
 
-    public void PlayerSpeedDown(bool _down = true)
+    public void SetPlayerSpeed(bool _down = true)   // #17 style: 함수 이름 변경
     {
         switch(_down)
         {

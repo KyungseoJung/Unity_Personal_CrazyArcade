@@ -45,7 +45,7 @@ public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
             Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
             anim.SetBool("canMove", false);
             anim.SetTrigger("trappedInWater");
-            playerCtrl.PlayerSpeedDown();           // #17 플레이어 속도 느려짐
+            playerCtrl.SetPlayerSpeed();           // #17 플레이어 속도 느려짐
         }
     }
 
@@ -71,7 +71,7 @@ public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
         playerFaint = false;    // #28 플레이어 기절 종료 - 움직임 가능
         // #29 플레이어 죽은 후, 부활할 때
         anim.SetBool("canMove", true);  // #29 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
-        playerCtrl.PlayerSpeedDown(false);  // #29 플레이어 본래 속도로 돌아가기
+        playerCtrl.SetPlayerSpeed(false);  // #29 플레이어 본래 속도로 돌아가기
 
         SkillReset();           // #29
     }
