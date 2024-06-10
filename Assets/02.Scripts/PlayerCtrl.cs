@@ -496,7 +496,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         _obj.SetActive(_active);
     }
 
-    public void PlayerSpeedUp(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
+    public void ChangePlayerSpeed(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
     {
         if(turtleMount) // #35 만약 플레이어가 거북에 타고 있었다면
         {

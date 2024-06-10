@@ -46,7 +46,7 @@ public class Item : MonoBehaviour   // #10
                 
                 case ITEM_TYPE.ROLLER :     // #15 ROLLER 아이템
                     PlayerGameMgr.Mgr.roller += 1;  
-                    playerCtrl.PlayerSpeedUp(PlayerGameMgr.Mgr.roller); // #15 플레이어 이동 속도 증가
+                    playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 플레이어 이동 속도 증가
                     Destroy(this.gameObject);   // 플레이어 획득
                     break;
                 
