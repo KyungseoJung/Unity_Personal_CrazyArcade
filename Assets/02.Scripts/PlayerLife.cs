@@ -39,6 +39,7 @@ public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
                 Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
                 anim.SetBool("turtleMount", false);
 
+                playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
                 return;
             }
             trappedInWater = true;  // #17 중복 실행 방지
