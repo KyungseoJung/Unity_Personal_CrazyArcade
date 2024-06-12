@@ -26,28 +26,35 @@ public class PlayerLife : MonoBehaviour
         trappedInWater = false;         // #17
     }
 
-public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
+    public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
     {
         if(!trappedInWater)
         {
-            playerCtrl.balloonInFront = false;  // #33 fix 물풍선에 맞았을 때 - balloonInfront = false 처리해주기.
-            // 여기서 이 처리를 안 해주면, 물풍선을 바라보는 상태에서 물풍선을 맞은 후, 계속 가만히 서 있는 경우가 있음
-            // 결론적으로 MapManager.cs에서는 balloonInFront = false 처리를 해주지 않으므로, 계속 가만히 서 있는 경우를 방지하기 위해
-            // #35 플레이어가 거북에 타고 있었다면 - 거북에서만 내려오게 하고 함수 탈출
-            if(playerCtrl.turtleMount) 
-            {
-                Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
-                anim.SetBool("turtleMount", false);
-
-                playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
-                return;
-            }
-            trappedInWater = true;  // #17 중복 실행 방지
-            Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
-            anim.SetBool("canMove", false);
-            anim.SetTrigger("trappedInWater");
-            playerCtrl.SetPlayerSpeed();           // #17 플레이어 속도 느려짐
+            Invoke("SetStateInWaterBalloon", 0.2f); // #17 fix: 시간 지연을 두고, 플레이어가 물풍선에 닿았을 때 상태 변화를 주기
+            // balloonInFront 변수를 true로 만들어주는 CheckIsThereWaterBalloon함수 보다 먼저 실행되어서 생기는 문제 있었음 - 이를 보완하기 위해 Invoke 함수 이용
         }
+    }
+
+    private void SetStateInWaterBalloon()
+    {
+        playerCtrl.balloonInFront = false;  // #33 fix 물풍선에 맞았을 때 - balloonInfront = false 처리해주기.
+        // 여기서 이 처리를 안 해주면, 물풍선을 바라보는 상태에서 물풍선을 맞은 후, 계속 가만히 서 있는 경우가 있음
+        // 결론적으로 MapManager.cs에서는 balloonInFront = false 처리를 해주지 않으므로, 계속 가만히 서 있는 경우를 방지하기 위해
+        // #35 플레이어가 거북에 타고 있었다면 - 거북에서만 내려오게 하고 함수 탈출
+        if(playerCtrl.turtleMount) 
+        {
+            Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
+            Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
+            anim.SetBool("turtleMount", false);
+
+            playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
+            return;
+        }
+        trappedInWater = true;  // #17 중복 실행 방지
+        Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
+        anim.SetBool("canMove", false);
+        anim.SetTrigger("trappedInWater");
+        playerCtrl.SetPlayerSpeed();           // #17 플레이어 속도 느려짐
     }
 
     private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
