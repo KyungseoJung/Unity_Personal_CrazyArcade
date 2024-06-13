@@ -26,13 +26,13 @@ public class PlayerCtrl : MonoBehaviour // #1
     // [SerializeField]
     // private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
-    private float moveForce = 20f;         // 이동할 때 주는 힘 - 처음 설정 값은 20
+[SerializeField]    private float moveForce = 17f;         // 이동할 때 주는 힘 - 처음 설정 값은 20
     private float originMoveForce;          // #1 fix 처음 설정 값 가져오기 - 처음 설정 값 저장용
     private float turtleMountMoveForce;     // #35 거북에 탔을 때, 이동 속도
 
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
 
-    private float maxSpeed = 2f;            // 가속도 적용 속도
+[SerializeField]    private float maxSpeed = 1f;            // 가속도 적용 속도
     private float originMaxSpeed;           // #1 fix 처음 설정 값 가져오기
     private float turtleMountMaxSpeed;      // #35 거북에 탔을 때, 가속도
 
@@ -62,11 +62,14 @@ public class PlayerCtrl : MonoBehaviour // #1
     
     void Start()
     {
+        moveForce = 17f;
+        maxSpeed = 1f;
+
         originMoveForce = moveForce;    // #1 fix
         originMaxSpeed = maxSpeed;      // #1 fix
 
-        turtleMountMoveForce = moveForce - 7;  // #35 거북에 탔을 때 속도 설정
-        turtleMountMaxSpeed = maxSpeed - 1;   // #35 거북에 탔을 때 가속도 설정
+        turtleMountMoveForce = moveForce - 5f;  // #35 거북에 탔을 때 속도 설정
+        turtleMountMaxSpeed = maxSpeed - 0.3f;   // #35 거북에 탔을 때 가속도 설정
 
         anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
     }
@@ -507,7 +510,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         // ROLLER 아이템 획득 개수에 따라 플레이어 이동 속도 설정
         // moveForce 디폴트 값: 30f, maxSpeed 디폴트 값: 5f
         moveForce = originMoveForce + (rollerCount) * 3;
-        maxSpeed = originMaxSpeed + (rollerCount);
+        maxSpeed = originMaxSpeed + (rollerCount) * 0.3f;
 
         Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
@@ -521,8 +524,8 @@ public class PlayerCtrl : MonoBehaviour // #1
                 Debug.Log("//#17 플레이어 이동 속도 느려지도록");
 
                 // #17 fix: 
-                moveForce = originMoveForce - 2f;    // 7f - 2f 
-                maxSpeed = originMaxSpeed - 1f;      // 2f - 1f;
+                moveForce = originMoveForce - 10f;    // 7f - 2f 
+                maxSpeed = originMaxSpeed - 0.6f;      // 2f - 1f;
                 break;
             case false: 
             // #29 플레이어 본래 (디폴트) 속도로
