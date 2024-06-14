@@ -253,26 +253,28 @@ public class MapManager : MonoBehaviour
         // #31 물풍선의 상하좌우 파악
         for(int i=0; i<_waterLength; i++)
         {
+            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+            if((balloonRow-i-1 < 0) || (balloonRow+i+1 > 6) || (balloonCol-i-1 < 0) || (balloonCol+i+1 > 8))
+            {
+                return;
+            }
+
+
             if(waterBalloonArr[balloonRow-i-1, balloonCol]==1)    // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
             {
-                if(balloonRow-i-1 < 0)   // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-                    return; 
-
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
                 CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y+i+1); // #32
             }
             if(waterBalloonArr[balloonRow+i+1, balloonCol]==1)    // 물풍선의 하(아래)
             {
-                if(balloonRow+i+1 > 6)   // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-                    return; 
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"아래쪽\" 물풍선에 닿음");
                 CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y-i-1); // #32
             }
             if(waterBalloonArr[balloonRow, balloonCol-i-1]==1)    // 물풍선의 좌(왼쪽)
-            {
-                if(balloonCol-i-1 < 0)  // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-                    return;
-                    
+            {                 
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"왼쪽\" 물풍선에 닿음");
                 Debug.Log("//#31 터진 물풍선 위치| 행: " + balloonRow + ", 열: " + balloonCol);
                 Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ balloonRow + ", 열: " + (balloonCol-i-1));
@@ -280,8 +282,6 @@ public class MapManager : MonoBehaviour
             }
             if(waterBalloonArr[balloonRow, balloonCol+i+1]==1)    // 물풍선의 우(오른쪽)
             {
-                if(balloonCol+i+1 > 8)  // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-                    return;
                 Debug.Log("//#31 물풍선의 물줄기가 다른 \"오른쪽\" 물풍선에 닿음");
                 Debug.Log("//#31 터진 물풍선 위치| 행: " + balloonRow + ", 열: " + balloonCol);
                 Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ balloonRow + ", 열: " + (balloonCol-i-1));
