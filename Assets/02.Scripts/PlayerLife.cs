@@ -30,7 +30,7 @@ public class PlayerLife : MonoBehaviour
     {
         if(!trappedInWater)
         {
-            Invoke("SetStateInWaterBalloon", 0.2f); // #17 fix: 시간 지연을 두고, 플레이어가 물풍선에 닿았을 때 상태 변화를 주기
+            Invoke("SetStateInWaterBalloon", 0.5f); // #17 fix: 시간 지연을 두고, 플레이어가 물풍선에 닿았을 때 상태 변화를 주기
             // balloonInFront 변수를 true로 만들어주는 CheckIsThereWaterBalloon함수 보다 먼저 실행되어서 생기는 문제 있었음 - 이를 보완하기 위해 Invoke 함수 이용
         }
     }
@@ -45,6 +45,7 @@ public class PlayerLife : MonoBehaviour
         {
             Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
             Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
+            playerCtrl.turtleMount = false;
             anim.SetBool("turtleMount", false);
 
             playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
