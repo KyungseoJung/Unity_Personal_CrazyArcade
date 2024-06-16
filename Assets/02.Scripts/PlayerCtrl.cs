@@ -62,7 +62,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     
     void Start()
     {
-        moveForce = 17f;
+        moveForce =17f;
         maxSpeed = 1f;
 
         originMoveForce = moveForce;    // #1 fix
@@ -396,7 +396,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
             if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
             {
-                Debug.Log("//#33 앞에 물풍선 있음");
+                // Debug.Log("//#33 앞에 물풍선 있음");
                 return;
             }
 
@@ -406,7 +406,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 if(h * rBody.velocity.x < maxSpeed)	// h가 음수이면-> rigidbody2d.velocity.x도 음수. // h가 양수이면-> 양수
                 {
                     rBody.AddForce(Vector3.right * h * moveForce);	//오른쪽방향(1,0) * 방향 * 힘 <-> 왼쪽 방향이면 (-1, 0)
-                    Debug.Log("//#1 좌우 움직임");
+                    // Debug.Log("//#1 좌우 움직임");
                 }    
             // #1 좌우 움직임 
                 // 가속도해서 더래진 플레이어의 <<수평>> 속도가 maxSpeed 보다 커지면 maxSpeed로 속도 유지
@@ -434,7 +434,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             if(v * rBody.velocity.y < maxSpeed)
             {
                 rBody.AddForce(moveDirection * moveForce);
-                Debug.Log("//#1 상하 움직임");
+                // Debug.Log("//#1 상하 움직임");
             }
 
             // Debug.Log(moveDirection.magnitude);

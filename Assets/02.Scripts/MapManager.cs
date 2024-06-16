@@ -297,7 +297,7 @@ public class MapManager : MonoBehaviour
         checkNum = 0;   // #33 특정 위치에 물풍선이 있는지 확인하기 위함 - 0으로 초기화
 
         Vector3 targetPos = new Vector3(posX, posY, 0);
-        Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
+        // Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
 
 
         // "WAterBalloon" 태그를 가진 오브젝트들을 모두 찾기
