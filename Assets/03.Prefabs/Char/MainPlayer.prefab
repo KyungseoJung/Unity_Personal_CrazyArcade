@@ -132,7 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659f739ea7075254a82b06735d4af378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpriteObj: {fileID: 0}
+  bazziObj: {fileID: 0}
+  moveForce: 17
+  maxSpeed: 1
+  balloonInFront: 0
+  turtleMount: 0
 --- !u!114 &3424069725932381565
 MonoBehaviour:
   m_ObjectHideFlags: 0

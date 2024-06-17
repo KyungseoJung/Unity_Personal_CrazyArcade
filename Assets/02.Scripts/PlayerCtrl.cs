@@ -62,14 +62,15 @@ public class PlayerCtrl : MonoBehaviour // #1
     
     void Start()
     {
-        moveForce =17f;
-        maxSpeed = 1f;
+        // #1 디폴트 속도 설정
+        moveForce =25f;
+        maxSpeed = 4f;
 
         originMoveForce = moveForce;    // #1 fix
         originMaxSpeed = maxSpeed;      // #1 fix
 
         turtleMountMoveForce = moveForce - 5f;  // #35 거북에 탔을 때 속도 설정
-        turtleMountMaxSpeed = maxSpeed - 0.3f;   // #35 거북에 탔을 때 가속도 설정
+        turtleMountMaxSpeed = maxSpeed - 3f;   // #35 거북에 탔을 때 가속도 설정
 
         anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
     }
