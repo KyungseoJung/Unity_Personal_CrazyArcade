@@ -7,6 +7,7 @@ public class PlayerLife : MonoBehaviour
     private Animator anim;  // #17 플레이어 물풍선에 갇힐 때 - 애니메이션 설정
 
     private PlayerCtrl playerCtrl;  // #17 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
+    private MapManager mapMgr;      // #28  배열 확인 후, item들을 랜덤으로 놓기 위함
 
     private Vector3 respawnPos;     // #29 리스폰 위치 지정
     public bool trappedInWater = false;    // #17 플레이어 물풍선에 갇혔는지 확인용 bool형 변수
@@ -17,6 +18,7 @@ public class PlayerLife : MonoBehaviour
     {
         anim = GetComponent<Animator>();    // #17
         playerCtrl = GetComponent<PlayerCtrl>();    // #17
+        mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #28
     }
 
     void Start()
@@ -69,6 +71,8 @@ public class PlayerLife : MonoBehaviour
         trappedInWater = false; // #28 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
         playerFaint = true;     // #28 플레이어 기절 - 움직임 불가능
         // PlayerRespawn();    // #29 - PlayerRespawn 애니메이션 끝날 때 실행되도록
+
+        ReturnSkillToMap();     // #28 플레이어가 획득했던 아이템 모두 뱉기
     }
 
     private void SpecifyLocation()  // #29
@@ -92,6 +96,39 @@ public class PlayerLife : MonoBehaviour
         PlayerGameMgr.Mgr.fluid = 1;
         PlayerGameMgr.Mgr.roller = 0;
         PlayerGameMgr.Mgr.coin = 0;
+    }
+
+    private void ReturnSkillToMap() // #28 플레이어 죽을 때마다 획득한 아이템을 모두 Map에 뱉도록 - 랜덤 위치
+    {
+        FindEmptyPlace();   // Map에서 비어있는 공간 찾기
+    }
+    private int FindEmptyPlace()    // #28
+    {
+        // 비어있는 공간 찾기
+        int mapRow;
+        int mapCol;
+        int randomNum;
+
+        randomNum= Random.Range(1,64);  // MapManager.cs 에서의 배열이 7행9열로 -> 63개의 배열값들이 존재하기 때문
+        // 예를 들어, Range(0,10) 이면 0부터 9까지의 숫자 중 랜덤으로 선택됨
+
+        mapRow = randomNum/7;   // randomNum을 7로 나누었을 때의 몫이 mapRow
+        mapCol = randomNum%7;   // randomNum을 7로 나누었을 때의 나머지가 mapCol
+
+        Debug.Log("//#28 1번째 획득 randomNum: " + randomNum + " | 행: " + mapRow + ", 열 : " + mapCol);
+
+        while((mapMgr.obstacleArr[mapRow, mapCol] == 1) || (mapMgr.itemArr[mapRow, mapCol] == 1))
+        {
+            Debug.Log("//#28 다시 찾은 숫자: " + randomNum);
+            // waterBalloonArr, obstacleArr, itemArr 배열에 이미 놓인 것이 있다면, 다시 숫자 설정
+            randomNum= Random.Range(1,64);
+
+            mapRow = randomNum/7;   // randomNum을 7로 나누었을 때의 몫이 mapRow
+            mapCol = randomNum%7;   // randomNum을 7로 나누었을 때의 나머지가 mapCol
+        }
+
+        return randomNum;
+        
     }
     
 }
