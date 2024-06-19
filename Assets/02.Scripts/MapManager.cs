@@ -7,10 +7,19 @@ public class MapManager : MonoBehaviour
 {
     public enum CHECK_TYPE {BALLOONBURST = 1, PLAYERMOVE}   // #33 물풍선 확인하는 TYPE 설정하기
     public CHECK_TYPE checkType = CHECK_TYPE.BALLOONBURST;    // #33 
-    public GameObject waterBalloonObj;  // 배치할 물풍선 프리팹
+    [SerializeField] private GameObject waterBalloonObj;  // 배치할 물풍선 프리팹
     private GameObject[] items;         // #34
 
+    // #28 플레이어가 죽으면 아이템 뱉도록 - 아이템 프리팹 넣어놓기
+    [Header("Item Prefabs")]
+    [SerializeField] private GameObject fluidItemPrefab;
+    [SerializeField] private GameObject bubbleItemPrefab;
+    [SerializeField] private GameObject rollerItemPrefab;
+    [SerializeField] private GameObject turtleItemPrefab;
+    [SerializeField] private GameObject coinItemPrefab;
+
     private Vector3 balloonPos;         // #4 물풍선 배치 위치
+    private Vector3 itemPos;            // #28 아이템 배치 위치
 
     private int waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
 
@@ -165,6 +174,34 @@ public class MapManager : MonoBehaviour
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
 
+    public void PlaceItemPrefab(Item.ITEM_TYPE _type, Transform _trans) // #28 맵 위에 특정 위치에 아이템 배치하기
+    {
+        // 아이템 배치 위치 지정
+        // itemPos
+
+        switch(_type)
+        {
+            case Item.ITEM_TYPE.FLUID:
+                Instantiate(fluidItemPrefab, itemPos, Quaternion.identity);
+                break;
+
+            case Item.ITEM_TYPE.BUBBLE:
+                Instantiate(bubbleItemPrefab, itemPos, Quaternion.identity);
+                break;
+
+            case Item.ITEM_TYPE.ROLLER:
+                Instantiate(rollerItemPrefab, itemPos, Quaternion.identity);
+                break;
+
+            case Item.ITEM_TYPE.TURTLE:
+                Instantiate(turtleItemPrefab, itemPos, Quaternion.identity);
+                break;
+
+            case Item.ITEM_TYPE.COIN:
+                Instantiate(coinItemPrefab, itemPos, Quaternion.identity);
+                break;
+        }
+    }
     public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
     {
         balloonRow = ReturnRowInMatrix(_y);

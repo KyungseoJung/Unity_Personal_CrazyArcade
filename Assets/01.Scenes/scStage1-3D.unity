@@ -718,9 +718,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
         type: 3}
+      propertyPath: coinItemPrefab
+      value: 
+      objectReference: {fileID: 8084810170275224035, guid: a194b011ef7b3274dbadd0f828839c17,
+        type: 3}
+    - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
+        type: 3}
+      propertyPath: fluidItemPrefab
+      value: 
+      objectReference: {fileID: 2450547294370451991, guid: a535ae0db0ed8184eb3d29e40073a664,
+        type: 3}
+    - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
+        type: 3}
       propertyPath: waterBalloonObj
       value: 
       objectReference: {fileID: 1653983559865952753, guid: 833e6082e2afd6e4786871efca642c52,
+        type: 3}
+    - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
+        type: 3}
+      propertyPath: rollerItemPrefab
+      value: 
+      objectReference: {fileID: 1495263558174724791, guid: 88b50286934442441bfa469d15b08283,
+        type: 3}
+    - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
+        type: 3}
+      propertyPath: turtleItemPrefab
+      value: 
+      objectReference: {fileID: 4641561110115198904, guid: b610311ac7097234f83d96115058610f,
+        type: 3}
+    - target: {fileID: 1150674633024040517, guid: 32000292283fa9945ae482bb558a33f5,
+        type: 3}
+      propertyPath: balloonItemPrefab
+      value: 
+      objectReference: {fileID: 8513862709648437680, guid: a0a52091819984f4484eb636ef2cb199,
         type: 3}
     - target: {fileID: 1150674633024040523, guid: 32000292283fa9945ae482bb558a33f5,
         type: 3}
