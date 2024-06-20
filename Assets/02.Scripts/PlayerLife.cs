@@ -10,6 +10,17 @@ public class PlayerLife : MonoBehaviour
     private MapManager mapMgr;      // #28  배열 확인 후, item들을 랜덤으로 놓기 위함
 
     private Vector3 respawnPos;     // #29 리스폰 위치 지정
+
+    // #28 비어있는 공간 찾기
+    int mapRow;
+    int mapCol;
+    int randomNum;
+    int mapPlaceNum;
+    int mapPlaceRow;
+    int mapPlaceCol;
+    float mapPlaceX;
+    float mapPlaceY;
+    
     public bool trappedInWater = false;    // #17 플레이어 물풍선에 갇혔는지 확인용 bool형 변수
     public bool playerFaint = false;       // #28 플레이어 기절했는지 확인
     private bool playerDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
@@ -100,16 +111,23 @@ public class PlayerLife : MonoBehaviour
 
     private void ReturnSkillToMap() // #28 플레이어 죽을 때마다 획득한 아이템을 모두 Map에 뱉도록 - 랜덤 위치
     {
-        FindEmptyPlace();   // Map에서 비어있는 공간 찾기
+        mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
+        mapPlaceRow = mapPlaceNum/7;    // mapPlaceNum을 7로 나누었을 때의 몫
+        mapPlaceCol = mapPlaceNum%7;    // mapPlaceNum을 7로 나누었을 때의 나머지0 
+        Debug.Log("//#28 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+        mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
+        mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
+        Debug.Log("//#28 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
     }
+
     private int FindEmptyPlace()    // #28
     {
         // 비어있는 공간 찾기
-        int mapRow;
-        int mapCol;
-        int randomNum;
+        // int mapRow;
+        // int mapCol;
+        // int randomNum;
 
-        randomNum= Random.Range(1,64);  // MapManager.cs 에서의 배열이 7행9열로 -> 63개의 배열값들이 존재하기 때문
+        randomNum= Random.Range(0,63);  // MapManager.cs 에서의 배열이 7행9열로 -> 63개의 배열값들이 존재하기 때문 -> 0부터 62까지 63개 배열
         // 예를 들어, Range(0,10) 이면 0부터 9까지의 숫자 중 랜덤으로 선택됨
 
         mapRow = randomNum/7;   // randomNum을 7로 나누었을 때의 몫이 mapRow
@@ -117,7 +135,7 @@ public class PlayerLife : MonoBehaviour
 
         Debug.Log("//#28 1번째 획득 randomNum: " + randomNum + " | 행: " + mapRow + ", 열 : " + mapCol);
 
-        while((mapMgr.obstacleArr[mapRow, mapCol] == 1) || (mapMgr.itemArr[mapRow, mapCol] == 1))
+        while((mapMgr.obstacleArr[mapRow, mapCol] == 1) || (mapMgr.itemArr[mapRow, mapCol] == 1))   // 장애물 또는 아이템이 하나라도 겹쳐 있다면, 다시 좌표 찾기
         {
             Debug.Log("//#28 다시 찾은 숫자: " + randomNum);
             // waterBalloonArr, obstacleArr, itemArr 배열에 이미 놓인 것이 있다면, 다시 숫자 설정

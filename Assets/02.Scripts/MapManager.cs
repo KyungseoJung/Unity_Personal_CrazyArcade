@@ -99,6 +99,15 @@ public class MapManager : MonoBehaviour
         return (Mathf.RoundToInt(_x) + 4);
     }
 
+    public int ConvertRowToYCoordinate(int _row)
+    {
+        return (-(_row)+3);
+    }
+        public int ConvertColToXCoordinate(int _col)
+    {
+        return (_col -4);
+    }
+
     private void CheckObstaclePos() // #25 장애물 위치 - 배열 확인 -> Start에서 1번 실행
     {
         Debug.Log("//#25 CheckObstaclePos");
