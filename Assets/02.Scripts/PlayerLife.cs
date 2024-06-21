@@ -111,13 +111,27 @@ public class PlayerLife : MonoBehaviour
 
     private void ReturnSkillToMap() // #28 플레이어 죽을 때마다 획득한 아이템을 모두 Map에 뱉도록 - 랜덤 위치
     {
-        mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
-        mapPlaceRow = mapPlaceNum/7;    // mapPlaceNum을 7로 나누었을 때의 몫
-        mapPlaceCol = mapPlaceNum%7;    // mapPlaceNum을 7로 나누었을 때의 나머지0 
-        Debug.Log("//#28 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
-        mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
-        mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-        Debug.Log("//#28 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+        // #28 플레이어가 갖고 있는 아이템 종류 & 수 확인
+
+        Vector3 placePos;
+
+        int fluidNum = PlayerGameMgr.Mgr.fluid;
+
+        for(int i=1; i<fluidNum; i++)
+        {
+            mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
+            mapPlaceRow = mapPlaceNum/7;    // mapPlaceNum을 7로 나누었을 때의 몫
+            mapPlaceCol = mapPlaceNum%7;    // mapPlaceNum을 7로 나누었을 때의 나머지0 
+            Debug.Log("//#28 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
+            mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
+            Debug.Log("//#28 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            
+            placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.FLUID, placePos);
+        }
+
+
     }
 
     private int FindEmptyPlace()    // #28

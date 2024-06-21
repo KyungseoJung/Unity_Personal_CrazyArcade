@@ -183,10 +183,10 @@ public class MapManager : MonoBehaviour
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
 
-    public void PlaceItemPrefab(Item.ITEM_TYPE _type, Transform _trans) // #28 맵 위에 특정 위치에 아이템 배치하기
+    public void PlaceItemPrefab(Item.ITEM_TYPE _type, Vector3 _pos) // #28 맵 위에 특정 위치에 아이템 배치하기
     {
         // 아이템 배치 위치 지정
-        // itemPos
+        itemPos = _pos;
 
         switch(_type)
         {
