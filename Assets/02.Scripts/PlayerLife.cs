@@ -120,8 +120,8 @@ public class PlayerLife : MonoBehaviour
         for(int i=1; i<fluidNum; i++)
         {
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
-            mapPlaceRow = mapPlaceNum/7;    // mapPlaceNum을 7로 나누었을 때의 몫
-            mapPlaceCol = mapPlaceNum%7;    // mapPlaceNum을 7로 나누었을 때의 나머지0 
+            mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
+            mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
             Debug.Log("//#28 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
@@ -144,8 +144,8 @@ public class PlayerLife : MonoBehaviour
         randomNum= Random.Range(0,63);  // MapManager.cs 에서의 배열이 7행9열로 -> 63개의 배열값들이 존재하기 때문 -> 0부터 62까지 63개 배열
         // 예를 들어, Range(0,10) 이면 0부터 9까지의 숫자 중 랜덤으로 선택됨
 
-        mapRow = randomNum/7;   // randomNum을 7로 나누었을 때의 몫이 mapRow
-        mapCol = randomNum%7;   // randomNum을 7로 나누었을 때의 나머지가 mapCol
+        mapRow = randomNum/9;   // randomNum을 9로 나누었을 때의 몫이 mapRow
+        mapCol = randomNum%9;   // randomNum을 9로 나누었을 때의 나머지가 mapCol
 
         Debug.Log("//#28 1번째 획득 randomNum: " + randomNum + " | 행: " + mapRow + ", 열 : " + mapCol);
 
@@ -153,10 +153,10 @@ public class PlayerLife : MonoBehaviour
         {
             Debug.Log("//#28 다시 찾은 숫자: " + randomNum);
             // waterBalloonArr, obstacleArr, itemArr 배열에 이미 놓인 것이 있다면, 다시 숫자 설정
-            randomNum= Random.Range(1,64);
+            randomNum= Random.Range(0,63);
 
-            mapRow = randomNum/7;   // randomNum을 7로 나누었을 때의 몫이 mapRow
-            mapCol = randomNum%7;   // randomNum을 7로 나누었을 때의 나머지가 mapCol
+            mapRow = randomNum/9;   // randomNum을 9로 나누었을 때의 몫이 mapRow
+            mapCol = randomNum%9;   // randomNum을 9로 나누었을 때의 나머지가 mapCol
         }
 
         return randomNum;
