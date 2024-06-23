@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
@@ -8,7 +8,9 @@ public class MapManager : MonoBehaviour
     public enum CHECK_TYPE {BALLOONBURST = 1, PLAYERMOVE}   // #33 물풍선 확인하는 TYPE 설정하기
     public CHECK_TYPE checkType = CHECK_TYPE.BALLOONBURST;    // #33 
     [SerializeField] private GameObject waterBalloonObj;  // 배치할 물풍선 프리팹
+    private GameObject[] obstacles;     // #25
     private GameObject[] items;         // #34
+    private GameObject[] bushes;        // #25 Bush가 있는 곳에는 obstacleArr배열 값을 1로 설정해서 - 물풍선 놓을 수 없도록
 
     // #28 플레이어가 죽으면 아이템 뱉도록 - 아이템 프리팹 넣어놓기
     [Header("Item Prefabs")]
@@ -112,18 +114,31 @@ public class MapManager : MonoBehaviour
     {
         Debug.Log("//#25 CheckObstaclePos");
         // #25 Obstacle 태그를 가진 모든 오브젝트에 접근
-        GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         items = GameObject.FindGameObjectsWithTag("Item");
+        bushes = GameObject.FindGameObjectsWithTag("Bush");
 
         // #25 
         for(int i=0; i<obstacles.Length; i++)
         {
             obsRow = ReturnRowInMatrix(obstacles[i].transform.position.y);     // #26 함수 이용
             obsCol =  ReturnColInMatrix(obstacles[i].transform.position.x);    // #26 함수 이용
-            Debug.Log("//#25 Obstacle 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
-            Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + obstacles[i].gameObject.name);
+            Debug.Log("//#25 Obstacle(Bush 제외) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
+            Debug.Log("//#25 Ostacle(Bush 제외) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + obstacles[i].gameObject.name);
             obstacleArr[obsRow, obsCol] = 1;  // #25 
 
+        }
+
+        //#25 ObstacleArr 배열
+        // Bush가 있는 곳에는 obstacleArr배열 값을 1로 설정해서 - 물풍선 놓을 수 없도록
+        for(int i=0; i<bushes.Length; i++)
+        {
+            obsRow = ReturnRowInMatrix(bushes[i].transform.position.y);     // #26 함수 이용
+            obsCol =  ReturnColInMatrix(bushes[i].transform.position.x);    // #26 함수 이용
+            Debug.Log("//#25 Obstacle(Bush만) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
+            Debug.Log("//#25 Ostacle(Bush만) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + bushes[i].gameObject.name);
+
+            obstacleArr[obsRow, obsCol] = 1;
         }
 
         // #25 아이템 배열
