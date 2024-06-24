@@ -43,5 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa6d4b6db5591241a6d7e5f4f3a0028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkType: 1
   waterBalloonObj: {fileID: 8617705400216813924, guid: 7fbc2f1ff3619a34c9f67ad3b40941ab,
+    type: 3}
+  fluidItemPrefab: {fileID: 2450547294370451991, guid: a535ae0db0ed8184eb3d29e40073a664,
+    type: 3}
+  bubbleItemPrefab: {fileID: 8513862709648437680, guid: a0a52091819984f4484eb636ef2cb199,
+    type: 3}
+  rollerItemPrefab: {fileID: 1495263558174724791, guid: 88b50286934442441bfa469d15b08283,
+    type: 3}
+  turtleItemPrefab: {fileID: 4641561110115198904, guid: b610311ac7097234f83d96115058610f,
+    type: 3}
+  coinItemPrefab: {fileID: 8084810170275224035, guid: a194b011ef7b3274dbadd0f828839c17,
     type: 3}

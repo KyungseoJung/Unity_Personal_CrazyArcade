@@ -116,19 +116,34 @@ public class PlayerLife : MonoBehaviour
         Vector3 placePos;
 
         int fluidNum = PlayerGameMgr.Mgr.fluid;
+        int waterballoonNum = PlayerGameMgr.Mgr.waterballoonNum;
 
         for(int i=1; i<fluidNum; i++)
         {
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
             mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
             mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
-            Debug.Log("//#28 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-            Debug.Log("//#28 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.FLUID, placePos);
+        }
+
+        for(int i=1; i<waterballoonNum; i++)
+        {
+            mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
+            mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
+            mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
+            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
+            mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
+            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            
+            placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.BUBBLE, placePos);
         }
 
 
