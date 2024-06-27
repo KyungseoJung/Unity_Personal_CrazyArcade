@@ -52,6 +52,7 @@ public class Item : MonoBehaviour   // #10
                 
                 case ITEM_TYPE.TURTLE :     // #16 TURTLE 아이템
                     PlayerGameMgr.Mgr.turtle = true;
+                    PlayerGameMgr.Mgr.turtleNum += 1;   // #16 아이템 획득 수 추가
                     other.gameObject.GetComponent<PlayerCtrl>().TurtleMount(true);  // #35 플레이어가 거북에 올라탐
                     Destroy(this.gameObject);   // 플레이어 획득
                     break;
