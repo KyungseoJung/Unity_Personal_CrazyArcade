@@ -119,6 +119,7 @@ public class PlayerLife : MonoBehaviour
         int waterballoonNum = PlayerGameMgr.Mgr.waterballoonNum;
         int rollerNum = PlayerGameMgr.Mgr.roller;
         int turtleNum = PlayerGameMgr.Mgr.turtleNum;
+        int coinNum = PlayerGameMgr.Mgr.coin;
 
         for(int i=1; i<fluidNum; i++)
         {
@@ -174,6 +175,20 @@ public class PlayerLife : MonoBehaviour
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.TURTLE, placePos);
+        }
+
+        for(int i=0; i<coinNum; i++)
+        {
+            mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
+            mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
+            mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
+            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
+            mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
+            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            
+            placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.COIN, placePos);   
         }
     }
 
