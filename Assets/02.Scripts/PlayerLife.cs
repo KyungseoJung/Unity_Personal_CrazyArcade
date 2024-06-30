@@ -106,6 +106,7 @@ public class PlayerLife : MonoBehaviour
         PlayerGameMgr.Mgr.waterballoonNum = 1;
         PlayerGameMgr.Mgr.fluid = 1;
         PlayerGameMgr.Mgr.roller = 0;
+        PlayerGameMgr.Mgr.turtleNum = 0;
         PlayerGameMgr.Mgr.coin = 0;
     }
 
