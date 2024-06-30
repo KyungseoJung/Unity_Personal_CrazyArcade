@@ -28,6 +28,7 @@ public class MapManager : MonoBehaviour
     int balloonRow, balloonCol;   // #4 선언 위치만 바꿈
     int obsRow, obsCol;           // #4 장애물 전용 row, col
     int itemRow, itemCol;         // #4 아이템 전용 row, col
+    int bushRow, bushCol;         // #36 Bush 전용 row, col
     int playerRow, playerCol;   // #17
     int rowNum = 4; // #25
     int colNum = 3; // #25
@@ -306,6 +307,34 @@ public class MapManager : MonoBehaviour
         }
     } 
     
+    public void CheckBushTouchFluid(Transform _balloonTrans, int _waterLength)  // #36 물풍선의 물줄기가 덤불(Bush)에 닿았나 확인 - 닿았으면 Bush Destroy
+    {
+        bushes = GameObject.FindGameObjectsWithTag("Bush");
+        for(int i=0; i<bushes.Length; i++)
+        {
+            // 배열 확인
+            balloonRow = ReturnRowInMatrix(_balloonTrans.position.y);
+            balloonCol = ReturnColInMatrix(_balloonTrans.position.x);
+            bushRow = ReturnRowInMatrix(bushes[i].transform.position.y);
+            bushCol = ReturnColInMatrix(bushes[i].transform.position.x);
+            // 만약 아이템이 '터지는 물풍선'과 같은 행이라면
+            // && 아이템과 물풍선과의 거리가 _waterLength보다 가깝다면
+            if((balloonRow == bushRow) && 
+                ((bushCol - balloonCol)*(bushCol - balloonCol) <= (_waterLength)*(_waterLength)))
+            {
+                Debug.Log("//#34 같은 행 - 아이템이 물줄기에 닿음");
+                Debug.Log("//#36: " + this.gameObject.name + " 장애물(Obstacle) 삭제");
+            }
+            // 만약 플레이어가 터지는 물풍선과 같은 열이라면
+            // && 플레이어와 물풍선과의 거리가 _waterLength보다 가깝다면
+            if((balloonCol == bushCol) &&
+                ((bushRow-balloonRow)*(bushRow-balloonRow) <= (_waterLength)*(_waterLength)))
+            {
+                Debug.Log("//#17 같은 열 - 아이템이 물줄기에 닿음");
+                Debug.Log("//#36: " + this.gameObject.name + " 장애물(Obstacle) 삭제");
+            }
+        } 
+    }
     public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
     // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
     {

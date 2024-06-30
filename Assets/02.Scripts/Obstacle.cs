@@ -214,6 +214,9 @@ public class Obstacle : MonoBehaviour
 
         // #34 물풍선의 물줄기가 아이템에 닿았나 확인 - 닿았으면 아이템 Destroy
         mapMgr.CheckItemTouchFluid(this.transform, _waterLength);
+
+        // #36 물풍선의 물줄기가 덤불(Bush)에 닿았나 확인 - 닿았으면 Bush Destroy
+        mapMgr.CheckBushTouchFluid(this.transform, _waterLength);
                                     
     }
 
