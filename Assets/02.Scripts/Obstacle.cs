@@ -224,5 +224,9 @@ public class Obstacle : MonoBehaviour
     // {
     //     Destroy(this.gameObject);    // #9 물풍선 파괴
     // }
-
+    public void DestroyObstacle()   // #36
+    {
+        Debug.Log("//#36: " + this.gameObject.name + " 장애물(Obstacle) 삭제");
+        Destroy(this.gameObject);
+    }
 }   
