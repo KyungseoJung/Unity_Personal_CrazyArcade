@@ -162,6 +162,14 @@ public class MapManager : MonoBehaviour
         itemArr[itemRow, itemCol] = 0;  // #10 
     }
 
+    public void RemoveObsPos(Transform _trans)  // #36 특정 장애물(예: Bush)이 사라지면 해당 위치의 obstacleArr을 0으로 전환
+    {
+        obsRow = ReturnRowInMatrix(_trans.position.y);
+        obsCol = ReturnColInMatrix(_trans.position.x);
+        Debug.Log("//# 36 장애물 배열 삭제");
+        obstacleArr[obsRow, obsCol] = 0;    // #36   
+    }
+
     public void PlaceWaterBalloon(float _x, float _y)    // #4 플레이어 물풍선 놓기 - 받아오는 parameter는 플레이어의 좌표
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록

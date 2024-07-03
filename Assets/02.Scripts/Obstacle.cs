@@ -228,5 +228,7 @@ public class Obstacle : MonoBehaviour
     {
         Debug.Log("//#36: " + this.gameObject.name + " 장애물(Obstacle) 삭제");
         Destroy(this.gameObject);
+
+        mapMgr.RemoveObsPos(this.transform);    // #36 해당 위치의 obstacleArr 배열값을 0으로 설정
     }
 }   
