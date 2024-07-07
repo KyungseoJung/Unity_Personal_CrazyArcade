@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 588492921368584235}
   - component: {fileID: 8903126843956647856}
   - component: {fileID: 1653983559865952759}
+  - component: {fileID: 9087957676565668873}
   m_Layer: 0
   m_Name: Obj_WaterBalloon_5
   m_TagString: WaterBalloon
@@ -242,6 +243,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.4, y: 1.4, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &9087957676565668873
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653983559865952753}
+  m_Material: {fileID: 13400000, guid: 80af1e067cfa63e46a3e56c6a3322507, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1653983559867768621
 GameObject:

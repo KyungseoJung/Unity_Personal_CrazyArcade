@@ -15,7 +15,8 @@ public class Obstacle : MonoBehaviour
     private MapManager mapMgr;             // #8 물풍선 지우기 위함
     private LayerSetting layerSetting;      // #2 WOODBLOCK 층 번호 설정
     private Transform playerTrans;          // #17 플레이어가 물줄기에 닿았는지 확인
-
+    private SphereCollider sphereCollider;  // #33
+    
     Vector3 playerTransform;  // #14 장애물과 부딪힌 플레이어의 위치
     Vector3 woodPos;          // #14 
 
@@ -42,6 +43,11 @@ public class Obstacle : MonoBehaviour
 
         layerSetting = this.GetComponent<LayerSetting>();   // #2
         anim = transform.GetComponent<Animator>();    
+
+        if(obstacleType == OBSTACLE_TYPE.WATERBALLOON)  // #33
+        {
+            sphereCollider = this.GetComponent<SphereCollider>();
+        }
         
     }
     
@@ -126,6 +132,19 @@ public class Obstacle : MonoBehaviour
                 }
                 break;
 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch(obstacleType)
+        {
+            case OBSTACLE_TYPE.WATERBALLOON:
+                // #33 BoxCollider와 반응 - 
+                // 플레이어가 물풍선을 놓은 후, 물풍선에서 벗어나면 그제서야 물풍선의 Sphere Collider가 활성화되도록 
+                // - 플레이어가 물풍선을 놓은 후, 콜라이더 처리 때문에 물풍선을 벗어나지 못하는 문제를 방지하기 위해
+                sphereCollider.enabled = true;
+                break;
         }
     }
 
