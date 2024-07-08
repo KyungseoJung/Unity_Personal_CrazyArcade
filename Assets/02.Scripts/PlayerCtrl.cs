@@ -269,14 +269,14 @@ public class PlayerCtrl : MonoBehaviour // #1
         }    
     }
 
-    private void OnTriggerStay(Collider other) 
-    {
-        if(other.gameObject.tag == "WaterBalloon")
-        {
-            // Debug.Log("//#33 OnTriggerStay - WaterBalloon 닿음");
-            CheckObstacleBalloon();    // #33 플레이어가 이동하고자 하는 방향에 물풍선이 있는지 확인
-        }    
-    }
+    // private void OnTriggerStay(Collider other) 
+    // {
+    //     if(other.gameObject.tag == "WaterBalloon")
+    //     {
+    //         // Debug.Log("//#33 OnTriggerStay - WaterBalloon 닿음");
+    //         CheckObstacleBalloon();    // #33 플레이어가 이동하고자 하는 방향에 물풍선이 있는지 확인
+    //     }    
+    // }
     
     private void OnTriggerExit(Collider other)      
     {
@@ -294,6 +294,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             }        
         }    
         
+        // #33 fix: SphereCollider로 통제해서 코드 필요 없음
         // if(other.gameObject.tag == "WaterBalloon")  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
         // {
         //     CheckObstacleBalloon(); // #33 fix
@@ -459,33 +460,34 @@ public class PlayerCtrl : MonoBehaviour // #1
     //     this.transform.position = pos;
     // }
 
-    private void CheckObstacleBalloon()    // #33 플레이어가 가려고 하는 방향에 물풍선이 있는지 확인 - 있다면 물풍선 위로 못 지나가도록
-    {
-        posX = Mathf.RoundToInt(transform.position.x);
-        posY = Mathf.RoundToInt(transform.position.y);
+    // #33 fix: SphereCollider로 통제해서 코드 필요 없음
+    // private void CheckObstacleBalloon()    // #33 플레이어가 가려고 하는 방향에 물풍선이 있는지 확인 - 있다면 물풍선 위로 못 지나가도록
+    // {
+    //     posX = Mathf.RoundToInt(transform.position.x);
+    //     posY = Mathf.RoundToInt(transform.position.y);
 
-        // if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-        // {
-        //     Debug.Log("//#33 CheckObstacleBalloon 실행");
-        // }
+    //     // if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+    //     // {
+    //     //     Debug.Log("//#33 CheckObstacleBalloon 실행");
+    //     // }
 
-        if(Input.GetKey(KeyCode.UpArrow))   // 상하좌우 중 상
-        {
-            mapMgr.CheckIsThereWaterBalloon(posX, posY+1, MapManager.CHECK_TYPE.PLAYERMOVE);
-        }
-        if(Input.GetKey(KeyCode.DownArrow)) // 상하좌우 중 하
-        {
-            mapMgr.CheckIsThereWaterBalloon(posX, posY-1, MapManager.CHECK_TYPE.PLAYERMOVE);
-        }
-        if(Input.GetKey(KeyCode.LeftArrow)) // 상하좌우 중 좌
-        {
-            mapMgr.CheckIsThereWaterBalloon(posX-1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
-        }
-        if(Input.GetKey(KeyCode.RightArrow)) // 상하좌우 중 우
-        {
-            mapMgr.CheckIsThereWaterBalloon(posX+1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
-        }
-    }
+    //     if(Input.GetKey(KeyCode.UpArrow))   // 상하좌우 중 상
+    //     {
+    //         mapMgr.CheckIsThereWaterBalloon(posX, posY+1, MapManager.CHECK_TYPE.PLAYERMOVE);
+    //     }
+    //     if(Input.GetKey(KeyCode.DownArrow)) // 상하좌우 중 하
+    //     {
+    //         mapMgr.CheckIsThereWaterBalloon(posX, posY-1, MapManager.CHECK_TYPE.PLAYERMOVE);
+    //     }
+    //     if(Input.GetKey(KeyCode.LeftArrow)) // 상하좌우 중 좌
+    //     {
+    //         mapMgr.CheckIsThereWaterBalloon(posX-1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
+    //     }
+    //     if(Input.GetKey(KeyCode.RightArrow)) // 상하좌우 중 우
+    //     {
+    //         mapMgr.CheckIsThereWaterBalloon(posX+1, posY, MapManager.CHECK_TYPE.PLAYERMOVE);
+    //     }
+    // }
 
     // #6 fix: 플레이어가 덤불에 숨는 것처럼 보이도록 하기 위한 방법으로 Alpha를 설정하는 게 아닌, 오브젝트 자체를 비활성화 하는 방법을 채택해보자
     // void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록

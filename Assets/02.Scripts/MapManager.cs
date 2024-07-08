@@ -414,11 +414,13 @@ public class MapManager : MonoBehaviour
                     case CHECK_TYPE.BALLOONBURST:   // 다른 물풍선도 터지도록
                         obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
                         break;
-                    case CHECK_TYPE.PLAYERMOVE: // 
-                        Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
-                        // playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음 // #33 fix 주석 처리
-                        playerCtrl.balloonInFront = true;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
-                        break;
+                
+                    // #33 fix: SphereCollider로 통제해서 코드 필요 없음
+                    // case CHECK_TYPE.PLAYERMOVE: // 
+                    //     Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
+                    //     // playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음 // #33 fix 주석 처리
+                    //     playerCtrl.balloonInFront = true;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+                    //     break;
                 }
             }
         }
