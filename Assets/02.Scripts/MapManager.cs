@@ -425,16 +425,17 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        // #33 fix: 플레이어가 가고자 하는 방향에 물풍선이 하나도 없다면, 플레이어 이동 가능하도록
-        if(checkNum == 0)   
-        {
-            // Debug.Log("//#33 (" + posX + ", " + posY + ") 위치에 물풍선이 없습니다." );
-            playerCtrl.balloonInFront = false;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가/ 없다면, 플레이어 이동 가능
-        }
-        else
-        {
-            Debug.Log("//#33 checkNum이 0이 아님: "+ checkNum);
-        }
+        // #33 fix: SphereCollider로 통제해서 balloonInFront 변수 필요 없음
+        // // #33 fix: 플레이어가 가고자 하는 방향에 물풍선이 하나도 없다면, 플레이어 이동 가능하도록
+        // if(checkNum == 0)   
+        // {
+        //     // Debug.Log("//#33 (" + posX + ", " + posY + ") 위치에 물풍선이 없습니다." );
+        //     playerCtrl.balloonInFront = false;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가/ 없다면, 플레이어 이동 가능
+        // }
+        // else
+        // {
+        //     Debug.Log("//#33 checkNum이 0이 아님: "+ checkNum);
+        // }
     }
 
 }

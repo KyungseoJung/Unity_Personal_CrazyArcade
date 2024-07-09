@@ -45,7 +45,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     private float posX, posY;               // #33
     private bool lookingAhead = false;              // #23 정면 바라보는지 체크
-    public bool balloonInFront = false;    // #33 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+    // public bool balloonInFront = false;    // #33 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
     public bool turtleMount = false;       // #35 거북에 올라탐
 
     void Awake()
@@ -396,11 +396,12 @@ public class PlayerCtrl : MonoBehaviour // #1
             else if((h>0) && anim.GetInteger("MoveDir")!=4)     // 중복 방지
                 anim.SetInteger("MoveDir", 4);  //오른쪽 쳐다보도록
 
-            if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
-            {
-                // Debug.Log("//#33 앞에 물풍선 있음");
-                return;
-            }
+            // #33 fix: SphereCollider로 통제해서 balloonInFront 변수 필요 없음
+            // if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+            // {
+            //     // Debug.Log("//#33 앞에 물풍선 있음");
+            //     return;
+            // }
 
             // #1 좌우 움직임 
                 // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
@@ -426,11 +427,12 @@ public class PlayerCtrl : MonoBehaviour // #1
             else if((v<0) && anim.GetInteger("MoveDir")!=2 )
                 anim.SetInteger("MoveDir", 2);  //아래쪽 쳐다보도록
 
-            if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
-            {
-                Debug.Log("//#33 앞에 물풍선 있음");
-                return;
-            }
+            // #33 fix: SphereCollider로 통제해서 balloonInFront 변수 필요 없음
+            // if(balloonInFront)  // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+            // {
+            //     Debug.Log("//#33 앞에 물풍선 있음");
+            //     return;
+            // }
 
             // #1 상하 움직임 
             if(v * rBody.velocity.y < maxSpeed)

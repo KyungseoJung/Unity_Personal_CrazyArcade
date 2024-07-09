@@ -50,14 +50,15 @@ public class PlayerLife : MonoBehaviour
 
     private void SetStateInWaterBalloon()
     {
-        playerCtrl.balloonInFront = false;  // #33 fix 물풍선에 맞았을 때 - balloonInfront = false 처리해주기.
+        // #33 fix: SphereCollider로 통제해서 balloonInFront 변수 필요 없음
+        // playerCtrl.balloonInFront = false;  // #33 fix 물풍선에 맞았을 때 - balloonInfront = false 처리해주기.
         // 여기서 이 처리를 안 해주면, 물풍선을 바라보는 상태에서 물풍선을 맞은 후, 계속 가만히 서 있는 경우가 있음
         // 결론적으로 MapManager.cs에서는 balloonInFront = false 처리를 해주지 않으므로, 계속 가만히 서 있는 경우를 방지하기 위해
         // #35 플레이어가 거북에 타고 있었다면 - 거북에서만 내려오게 하고 함수 탈출
         if(playerCtrl.turtleMount) 
         {
             Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
-            Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
+            // Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
             playerCtrl.turtleMount = false;
             anim.SetBool("turtleMount", false);
 
