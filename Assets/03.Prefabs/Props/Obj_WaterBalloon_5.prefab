@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 280099744993125472}
+  - component: {fileID: 5949029761261031948}
   m_Layer: 0
   m_Name: waterLeft
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 1653983559865952752}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5949029761261031948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141030962996341457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWaterObj: {fileID: 1735776669900599464}
+  secondWaterObj: {fileID: 2184976630793314389}
 --- !u!1 &985338888944041093
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,10 +58,9 @@ GameObject:
   - component: {fileID: 4882347271342194010}
   - component: {fileID: 9211363046971679888}
   - component: {fileID: 4566390951550755939}
-  - component: {fileID: 3117447734134037434}
   m_Layer: 0
   m_Name: down1
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,23 +139,10 @@ BoxCollider:
   m_GameObject: {fileID: 985338888944041093}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3117447734134037434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985338888944041093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 0}
 --- !u!1 &1653983559865952753
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,10 +379,9 @@ GameObject:
   - component: {fileID: 7224928064623731597}
   - component: {fileID: 6613025906390366340}
   - component: {fileID: 7487023916864215467}
-  - component: {fileID: 2602144661524617456}
   m_Layer: 0
   m_Name: left1
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,23 +460,10 @@ BoxCollider:
   m_GameObject: {fileID: 1735776669900599464}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2602144661524617456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735776669900599464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 0}
 --- !u!1 &2184976630793314389
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,10 +475,9 @@ GameObject:
   - component: {fileID: 8693641415068161095}
   - component: {fileID: 5149949176163537933}
   - component: {fileID: 4218085638103552071}
-  - component: {fileID: 3461494585920109055}
   m_Layer: 0
   m_Name: left2
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,23 +556,10 @@ BoxCollider:
   m_GameObject: {fileID: 2184976630793314389}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3461494585920109055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2184976630793314389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 1735776669900599464}
 --- !u!1 &3082284697679435916
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,10 +571,9 @@ GameObject:
   - component: {fileID: 4479272163747040521}
   - component: {fileID: 8450356389519684675}
   - component: {fileID: 772472929359596491}
-  - component: {fileID: 2043819817548477186}
   m_Layer: 0
   m_Name: up2
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,23 +652,10 @@ BoxCollider:
   m_GameObject: {fileID: 3082284697679435916}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2043819817548477186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3082284697679435916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 8734023670174489468}
 --- !u!1 &3573971122498902708
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155459949587594741}
+  - component: {fileID: 21693628716331177}
   m_Layer: 0
   m_Name: waterUp
   m_TagString: Untagged
@@ -729,6 +689,20 @@ Transform:
   m_Father: {fileID: 1653983559865952752}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &21693628716331177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3573971122498902708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWaterObj: {fileID: 8734023670174489468}
+  secondWaterObj: {fileID: 3082284697679435916}
 --- !u!1 &4121132925504349890
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6193494141180374644}
+  - component: {fileID: 5172555288812393116}
   m_Layer: 0
   m_Name: waterDown
   m_TagString: Untagged
@@ -761,6 +736,20 @@ Transform:
   m_Father: {fileID: 1653983559865952752}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5172555288812393116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121132925504349890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWaterObj: {fileID: 985338888944041093}
+  secondWaterObj: {fileID: 5642403600740589510}
 --- !u!1 &5642403600740589510
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,10 +761,9 @@ GameObject:
   - component: {fileID: 1597618656077968178}
   - component: {fileID: 3646319343671258855}
   - component: {fileID: 285908825968761044}
-  - component: {fileID: 595960800713100617}
   m_Layer: 0
   m_Name: down2
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -854,23 +842,10 @@ BoxCollider:
   m_GameObject: {fileID: 5642403600740589510}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &595960800713100617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5642403600740589510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 985338888944041093}
 --- !u!1 &5779717295123463485
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,10 +857,9 @@ GameObject:
   - component: {fileID: 551254378299565383}
   - component: {fileID: 8810433212014498462}
   - component: {fileID: 6164389999066983903}
-  - component: {fileID: 1231454469836951851}
   m_Layer: 0
   m_Name: right1
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,23 +938,10 @@ BoxCollider:
   m_GameObject: {fileID: 5779717295123463485}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1231454469836951851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5779717295123463485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 0}
 --- !u!1 &6759980948613572381
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 924337620169977993}
+  - component: {fileID: 7865072723350489394}
   m_Layer: 0
   m_Name: waterRight
   m_TagString: Untagged
@@ -1013,6 +975,20 @@ Transform:
   m_Father: {fileID: 1653983559865952752}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7865072723350489394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759980948613572381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstWaterObj: {fileID: 5779717295123463485}
+  secondWaterObj: {fileID: 6992480438161945063}
 --- !u!1 &6992480438161945063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,10 +1000,9 @@ GameObject:
   - component: {fileID: 1941080198818058566}
   - component: {fileID: 3474643844709532161}
   - component: {fileID: 903351521729243604}
-  - component: {fileID: 8490791656828519900}
   m_Layer: 0
   m_Name: right2
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1105,23 +1080,10 @@ BoxCollider:
   m_GameObject: {fileID: 6992480438161945063}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8490791656828519900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6992480438161945063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 5779717295123463485}
 --- !u!1 &7221340140141954037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,10 +1177,9 @@ GameObject:
   - component: {fileID: 6988652328901832492}
   - component: {fileID: 970571986523838493}
   - component: {fileID: 4772426212382126044}
-  - component: {fileID: 4873174021393015373}
   m_Layer: 0
   m_Name: up1
-  m_TagString: Untagged
+  m_TagString: WaterBurst
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1297,20 +1258,7 @@ BoxCollider:
   m_GameObject: {fileID: 8734023670174489468}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4873174021393015373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8734023670174489468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668da3d983d5b8547aff634ec352b6a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topWaterBurst: {fileID: 0}
