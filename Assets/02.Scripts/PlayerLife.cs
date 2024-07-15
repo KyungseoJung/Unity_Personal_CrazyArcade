@@ -39,6 +39,14 @@ public class PlayerLife : MonoBehaviour
         trappedInWater = false;         // #17
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "WaterBurst")
+        {
+            PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
+        }
+    }
+
     public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
     {
         if(!trappedInWater)

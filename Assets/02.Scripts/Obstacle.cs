@@ -229,10 +229,10 @@ public class Obstacle : MonoBehaviour
         mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y);
 
 
-        // #17 플레이어가 물풍선의 물줄기와 닿았나 확인
-        Debug.Log("//#17 플레이어의 좌표: " + playerTrans.position);
-        mapMgr.CheckPlayerTouchFluid(this.transform, 
-                                    playerTrans, _waterLength);
+        // #17 플레이어가 물풍선의 물줄기와 닿았나 확인 // #17 fix: 콜라이더 Trigger 처리로 확인하기
+        // Debug.Log("//#17 플레이어의 좌표: " + playerTrans.position);
+        // mapMgr.CheckPlayerTouchFluid(this.transform, 
+        //                             playerTrans, _waterLength);
         // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
         mapMgr.CheckBubbleTouchFluid(this.transform, _waterLength); 
 
