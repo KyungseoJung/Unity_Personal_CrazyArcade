@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &280099744993125472
 Transform:
   m_ObjectHideFlags: 0
@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWaterObj: {fileID: 1735776669900599464}
+  firstWatObjCol: {fileID: 0}
   secondWaterObj: {fileID: 2184976630793314389}
+  secondWatObjCol: {fileID: 0}
 --- !u!1 &985338888944041093
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +66,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4882347271342194010
 Transform:
   m_ObjectHideFlags: 0
@@ -385,7 +387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7224928064623731597
 Transform:
   m_ObjectHideFlags: 0
@@ -481,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8693641415068161095
 Transform:
   m_ObjectHideFlags: 0
@@ -577,7 +579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4479272163747040521
 Transform:
   m_ObjectHideFlags: 0
@@ -672,7 +674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &155459949587594741
 Transform:
   m_ObjectHideFlags: 0
@@ -702,7 +704,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWaterObj: {fileID: 8734023670174489468}
+  firstWatObjCol: {fileID: 0}
   secondWaterObj: {fileID: 3082284697679435916}
+  secondWatObjCol: {fileID: 0}
 --- !u!1 &4121132925504349890
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6193494141180374644
 Transform:
   m_ObjectHideFlags: 0
@@ -749,7 +753,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWaterObj: {fileID: 985338888944041093}
+  firstWatObjCol: {fileID: 0}
   secondWaterObj: {fileID: 5642403600740589510}
+  secondWatObjCol: {fileID: 0}
 --- !u!1 &5642403600740589510
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1597618656077968178
 Transform:
   m_ObjectHideFlags: 0
@@ -863,7 +869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &551254378299565383
 Transform:
   m_ObjectHideFlags: 0
@@ -958,7 +964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &924337620169977993
 Transform:
   m_ObjectHideFlags: 0
@@ -988,7 +994,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWaterObj: {fileID: 5779717295123463485}
+  firstWatObjCol: {fileID: 0}
   secondWaterObj: {fileID: 6992480438161945063}
+  secondWatObjCol: {fileID: 0}
 --- !u!1 &6992480438161945063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1941080198818058566
 Transform:
   m_ObjectHideFlags: 0
@@ -1183,7 +1191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6988652328901832492
 Transform:
   m_ObjectHideFlags: 0
