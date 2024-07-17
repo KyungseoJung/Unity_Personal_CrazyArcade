@@ -94,5 +94,6 @@ public class WaterBurst : MonoBehaviour
             firstWaterObj.SetActive(false); 
             Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화");
         }
+        
     }
 }
