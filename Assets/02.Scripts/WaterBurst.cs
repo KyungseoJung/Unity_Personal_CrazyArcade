@@ -80,6 +80,10 @@ public class WaterBurst : MonoBehaviour
             firstWaterObj.SetActive(false);
             Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | Obstacle에 닿음");
         }
+        else    // #37 feat: 장애물 없는 거 확인한 후, 물줄기 콜라이더 켜기
+        {
+            firstWatObjCol.enabled = true;
+        }
     }
     private void CheckSecondWater()
     {
@@ -93,6 +97,10 @@ public class WaterBurst : MonoBehaviour
 
             firstWaterObj.SetActive(false); 
             Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화");
+        }
+        else    // #37 feat: 장애물 없는 거 확인한 후, 물줄기 콜라이더 켜기
+        {
+            secondWatObjCol.enabled = true;
         }
         
     }
