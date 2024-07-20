@@ -35,7 +35,7 @@ public class MapManager : MonoBehaviour
     int checkNum = 0;   // # 33 fix: 특정 위치에 물풍선 있는지, 몇 개 있는지 확인하는 변수
 
     // [SerializeField]
-    int[,] waterBalloonArr =            // #4 7행 9열 이차원 배열 - 0행 0열부터 시작
+    public int[,] waterBalloonArr =            // #4 7행 9열 이차원 배열 - 0행 0열부터 시작
     {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
