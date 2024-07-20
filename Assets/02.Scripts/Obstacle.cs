@@ -135,6 +135,25 @@ public class Obstacle : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+            Debug.Log("//#31 OnTriggerEnter 작동: " + "주체: " + this.gameObject.name + " | 상대: " + other.gameObject.name);
+        switch(obstacleType)
+        {
+            case OBSTACLE_TYPE.WATERBALLOON:
+
+            // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
+            // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
+                if(other.gameObject.tag == "WaterBurst")
+                {
+                    Debug.Log("//#31 물풍선이 다른 물줄기에 맞음");
+
+                    StartWaterBalloonBursts(true);
+                }
+                break;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         switch(obstacleType)
@@ -233,8 +252,9 @@ public class Obstacle : MonoBehaviour
         // Debug.Log("//#17 플레이어의 좌표: " + playerTrans.position);
         // mapMgr.CheckPlayerTouchFluid(this.transform, 
         //                             playerTrans, _waterLength);
+
         // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
-        mapMgr.CheckBubbleTouchFluid(this.transform, _waterLength); 
+        // mapMgr.CheckBubbleTouchFluid(this.transform, _waterLength); 
 
         // #34 물풍선의 물줄기가 아이템에 닿았나 확인 - 닿았으면 아이템 Destroy
         mapMgr.CheckItemTouchFluid(this.transform, _waterLength);
