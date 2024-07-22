@@ -20,10 +20,10 @@ public class Item : MonoBehaviour   // #10
     }
     
 
-    private void OnTriggerEnter(Collider other)     // #10 플레이어에 닿으면 사라지도록 
+    private void OnTriggerEnter(Collider other)     
     {
         Debug.Log("//#10 OnTriggerEnter");   
-        if(other.gameObject.tag == "Player")    // 플레이어에 닿으면
+        if(other.gameObject.tag == "Player")     // #10 플레이어에 닿으면 사라지도록
         {
 
             // #10 만약 플레이어가 물풍선 안에 갇혀 있다면, 아이템 획득 불가능
@@ -66,6 +66,12 @@ public class Item : MonoBehaviour   // #10
             mapMgr.RemoveItemPos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정
             music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
+    
+        if(other.gameObject.tag == "WaterBurst")    // #34 물풍선의 물줄기에 닿으면 사라지도록 (단, 두 오브젝트 중 하나는 Rigidbody와 Collider 모두 있어야 함)
+        {
+            // 물풍선에 Rigidbody가 있긴 한데, "WaterBurst" tag가 달린 오브젝트에는 Rigidbody가 달려있지 않음. 그런데도 Trigger 함수가 작동함.
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision other) 
