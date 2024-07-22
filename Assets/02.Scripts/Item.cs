@@ -36,41 +36,40 @@ public class Item : MonoBehaviour   // #10
             {
                 case ITEM_TYPE.FLUID : 
                     PlayerGameMgr.Mgr.fluid +=1;  // #10 플레이어가 물병 하나 먹을 때마다, 물줄기 하나씩 증가하도록
-                    Destroy(this.gameObject);
+                    DestroyItem();
                     break;
                 
                 case ITEM_TYPE.BUBBLE :     // #13 놓을 수 있는 물풍선 개수 늘어나는 아이템
                     PlayerGameMgr.Mgr.waterballoonNum += 1;
-                    Destroy(this.gameObject);       
+                    DestroyItem();
                     break;
                 
                 case ITEM_TYPE.ROLLER :     // #15 ROLLER 아이템
                     PlayerGameMgr.Mgr.roller += 1;  
                     playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 플레이어 이동 속도 증가
-                    Destroy(this.gameObject);   // 플레이어 획득
+                    DestroyItem();  // 플레이어 획득
                     break;
                 
                 case ITEM_TYPE.TURTLE :     // #16 TURTLE 아이템
                     PlayerGameMgr.Mgr.turtle = true;
                     PlayerGameMgr.Mgr.turtleNum += 1;   // #16 아이템 획득 수 추가
                     other.gameObject.GetComponent<PlayerCtrl>().TurtleMount(true);  // #35 플레이어가 거북에 올라탐
-                    Destroy(this.gameObject);   // 플레이어 획득
+                    DestroyItem();  // 플레이어 획득
                     break;
                 
                 case ITEM_TYPE.COIN :
                     PlayerGameMgr.Mgr.coin += 1;
-                    Destroy(this.gameObject);   // 플레이어 획득
+                    DestroyItem();  // 플레이어 획득
                     break;
             }
 
-            mapMgr.RemoveItemPos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정
             music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
     
         if(other.gameObject.tag == "WaterBurst")    // #34 물풍선의 물줄기에 닿으면 사라지도록 (단, 두 오브젝트 중 하나는 Rigidbody와 Collider 모두 있어야 함)
         {
             // 물풍선에 Rigidbody가 있긴 한데, "WaterBurst" tag가 달린 오브젝트에는 Rigidbody가 달려있지 않음. 그런데도 Trigger 함수가 작동함.
-            Destroy(this.gameObject);
+            DestroyItem();  // 아이템 삭제 및 배열 0으로 설정
         }
     }
 
@@ -80,9 +79,11 @@ public class Item : MonoBehaviour   // #10
 
     }
 
-    public void DestroyItem()   // #34
+    public void DestroyItem()   // #34 아이템 제거 & 배열에서 0으로 설정을 동시에
     {
         Debug.Log("//#34: " + this.gameObject.name + "아이템 삭제");
         Destroy(this.gameObject);
+        
+        mapMgr.RemoveItemPos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정
     }
 }
