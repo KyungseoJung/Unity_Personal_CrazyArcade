@@ -137,20 +137,23 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            Debug.Log("//#31 OnTriggerEnter 작동: " + "주체: " + this.gameObject.name + " | 상대: " + other.gameObject.name);
-        switch(obstacleType)
+        Debug.Log("//#31 OnTriggerEnter 작동: " + "주체: " + this.gameObject.name + " | 상대: " + other.gameObject.name);
+        
+        if(other.gameObject.tag == "WaterBurst")
         {
-            case OBSTACLE_TYPE.WATERBALLOON:
-
-            // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
-            // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
-                if(other.gameObject.tag == "WaterBurst")
-                {
+            switch(obstacleType)
+            {
+                case OBSTACLE_TYPE.WATERBALLOON:
+                    // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
+                    // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
                     Debug.Log("//#31 물풍선이 다른 물줄기에 맞음");
-
                     StartWaterBalloonBursts(true);
-                }
-                break;
+                    break;
+                case OBSTACLE_TYPE.BUSH:
+                    Debug.Log("//#36 물풍선이 Bush에 맞음");
+                    DestroyObstacle();
+                    break;
+            }
         }
     }
 
@@ -260,7 +263,7 @@ public class Obstacle : MonoBehaviour
         // mapMgr.CheckItemTouchFluid(this.transform, _waterLength);
 
         // #36 물풍선의 물줄기가 덤불(Bush)에 닿았나 확인 - 닿았으면 Bush Destroy
-        mapMgr.CheckBushTouchFluid(this.transform, _waterLength);
+        // mapMgr.CheckBushTouchFluid(this.transform, _waterLength);
                                     
     }
 
