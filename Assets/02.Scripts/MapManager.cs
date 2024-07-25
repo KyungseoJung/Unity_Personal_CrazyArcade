@@ -344,99 +344,99 @@ public class MapManager : MonoBehaviour
             }
         } 
     }
-    public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
-    // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
-    {
-        balloonRow = ReturnRowInMatrix(_balloon.position.y);
-        balloonCol = ReturnColInMatrix(_balloon.position.x);
-        // #31 물풍선의 상하좌우 파악
-        for(int i=0; i<_waterLength; i++)
-        {
-            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-            // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
-            if((balloonRow-i-1 < 0) || (balloonRow+i+1 > 6) || (balloonCol-i-1 < 0) || (balloonCol+i+1 > 8))
-            {
-                return;
-            }
+    // public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
+    // // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인
+    // {
+    //     balloonRow = ReturnRowInMatrix(_balloon.position.y);
+    //     balloonCol = ReturnColInMatrix(_balloon.position.x);
+    //     // #31 물풍선의 상하좌우 파악
+    //     for(int i=0; i<_waterLength; i++)
+    //     {
+    //         // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+    //         // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+    //         // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+    //         // #31 만약 체크하고자 하는 배열의 값이 범위를 넘는다면 return (아래 함수 실행 X)
+    //         if((balloonRow-i-1 < 0) || (balloonRow+i+1 > 6) || (balloonCol-i-1 < 0) || (balloonCol+i+1 > 8))
+    //         {
+    //             return;
+    //         }
 
 
-            if(waterBalloonArr[balloonRow-i-1, balloonCol]==1)    // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
-            {
-                Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
-                CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y+i+1); // #32
-            }
-            if(waterBalloonArr[balloonRow+i+1, balloonCol]==1)    // 물풍선의 하(아래)
-            {
-                Debug.Log("//#31 물풍선의 물줄기가 다른 \"아래쪽\" 물풍선에 닿음");
-                CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y-i-1); // #32
-            }
-            if(waterBalloonArr[balloonRow, balloonCol-i-1]==1)    // 물풍선의 좌(왼쪽)
-            {                 
-                Debug.Log("//#31 물풍선의 물줄기가 다른 \"왼쪽\" 물풍선에 닿음");
-                Debug.Log("//#31 터진 물풍선 위치| 행: " + balloonRow + ", 열: " + balloonCol);
-                Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ balloonRow + ", 열: " + (balloonCol-i-1));
-                CheckIsThereWaterBalloon(_balloon.position.x-i-1, _balloon.position.y); // #32
-            }
-            if(waterBalloonArr[balloonRow, balloonCol+i+1]==1)    // 물풍선의 우(오른쪽)
-            {
-                Debug.Log("//#31 물풍선의 물줄기가 다른 \"오른쪽\" 물풍선에 닿음");
-                Debug.Log("//#31 터진 물풍선 위치| 행: " + balloonRow + ", 열: " + balloonCol);
-                Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ balloonRow + ", 열: " + (balloonCol-i-1));
-                CheckIsThereWaterBalloon(_balloon.position.x+i+1, _balloon.position.y); // #32
-            }
-        }
-    }
+    //         if(waterBalloonArr[balloonRow-i-1, balloonCol]==1)    // 물풍선의 상(위)에 다른 물풍선이 있는지 파악
+    //         {
+    //             Debug.Log("//#31 물풍선의 물줄기가 다른 \"위쪽\" 물풍선에 닿음");
+    //             CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y+i+1); // #32
+    //         }
+    //         if(waterBalloonArr[balloonRow+i+1, balloonCol]==1)    // 물풍선의 하(아래)
+    //         {
+    //             Debug.Log("//#31 물풍선의 물줄기가 다른 \"아래쪽\" 물풍선에 닿음");
+    //             CheckIsThereWaterBalloon(_balloon.position.x, _balloon.position.y-i-1); // #32
+    //         }
+    //         if(waterBalloonArr[balloonRow, balloonCol-i-1]==1)    // 물풍선의 좌(왼쪽)
+    //         {                 
+    //             Debug.Log("//#31 물풍선의 물줄기가 다른 \"왼쪽\" 물풍선에 닿음");
+    //             Debug.Log("//#31 터진 물풍선 위치| 행: " + balloonRow + ", 열: " + balloonCol);
+    //             Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ balloonRow + ", 열: " + (balloonCol-i-1));
+    //             CheckIsThereWaterBalloon(_balloon.position.x-i-1, _balloon.position.y); // #32
+    //         }
+    //         if(waterBalloonArr[balloonRow, balloonCol+i+1]==1)    // 물풍선의 우(오른쪽)
+    //         {
+    //             Debug.Log("//#31 물풍선의 물줄기가 다른 \"오른쪽\" 물풍선에 닿음");
+    //             Debug.Log("//#31 터진 물풍선 위치| 행: " + balloonRow + ", 열: " + balloonCol);
+    //             Debug.Log("//#31 물줄기에 맞은 물풍선 위치| 행:  "+ balloonRow + ", 열: " + (balloonCol-i-1));
+    //             CheckIsThereWaterBalloon(_balloon.position.x+i+1, _balloon.position.y); // #32
+    //         }
+    //     }
+    // }
 
-    public void CheckIsThereWaterBalloon(float posX, float posY, CHECK_TYPE _type = CHECK_TYPE.BALLOONBURST) 
-    // #32 CHECK_TYPE.BALLOONBURST의 경우: 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
-    // #33 CHECK_TYPE.PLAYERMOVE 경우: 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 플레이어 제자리걸음
-    {
-        checkNum = 0;   // #33 특정 위치에 물풍선이 있는지 확인하기 위함 - 0으로 초기화
+    // public void CheckIsThereWaterBalloon(float posX, float posY, CHECK_TYPE _type = CHECK_TYPE.BALLOONBURST) 
+    // // #32 CHECK_TYPE.BALLOONBURST의 경우: 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 물풍선 터뜨리기
+    // // #33 CHECK_TYPE.PLAYERMOVE 경우: 특정 위치(_row, _col)에 물풍선이 있는지 확인 - 있다면, 플레이어 제자리걸음
+    // {
+    //     checkNum = 0;   // #33 특정 위치에 물풍선이 있는지 확인하기 위함 - 0으로 초기화
 
-        Vector3 targetPos = new Vector3(posX, posY, 0);
-        // Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
+    //     Vector3 targetPos = new Vector3(posX, posY, 0);
+    //     // Debug.Log("//#32 (" + targetPos + ") 위치에 확인." );
 
 
-        // "WAterBalloon" 태그를 가진 오브젝트들을 모두 찾기
-        GameObject[] waterBalloons = GameObject.FindGameObjectsWithTag("WaterBalloon");
+    //     // "WAterBalloon" 태그를 가진 오브젝트들을 모두 찾기
+    //     GameObject[] waterBalloons = GameObject.FindGameObjectsWithTag("WaterBalloon");
 
-        // 특정 위치에 위치한 오브젝트가 있는지 확인
-        foreach(GameObject obj in waterBalloons)
-        {
-            if(obj.transform.position == targetPos)
-            {
-                checkNum++; // #33 fix
+    //     // 특정 위치에 위치한 오브젝트가 있는지 확인
+    //     foreach(GameObject obj in waterBalloons)
+    //     {
+    //         if(obj.transform.position == targetPos)
+    //         {
+    //             checkNum++; // #33 fix
 
-                Debug.Log("//#32 (" + posX + ", " + posY + ") 좌표에 물풍선이 있습니다." );
-                switch(_type)
-                {
-                    case CHECK_TYPE.BALLOONBURST:   // 다른 물풍선도 터지도록
-                        obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
-                        break;
+    //             Debug.Log("//#32 (" + posX + ", " + posY + ") 좌표에 물풍선이 있습니다." );
+    //             switch(_type)
+    //             {
+    //                 case CHECK_TYPE.BALLOONBURST:   // 다른 물풍선도 터지도록
+    //                     obj.GetComponent<Obstacle>().StartWaterBalloonBursts(true);
+    //                     break;
                 
-                    // #33 fix: SphereCollider로 통제해서 코드 필요 없음
-                    // case CHECK_TYPE.PLAYERMOVE: // 
-                    //     Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
-                    //     // playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음 // #33 fix 주석 처리
-                    //     playerCtrl.balloonInFront = true;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
-                    //     break;
-                }
-            }
-        }
+    //                 // #33 fix: SphereCollider로 통제해서 코드 필요 없음
+    //                 // case CHECK_TYPE.PLAYERMOVE: // 
+    //                 //     Debug.Log("//#33 물풍선 때문에 플레이어 이동 불가");
+    //                 //     // playerCtrl.PlayerStandsStill(); // #33 플레이어 제자리걸음 // #33 fix 주석 처리
+    //                 //     playerCtrl.balloonInFront = true;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
+    //                 //     break;
+    //             }
+    //         }
+    //     }
 
-        // #33 fix: SphereCollider로 통제해서 balloonInFront 변수 필요 없음
-        // // #33 fix: 플레이어가 가고자 하는 방향에 물풍선이 하나도 없다면, 플레이어 이동 가능하도록
-        // if(checkNum == 0)   
-        // {
-        //     // Debug.Log("//#33 (" + posX + ", " + posY + ") 위치에 물풍선이 없습니다." );
-        //     playerCtrl.balloonInFront = false;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가/ 없다면, 플레이어 이동 가능
-        // }
-        // else
-        // {
-        //     Debug.Log("//#33 checkNum이 0이 아님: "+ checkNum);
-        // }
-    }
+    //     // #33 fix: SphereCollider로 통제해서 balloonInFront 변수 필요 없음
+    //     // // #33 fix: 플레이어가 가고자 하는 방향에 물풍선이 하나도 없다면, 플레이어 이동 가능하도록
+    //     // if(checkNum == 0)   
+    //     // {
+    //     //     // Debug.Log("//#33 (" + posX + ", " + posY + ") 위치에 물풍선이 없습니다." );
+    //     //     playerCtrl.balloonInFront = false;   // #33 fix: 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가/ 없다면, 플레이어 이동 가능
+    //     // }
+    //     // else
+    //     // {
+    //     //     Debug.Log("//#33 checkNum이 0이 아님: "+ checkNum);
+    //     // }
+    // }
 
 }
