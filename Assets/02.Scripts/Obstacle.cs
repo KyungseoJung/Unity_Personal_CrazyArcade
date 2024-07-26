@@ -204,7 +204,7 @@ public class Obstacle : MonoBehaviour
             // #14 아예 배열 바운더리를 넘어가도 장애물 있는 것으로 판단
             return true;
         }
-        else if((mapMgr.obstacleArr[row, col] ==1) || (mapMgr.itemArr[row, col] ==1))
+        else if((mapMgr.obstacleArr[row, col] ==1) || (mapMgr.itemArr[row, col] ==1) || (mapMgr.waterBalloonArr[row, col]==1))
         {
             // IndexOutOfRangeException 에러를 피하기 위해 바운더리 넘어간 것부터 확인 후, 배열 확인
             return true;
