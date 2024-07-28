@@ -194,7 +194,8 @@ public class MapManager : MonoBehaviour
         // 위 조건들 모두 만족하면, 물풍선 놓기
 
         waterBalloonArr[playerRow, playerCol] = 1;  // 배열 설정
-        obstacleArr[playerRow, playerCol] = 1;      // #25 배열 설정 - 물풍선이 놓여지면 obstacleArr 배열값도 1로 설정
+        // obstacleArr[playerRow, playerCol] = 1;      // #25 배열 설정 - 물풍선이 놓여지면 obstacleArr 배열값도 1로 설정   
+        // #25 fix: 물풍선 배열과 장애물 배열은 별도로 관리하도록 (장애물 배열에 물풍선 배열이 포함되어 있지 않도록)
 
         // 물풍선 놓기
         balloonPos.x = Mathf.RoundToInt(_x);    
@@ -243,7 +244,8 @@ public class MapManager : MonoBehaviour
         Debug.Log("//#8 //#31 fix: 물풍선 소멸: balloonRow = " + balloonRow + "/ balloonCol = " + balloonCol);
 
         waterBalloonArr[balloonRow, balloonCol] = 0;  // 배열 설정
-        obstacleArr[balloonRow, balloonCol] = 0;      // #25 배열 설정
+        // obstacleArr[balloonRow, balloonCol] = 0;      // #25 배열 설정
+        // #25 fix: 물풍선 배열과 장애물 배열은 별도로 관리하도록 (장애물 배열에 물풍선 배열이 포함되어 있지 않도록)
 
         waterballoonPlaceNum -= 1; // #13 물풍선 개수 하나 감소
         music.SoundEffect(Music.EFFECT_TYPE.BUBBLE_BOOM); // #21 물풍선 터질 때의 효과음
