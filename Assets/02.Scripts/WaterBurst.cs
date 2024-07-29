@@ -70,12 +70,18 @@ public class WaterBurst : MonoBehaviour
     //     }
     // }
 
-    private void CheckFirstWater()
+    private void CheckFirstWater()  // 상위 물줄기
     {
         firstRow = mapMgr.ReturnRowInMatrix(firstWaterObj.transform.position.y);
         firstCol = mapMgr.ReturnColInMatrix(firstWaterObj.transform.position.x);
 
-        if((mapMgr.obstacleArr[firstRow, firstCol] == 1) && (mapMgr.waterBalloonArr[firstRow, firstCol] == 0))   // 만약 하위 물줄기가 장애물에 닿으면, 하위 물줄기도 비활성화 하고, 상위 물줄기도 비활성화하기
+        if((firstRow < 0) || (firstRow > 6) || (firstCol < 0) || (firstCol > 8))
+        {
+            // IndexOutOfRangeException 에러 방지 - 예외 처리 (바운더리 넘어가면 장애물 있는 것으로 파악. -> 물풍선 터지지 않도록)
+            firstWaterObj.SetActive(false);
+            Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
+        }
+        else if((mapMgr.obstacleArr[firstRow, firstCol] == 1) && (mapMgr.waterBalloonArr[firstRow, firstCol] == 0))   
         // #31 fix: 단, 물풍선 제외 장애물일 때만 적용되도록 
         // 만약 물풍선이라면, 이 물줄기가 다른 물풍선에 닿아서 그 물풍선도 터져야 하기 때문에 
         {
@@ -87,7 +93,7 @@ public class WaterBurst : MonoBehaviour
             firstWatObjCol.enabled = true;
         }
     }
-    private void CheckSecondWater()
+    private void CheckSecondWater() // 하위 물줄기
     {
         secondRow = mapMgr.ReturnRowInMatrix(secondWaterObj.transform.position.y);
         secondCol = mapMgr.ReturnColInMatrix(secondWaterObj.transform.position.x);
