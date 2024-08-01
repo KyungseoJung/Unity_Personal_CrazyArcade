@@ -31,6 +31,8 @@ public class Obstacle : MonoBehaviour
 
     int row;                     // #14 row, col: WOODBLOCK 밀 때, 밀고자 하는 위치 좌표에 장애물 있는지 확인용
     int col;
+    int obsRow;                 // #14 obsRow, obsCol: 현재 장애물의 위치를 행렬로 확인하기 위함 (장애물 이동하면 배열값도 바꿔야 하니까)
+    int obsCol;
     int fluidLength;             // #8 물풍선 터지는 길이는 터지는 순간에 정해지는 게 아니라, 물풍선을 놓는 순간에 정해지도록
 
     bool alreadyBurst = false;           // #31 물풍선이 터졌는지 확인 - 다른 물풍선에 의해 터지는 경우를 구분하기 위함
@@ -88,41 +90,77 @@ public class Obstacle : MonoBehaviour
 
                     if(xPosDiff * xPosDiff < 0.25)  //  위 or 아래로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
+
                         if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
                         {
                             if(IsThereObstacle(KeyCode.DownArrow) == true)  // #14
                                 return;
 
+
+                            // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
+                            obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+
                             Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
                             woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
+
+                            obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
+
                         }
                         else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
                         {
                             if(IsThereObstacle(KeyCode.UpArrow) == true)  // #14
                                 return;
 
+                            // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
+                            obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+
                             Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
                             woodPos.y +=1;
+
+                            obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
                         }
                     }
 
                     if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: y축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
+                        Debug.Log("//#14 WoodBlock 밀고 있음 -2");
                         if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
                         {
                             if(IsThereObstacle(KeyCode.LeftArrow) == true)  // #14
                                 return;
 
+                            // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
+                            obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+
                             Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
                             woodPos.x -=1;
+                            
+                            obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
                         }
                         else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
                         {
                             if(IsThereObstacle(KeyCode.RightArrow) == true)  // #14
                                 return;
 
+                            // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
+                            obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
+                            obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+
                             Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
                             woodPos.x +=1;
+
+                            obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
+                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
                         }
                     }
 
