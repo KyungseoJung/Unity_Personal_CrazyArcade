@@ -8,6 +8,7 @@ public class Obstacle : MonoBehaviour
 
     public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK)
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
+    private Item.ITEM_TYPE randomItemType = Item.ITEM_TYPE.FLUID;   // #38  (1번부터 5번까지)
     
     [SerializeField]    
     private Animator anim;  // #6 덤불 Animator 조정
@@ -62,6 +63,14 @@ public class Obstacle : MonoBehaviour
                 StartCoroutine(WaterBalloonBursts(fluidLength));    
                 // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: PlayerGameMgr.Mgr.fluid로 설정
                 // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
+                break;
+
+            case OBSTACLE_TYPE.WOODBLOCK :
+                int randomNumber = Random.Range(1, 6);  // 1부터 5까지의 랜덤 숫자 생성
+                randomItemType = (Item.ITEM_TYPE)randomNumber;
+
+                Debug.Log("//#38 randomNumber: " + randomNumber);
+                Debug.Log("//#38 randomItemType: " + randomItemType);
                 break;
         }
     }
