@@ -131,6 +131,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 3
   anim: {fileID: 0}
+  itemBubble: {fileID: 8513862709648437680, guid: a0a52091819984f4484eb636ef2cb199,
+    type: 3}
+  itemCoin: {fileID: 8084810170275224035, guid: a194b011ef7b3274dbadd0f828839c17,
+    type: 3}
+  itemFluid: {fileID: 2450547294370451991, guid: a535ae0db0ed8184eb3d29e40073a664,
+    type: 3}
+  itemRoller: {fileID: 1495263558174724791, guid: 88b50286934442441bfa469d15b08283,
+    type: 3}
+  itemTurtle: {fileID: 4641561110115198904, guid: b610311ac7097234f83d96115058610f,
+    type: 3}
 --- !u!114 &7796715154310552157
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,13 @@ public class Obstacle : MonoBehaviour
     private LayerSetting layerSetting;      // #2 WOODBLOCK 층 번호 설정
     private Transform playerTrans;          // #17 플레이어가 물줄기에 닿았는지 확인
     private SphereCollider sphereCollider;  // #33
+
+    // #38 WoodBlock이 사라진 위치에 랜덤으로 아이템 놓기
+    [SerializeField] private GameObject itemBubble; // #38
+    [SerializeField] private GameObject itemCoin;   // #38
+    [SerializeField] private GameObject itemFluid;  // #38
+    [SerializeField] private GameObject itemRoller; // #38
+    [SerializeField] private GameObject itemTurtle; // #38
     
     Vector3 playerTransform;  // #14 장애물과 부딪힌 플레이어의 위치
     Vector3 woodPos;          // #14 
@@ -203,6 +210,7 @@ public class Obstacle : MonoBehaviour
                 case OBSTACLE_TYPE.WOODBLOCK:
                     Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
                     DestroyObstacle();
+                    PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록
                     break;
             }
         }
@@ -328,5 +336,29 @@ public class Obstacle : MonoBehaviour
         Destroy(this.gameObject);
 
         mapMgr.RemoveObsPos(this.transform);    // #36 해당 위치의 obstacleArr 배열값을 0으로 설정
+    }
+
+    private void PlaceRandomItem()  // #38 물풍선을 맞은 WoodBlock이 사라진 자리에 랜덤으로 아이템 놓기
+    {
+        Debug.Log("//#38 WoodBlock이 사라진 자리에 랜덤 아이템 배치");
+        switch(randomItemType)
+        {
+            case Item.ITEM_TYPE.FLUID:
+                Instantiate(itemFluid, this.transform.position, Quaternion.identity);   
+                break;
+            case Item.ITEM_TYPE.BUBBLE:
+                Instantiate(itemBubble, this.transform.position, Quaternion.identity);
+                break;
+            case Item.ITEM_TYPE.COIN:
+                Instantiate(itemCoin, this.transform.position, Quaternion.identity);
+                break;
+            case Item.ITEM_TYPE.TURTLE:
+                Instantiate(itemTurtle, this.transform.position, Quaternion.identity);
+                break;
+            case Item.ITEM_TYPE.ROLLER:
+                Instantiate(itemRoller, this.transform.position, Quaternion.identity);
+                break;
+            
+        }
     }
 }   
