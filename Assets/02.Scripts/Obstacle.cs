@@ -202,6 +202,7 @@ public class Obstacle : MonoBehaviour
                     break;
                 case OBSTACLE_TYPE.WOODBLOCK:
                     Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
+                    DestroyObstacle();
                     break;
             }
         }
