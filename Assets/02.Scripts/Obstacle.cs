@@ -42,6 +42,7 @@ public class Obstacle : MonoBehaviour
     int obsRow;                 // #14 obsRow, obsCol: 현재 장애물의 위치를 행렬로 확인하기 위함 (장애물 이동하면 배열값도 바꿔야 하니까)
     int obsCol;
     int fluidLength;             // #8 물풍선 터지는 길이는 터지는 순간에 정해지는 게 아니라, 물풍선을 놓는 순간에 정해지도록
+    int randomNumber;           // #38 WoodBlock이 가지는 랜덤 아이템 (0이면 아이템 없는 경우임)
 
     bool alreadyBurst = false;           // #31 물풍선이 터졌는지 확인 - 다른 물풍선에 의해 터지는 경우를 구분하기 위함
 
@@ -73,8 +74,10 @@ public class Obstacle : MonoBehaviour
                 break;
 
             case OBSTACLE_TYPE.WOODBLOCK :
-                int randomNumber = Random.Range(1, 6);  // 1부터 5까지의 랜덤 숫자 생성
-                randomItemType = (Item.ITEM_TYPE)randomNumber;
+                randomNumber = Random.Range(0, 6);  // 1부터 5까지의 랜덤 숫자 생성 // #38 fix: 0부터 5까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
+                
+                if(randomNumber != 0)   // #38 fix 랜덤 아이템이 없는 경우는 배제한 if문
+                    randomItemType = (Item.ITEM_TYPE)randomNumber;
 
                 Debug.Log("//#38 randomNumber: " + randomNumber);
                 Debug.Log("//#38 randomItemType: " + randomItemType);
@@ -341,6 +344,10 @@ public class Obstacle : MonoBehaviour
     private void PlaceRandomItem()  // #38 물풍선을 맞은 WoodBlock이 사라진 자리에 랜덤으로 아이템 놓기
     {
         Debug.Log("//#38 WoodBlock이 사라진 자리에 랜덤 아이템 배치");
+
+        if(randomNumber ==0)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
+            return;
+
         switch(randomItemType)
         {
             case Item.ITEM_TYPE.FLUID:
