@@ -6,7 +6,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK)
+    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK, NORMALBLOCK}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK) // #39 NORMALBLOCK
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
     private Item.ITEM_TYPE randomItemType = Item.ITEM_TYPE.FLUID;   // #38  (1번부터 5번까지)
     
@@ -214,6 +214,10 @@ public class Obstacle : MonoBehaviour
                     Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
                     DestroyObstacle();
                     PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록
+                    break;
+                case OBSTACLE_TYPE.NORMALBLOCK:
+                    Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
+                    DestroyObstacle();
                     break;
             }
         }
