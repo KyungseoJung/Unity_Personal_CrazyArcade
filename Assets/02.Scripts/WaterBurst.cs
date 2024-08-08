@@ -82,7 +82,7 @@ public class WaterBurst : MonoBehaviour
             Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
         }
         else if((mapMgr.obstacleArr[firstRow, firstCol] == 1) && (mapMgr.waterBalloonArr[firstRow, firstCol] == 0))   
-        // #31 fix: 단, 물풍선 제외 장애물일 때만 적용되도록 
+        // #31 fix: 단, 물풍선이 아닌 장애물일 때만 적용되도록 
         // 만약 물풍선이라면, 이 물줄기가 다른 물풍선에 닿아서 그 물풍선도 터져야 하기 때문에 
         {
             firstWaterObj.SetActive(false);
@@ -105,7 +105,7 @@ public class WaterBurst : MonoBehaviour
             Debug.Log("//#37 " + secondWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
         }
         else if((mapMgr.obstacleArr[secondRow, secondCol] == 1) && (mapMgr.waterBalloonArr[secondRow, secondCol] == 0))   // 만약 하위 물줄기가 장애물에 닿으면, 하위 물줄기도 비활성화 하고, 상위 물줄기도 비활성화하기
-        // #31 fix: 단, 물풍선 제외 장애물일 때만 적용되도록 
+        // #31 fix: 단, 물풍선이 아닌 장애물일 때만 적용되도록 
         // 만약 물풍선이라면, 이 물줄기가 다른 물풍선에 닿아서 그 물풍선도 터져야 하기 때문에
         {
             secondWaterObj.SetActive(false);
@@ -113,6 +113,11 @@ public class WaterBurst : MonoBehaviour
 
             firstWaterObj.SetActive(false); 
             Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화");
+        }
+        else if((mapMgr.blockArr[secondRow, secondCol] == 1))   // #40 secondWatObjCol 자리에 블록이 있을 경우, firstWatObjCol 자리에는 물줄기가 생기지 않도록
+        {
+            secondWatObjCol.enabled = true;
+            firstWaterObj.SetActive(false);
         }
         else    // #37 feat: 장애물 없는 거 확인한 후, 물줄기 콜라이더 켜기
         {
