@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8141525417617384409}
   m_Layer: 0
   m_Name: Obj_WoodBlock
-  m_TagString: Obstacle
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

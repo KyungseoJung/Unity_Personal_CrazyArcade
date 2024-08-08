@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour
     private GameObject[] obstacles;     // #25
     private GameObject[] items;         // #34
     private GameObject[] bushes;        // #25 Bush가 있는 곳에는 obstacleArr배열 값을 1로 설정해서 - 물풍선 놓을 수 없도록
+    private GameObject[] blocks;        // #40 블록이 있는 곳은 obstacleArr배열 대신, blockArr로 따로 관리하기
 
     // #28 플레이어가 죽으면 아이템 뱉도록 - 아이템 프리팹 넣어놓기
     [Header("Item Prefabs")]
@@ -29,6 +30,7 @@ public class MapManager : MonoBehaviour
     int obsRow, obsCol;           // #4 장애물 전용 row, col
     int itemRow, itemCol;         // #4 아이템 전용 row, col
     int bushRow, bushCol;         // #36 Bush 전용 row, col
+    int blockRow, blockCol;       // #40 Block 전용 row, col
     int playerRow, playerCol;   // #17
     int rowNum = 4; // #25
     int colNum = 3; // #25
@@ -61,6 +63,19 @@ public class MapManager : MonoBehaviour
     };
 
     public int[,] itemArr =                    // #25 아이템 배열 - 7행 9열 이차원 배열
+    {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
+
+    public int[,] blockArr =                    // #40 블록 배열 - 7행 9열 이차원 배열
     {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -118,8 +133,9 @@ public class MapManager : MonoBehaviour
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         items = GameObject.FindGameObjectsWithTag("Item");
         bushes = GameObject.FindGameObjectsWithTag("Bush");
+        blocks = GameObject.FindGameObjectsWithTag("Block");    // #40 블록들은 obstacleArr 대신, blockArr로 따로 관리 (물풍선 맞을 때의 상황을 분리해서 적용하기 위함)
 
-        // #25 
+        //#25 ObstacleArr 배열  // #25 "Obstacle" 태그를 가진 모든 오브젝트
         for(int i=0; i<obstacles.Length; i++)
         {
             obsRow = ReturnRowInMatrix(obstacles[i].transform.position.y);     // #26 함수 이용
@@ -130,16 +146,16 @@ public class MapManager : MonoBehaviour
 
         }
 
-        //#25 ObstacleArr 배열
+        //#25 ObstacleArr 배열  // #25 "Bush" 태그를 가진 모든 오브젝트
         // Bush가 있는 곳에는 obstacleArr배열 값을 1로 설정해서 - 물풍선 놓을 수 없도록
         for(int i=0; i<bushes.Length; i++)
         {
-            obsRow = ReturnRowInMatrix(bushes[i].transform.position.y);     // #26 함수 이용
-            obsCol =  ReturnColInMatrix(bushes[i].transform.position.x);    // #26 함수 이용
+            bushRow = ReturnRowInMatrix(bushes[i].transform.position.y);     // #26 함수 이용
+            bushCol =  ReturnColInMatrix(bushes[i].transform.position.x);    // #26 함수 이용
             Debug.Log("//#25 Obstacle(Bush만) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
             Debug.Log("//#25 Ostacle(Bush만) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + bushes[i].gameObject.name);
 
-            obstacleArr[obsRow, obsCol] = 1;
+            obstacleArr[bushRow, bushCol] = 1;
         }
 
         // #25 아이템 배열
@@ -150,7 +166,15 @@ public class MapManager : MonoBehaviour
             Debug.Log("//#25 Obstacle 존재 - itemRow: " + itemRow + ", itemCol: " + itemCol);
             Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + items[i].gameObject.name);
             itemArr[itemRow, itemCol] = 1;  // #25 
+        }
 
+        //#25 ObstacleArr 배열  // #25 "Bush" 태그를 가진 모든 오브젝트
+        for(int i=0; i<blocks.Length; i++)
+        {
+            blockRow = ReturnRowInMatrix(blocks[i].transform.position.y);   // #26 함수 이용
+            blockCol = ReturnColInMatrix(blocks[i].transform.position.x);   // #26 함수 이용
+            
+            blockArr[blockRow, blockCol] = 1;   // #40
         }
     }
     

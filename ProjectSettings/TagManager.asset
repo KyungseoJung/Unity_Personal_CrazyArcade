@@ -11,6 +11,7 @@ TagManager:
   - WaterBalloon
   - Item
   - WaterBurst
+  - Block
   layers:
   - Default
   - TransparentFX
