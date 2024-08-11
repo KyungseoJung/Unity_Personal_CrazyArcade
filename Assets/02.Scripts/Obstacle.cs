@@ -217,7 +217,7 @@ public class Obstacle : MonoBehaviour
                     break;
                 case OBSTACLE_TYPE.NORMALBLOCK:
                     Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
-                    DestroyObstacle();
+                    DestroyBlock(); // #39 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
                     break;
             }
         }
@@ -343,6 +343,14 @@ public class Obstacle : MonoBehaviour
         Destroy(this.gameObject);
 
         mapMgr.RemoveObsPos(this.transform);    // #36 해당 위치의 obstacleArr 배열값을 0으로 설정
+    }
+
+    public void DestroyBlock()  // #39 fix
+    {
+        Debug.Log("//#39: " + this.gameObject.name + " 블록(Block) 삭제");
+        Destroy(this.gameObject);
+
+        mapMgr.RemoveBlockPos(this.transform);    // #39 해당 위치의 blockArr 배열값을 0으로 설정
     }
 
     private void PlaceRandomItem()  // #38 물풍선을 맞은 WoodBlock이 사라진 자리에 랜덤으로 아이템 놓기
