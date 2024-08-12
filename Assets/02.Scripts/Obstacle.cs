@@ -119,13 +119,13 @@ public class Obstacle : MonoBehaviour
                             // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
                             Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
                             woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
 
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
                         }
                         else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
@@ -136,13 +136,13 @@ public class Obstacle : MonoBehaviour
                             // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
                             Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
                             woodPos.y +=1;
 
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
                         }
                     }
 
@@ -157,13 +157,13 @@ public class Obstacle : MonoBehaviour
                             // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
                             Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
                             woodPos.x -=1;
                             
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
                         }
                         else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
                         {
@@ -173,13 +173,13 @@ public class Obstacle : MonoBehaviour
                             // #14 fix: WoodBlock 위치 바뀌면 배열 값도 바꾸도록 ================
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
                             Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
                             woodPos.x +=1;
 
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
-                            mapMgr.obstacleArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정
+                            mapMgr.blockArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
                         }
                     }
 
