@@ -58,7 +58,7 @@ public class WaterBurst : MonoBehaviour
     private void Start()
     {
         // Debug.Log("//#37 위치: " + this.transform.position);
-        CheckFirstWater();
+        // CheckFirstWater();
         CheckSecondWater();
     }
 
@@ -123,6 +123,7 @@ public class WaterBurst : MonoBehaviour
         {
             secondWatObjCol.enabled = true;
         }
-        
+
+        CheckFirstWater();  // #37 fix: CheckSecondWater 함수 이후에 CheckFirstWater 함수 실행하기 - CheckSecondWater에서 firstWaterObj 활성화 유무를 확인 후, CheckFirstWater 함수 실행하기 위해
     }
 }
