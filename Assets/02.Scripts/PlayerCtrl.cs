@@ -114,6 +114,15 @@ public class PlayerCtrl : MonoBehaviour // #1
             Debug.Log("//#4 fix x좌표: " + transform.position.x + ", y좌표: " + transform.position.y);
             mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if(playerLife.trappedInWater)
+            {
+                playerLife.trappedInWater = false;  // #41 만약 물풍선에 갇혀 있을 때, 키보드의 숫자 '2'를 누르면 물풍선 벗어나도록
+            }
+            Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
+        }
     }
 
 
