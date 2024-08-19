@@ -136,6 +136,8 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         CheckBorder();  // #24 플레이어가 경계선 넘어가지 않도록 확인
 
+        Debug.Log("//#42 fix: 플레이어 위치: " + this.transform.position);
+
 // #1 fix : 플레이어 이동 방법 바꾸자
 /*
         float h = Input.GetAxis("Horizontal");  // 좌우 키
@@ -364,6 +366,8 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     private void CheckBorder()
     {
+        Debug.Log("#42 fix: CheckBorder 함수 실행");
+
         // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
         if((transform.position.x) * (transform.position.x) > 16 )
         {

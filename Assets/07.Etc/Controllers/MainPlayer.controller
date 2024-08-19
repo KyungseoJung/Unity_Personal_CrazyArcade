@@ -769,6 +769,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: EscapeWater
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1069,9 +1075,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -7360956308673314674}
     m_Position: {x: -360, y: -60, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -1267316712211278647}
-    m_Position: {x: -325, y: 5, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1366760557378923518}
@@ -1081,7 +1084,7 @@ AnimatorStateMachine:
     m_Position: {x: 540, y: 20, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 2256359419263479142}
-    m_Position: {x: -280, y: 30, z: 0}
+    m_Position: {x: -310, y: 70, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 2262749398093728789}
     m_Position: {x: 0, y: 30, z: 0}
@@ -1297,6 +1300,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1543139981071998289}
     m_Position: {x: 690, y: 210, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1267316712211278647}
+    m_Position: {x: 480, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
