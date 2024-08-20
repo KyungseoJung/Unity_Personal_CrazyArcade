@@ -119,7 +119,10 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             if(playerLife.trappedInWater)
             {
-                playerLife.trappedInWater = false;  // #41 만약 물풍선에 갇혀 있을 때, 키보드의 숫자 '2'를 누르면 물풍선 벗어나도록
+                // 만약 물풍선에 갇혀 있을 때, 키보드의 숫자 '2'를 누르면~
+                playerLife.trappedInWater = false;  // #41 물풍선 벗어나도록
+                anim.SetTrigger("EscapeWater");     // #41 물풍선 벗어나는 애니메이션 실행 뒤, 기존 PlayerLookingAhead 애니메이션 실행
+                Debug.Log("//#41 물풍선 탈출");
             }
             Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
         }
