@@ -135,7 +135,6 @@ MonoBehaviour:
   bazziObj: {fileID: 0}
   moveForce: 17
   maxSpeed: 1
-  balloonInFront: 0
   turtleMount: 0
 --- !u!114 &3424069725932381565
 MonoBehaviour:
@@ -194,7 +193,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 298c1387e7883434188f5101145fcd19, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
