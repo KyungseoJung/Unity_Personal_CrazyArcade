@@ -94,7 +94,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1253764992819720973
 GameObject:
@@ -337,7 +337,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3894256993214068372
 GameObject:
@@ -523,6 +523,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 1
   anim: {fileID: 0}
+  itemBubble: {fileID: 0}
+  itemCoin: {fileID: 0}
+  itemFluid: {fileID: 0}
+  itemRoller: {fileID: 0}
+  itemTurtle: {fileID: 0}
 --- !u!114 &6589133367216455177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +680,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4516433100484168172
 GameObject:
@@ -771,7 +776,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4752784952865151070
 GameObject:
@@ -866,7 +871,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4956305717095410252
 GameObject:
@@ -1044,7 +1049,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7976674819806393983
 GameObject:
@@ -1140,7 +1145,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8127485582278923396
 GameObject:
@@ -1236,7 +1241,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.4, z: 0.2}
+  m_Size: {x: 0.3, y: 0.3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9020509434700287652
 GameObject:
