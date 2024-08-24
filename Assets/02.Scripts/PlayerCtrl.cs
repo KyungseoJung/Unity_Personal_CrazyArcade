@@ -40,7 +40,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float v;                        // 상하 버튼 누르는 것 감지
     private float distX;                     // #5 플레이어와 장애물 간의 거리 (X축)
     private float distY;                     // #5 플레이어와 장애물 간의 거리 (Y축)
-    private float lastMoveTime;             // #23 플레이어가 움직임을 보인 마지막 시각
+    private float lastMoveTime =0f;             // #23 플레이어가 움직임을 보인 마지막 시각
     private float checkTimeInterval = 2f;   // #23 2초
 
     private float posX, posY;               // #33
@@ -87,8 +87,12 @@ public class PlayerCtrl : MonoBehaviour // #1
             lookingAhead = true;
             anim.SetInteger("MoveDir", 0);  //상하좌우 어느쪽도 쳐다보지 않도록
 
-            anim.SetBool("LookingAhead", true);
-            Debug.Log("//#23 플레이어 정면 바라보기");
+            // #23 fix: 애니메이션은 SetBool이 아닌 Trigger로 설정 - 애니메이션이 계속 시작 부분만 실행되는 문제 해결 목적
+            // anim.SetBool("LookingAhead", true); 
+            // StartCoroutine(StartLookingAhead());
+            anim.SetTrigger("LookingAhead");
+            
+            // Debug.Log("//#23 플레이어 정면 바라보기");
             // Debug.Log("Time.time: " + Time.time);
             // Debug.Log("시간차: " + (Time.time - lastMoveTime));
         }
@@ -402,7 +406,8 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         lastMoveTime = Time.time;   // #23 플레이어가 움직임을 보인 마지막 시각
         lookingAhead = false;       // #23
-        anim.SetBool("LookingAhead", false);
+        // #23 fix: 애니메이션은 SetBool이 아닌 Trigger로 설정 - 애니메이션이 계속 시작 부분만 실행되는 문제 해결 목적
+        // anim.SetBool("LookingAhead", false);
 
 
         if(moveHorizontal)
