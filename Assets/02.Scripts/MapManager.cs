@@ -140,8 +140,8 @@ public class MapManager : MonoBehaviour
         {
             obsRow = ReturnRowInMatrix(obstacles[i].transform.position.y);     // #26 함수 이용
             obsCol =  ReturnColInMatrix(obstacles[i].transform.position.x);    // #26 함수 이용
-            Debug.Log("//#25 Obstacle(Bush 제외) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
-            Debug.Log("//#25 Ostacle(Bush 제외) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + obstacles[i].gameObject.name);
+            // Debug.Log("//#25 Obstacle(Bush 제외) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
+            // Debug.Log("//#25 Ostacle(Bush 제외) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + obstacles[i].gameObject.name);
             obstacleArr[obsRow, obsCol] = 1;  // #25 
 
         }
@@ -152,8 +152,8 @@ public class MapManager : MonoBehaviour
         {
             bushRow = ReturnRowInMatrix(bushes[i].transform.position.y);     // #26 함수 이용
             bushCol =  ReturnColInMatrix(bushes[i].transform.position.x);    // #26 함수 이용
-            Debug.Log("//#25 Obstacle(Bush만) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
-            Debug.Log("//#25 Ostacle(Bush만) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + bushes[i].gameObject.name);
+            // Debug.Log("//#25 Obstacle(Bush만) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
+            // Debug.Log("//#25 Ostacle(Bush만) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + bushes[i].gameObject.name);
 
             obstacleArr[bushRow, bushCol] = 1;
         }
@@ -163,8 +163,8 @@ public class MapManager : MonoBehaviour
         {
             itemRow = ReturnRowInMatrix(items[i].transform.position.y);     // #26 함수 이용
             itemCol =  ReturnColInMatrix(items[i].transform.position.x);    // #26 함수 이용
-            Debug.Log("//#25 Obstacle 존재 - itemRow: " + itemRow + ", itemCol: " + itemCol);
-            Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + items[i].gameObject.name);
+            // Debug.Log("//#25 Obstacle 존재 - itemRow: " + itemRow + ", itemCol: " + itemCol);
+            // Debug.Log("//#25 Ostacle 총 몇 개= " + (i + 1) + "오브젝트 이름: " + items[i].gameObject.name);
             itemArr[itemRow, itemCol] = 1;  // #25 
         }
 
