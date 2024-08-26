@@ -98,6 +98,7 @@ public class PlayerLife : MonoBehaviour
 
     private void SpecifyLocation()  // #29
     {
+        Debug.Log("//#42 리스폰 위치로 이동");
         this.gameObject.transform.position = respawnPos; // #29 리스폰 위치 지정
     }
     private void PlayerRespawn()    // #29 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
@@ -230,6 +231,13 @@ public class PlayerLife : MonoBehaviour
 
         return randomNum;
         
+    }
+
+    private void PlayerCanMove()    // #41 fix: PlayerEscapeWater 애니메이션 종료되는 시점에 실행 - 물풍선 탈출 애니메이션 후에, 원래 애니메이션이 정상적으로 작동하도록
+    {
+        // 자연스럽게 물풍선 탈출하는 애니메이션까지 완벽히 실행한 후, LookingAhead 애니메이션이 실행되도록
+        anim.SetBool("canMove", true);
+        anim.SetTrigger("LookingAhead");
     }
     
 }
