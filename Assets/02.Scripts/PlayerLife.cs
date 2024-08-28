@@ -24,7 +24,7 @@ public class PlayerLife : MonoBehaviour
     public bool trappedInWater = false;    // #17 플레이어 물풍선에 갇혔는지 확인용 bool형 변수
     public bool playerFaint = false;       // #28 플레이어 기절했는지 확인
     private bool playerDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
-    [SerializeField] private bool waterApplied = false;      // #17 fix: 이미 물풍선이 적용되었는지 확인용 bool형 변수
+    public bool waterApplied = false;      // #17 fix: 이미 물풍선이 적용되었는지 확인용 bool형 변수
 
     void Awake()
     {
