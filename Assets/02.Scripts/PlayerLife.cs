@@ -109,6 +109,9 @@ public class PlayerLife : MonoBehaviour
     private void PlayerRespawn()    // #29 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {
         playerFaint = false;    // #28 플레이어 기절 종료 - 움직임 가능
+        // #41 #17 fix: 플레이어가 부활할 때, 물풍선에 갇힘을 나타내는 변수들을 모두 false로 설정
+        trappedInWater = false; 
+        waterApplied = false;
         // #29 플레이어 죽은 후, 부활할 때
         anim.SetBool("canMove", true);  // #29 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
         playerCtrl.SetPlayerSpeed(false);  // #29 플레이어 본래 속도로 돌아가기
