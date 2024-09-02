@@ -57,6 +57,9 @@ public class PlayerLife : MonoBehaviour
             SetStateInWaterBalloon();   // #17 fix: balloonInFront 변수 사용을 하지 않고, SphereCollider를 통해 이동 제한을 함 -> 함수를 바로 실행해도 됨
             // balloonInFront 변수를 true로 만들어주는 CheckIsThereWaterBalloon함수 보다 먼저 실행되어서 생기는 문제 있었음 - 이를 보완하기 위해 Invoke 함수 이용
             
+            // #44 플레이어가 물풍선에 갇혀 있는 효과음 시작
+            music.SoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
+
             // #17 fix: 물풍선에 맞고나서 0.3초 후에 물풍선 적용 확인 변수를 false로 - 함수가 여러번 실행되는 것을 방지하기 위함 (거북에 타있는데도 물풍선에 갇히는 상황 방지)
             waterApplied = true;
             Invoke("CancleWaterApplied", 0.3f);

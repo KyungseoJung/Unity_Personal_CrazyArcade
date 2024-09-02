@@ -20,10 +20,12 @@ public class Music : MonoBehaviour
     0 : bomb_set
     1 : eatProp
     2 : bubbleBoom
+    3 : ef_playerDie        // #28
+    4 : ef_playerInBalloon  // #44
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
-    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE };    // #21 #22 #28 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON };    // #21 #22 #28 #44 효과음 종류
 
     void Awake()
     {
@@ -46,7 +48,7 @@ public class Music : MonoBehaviour
 
     }
 
-    public void SoundEffect(EFFECT_TYPE _type, float _volume = 1f)
+    public void SoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)
     // #21 효과음 크기도 설정
     {
         Debug.Log("//#21 효과음 시작");
@@ -56,5 +58,7 @@ public class Music : MonoBehaviour
         soundEffectArr.volume = _volume;
             
         soundEffectArr.Play();
+
+        soundEffectArr.loop = _loop;    // #44 효과음 반복 - ex) 플레이어가 물풍선에 갇혀 있을 때 나는 효과음
     }
 }
