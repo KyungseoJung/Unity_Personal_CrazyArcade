@@ -22,10 +22,11 @@ public class Music : MonoBehaviour
     2 : bubbleBoom
     3 : ef_playerDie        // #28
     4 : ef_playerInBalloon  // #44
+    5 : bomb_pop            // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
-    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON };    // #21 #22 #28 #44 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP};    // #21 #22 #28 #44 #43 효과음 종류
 
     void Awake()
     {
