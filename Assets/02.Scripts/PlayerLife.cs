@@ -255,6 +255,6 @@ public class PlayerLife : MonoBehaviour
     
     private void CancleWaterApplied()   // #17 fix: 물풍선에 맞고나서 0.3초 후에 물풍선 적용 확인 변수를 false로
     {
-        waterApplied = true;
+        waterApplied = true; // #17 fix: 변수를 false로 설정
     }
 }
