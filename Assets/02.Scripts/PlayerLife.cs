@@ -106,10 +106,13 @@ public class PlayerLife : MonoBehaviour
         ReturnSkillToMap();     // #28 플레이어가 획득했던 아이템 모두 뱉기
     }
 
-    private void SpecifyLocation()  // #29
+    private void SpecifyLocation()  // #29  - PlayerRespawn 애니메이션 시작될 때 실행되도록
     {
         Debug.Log("//#42 리스폰 위치로 이동");
         this.gameObject.transform.position = respawnPos; // #29 리스폰 위치 지정
+
+        // #45 플레이어 부활 효과음 - PlayerRespawn 애니메이션 시작될 때 실행되도록
+        music.SoundEffect(Music.EFFECT_TYPE.PLAYER_REVIVAL, 0.6f);
     }
     private void PlayerRespawn()    // #29 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {
