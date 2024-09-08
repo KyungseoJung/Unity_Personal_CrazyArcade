@@ -63,7 +63,7 @@ public class Item : MonoBehaviour   // #10
                     break;
             }
 
-            music.SoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
+            music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
     
         if(other.gameObject.tag == "WaterBurst")    // #34 물풍선의 물줄기에 닿으면 사라지도록 (단, 두 오브젝트 중 하나는 Rigidbody와 Collider 모두 있어야 함)

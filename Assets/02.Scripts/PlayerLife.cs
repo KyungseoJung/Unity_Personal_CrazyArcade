@@ -83,7 +83,7 @@ public class PlayerLife : MonoBehaviour
         trappedInWater = true;  // #17 중복 실행 방지
         Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
         // #44 플레이어가 물풍선에 갇혀 있는 효과음 시작
-        music.SoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
+        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
 
         anim.SetBool("canMove", false);
         anim.SetTrigger("trappedInWater");
@@ -93,7 +93,7 @@ public class PlayerLife : MonoBehaviour
     private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
         Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
-        music.SoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
+        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
         // #28 PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         PlayerGameMgr.Mgr.life -=1;
@@ -112,7 +112,7 @@ public class PlayerLife : MonoBehaviour
         this.gameObject.transform.position = respawnPos; // #29 리스폰 위치 지정
 
         // #45 플레이어 부활 효과음 - PlayerRespawn 애니메이션 시작될 때 실행되도록
-        music.SoundEffect(Music.EFFECT_TYPE.PLAYER_REVIVAL, 0.6f);
+        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_REVIVAL, 0.6f);
     }
     private void PlayerRespawn()    // #29 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {

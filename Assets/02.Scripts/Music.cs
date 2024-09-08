@@ -7,8 +7,10 @@ public class Music : MonoBehaviour
     // #18 Musics.cs 스크립트 생성
     public AudioSource gameMusicArr;
     public AudioSource soundEffectArr;  // #21
+    public AudioSource playerSoundEffectArr;    // #46 gameEffectClips 플레이어 효과음은 따로 관리
     public AudioClip[] audioClips;
     public AudioClip[] effectClips;
+
 
     /*
     * 인스펙터에서 연결하기
@@ -20,10 +22,10 @@ public class Music : MonoBehaviour
     0 : bomb_set
     1 : eatProp
     2 : bubbleBoom
-    3 : ef_playerDie        // #28
-    4 : ef_playerInBalloon  // #44
+    3 : ef_playerDie        // #28 #46
+    4 : ef_playerInBalloon  // #44 #46
     5 : bomb_pop            // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
-    6 : ef_playerRevival    // #45 플레이어 부활 효과음 - 원래 이 효과음이 아닌데, 대체할 게 이것 뿐.
+    6 : ef_playerRevival    // #45 #46 플레이어 부활 효과음 - 원래 이 효과음이 아닌데, 대체할 게 이것 뿐.
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
@@ -33,6 +35,7 @@ public class Music : MonoBehaviour
     {
         gameMusicArr = gameObject.AddComponent<AudioSource>();  // #18 오디오소스 없기 때문에, 추가해서 지정해줘야 함
         soundEffectArr = gameObject.AddComponent<AudioSource>();    // #21 효과음 - 오디오소스 없기 때문에, 추가해서 지정해줘야 함
+        playerSoundEffectArr = gameObject.AddComponent<AudioSource>();    // #46 플레이어 전용 효과음 - 오디오소스 없기 때문에, 추가해서 지정해줘야 함
     }
 
     void Start()
@@ -50,10 +53,10 @@ public class Music : MonoBehaviour
 
     }
 
-    public void SoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)
+    public void GameSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)
     // #21 효과음 크기도 설정
     {
-        Debug.Log("//#21 효과음 시작");
+        Debug.Log("//#21 게임 효과음 시작");
         soundEffectArr.Stop();
         soundEffectArr.clip = effectClips[(int)_type -1];
 
@@ -62,5 +65,18 @@ public class Music : MonoBehaviour
         soundEffectArr.Play();
 
         soundEffectArr.loop = _loop;    // #44 효과음 반복 - ex) 플레이어가 물풍선에 갇혀 있을 때 나는 효과음
+    }
+
+    public void PlayerSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)    // #46 플레이어에게서 나타나는 효과음은 따로 관리 - 게임 효과음이 묻히지 않도록
+    {
+        Debug.Log("//#46 플레이어 효과음 시작");
+        playerSoundEffectArr.Stop();
+        playerSoundEffectArr.clip = effectClips[(int)_type -1];
+
+        playerSoundEffectArr.volume = _volume;
+            
+        playerSoundEffectArr.Play();
+
+        playerSoundEffectArr.loop = _loop;
     }
 }

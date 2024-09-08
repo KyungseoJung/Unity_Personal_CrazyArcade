@@ -235,7 +235,7 @@ public class MapManager : MonoBehaviour
         Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
         waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가
-        music.SoundEffect(Music.EFFECT_TYPE.BOMB_SET); // #21 물풍선 놓을 때의 효과음
+        music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_SET); // #21 물풍선 놓을 때의 효과음
 
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
@@ -280,7 +280,7 @@ public class MapManager : MonoBehaviour
         // #25 fix: 물풍선 배열과 장애물 배열은 별도로 관리하도록 (장애물 배열에 물풍선 배열이 포함되어 있지 않도록)
 
         waterballoonPlaceNum -= 1; // #13 물풍선 개수 하나 감소
-        music.SoundEffect(Music.EFFECT_TYPE.BUBBLE_BOOM); // #21 물풍선 터질 때의 효과음
+        music.GameSoundEffect(Music.EFFECT_TYPE.BUBBLE_BOOM); // #21 물풍선 터질 때의 효과음
 
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
 

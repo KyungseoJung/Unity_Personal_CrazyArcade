@@ -130,7 +130,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 playerLife.waterApplied = false;    // #17 fix: 플레이어가 물풍선 벗어날 때, 변수 'waterApplied' 를 false로 설정하라 - 한번 물풍선 탈출하면, 그 이후에 물풍선 적용이 안 되는 문제 해결하기 위해
                 anim.SetTrigger("EscapeWater");     // #41 물풍선 벗어나는 애니메이션 실행 뒤, 기존 PlayerLookingAhead 애니메이션 실행
                 Debug.Log("//#41 물풍선 탈출");
-                music.SoundEffect(Music.EFFECT_TYPE.BOMB_POP, 0.6f);    // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
+                music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_POP, 0.6f);    // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
                 PlayerGameMgr.Mgr.needle -= 1;      // #43 바늘 아이템 사용
             }
             Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
