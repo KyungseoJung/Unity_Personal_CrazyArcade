@@ -131,6 +131,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 anim.SetTrigger("EscapeWater");     // #41 물풍선 벗어나는 애니메이션 실행 뒤, 기존 PlayerLookingAhead 애니메이션 실행
                 Debug.Log("//#41 물풍선 탈출");
                 music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_POP, 0.6f);    // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
+                music.StopPlayerSoundEffect();  // #47 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
                 PlayerGameMgr.Mgr.needle -= 1;      // #43 바늘 아이템 사용
             }
             Debug.Log("//#41 키보드의 숫자 '2'를 누름");  

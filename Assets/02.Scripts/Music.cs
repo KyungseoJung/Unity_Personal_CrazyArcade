@@ -79,4 +79,9 @@ public class Music : MonoBehaviour
 
         playerSoundEffectArr.loop = _loop;
     }
+
+    public void StopPlayerSoundEffect() // #47
+    {
+        playerSoundEffectArr.Stop();
+    }
 }
