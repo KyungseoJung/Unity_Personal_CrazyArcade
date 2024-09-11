@@ -1,12 +1,108 @@
 fileFormatVersion: 2
 guid: 24ab8d219c769e543affc07899bb2f20
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2604688528181093180
+    second: 1_turtleUp_0
+  - first:
+      213: 7148571427939132541
+    second: 1_turtleUp_1
+  - first:
+      213: 5099098381443202286
+    second: Rides_2
+  - first:
+      213: 2228245179073784601
+    second: Rides_3
+  - first:
+      213: -3453869709789532281
+    second: Rides_4
+  - first:
+      213: -3007180672444849092
+    second: Rides_5
+  - first:
+      213: 4116945259470249141
+    second: Rides_6
+  - first:
+      213: 5384414766539773829
+    second: Rides_7
+  - first:
+      213: -161519088249430500
+    second: 1_turtleDown_0
+  - first:
+      213: -1395205745210838577
+    second: 1_turtleDown_1
+  - first:
+      213: 8042153847027159267
+    second: Rides_10
+  - first:
+      213: 7841623509189752411
+    second: Rides_11
+  - first:
+      213: 1003511975780305881
+    second: Rides_12
+  - first:
+      213: 4758298027135325629
+    second: Rides_13
+  - first:
+      213: 4137128684226287855
+    second: Rides_14
+  - first:
+      213: 2229790515901521075
+    second: Rides_15
+  - first:
+      213: -1566967331492199127
+    second: 1_turtleLeft_0
+  - first:
+      213: 9112820164954745187
+    second: 1_turtleLeft_1
+  - first:
+      213: 844669303640591032
+    second: Rides_18
+  - first:
+      213: -230213113782761958
+    second: Rides_19
+  - first:
+      213: 5911701016600202958
+    second: Rides_20
+  - first:
+      213: 6996592146121783752
+    second: Rides_21
+  - first:
+      213: -1136013014015493175
+    second: Rides_22
+  - first:
+      213: -2788802858953336998
+    second: Rides_23
+  - first:
+      213: 2728083101072029828
+    second: 1_turtleRight_0
+  - first:
+      213: -3767842937305896266
+    second: 1_turtleRight_1
+  - first:
+      213: -4233509821236438434
+    second: Rides_26
+  - first:
+      213: -515596812836897862
+    second: Rides_27
+  - first:
+      213: -3676132904283305440
+    second: Rides_28
+  - first:
+      213: -2452741455100009725
+    second: Rides_29
+  - first:
+      213: -1234395911945739031
+    second: Rides_30
+  - first:
+      213: -3686812541918983380
+    second: Rides_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,13 +130,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,9 +145,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -71,13 +167,721 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 1_turtleUp_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 135
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc1b3775994adbd0800000000000000
+      internalID: -2604688528181093180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleUp_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 135
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74a1d5c6d3d43360800000000000000
+      internalID: 7148571427939132541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_2
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 135
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eecf0b436f2a3c640800000000000000
+      internalID: 5099098381443202286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 135
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b6b234f215cee10800000000000000
+      internalID: 2228245179073784601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_4
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 136
+        width: 50
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78f638f5cc36110d0800000000000000
+      internalID: -3453869709789532281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_5
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 134
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3421837c195446d0800000000000000
+      internalID: -3007180672444849092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_6
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 127
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bcd376a6e3522930800000000000000
+      internalID: 4116945259470249141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_7
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 127
+        width: 40
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58798fac3b849ba40800000000000000
+      internalID: 5384414766539773829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleDown_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 102
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e9278be3b22cdf0800000000000000
+      internalID: -161519088249430500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleDown_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 102
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1bf1054cb33ace0800000000000000
+      internalID: -1395205745210838577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 102
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e0581190587b9f60800000000000000
+      internalID: 8042153847027159267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_11
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 102
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b567b9fe80b03dc60800000000000000
+      internalID: 7841623509189752411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_12
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 107
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db4c3c33d03ded00800000000000000
+      internalID: 1003511975780305881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_13
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 104
+        width: 50
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5d7da58ded80240800000000000000
+      internalID: 4758298027135325629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_14
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 87
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8136d6e980a6930800000000000000
+      internalID: 4137128684226287855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_15
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 86
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc58d709aec1fe10800000000000000
+      internalID: 2229790515901521075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleLeft_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 70
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92504cf9383014ae0800000000000000
+      internalID: -1566967331492199127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleLeft_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 70
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369e42288ad377e70800000000000000
+      internalID: 9112820164954745187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_18
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 70
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba8c24a14ed8bb00800000000000000
+      internalID: 844669303640591032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_19
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 70
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16875a846e1eccf0800000000000000
+      internalID: -230213113782761958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_20
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 75
+        width: 50
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece45c8c0c49a0250800000000000000
+      internalID: 5911701016600202958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_21
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 73
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c970e3cc73e81160800000000000000
+      internalID: 6996592146121783752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_22
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 47
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cbb26fbe221c30f0800000000000000
+      internalID: -1136013014015493175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_23
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 46
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a571e73539e2c49d0800000000000000
+      internalID: -2788802858953336998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleRight_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 38
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 488f42d50291cd520800000000000000
+      internalID: 2728083101072029828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1_turtleRight_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 38
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6baea68bfcee5bbc0800000000000000
+      internalID: -3767842937305896266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_26
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 38
+        width: 41
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5a13186f3d8f35c0800000000000000
+      internalID: -4233509821236438434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_27
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 38
+        width: 42
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb78833e6b38d8f0800000000000000
+      internalID: -515596812836897862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_28
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 42
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02a811db990cbfcc0800000000000000
+      internalID: -3676132904283305440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_29
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 44
+        width: 50
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 303a3ea44ac16fdd0800000000000000
+      internalID: -2452741455100009725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_30
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 7
+        width: 33
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4a74c457b8edee0800000000000000
+      internalID: -1234395911945739031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rides_31
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 6
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2bc675d68fc5dcc0800000000000000
+      internalID: -3686812541918983380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

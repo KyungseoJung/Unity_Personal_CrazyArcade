@@ -136,16 +136,16 @@ TextureImporter:
     second: PlayerLookingAhead_1
   - first:
       213: -5537469732009347376
-    second: Player1_44
+    second: 1_playerRide_1
   - first:
       213: -1281369400444675286
-    second: Player1_45
+    second: 1_playerRide_2
   - first:
       213: -6408118886020838340
-    second: Player1_46
+    second: 1_playerRide_3
   - first:
       213: -5556668482510371945
-    second: Player1_47
+    second: 1_playerRide_4
   - first:
       213: 9075152754397392924
     second: Player1_Happy1
@@ -1209,7 +1209,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_44
+      name: 1_playerRide_1
       rect:
         serializedVersion: 2
         x: 12
@@ -1230,7 +1230,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_45
+      name: 1_playerRide_2
       rect:
         serializedVersion: 2
         x: 60
@@ -1251,10 +1251,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_46
+      name: 1_playerRide_3
       rect:
         serializedVersion: 2
-        x: 110
+        x: 109
         y: 84
         width: 42
         height: 56
@@ -1272,7 +1272,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player1_47
+      name: 1_playerRide_4
       rect:
         serializedVersion: 2
         x: 156
