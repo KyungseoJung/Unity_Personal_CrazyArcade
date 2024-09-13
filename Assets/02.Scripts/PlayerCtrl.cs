@@ -51,10 +51,10 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     void Awake()
     {
-        bazziObj = transform.GetChild(0).gameObject;    // #6 fix
-        shadowObj = transform.GetChild(1).gameObject;   // #6 fix
+        bazziObj = transform.GetChild(2).gameObject;    // #6 fix   // #6 fix: 하위 3번째 오브젝트가 BazziObj
+        shadowObj = transform.GetChild(0).gameObject;   // #6 fix   // #6 fix: 하위 1번째 오브젝트가 shadowObj
         rBody = GetComponent<Rigidbody>();
-        bazziSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();  // #2
+        bazziSprite = transform.GetChild(2).GetComponent<SpriteRenderer>();  // #2  // #6 fix: 하위 3번째 오브젝트가 BazziObj
         anim = GetComponent<Animator>();    // #3
 
         playerLife = GetComponent<PlayerLife>();    // #28
