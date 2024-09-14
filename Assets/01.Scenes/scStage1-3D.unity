@@ -1721,6 +1721,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obj_Block_Red
       objectReference: {fileID: 0}
+    - target: {fileID: 9185588241432063644, guid: a5244791c7c184b4b97125c69a06b95b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5244791c7c184b4b97125c69a06b95b, type: 3}
 --- !u!1001 &8513862710394726675

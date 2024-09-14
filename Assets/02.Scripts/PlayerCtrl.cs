@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerCtrl : MonoBehaviour // #1 
 {
@@ -14,7 +15,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     private GameObject bazziObj;        // #6 fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     private GameObject shadowObj;       // #6 fix: 'shadow' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     private Rigidbody rBody;               // 2D에서 3D로 변경
-    private SpriteRenderer bazziSprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
+    // private SpriteRenderer bazziSprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
+    [SerializeField] private SortingGroup mainPlayerGroup;   // #2 fix #48 feat 최상위 오브젝트 'MainPlayer'의 SortingGroup 
     private Animator anim;                 // #3 플레이어 애니메이터
 
     private PlayerLife playerLife;         // #28 플레이어 기절 확인
@@ -54,7 +56,8 @@ public class PlayerCtrl : MonoBehaviour // #1
         bazziObj = transform.GetChild(2).gameObject;    // #6 fix   // #6 fix: 하위 3번째 오브젝트가 BazziObj
         shadowObj = transform.GetChild(0).gameObject;   // #6 fix   // #6 fix: 하위 1번째 오브젝트가 shadowObj
         rBody = GetComponent<Rigidbody>();
-        bazziSprite = transform.GetChild(2).GetComponent<SpriteRenderer>();  // #2  // #6 fix: 하위 3번째 오브젝트가 BazziObj
+        // bazziSprite = transform.GetChild(2).GetComponent<SpriteRenderer>();  // #2  // #6 fix: 하위 3번째 오브젝트가 BazziObj
+        mainPlayerGroup = transform.GetComponent<SortingGroup>();   // #2 fix #48 feat 최상위 오브젝트 'MainPlayer'의 SortingGroup
         anim = GetComponent<Animator>();    // #3
 
         playerLife = GetComponent<PlayerLife>();    // #28
@@ -111,7 +114,9 @@ public class PlayerCtrl : MonoBehaviour // #1
             anim.SetFloat("horizontalSpeed", 0);
         }
         // #2 y축 기준으로 밑에 있을수록 더 위에 그려져야 하므로 반비례 -> -1
-        bazziSprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
+        // bazziSprite.sortingOrder = - Mathf.RoundToInt(transform.position.y); 
+        // #2 fix #48 feat 하위 오브젝트 'Bazzi'의 OrderInLayer만 수정하는 방법 대신, 최상위 오브젝트 'MainPlayer'의 OrderInLayer를 수정하는 방법 이용.
+        mainPlayerGroup.sortingOrder = - Mathf.RoundToInt(transform.position.y);    
 
 
         // #4 물풍선 놓기
