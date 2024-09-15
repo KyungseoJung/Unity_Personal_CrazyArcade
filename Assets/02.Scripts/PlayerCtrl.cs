@@ -213,7 +213,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     private void OnCollisionStay(Collision other) 
     {
 
-        if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
+        // if(other.gameObject.tag == "Obstacle")  // #5 장애물에 닿으면, 미끄러지듯이 지나갈 수 있도록 - 플레이어 몸을 옆으로 밀기
+        if((other.gameObject.tag == "Obstacle") || (other.gameObject.tag == "WaterBalloon") || (other.gameObject.tag == "Block"))  // #5 미끄러지듯이 지나가는 장애물에 "WaterBalloon"이나 "Block" tag를 가진 장애물도 포함되도록 하기
         {
             distX = (transform.position.x - other.transform.position.x)*(transform.position.x - other.transform.position.x);
             distY = (transform.position.y - other.transform.position.y)*(transform.position.y - other.transform.position.y);
