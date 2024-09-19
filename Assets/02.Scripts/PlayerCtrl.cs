@@ -390,7 +390,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
         if((transform.position.x) * (transform.position.x) > 16 )
         {
-            Debug.Log("// #24 플레이어가 x좌표 경계선 넘어감");
+            // Debug.Log("// #24 플레이어가 x좌표 경계선 넘어감");
             pos = this.transform.position;
             pos.x = (int)this.transform.position.x; // -4 또는 4로 지정
             this.transform.position = pos;
@@ -398,7 +398,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         
         if((transform.position.y) * (transform.position.y) > 9)
         {
-            Debug.Log("// #24 플레이어가 y좌표 경계선 넘어감");
+            // Debug.Log("// #24 플레이어가 y좌표 경계선 넘어감");
             pos = this.transform.position;
             pos.y = (int)this.transform.position.y; // -3 또는 3으로 지정
             this.transform.position = pos;
