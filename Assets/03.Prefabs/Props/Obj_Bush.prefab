@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1514923399
   m_SortingLayer: 1
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: -6614373457484812694, guid: 07e96804621d47a47a59389319bb0174,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -162,6 +162,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 2
   anim: {fileID: 0}
+  itemBubble: {fileID: 0}
+  itemCoin: {fileID: 0}
+  itemFluid: {fileID: 0}
+  itemRoller: {fileID: 0}
+  itemTurtle: {fileID: 0}
 --- !u!65 &8591951452184583771
 BoxCollider:
   m_ObjectHideFlags: 0
