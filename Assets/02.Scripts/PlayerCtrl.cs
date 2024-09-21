@@ -11,8 +11,10 @@ public class PlayerCtrl : MonoBehaviour // #1
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // #5 refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
 
-    [SerializeField]
-    private GameObject bazziObj;        // #6 fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
+    [SerializeField] private GameObject bazziObj;        // #6 fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
+    [SerializeField] private GameObject ridesObj;        // #6 fix: 'rides' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
+    [SerializeField] private SpriteRenderer ridesSprite;                  // #6 fix: 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
+
     private GameObject shadowObj;       // #6 fix: 'shadow' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     private Rigidbody rBody;               // 2D에서 3D로 변경
     // private SpriteRenderer bazziSprite;                  // #2 플레이어 위치에 따라 오브젝트 앞에 or 뒤에 그려지도록 
@@ -53,7 +55,10 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     void Awake()
     {
-        bazziObj = transform.GetChild(2).gameObject;    // #6 fix   // #6 fix: 하위 3번째 오브젝트가 BazziObj
+        bazziObj = transform.GetChild(2).gameObject;    // #6 fix   // #6 fix: 하위 3번째 오브젝트가 bazziObj
+        ridesObj = transform.GetChild(1).gameObject;    // #6 fix   // #6 fix: 하위 2번째 오브젝트가 ridesObj
+        ridesSprite = transform.GetChild(1).GetComponent<SpriteRenderer>(); // #6 fix: 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
+
         shadowObj = transform.GetChild(0).gameObject;   // #6 fix   // #6 fix: 하위 1번째 오브젝트가 shadowObj
         rBody = GetComponent<Rigidbody>();
         // bazziSprite = transform.GetChild(2).GetComponent<SpriteRenderer>();  // #2  // #6 fix: 하위 3번째 오브젝트가 BazziObj
@@ -288,6 +293,9 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             // SetAlpha(bazziSprite, 0f);    // #6 fix
             ObjSetActive(bazziObj, false);        // #6 fix
+            ObjSetActive(ridesObj, false);        // #6 fix
+            SetAlpha(ridesSprite, 0f);            // #6 fix: 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
+
             ObjSetActive(shadowObj, false);       // #6 fix
 
             obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
@@ -314,6 +322,9 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             // SetAlpha(bazziSprite, 1f);    // #6 fix
             ObjSetActive(bazziObj, true);         // #6 fix
+            ObjSetActive(ridesObj, true);         // #6 fix
+            SetAlpha(ridesSprite, 1f);            // #6 fix: 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
+
             ObjSetActive(shadowObj, true);        // #6 fix
 
             obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
@@ -530,6 +541,12 @@ public class PlayerCtrl : MonoBehaviour // #1
     //     Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
     //     _sprite.color = new Color(1f, 1f, 1f, _alpha);
     // }
+
+    void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
+    {
+        Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
+        _sprite.color = new Color(1f, 1f, 1f, _alpha);
+    }
 
     private void ObjSetActive(GameObject _obj, bool _active)
     {
