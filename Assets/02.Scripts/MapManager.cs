@@ -62,6 +62,21 @@ public class MapManager : MonoBehaviour
         {0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
 
+    public int[,] bushArr =                 // #25 fiX: Bush(덤불) 배열 - 7행 9열 이차원 배열
+    // obstacleArr가 별개로 설정해야, 장애물에 물풍선이 적용되지 않는 문제를 피할 수 있음 
+    {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
+
+
     public int[,] itemArr =                    // #25 아이템 배열 - 7행 9열 이차원 배열
     {
         {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -155,7 +170,8 @@ public class MapManager : MonoBehaviour
             // Debug.Log("//#25 Obstacle(Bush만) 존재 - obsRow: " + obsRow + ", obsCol: " + obsCol);
             // Debug.Log("//#25 Ostacle(Bush만) 총 몇 개= " + (i + 1) + "오브젝트 이름: " + bushes[i].gameObject.name);
 
-            obstacleArr[bushRow, bushCol] = 1;
+            // obstacleArr[bushRow, bushCol] = 1;   // #25 fix: obstacleArr가 별개로 설정해야, 장애물에 물풍선이 적용되지 않는 문제를 피할 수 있음 
+            bushArr[bushRow, bushCol] = 1;
         }
 
         // #25 아이템 배열
@@ -168,7 +184,7 @@ public class MapManager : MonoBehaviour
             itemArr[itemRow, itemCol] = 1;  // #25 
         }
 
-        //#25 ObstacleArr 배열  // #25 "Bush" 태그를 가진 모든 오브젝트
+        //#25 BlockArr 배열  // #25 "Block" 태그를 가진 모든 오브젝트
         for(int i=0; i<blocks.Length; i++)
         {
             blockRow = ReturnRowInMatrix(blocks[i].transform.position.y);   // #26 함수 이용

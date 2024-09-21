@@ -87,7 +87,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log("//#14 Obstacle 충돌 처리");
+        Debug.Log("//#14 Obstacle 충돌 처리| 주체: " + this.gameObject.name + "상대:" + other.gameObject.name);
 
         switch(obstacleType)
         {
