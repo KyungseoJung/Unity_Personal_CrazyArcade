@@ -210,12 +210,20 @@ public class MapManager : MonoBehaviour
         obstacleArr[obsRow, obsCol] = 0;    // #36   
     }
 
-    public void RemoveBlockPos(Transform _trans)    // #39 특정 블록이 사라지면 해당 위치의 blockArr을 0으로 전황
+    public void RemoveBlockPos(Transform _trans)    // #39 특정 블록이 사라지면 해당 위치의 blockArr을 0으로 전환
     {
         blockRow = ReturnRowInMatrix(_trans.position.y);
         blockCol = ReturnColInMatrix(_trans.position.x);
         Debug.Log("//#39 블록 배열 삭제");
         blockArr[blockRow, blockCol] = 0;    
+    }
+
+    public void RemoveBushPos(Transform _trans) // #36 특정 덤불이 사라지면 해당 위치의 bushArr을 0으로 전환
+    {
+        bushRow = ReturnRowInMatrix(_trans.position.y);
+        bushCol = ReturnColInMatrix(_trans.position.x);
+        Debug.Log("//#36 덤불 배열 삭제");
+        bushArr[bushRow, bushCol] = 0;
     }
 
     public void PlaceWaterBalloon(float _x, float _y)    // #4 플레이어 물풍선 놓기 - 받아오는 parameter는 플레이어의 좌표

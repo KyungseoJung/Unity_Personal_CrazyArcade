@@ -208,7 +208,8 @@ public class Obstacle : MonoBehaviour
                     break;
                 case OBSTACLE_TYPE.BUSH:
                     Debug.Log("//#36 물풍선이 Bush에 맞음");
-                    DestroyObstacle();
+                    // DestroyObstacle();
+                    DestroyBush();  // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
                     break;
                 case OBSTACLE_TYPE.WOODBLOCK:
                     Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
@@ -351,6 +352,14 @@ public class Obstacle : MonoBehaviour
         Destroy(this.gameObject);
 
         mapMgr.RemoveBlockPos(this.transform);    // #39 해당 위치의 blockArr 배열값을 0으로 설정
+    }
+
+    public void DestroyBush()   // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
+    {
+        Debug.Log("//#36: " + this.gameObject.name + " 덤불(Bush) 삭제");
+        Destroy(this.gameObject);
+
+        mapMgr.RemoveBushPos(this.transform);   // #36 해당 위치의 bushArr 배열 값을 0으로 설정
     }
 
     private void PlaceRandomItem()  // #38 물풍선을 맞은 WoodBlock이 사라진 자리에 랜덤으로 아이템 놓기
