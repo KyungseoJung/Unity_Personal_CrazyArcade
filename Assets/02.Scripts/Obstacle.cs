@@ -213,9 +213,11 @@ public class Obstacle : MonoBehaviour
                     break;
                 case OBSTACLE_TYPE.WOODBLOCK:
                     Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
-                    DestroyObstacle();
+                    // DestroyObstacle();
+                    DestroyBlock(); // #38 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
                     PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록
                     break;
+
                 case OBSTACLE_TYPE.NORMALBLOCK:
                     Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
                     DestroyBlock(); // #39 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
