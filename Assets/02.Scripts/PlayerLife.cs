@@ -53,6 +53,11 @@ public class PlayerLife : MonoBehaviour
     {
         if(!trappedInWater && !waterApplied)
         {
+            if(!playerCtrl.CheckPlayerVisible())    // #17 만약 플레이어가 Bush 안에 가려져 있었다면, 다시 보이게 하기
+            {
+                playerCtrl.MakePlayerVisible();
+            }
+            
             // Invoke("SetStateInWaterBalloon", 0.5f); // #17 fix: 시간 지연을 두고, 플레이어가 물풍선에 닿았을 때 상태 변화를 주기
             SetStateInWaterBalloon();   // #17 fix: balloonInFront 변수 사용을 하지 않고, SphereCollider를 통해 이동 제한을 함 -> 함수를 바로 실행해도 됨
             // balloonInFront 변수를 true로 만들어주는 CheckIsThereWaterBalloon함수 보다 먼저 실행되어서 생기는 문제 있었음 - 이를 보완하기 위해 Invoke 함수 이용
