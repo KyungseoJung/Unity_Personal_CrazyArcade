@@ -31,9 +31,9 @@ public class PlayerCtrl : MonoBehaviour // #1
     // [SerializeField]
     // private bool dirRight = false;         // 플레이어가 바라보는 방향(오른쪽 : 1, 왼쪽 : -1)
 
-[SerializeField]    private float moveForce;  //#1 fix: 17f-> 50f로 변경 // 이동할 때 주는 힘 - 처음 설정 값은 20
+[SerializeField]    private float moveForce;  //#1 fix: 17f-> 50f로 변경(Start함수에서) // 이동할 때 주는 힘 - 처음 설정 값은 20
     private float originMoveForce;          // #1 fix 처음 설정 값 가져오기 - 처음 설정 값 저장용
-    private float turtleMountMoveForce;     // #35 거북에 탔을 때, 이동 속도
+    private float turtleMountMoveForce;     // #35 fix: moveForce의 1/2배로 설정(Start함수에서) // #35 거북에 탔을 때, 이동 속도
 
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
 
@@ -79,7 +79,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         originMoveForce = moveForce;    // #1 fix
         originMaxSpeed = maxSpeed;      // #1 fix
 
-        turtleMountMoveForce = moveForce - 5f;  // #35 거북에 탔을 때 속도 설정
+        turtleMountMoveForce = moveForce/2f;  // #35 거북에 탔을 때 속도 설정
         turtleMountMaxSpeed = maxSpeed - 3f;   // #35 거북에 탔을 때 가속도 설정
 
         anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
