@@ -34,12 +34,13 @@ public class PlayerCtrl : MonoBehaviour // #1
 [SerializeField]    private float moveForce;  //#1 fix: 17f-> 50f로 변경(Start함수에서) // 이동할 때 주는 힘 - 처음 설정 값은 20
     private float originMoveForce;          // #1 fix 처음 설정 값 가져오기 - 처음 설정 값 저장용
     private float turtleMountMoveForce;     // #35 fix: moveForce의 1/2배로 설정(Start함수에서) // #35 거북에 탔을 때, 이동 속도
-
+    private float trappedInWaterMoveForce;  // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
 
 [SerializeField]    private float maxSpeed;            // 가속도 적용 속도
     private float originMaxSpeed;           // #1 fix 처음 설정 값 가져오기
     private float turtleMountMaxSpeed;      // #35 거북에 탔을 때, 가속도
+    private float trappedInWaterMaxSpeed;   // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
 
     private float h;                        // 좌우 버튼 누르는 것 감지
     private float v;                        // 상하 버튼 누르는 것 감지
@@ -81,6 +82,9 @@ public class PlayerCtrl : MonoBehaviour // #1
 
         turtleMountMoveForce = moveForce/2f;  // #35 거북에 탔을 때 속도 설정
         turtleMountMaxSpeed = maxSpeed - 3f;   // #35 거북에 탔을 때 가속도 설정
+
+        trappedInWaterMoveForce = moveForce/5f; // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
+        trappedInWaterMaxSpeed = maxSpeed - 4f; // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
 
         anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
     }
@@ -594,8 +598,8 @@ public class PlayerCtrl : MonoBehaviour // #1
                 Debug.Log("//#17 플레이어 이동 속도 느려지도록");
 
                 // #17 fix: 
-                moveForce = originMoveForce - 10f;    // 7f - 2f 
-                maxSpeed = originMaxSpeed - 0.6f;      // 2f - 1f;
+                moveForce = trappedInWaterMoveForce;    // originMoveForce - 10f;    // 7f - 2f 
+                maxSpeed = trappedInWaterMaxSpeed;      //  originMaxSpeed - 0.6f;      // 2f - 1f;
                 break;
             case false: 
             // #29 플레이어 본래 (디폴트) 속도로
