@@ -74,6 +74,7 @@ public class Obstacle : MonoBehaviour
                 break;
 
             case OBSTACLE_TYPE.WOODBLOCK :
+            case OBSTACLE_TYPE.NORMALBLOCK :    // #38 NORMALBLOCK도 (물풍선에 의해 없어질 때) 랜덤 아이템 생기도록 설정
                 randomNumber = Random.Range(0, 6);  // 1부터 5까지의 랜덤 숫자 생성 // #38 fix: 0부터 5까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
                 
                 if(randomNumber != 0)   // #38 fix 랜덤 아이템이 없는 경우는 배제한 if문
@@ -221,6 +222,7 @@ public class Obstacle : MonoBehaviour
                 case OBSTACLE_TYPE.NORMALBLOCK:
                     Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
                     DestroyBlock(); // #39 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
+                    PlaceRandomItem();  // #38 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 생기도록
                     break;
             }
         }
@@ -366,9 +368,9 @@ public class Obstacle : MonoBehaviour
         mapMgr.RemoveBushPos(this.transform);   // #36 해당 위치의 bushArr 배열 값을 0으로 설정
     }
 
-    private void PlaceRandomItem()  // #38 물풍선을 맞은 WoodBlock이 사라진 자리에 랜덤으로 아이템 놓기
+    private void PlaceRandomItem()  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기
     {
-        Debug.Log("//#38 WoodBlock이 사라진 자리에 랜덤 아이템 배치");
+        Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
 
         if(randomNumber ==0)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
             return;
