@@ -23,6 +23,7 @@ public class MapManager : MonoBehaviour
 
     private Vector3 balloonPos;         // #4 물풍선 배치 위치
     private Vector3 itemPos;            // #28 아이템 배치 위치
+    private Vector3 itemPosByBlock;     // #38 박스가 사라진 자리에 아이템 배치 위치
 
     private int waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
 
@@ -292,6 +293,44 @@ public class MapManager : MonoBehaviour
                 break;
         }
     }
+
+    public void PlaceRandomItem(int randomNumber, Item.ITEM_TYPE randomItemType, Vector3 _itemPos)
+    {
+        // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
+        StartCoroutine(PlaceRandomItemByBlock(randomNumber, randomItemType, _itemPos, 0.5f));
+    }
+
+    IEnumerator PlaceRandomItemByBlock(int randomNumber, Item.ITEM_TYPE randomItemType, Vector3 _itemPos, float waitTime)  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기
+    {
+        yield return new WaitForSeconds(waitTime); // waitTime 만큼 딜레이후 다음 코드가 실행된다.
+
+        Debug.Log("//#38 fix: PlaceRandomItemByBlock 함수 실행");
+        if(randomNumber ==0)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
+            yield break;
+
+        Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
+        itemPosByBlock = _itemPos;
+
+        switch(randomItemType)
+        {
+            case Item.ITEM_TYPE.FLUID:
+                Instantiate(fluidItemPrefab, itemPosByBlock, Quaternion.identity);   
+                yield break;
+            case Item.ITEM_TYPE.BUBBLE:
+                Instantiate(bubbleItemPrefab, itemPosByBlock, Quaternion.identity);
+                yield break;
+            case Item.ITEM_TYPE.COIN:
+                Instantiate(coinItemPrefab, itemPosByBlock, Quaternion.identity);
+                yield break;
+            case Item.ITEM_TYPE.TURTLE:
+                Instantiate(turtleItemPrefab, itemPosByBlock, Quaternion.identity);
+                yield break;
+            case Item.ITEM_TYPE.ROLLER:
+                Instantiate(rollerItemPrefab, itemPosByBlock, Quaternion.identity);
+                yield break;            
+        }
+    }
+
     public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
     {
         balloonRow = ReturnRowInMatrix(_y);

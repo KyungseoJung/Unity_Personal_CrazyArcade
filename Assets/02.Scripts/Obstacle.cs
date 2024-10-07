@@ -216,13 +216,19 @@ public class Obstacle : MonoBehaviour
                     Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
                     // DestroyObstacle();
                     DestroyBlock(); // #38 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
-                    PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록
+                    // PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록
+                    // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
+                    mapMgr.PlaceRandomItem(randomNumber, randomItemType, this.transform.position); 
+
                     break;
 
                 case OBSTACLE_TYPE.NORMALBLOCK:
                     Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
                     DestroyBlock(); // #39 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
-                    PlaceRandomItem();  // #38 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 생기도록
+                    // PlaceRandomItem();  // #38 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 생기도록
+                    // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
+                    mapMgr.PlaceRandomItem(randomNumber, randomItemType, this.transform.position); 
+
                     break;
             }
         }
@@ -368,31 +374,32 @@ public class Obstacle : MonoBehaviour
         mapMgr.RemoveBushPos(this.transform);   // #36 해당 위치의 bushArr 배열 값을 0으로 설정
     }
 
-    private void PlaceRandomItem()  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기
-    {
-        Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
+    // private void PlaceRandomItem()  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기
+    // {
+    //     Debug.Log("//#38 fix: PlaceRandomItem함수 실행");
+    //     if(randomNumber ==0)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
+    //         return;
 
-        if(randomNumber ==0)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
-            return;
+    //     Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
 
-        switch(randomItemType)
-        {
-            case Item.ITEM_TYPE.FLUID:
-                Instantiate(itemFluid, this.transform.position, Quaternion.identity);   
-                break;
-            case Item.ITEM_TYPE.BUBBLE:
-                Instantiate(itemBubble, this.transform.position, Quaternion.identity);
-                break;
-            case Item.ITEM_TYPE.COIN:
-                Instantiate(itemCoin, this.transform.position, Quaternion.identity);
-                break;
-            case Item.ITEM_TYPE.TURTLE:
-                Instantiate(itemTurtle, this.transform.position, Quaternion.identity);
-                break;
-            case Item.ITEM_TYPE.ROLLER:
-                Instantiate(itemRoller, this.transform.position, Quaternion.identity);
-                break;
+    //     switch(randomItemType)
+    //     {
+    //         case Item.ITEM_TYPE.FLUID:
+    //             Instantiate(itemFluid, this.transform.position, Quaternion.identity);   
+    //             break;
+    //         case Item.ITEM_TYPE.BUBBLE:
+    //             Instantiate(itemBubble, this.transform.position, Quaternion.identity);
+    //             break;
+    //         case Item.ITEM_TYPE.COIN:
+    //             Instantiate(itemCoin, this.transform.position, Quaternion.identity);
+    //             break;
+    //         case Item.ITEM_TYPE.TURTLE:
+    //             Instantiate(itemTurtle, this.transform.position, Quaternion.identity);
+    //             break;
+    //         case Item.ITEM_TYPE.ROLLER:
+    //             Instantiate(itemRoller, this.transform.position, Quaternion.identity);
+    //             break;
             
-        }
-    }
+    //     }
+    // }
 }   
