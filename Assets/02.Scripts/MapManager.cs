@@ -333,6 +333,8 @@ public class MapManager : MonoBehaviour
 
     public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
     {
+        // 실제로 물풍선 오브젝트가 사라지는 건, Animator에서 실행되도록
+        
         balloonRow = ReturnRowInMatrix(_y);
         balloonCol = ReturnColInMatrix(_x);
 
