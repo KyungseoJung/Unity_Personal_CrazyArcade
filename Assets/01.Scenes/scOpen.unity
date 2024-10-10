@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txtPlayerLife: {fileID: 0}
+  btnHowToGame: {fileID: 1193526108}
+  btnStartGame: {fileID: 1523175487}
 --- !u!1 &107971709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905902735}
   m_Layer: 0
-  m_Name: objGameStart
+  m_Name: objStartGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1769,18 +1771,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1193526109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 81057707}
-        m_MethodName: ShowHowToGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1193526109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,7 +1974,7 @@ GameObject:
   - component: {fileID: 1523175488}
   - component: {fileID: 1523175487}
   m_Layer: 0
-  m_Name: btnGameStart
+  m_Name: btnStartGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2051,18 +2042,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1523175488}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 81057707}
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1523175488
 MonoBehaviour:
   m_ObjectHideFlags: 0
