@@ -8,6 +8,8 @@ using UnityEngine.UI;                       // #27 플레이어 목숨 표시
 
 public class LobbyManager : MonoBehaviour
 {
+    [SerializeField] GameObject pnlStartScene;     // 비활성화할 패널 오브젝트
+
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
@@ -30,6 +32,11 @@ public class LobbyManager : MonoBehaviour
 
     public void StartGame() // #19 시작하자마자 화면 전환
     {
+        if(pnlStartScene != null)   // #19 게임 시작하면, 필요한 UI는 남기고 pnlStartScene 오브젝트 비활성화 - 게임 화면 보이도록 하기 위함.
+        {
+            pnlStartScene.SetActive(false);
+        }
+        
         SceneManager.LoadScene("scStage1-3D");
     }
 
