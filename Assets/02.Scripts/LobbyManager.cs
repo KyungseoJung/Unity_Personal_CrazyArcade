@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;          // #19 Scene 전환 목적
 
 using UnityEngine.UI;                       // #27 플레이어 목숨 표시
 
+using UnityEngine.EventSystems;
+
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] GameObject pnlStartScene;     // 비활성화할 패널 오브젝트
 
+    // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
+    [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
+    
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
@@ -22,6 +27,28 @@ public class LobbyManager : MonoBehaviour
         if(btnHowToGame != null)
         {
             btnHowToGame.onClick.AddListener(ShowHowToGame);
+
+            // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
+            // EventTrigger 컴포넌트가 없으면 추가
+            EventTrigger eventTrigger = btnHowToGame.gameObject.GetComponent<EventTrigger>();
+            if (eventTrigger == null)
+            {
+                eventTrigger = btnHowToGame.gameObject.AddComponent<EventTrigger>();
+            }
+
+            // 마우스 오버 이벤트
+            EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
+            pointerEnter.eventID = EventTriggerType.PointerEnter;
+            pointerEnter.callback.AddListener((data) => { OnHoverEnterHowToGame(); });
+
+            // 마우스 나가기 이벤트
+            EventTrigger.Entry pointerExit = new EventTrigger.Entry();
+            pointerExit.eventID = EventTriggerType.PointerExit;
+            pointerExit.callback.AddListener((data) => { OnHoverExitHowToGame(); });
+
+            // 이벤트 트리거에 추가
+            eventTrigger.triggers.Add(pointerEnter);
+            eventTrigger.triggers.Add(pointerExit);
         }
 
         if(btnStartGame != null)
@@ -45,5 +72,23 @@ public class LobbyManager : MonoBehaviour
         Debug.Log("#49 어떻게 게임하는지 보여주기!");
     }
 
+
+    // #49 '게임 방법' 마우스 오버 시 패널 활성화
+    private void OnHoverEnterHowToGame()
+    {
+        if(pnlbtnPressHowToGame != null)
+        {
+            pnlbtnPressHowToGame.SetActive(true);
+        }
+    }
+
+    // #49 '게임 방법' 마우스 나갈 시 패널 비활성화
+    private void OnHoverExitHowToGame()
+    {
+        if(pnlbtnPressHowToGame != null)
+        {
+            pnlbtnPressHowToGame.SetActive(false);
+        }
+    }
 
 }
