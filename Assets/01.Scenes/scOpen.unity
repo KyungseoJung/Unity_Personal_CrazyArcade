@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pnlStartScene: {fileID: 269868512}
   pnlbtnPressHowToGame: {fileID: 1672826957}
+  pnlbtnPressGameStart: {fileID: 554271533}
   txtPlayerLife: {fileID: 0}
   btnHowToGame: {fileID: 1193526108}
   btnStartGame: {fileID: 1523175487}

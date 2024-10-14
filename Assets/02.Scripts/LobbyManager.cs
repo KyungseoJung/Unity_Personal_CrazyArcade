@@ -14,6 +14,7 @@ public class LobbyManager : MonoBehaviour
 
     // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
+    [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
     
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
@@ -30,10 +31,10 @@ public class LobbyManager : MonoBehaviour
 
             // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
             // EventTrigger 컴포넌트가 없으면 추가
-            EventTrigger eventTrigger = btnHowToGame.gameObject.GetComponent<EventTrigger>();
-            if (eventTrigger == null)
+            EventTrigger eventTrigger1 = btnHowToGame.gameObject.GetComponent<EventTrigger>();
+            if (eventTrigger1 == null)
             {
-                eventTrigger = btnHowToGame.gameObject.AddComponent<EventTrigger>();
+                eventTrigger1 = btnHowToGame.gameObject.AddComponent<EventTrigger>();
             }
 
             // 마우스 오버 이벤트
@@ -47,13 +48,35 @@ public class LobbyManager : MonoBehaviour
             pointerExit.callback.AddListener((data) => { OnHoverExitHowToGame(); });
 
             // 이벤트 트리거에 추가
-            eventTrigger.triggers.Add(pointerEnter);
-            eventTrigger.triggers.Add(pointerExit);
+            eventTrigger1.triggers.Add(pointerEnter);
+            eventTrigger1.triggers.Add(pointerExit);
         }
 
         if(btnStartGame != null)
         {
             btnStartGame.onClick.AddListener(StartGame);
+
+            // #49 feat '게임 시작' 버튼에 마우스 올려 놓으면, '게임 시작' 버튼이 더 밝게 빛나도록 
+            // EventTrigger 컴포넌트가 없으면 추가
+            EventTrigger eventTrigger2 = btnStartGame.gameObject.GetComponent<EventTrigger>();
+            if (eventTrigger2 == null)
+            {
+                eventTrigger2 = btnStartGame.gameObject.AddComponent<EventTrigger>();
+            }
+
+            // 마우스 오버 이벤트
+            EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
+            pointerEnter.eventID = EventTriggerType.PointerEnter;
+            pointerEnter.callback.AddListener((data) => { OnHoverEnterStartGame(); });
+
+            // 마우스 나가기 이벤트
+            EventTrigger.Entry pointerExit = new EventTrigger.Entry();
+            pointerExit.eventID = EventTriggerType.PointerExit;
+            pointerExit.callback.AddListener((data) => { OnHoverExitStartGame(); });
+
+            // 이벤트 트리거에 추가
+            eventTrigger2.triggers.Add(pointerEnter);
+            eventTrigger2.triggers.Add(pointerExit);
         }
     }
 
@@ -88,6 +111,24 @@ public class LobbyManager : MonoBehaviour
         if(pnlbtnPressHowToGame != null)
         {
             pnlbtnPressHowToGame.SetActive(false);
+        }
+    }
+
+    // #49 '게임 방법' 마우스 오버 시 패널 활성화
+    private void OnHoverEnterStartGame()
+    {
+        if(pnlbtnPressGameStart != null)
+        {
+            pnlbtnPressGameStart.SetActive(true);
+        }
+    }
+
+    // #49 '게임 방법' 마우스 나갈 시 패널 비활성화
+    private void OnHoverExitStartGame()
+    {
+        if(pnlbtnPressGameStart != null)
+        {
+            pnlbtnPressGameStart.SetActive(false);
         }
     }
 
