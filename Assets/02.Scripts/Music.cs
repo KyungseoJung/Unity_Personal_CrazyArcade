@@ -26,10 +26,11 @@ public class Music : MonoBehaviour
     4 : ef_playerInBalloon  // #44 #46
     5 : bomb_pop            // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
     6 : ef_playerRevival    // #45 #46 플레이어 부활 효과음 - 원래 이 효과음이 아닌데, 대체할 게 이것 뿐.
+    7 : charClick           // #49 로비 화면에서 버튼에 마우스 hover 했을 때 효과음
     */
 
     public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
-    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL};    // #21 #22 #28 #44 #43 #45 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER};    // #21 #22 #28 #44 #43 #45 효과음 종류
 
     void Awake()
     {

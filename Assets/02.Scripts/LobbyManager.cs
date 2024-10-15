@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 
 public class LobbyManager : MonoBehaviour
 {
+    private Music music;    // #49 버튼 눌렀을 때 효과음 들리도록 하기 위함
     [SerializeField] GameObject pnlStartScene;     // 비활성화할 패널 오브젝트
 
     // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
@@ -20,6 +21,11 @@ public class LobbyManager : MonoBehaviour
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
     [SerializeField] Button btnStartGame;           // #49 '게임 시작' 버튼
+
+    void Awake()
+    {
+        music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #49
+    }
 
     void Start()
     {
@@ -102,6 +108,7 @@ public class LobbyManager : MonoBehaviour
         if(pnlbtnPressHowToGame != null)
         {
             pnlbtnPressHowToGame.SetActive(true);
+            music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_HOVER);  // #49 버튼에 마우스 hover 했을 때 효과음
         }
     }
 
@@ -120,6 +127,7 @@ public class LobbyManager : MonoBehaviour
         if(pnlbtnPressGameStart != null)
         {
             pnlbtnPressGameStart.SetActive(true);
+            music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_HOVER);  // #49 버튼에 마우스 hover 했을 때 효과음
         }
     }
 
