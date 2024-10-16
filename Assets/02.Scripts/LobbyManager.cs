@@ -28,7 +28,10 @@ public class LobbyManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {   
+        // #50 로비 화면 입장할 때, 로비 BGM 시작
+        music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
+        
         // StartGame(); // #49 '게임 시작' 버튼 누르면, StartGame() 함수 실행되도록 하기
         // #49 특정 버튼에 대해 함수를 연결하는 부분을 인스펙터(Inspector)에서 했었음. -> 코드상으로 설정하는 방식으로 변경하기.
         if(btnHowToGame != null)
@@ -93,6 +96,8 @@ public class LobbyManager : MonoBehaviour
             pnlStartScene.SetActive(false);
         }
         
+        music.BackGroundMusic(Music.BGM_TYPE.MAINMUSIC);
+
         SceneManager.LoadScene("scStage1-3D");
     }
 

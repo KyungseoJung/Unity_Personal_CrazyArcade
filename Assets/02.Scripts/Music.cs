@@ -17,6 +17,7 @@ public class Music : MonoBehaviour
     
     - 배경음 -
     0 : BGSound1
+    1 : login_scene (로비 화면 BGM)
 
     - 효과음 -
     0 : bomb_set
@@ -29,7 +30,7 @@ public class Music : MonoBehaviour
     7 : charClick           // #49 로비 화면에서 버튼에 마우스 hover 했을 때 효과음
     */
 
-    public enum BGM_TYPE {MAINMUSIC =1 }; // #20 메인 배경음
+    public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC}; // #20 메인 배경음
     public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER};    // #21 #22 #28 #44 #43 #45 효과음 종류
 
     void Awake()
@@ -41,7 +42,7 @@ public class Music : MonoBehaviour
 
     void Start()
     {
-        BackGroundMusic(BGM_TYPE.MAINMUSIC);    // #20 메인 뮤직 BGM
+        // BackGroundMusic(BGM_TYPE.MAINMUSIC);    // #20 메인 뮤직 BGM
     }
 
     public void BackGroundMusic(BGM_TYPE _type)
