@@ -14,6 +14,9 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject pnlStartScene;     // 비활성화할 패널 오브젝트
 
     // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
+
+    [SerializeField] GameObject pnlLoading;                 // #51 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
+
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
     
@@ -31,6 +34,14 @@ public class LobbyManager : MonoBehaviour
     {   
         // #50 로비 화면 입장할 때, 로비 BGM 시작
         music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
+
+        // #51 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
+        if(pnlStartScene.activeSelf)
+            pnlStartScene.SetActive(false);
+        if(!pnlLoading.activeSelf)
+            pnlLoading.SetActive(true);
+        
+        Invoke("ActivePnlStartScene", 3f);
         
         // StartGame(); // #49 '게임 시작' 버튼 누르면, StartGame() 함수 실행되도록 하기
         // #49 특정 버튼에 대해 함수를 연결하는 부분을 인스펙터(Inspector)에서 했었음. -> 코드상으로 설정하는 방식으로 변경하기.
@@ -87,6 +98,12 @@ public class LobbyManager : MonoBehaviour
             eventTrigger2.triggers.Add(pointerEnter);
             eventTrigger2.triggers.Add(pointerExit);
         }
+    }
+
+    private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
+    {
+        if(!pnlStartScene.activeSelf)
+            pnlStartScene.SetActive(true);
     }
 
     public void StartGame() // #19 시작하자마자 화면 전환
