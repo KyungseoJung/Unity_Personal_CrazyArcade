@@ -19,6 +19,7 @@ public class LobbyManager : MonoBehaviour
 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
+    [SerializeField] GameObject pnlHowToGameScreen;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
     
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
@@ -121,6 +122,12 @@ public class LobbyManager : MonoBehaviour
     public void ShowHowToGame() // #49
     {
         Debug.Log("#49 어떻게 게임하는지 보여주기!");
+
+        // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
+        if(!pnlHowToGameScreen.activeSelf)  
+        {
+            pnlHowToGameScreen.SetActive(true);
+        }
     }
 
 
