@@ -21,6 +21,7 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
     [SerializeField] GameObject pnlHowToGameScreen;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
     
+    private Animator anim;  // #50 시작 화면 효과 주기 위한 Animator
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
@@ -35,6 +36,9 @@ public class LobbyManager : MonoBehaviour
     {   
         // #50 로비 화면 입장할 때, 로비 BGM 시작
         music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
+
+        // #50 시작 화면 효과 주기 위한 Animator
+        anim = pnlStartScene.transform.GetComponent<Animator>();
 
         // #51 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
@@ -105,6 +109,9 @@ public class LobbyManager : MonoBehaviour
     {
         if(!pnlStartScene.activeSelf)
             pnlStartScene.SetActive(true);
+
+        // #50 시작 화면 효과 주기 위한 Animator
+        anim.SetTrigger("StartScene");
     }
 
     public void StartGame() // #19 시작하자마자 화면 전환
