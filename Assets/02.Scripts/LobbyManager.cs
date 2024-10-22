@@ -21,7 +21,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
     [SerializeField] GameObject pnlHowToGameScreen;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
     
-    private Animator anim;  // #50 시작 화면 효과 주기 위한 Animator
+    private Animator startSceneAnim;  // #50 시작 화면 효과 주기 위한 Animator
+    private Animator howToGameAnim;     // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
@@ -38,13 +39,17 @@ public class LobbyManager : MonoBehaviour
         music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
 
         // #50 시작 화면 효과 주기 위한 Animator
-        anim = pnlStartScene.transform.GetComponent<Animator>();
+        startSceneAnim = pnlStartScene.transform.GetComponent<Animator>();
+
+        howToGameAnim = pnlHowToGameScreen.transform.GetComponent<Animator>();  // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
 
         // #51 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
             pnlStartScene.SetActive(false);
         if(!pnlLoading.activeSelf)
             pnlLoading.SetActive(true);
+        if(pnlHowToGameScreen.activeSelf)   // 처음 시작할 때, 게임 방법 보여주는 창은 비활성화 되어 있어야 함.
+            pnlHowToGameScreen.SetActive(false);
         
         Invoke("ActivePnlStartScene", 3f);
         
@@ -111,7 +116,7 @@ public class LobbyManager : MonoBehaviour
             pnlStartScene.SetActive(true);
 
         // #50 시작 화면 효과 주기 위한 Animator
-        anim.SetTrigger("StartScene");
+        startSceneAnim.SetTrigger("StartScene");
     }
 
     public void StartGame() // #19 시작하자마자 화면 전환
@@ -134,6 +139,9 @@ public class LobbyManager : MonoBehaviour
         if(!pnlHowToGameScreen.activeSelf)  
         {
             pnlHowToGameScreen.SetActive(true);
+
+            // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
+            howToGameAnim.SetTrigger("ShowHowToGame");
         }
     }
 
