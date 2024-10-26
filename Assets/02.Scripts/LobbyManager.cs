@@ -19,7 +19,9 @@ public class LobbyManager : MonoBehaviour
 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
+    [SerializeField] GameObject pnlbtnPressGameStart2;       // #49 버튼 눌렀을 때 보이는 panel ('게임 방법' 화면에 있는 '게임 시작' 버튼)
     [SerializeField] GameObject pnlHowToGameScreen;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
+    
     
     private Animator startSceneAnim;  // #50 시작 화면 효과 주기 위한 Animator
     private Animator howToGameAnim;     // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
@@ -27,6 +29,7 @@ public class LobbyManager : MonoBehaviour
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
     [SerializeField] Button btnStartGame;           // #49 '게임 시작' 버튼
+    [SerializeField] Button btnStartGame2;           // #49 '게임 시작' 버튼
 
     void Awake()
     {
@@ -108,6 +111,33 @@ public class LobbyManager : MonoBehaviour
             eventTrigger2.triggers.Add(pointerEnter);
             eventTrigger2.triggers.Add(pointerExit);
         }
+    
+        if(btnStartGame2 != null)
+        {
+            btnStartGame2.onClick.AddListener(StartGame);
+
+            // #49 feat '게임 시작' 버튼에 마우스 올려 놓으면, '게임 시작' 버튼이 더 밝게 빛나도록 
+            // EventTrigger 컴포넌트가 없으면 추가
+            EventTrigger eventTrigger3 = btnStartGame2.gameObject.GetComponent<EventTrigger>();
+            if (eventTrigger3 == null)
+            {
+                eventTrigger3 = btnStartGame2.gameObject.AddComponent<EventTrigger>();
+            }
+
+            // 마우스 오버 이벤트
+            EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
+            pointerEnter.eventID = EventTriggerType.PointerEnter;
+            pointerEnter.callback.AddListener((data) => { OnHoverEnterStartGame2(); });
+
+            // 마우스 나가기 이벤트
+            EventTrigger.Entry pointerExit = new EventTrigger.Entry();
+            pointerExit.eventID = EventTriggerType.PointerExit;
+            pointerExit.callback.AddListener((data) => { OnHoverExitStartGame2(); });
+
+            // 이벤트 트리거에 추가
+            eventTrigger3.triggers.Add(pointerEnter);
+            eventTrigger3.triggers.Add(pointerExit);
+        }
     }
 
     private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
@@ -184,4 +214,22 @@ public class LobbyManager : MonoBehaviour
         }
     }
 
+    // #49 '게임 방법' 마우스 오버 시 패널 활성화
+    private void OnHoverEnterStartGame2()
+    {
+        if(pnlbtnPressGameStart2 != null)
+        {
+            pnlbtnPressGameStart2.SetActive(true);
+            music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_HOVER);  // #49 버튼에 마우스 hover 했을 때 효과음
+        }
+    }
+
+    // #49 '게임 방법' 마우스 나갈 시 패널 비활성화
+    private void OnHoverExitStartGame2()
+    {
+        if(pnlbtnPressGameStart2 != null)
+        {
+            pnlbtnPressGameStart2.SetActive(false);
+        }
+    }
 }
