@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pnlStartScene: {fileID: 269868512}
-  pnlLoading: {fileID: 1139791604}
+  pnlLoading: {fileID: 890149290}
   pnlbtnPressHowToGame: {fileID: 1672826957}
   pnlbtnPressGameStart: {fileID: 554271533}
   pnlbtnPressGameStart2: {fileID: 2016333631}

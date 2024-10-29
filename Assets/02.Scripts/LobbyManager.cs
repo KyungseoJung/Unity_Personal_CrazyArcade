@@ -160,6 +160,11 @@ public class LobbyManager : MonoBehaviour
         {
             pnlHowToGameScreen.SetActive(false);
         }
+
+        if((pnlLoading != null) && (pnlLoading.activeSelf)) // #19 게임 시작하면, 필요한 UI는 남기고 pnlLoading1 오브젝트 비활성화 - 게임 화면 보이도록 하기 위함.
+        {
+            pnlLoading.SetActive(false);
+        }
         
         music.BackGroundMusic(Music.BGM_TYPE.MAINMUSIC);
 
