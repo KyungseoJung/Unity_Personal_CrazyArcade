@@ -15,7 +15,7 @@ public class LobbyManager : MonoBehaviour
 
     // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
 
-    [SerializeField] GameObject pnlLoading;                 // #51 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
+    [SerializeField] GameObject pnlLoading1;                 // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
@@ -26,6 +26,15 @@ public class LobbyManager : MonoBehaviour
     private Animator startSceneAnim;  // #50 시작 화면 효과 주기 위한 Animator
     private Animator howToGameAnim;     // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
+
+    // #53 여기부터 - 로딩바 이미지  ========================================
+    [SerializeField] Image imgProgressBar;  
+    [SerializeField] float time_loading = 2;
+    [SerializeField] float time_passed; // 처음부터 현재까지 지난 시간
+    [SerializeField] float time_start;
+    [SerializeField] bool loadingEnded;
+
+    // #53 여기까지 - 로딩바 이미지  ========================================
 
     [SerializeField] Button btnHowToGame;           // #49 '게임 방법' 버튼
     [SerializeField] Button btnStartGame;           // #49 '게임 시작' 버튼
@@ -38,6 +47,9 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {   
+        // #53 로딩바 이미지 설정
+        Loading_Reset();    // 로딩바 첫 설정 해주기
+
         // #50 로비 화면 입장할 때, 로비 BGM 시작
         music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
 
@@ -46,11 +58,11 @@ public class LobbyManager : MonoBehaviour
 
         howToGameAnim = pnlHowToGameScreen.transform.GetComponent<Animator>();  // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
 
-        // #51 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
+        // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
             pnlStartScene.SetActive(false);
-        if(!pnlLoading.activeSelf)
-            pnlLoading.SetActive(true);
+        // if(!pnlLoading1.activeSelf)  // #53 로딩 바 먼저 보이도록 하기 위해 잠시 주석 처리
+        //     pnlLoading1.SetActive(true);
         if(pnlHowToGameScreen.activeSelf)   // 처음 시작할 때, 게임 방법 보여주는 창은 비활성화 되어 있어야 함.
             pnlHowToGameScreen.SetActive(false);
         
@@ -139,8 +151,16 @@ public class LobbyManager : MonoBehaviour
             eventTrigger3.triggers.Add(pointerExit);
         }
     }
+    
+    private void Update()
+    {
+        if(loadingEnded)
+            return;
+        // #53 로딩바 이미지 설정
+        Loading_Check();    // 로딩바 길이 체크해서 채우기
+    }
 
-    private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
+    private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
     {
         if(!pnlStartScene.activeSelf)
             pnlStartScene.SetActive(true);
@@ -148,6 +168,43 @@ public class LobbyManager : MonoBehaviour
         // #50 시작 화면 효과 주기 위한 Animator
         startSceneAnim.SetTrigger("StartScene");
     }
+
+    // 여기부터 - #53 로딩바 이미지  ========================================
+
+    private void Loading_Reset()
+    {
+        time_start = Time.time;
+        FillLoadingBar(0);
+        loadingEnded = false;
+    }
+
+    private void Loading_Check()
+    {
+        time_passed = Time.time - time_start;
+        if(time_passed < time_loading)
+        {
+            FillLoadingBar(time_passed / time_loading);
+        }
+        else if (!loadingEnded) // #53 로딩 화면 시작하고나서 지나간 시간이 time_loading보다 길고 && 로딩이 끝난 상황도 아니라면 Loading_End 실행
+        {
+            Loading_End();
+        }
+
+    }
+    private void Loading_End()
+    {
+        FillLoadingBar(1);
+        loadingEnded = true;
+    }
+
+    private void FillLoadingBar(float _fill)
+    {
+        imgProgressBar.fillAmount = _fill;
+        Debug.Log("//#53 로딩 정도: " + _fill + "%");
+    }
+
+    // 여기까지 - #53 로딩바 이미지  ========================================
+
 
     public void StartGame() // #19 시작하자마자 화면 전환
     {
@@ -161,9 +218,9 @@ public class LobbyManager : MonoBehaviour
             pnlHowToGameScreen.SetActive(false);
         }
 
-        if((pnlLoading != null) && (pnlLoading.activeSelf)) // #19 게임 시작하면, 필요한 UI는 남기고 pnlLoading1 오브젝트 비활성화 - 게임 화면 보이도록 하기 위함.
+        if((pnlLoading1 != null) && (pnlLoading1.activeSelf)) // #19 게임 시작하면, 필요한 UI는 남기고 pnlLoading1 오브젝트 비활성화 - 게임 화면 보이도록 하기 위함.
         {
-            pnlLoading.SetActive(false);
+            pnlLoading1.SetActive(false);
         }
         
         music.BackGroundMusic(Music.BGM_TYPE.MAINMUSIC);
