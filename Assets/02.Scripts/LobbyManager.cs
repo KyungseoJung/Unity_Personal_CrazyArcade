@@ -15,6 +15,7 @@ public class LobbyManager : MonoBehaviour
 
     // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
 
+    [SerializeField] GameObject pnlLoading0;                 // #53 로딩 화면 설정 - 처음 로딩될 때 pnlLoading0이 가장 먼저 보이도록 
     [SerializeField] GameObject pnlLoading1;                 // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
@@ -25,11 +26,13 @@ public class LobbyManager : MonoBehaviour
     
     private Animator startSceneAnim;  // #50 시작 화면 효과 주기 위한 Animator
     private Animator howToGameAnim;     // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
+    private Animator loadingSceneAnim;     // #53 로딩 화면 애니메이션 설정하기 위한 Animator
     public Text txtPlayerLife;                    // #27 플레이어 목숨 표시
 
     // #53 여기부터 - 로딩바 이미지  ========================================
+    [SerializeField] GameObject imgLoadingText;      // #53 로딩 텍스트 처음에는 보이지 않도록
     [SerializeField] Image imgProgressBar;  
-    [SerializeField] float time_loading = 2;
+    [SerializeField] float time_loading = 0.7f; // 0.7초만에 로딩바가 모두 채워지도록
     [SerializeField] float time_passed; // 처음부터 현재까지 지난 시간
     [SerializeField] float time_start;
     [SerializeField] bool loadingEnded;
@@ -43,20 +46,26 @@ public class LobbyManager : MonoBehaviour
     void Awake()
     {
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #49
+        loadingSceneAnim = pnlLoading0.transform.GetComponent<Animator>();      // #53 로딩 화면 설정
+
+        // #50 시작 화면 효과 주기 위한 Animator
+        startSceneAnim = pnlStartScene.transform.GetComponent<Animator>();
+
+        howToGameAnim = pnlHowToGameScreen.transform.GetComponent<Animator>();  // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
     }
 
     void Start()
     {   
         // #53 로딩바 이미지 설정
         Loading_Reset();    // 로딩바 첫 설정 해주기
+        loadingSceneAnim.SetTrigger("startLoading");  // #53 로딩 화면 설정 - 로딩바 올라가는 애니메이션 시작하도록
+        if(!imgLoadingText.activeSelf)   // #53 처음에는 로딩 text 보이지 않은 상태라면, 활성화해서 시작되도록
+        {
+            imgLoadingText.SetActive(true);
+        }
 
         // #50 로비 화면 입장할 때, 로비 BGM 시작
         music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
-
-        // #50 시작 화면 효과 주기 위한 Animator
-        startSceneAnim = pnlStartScene.transform.GetComponent<Animator>();
-
-        howToGameAnim = pnlHowToGameScreen.transform.GetComponent<Animator>();  // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
 
         // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
