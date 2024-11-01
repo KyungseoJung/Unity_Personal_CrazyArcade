@@ -15,7 +15,8 @@ public class LobbyManager : MonoBehaviour
 
     // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
 
-    [SerializeField] GameObject pnlLoading0;                 // #53 로딩 화면 설정 - 처음 로딩될 때 pnlLoading0이 가장 먼저 보이도록 
+    // 여기부터 - 로딩 화면 이미지  ========================================
+    [SerializeField] GameObject pnlLoading0;                 // #53 로딩(로딩바) 화면 설정 - 처음 로딩될 때 pnlLoading0이 가장 먼저 보이도록 
     [SerializeField] GameObject pnlLoading1;                 // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
@@ -23,7 +24,12 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject pnlbtnPressGameStart2;       // #49 버튼 눌렀을 때 보이는 panel ('게임 방법' 화면에 있는 '게임 시작' 버튼)
     [SerializeField] GameObject pnlHowToGameScreen;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
     
-    
+    [SerializeField] Image imgNexonLogo;                 // #51 처음 로딩될 때 pnlLoading1에서 Nexon Logo 보이도록
+    [SerializeField] Image imgBnbLogo;                  // #51 처음 로딩될 때 pnlLoading1에서 BnB Logo 보이도록
+    private float fadeDuration = 1f;                    // #51 투명도가 변하는 데 걸리는 시간
+
+    // 여기까지 - 로딩 화면 이미지  ========================================
+
     private Animator startSceneAnim;  // #50 시작 화면 효과 주기 위한 Animator
     private Animator howToGameAnim;     // #50 게임 방법 화면 시작할 때 효과 주기 위한 Animator
     private Animator loadingSceneAnim;     // #53 로딩 화면 애니메이션 설정하기 위한 Animator
@@ -32,7 +38,7 @@ public class LobbyManager : MonoBehaviour
     // #53 여기부터 - 로딩바 이미지  ========================================
     [SerializeField] GameObject imgLoadingText;      // #53 로딩 텍스트 처음에는 보이지 않도록
     [SerializeField] Image imgProgressBar;  
-    [SerializeField] float time_loading = 0.7f; // 0.7초만에 로딩바가 모두 채워지도록
+    [SerializeField] float time_loadingbar = 0.7f; // 0.7초만에 로딩바가 모두 채워지도록
     [SerializeField] float time_passed; // 처음부터 현재까지 지난 시간
     [SerializeField] float time_start;
     [SerializeField] bool loadingEnded;
@@ -70,12 +76,19 @@ public class LobbyManager : MonoBehaviour
         // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
             pnlStartScene.SetActive(false);
-        // if(!pnlLoading1.activeSelf)  // #53 로딩 바 먼저 보이도록 하기 위해 잠시 주석 처리
-        //     pnlLoading1.SetActive(true);
+        if(!pnlLoading0.activeSelf)         // #51 맨 처음 로딩 화면 설정
+            pnlLoading0.SetActive(true);
+        if(pnlLoading1.activeSelf)          // #51 맨 처음 로딩 화면 설정
+            pnlLoading1.SetActive(false);
+        if(imgNexonLogo.gameObject.activeSelf)  // #51 맨 처음 로딩 화면 설정
+            imgNexonLogo.gameObject.SetActive(false);
+        if(imgBnbLogo.gameObject.activeSelf)    // #51 맨 처음 로딩 화면 설정
+            imgBnbLogo.gameObject.SetActive(false);
+
         if(pnlHowToGameScreen.activeSelf)   // 처음 시작할 때, 게임 방법 보여주는 창은 비활성화 되어 있어야 함.
             pnlHowToGameScreen.SetActive(false);
         
-        Invoke("ActivePnlStartScene", 3f);
+        Invoke("ActivePnlStartScene", 3f);  // #51 나중에 고쳐야 하는 코드
         
         // StartGame(); // #49 '게임 시작' 버튼 누르면, StartGame() 함수 실행되도록 하기
         // #49 특정 버튼에 대해 함수를 연결하는 부분을 인스펙터(Inspector)에서 했었음. -> 코드상으로 설정하는 방식으로 변경하기.
@@ -171,6 +184,11 @@ public class LobbyManager : MonoBehaviour
 
     private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
     {
+        if(pnlLoading0.activeSelf)
+            pnlLoading0.SetActive(false);
+        if(pnlLoading1.activeSelf)
+            pnlLoading1.SetActive(false);
+
         if(!pnlStartScene.activeSelf)
             pnlStartScene.SetActive(true);
 
@@ -190,11 +208,11 @@ public class LobbyManager : MonoBehaviour
     private void Loading_Check()
     {
         time_passed = Time.time - time_start;
-        if(time_passed < time_loading)
+        if(time_passed < time_loadingbar)
         {
-            FillLoadingBar(time_passed / time_loading);
+            FillLoadingBar(time_passed / time_loadingbar);
         }
-        else if (!loadingEnded) // #53 로딩 화면 시작하고나서 지나간 시간이 time_loading보다 길고 && 로딩이 끝난 상황도 아니라면 Loading_End 실행
+        else if (!loadingEnded) // #53 로딩 화면 시작하고나서 지나간 시간이 time_loadingbar 길고 && 로딩이 끝난 상황도 아니라면 Loading_End 실행
         {
             Loading_End();
         }
@@ -204,6 +222,11 @@ public class LobbyManager : MonoBehaviour
     {
         FillLoadingBar(1);
         loadingEnded = true;
+
+        if(!pnlLoading1.activeSelf)  // #51 Nexon 로고와 BnB 로고 보이는 panel 로 넘어가기
+            pnlLoading1.SetActive(true);
+        
+        StartCoroutine(FadeInOutNexonLogo());
     }
 
     private void FillLoadingBar(float _fill)
@@ -214,6 +237,36 @@ public class LobbyManager : MonoBehaviour
 
     // 여기까지 - #53 로딩바 이미지  ========================================
 
+    IEnumerator FadeInOutNexonLogo() // #51 로딩 화면에서 로고 이미지 잠깐 나타났다가 사라지도록 Fade In Out
+    {
+        if(!imgNexonLogo.gameObject.activeSelf)     // 비활성화 되어 있다면, 일단 활성화 해놓고 페이드 인 & 아웃 하기
+            imgNexonLogo.gameObject.SetActive(true);
+
+        // 투명도를 0에서 1로 증가 (페이드 인)
+        yield return StartCoroutine(Fade(imgNexonLogo, 0f, 1f));
+
+        // 투명도를 1에서 0으로 감소 (페이드 아웃)
+        yield return StartCoroutine(Fade(imgNexonLogo, 1f, 0f));
+    }
+
+    IEnumerator Fade(Image _img, float startAlpha, float endAlpha)  // #51 특정 이미지의 투명도가 점진적으로 바뀌도록
+    {
+        Color imgColor = _img.color;
+        float elapsedTime = 0f;
+
+        while(elapsedTime < fadeDuration)
+        {
+            imgColor.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / fadeDuration);
+            _img.color = imgColor;
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // 마지막 알파 값 (투명도) 적용
+        imgColor.a = endAlpha;
+        _img.color = imgColor;
+    }
 
     public void StartGame() // #19 시작하자마자 화면 전환
     {
