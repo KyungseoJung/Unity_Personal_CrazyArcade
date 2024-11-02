@@ -88,7 +88,7 @@ public class LobbyManager : MonoBehaviour
         if(pnlHowToGameScreen.activeSelf)   // 처음 시작할 때, 게임 방법 보여주는 창은 비활성화 되어 있어야 함.
             pnlHowToGameScreen.SetActive(false);
         
-        Invoke("ActivePnlStartScene", 3f);  // #51 나중에 고쳐야 하는 코드
+        // Invoke("ActivePnlStartScene", 3f);  // #51 나중에 고쳐야 하는 코드
         
         // StartGame(); // #49 '게임 시작' 버튼 누르면, StartGame() 함수 실행되도록 하기
         // #49 특정 버튼에 대해 함수를 연결하는 부분을 인스펙터(Inspector)에서 했었음. -> 코드상으로 설정하는 방식으로 변경하기.
@@ -247,6 +247,20 @@ public class LobbyManager : MonoBehaviour
 
         // 투명도를 1에서 0으로 감소 (페이드 아웃)
         yield return StartCoroutine(Fade(imgNexonLogo, 1f, 0f));
+
+        StartCoroutine(FadeInOutBnbLogo());
+    }
+
+    IEnumerator FadeInOutBnbLogo() // #51 로딩 화면에서 로고 이미지 잠깐 나타났다가 사라지도록 Fade In Out
+    {
+        if(!imgBnbLogo.gameObject.activeSelf)     // 비활성화 되어 있다면, 일단 활성화 해놓고 페이드 인 & 아웃 하기
+            imgBnbLogo.gameObject.SetActive(true);
+
+        // 투명도를 0에서 1로 증가 (페이드 인)
+        yield return StartCoroutine(Fade(imgBnbLogo, 0f, 1f));
+
+        // 투명도를 1에서 0으로 감소 (페이드 아웃)
+        yield return StartCoroutine(Fade(imgBnbLogo, 1f, 0f));
     }
 
     IEnumerator Fade(Image _img, float startAlpha, float endAlpha)  // #51 특정 이미지의 투명도가 점진적으로 바뀌도록
