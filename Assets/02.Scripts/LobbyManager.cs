@@ -261,6 +261,8 @@ public class LobbyManager : MonoBehaviour
 
         // 투명도를 1에서 0으로 감소 (페이드 아웃)
         yield return StartCoroutine(Fade(imgBnbLogo, 1f, 0f));
+
+        ActivePnlStartScene();  // #51 로딩 화면 모두 끝난 뒤, pnlStartScene 활성화 되도록
     }
 
     IEnumerator Fade(Image _img, float startAlpha, float endAlpha)  // #51 특정 이미지의 투명도가 점진적으로 바뀌도록
