@@ -232,7 +232,7 @@ public class LobbyManager : MonoBehaviour
     private void FillLoadingBar(float _fill)
     {
         imgProgressBar.fillAmount = _fill;
-        Debug.Log("//#53 로딩 정도: " + _fill + "%");
+        // Debug.Log("//#53 로딩 정도: " + _fill * 100 + "%");
     }
 
     // 여기까지 - #53 로딩바 이미지  ========================================
