@@ -70,8 +70,6 @@ public class LobbyManager : MonoBehaviour
             imgLoadingText.SetActive(true);
         }
 
-        // #50 로비 화면 입장할 때, 로비 BGM 시작
-        music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
 
         // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
@@ -184,6 +182,9 @@ public class LobbyManager : MonoBehaviour
 
     private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
     {
+        // #50 fix: (로딩 모두 끝난 뒤) 로비 화면 입장할 때, 로비 BGM 시작
+        music.BackGroundMusic(Music.BGM_TYPE.LOBBYMUSIC);
+
         if(pnlLoading0.activeSelf)
             pnlLoading0.SetActive(false);
         if(pnlLoading1.activeSelf)
