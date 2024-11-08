@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 418023524}
   - component: {fileID: 418023523}
   m_Layer: 0
-  m_Name: Letter_T
+  m_Name: Letter_T2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1642,7 +1642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &623040179
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2998,7 +2998,7 @@ GameObject:
   - component: {fileID: 1191820545}
   - component: {fileID: 1191820544}
   m_Layer: 0
-  m_Name: Letter_T
+  m_Name: Letter_T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
