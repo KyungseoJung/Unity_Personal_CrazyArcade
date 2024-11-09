@@ -308,6 +308,7 @@ public class LobbyManager : MonoBehaviour
             objLogo_START.SetActive(true);
 
         music.BackGroundMusic(Music.BGM_TYPE.MAINMUSIC);
+        music.GameSoundEffect(Music.EFFECT_TYPE.GAME_START);    // #19 게임 시작 효과음
 
         SceneManager.LoadScene("scStage1-3D");
     }
