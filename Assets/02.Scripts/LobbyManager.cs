@@ -94,7 +94,12 @@ public class LobbyManager : MonoBehaviour
         // #49 특정 버튼에 대해 함수를 연결하는 부분을 인스펙터(Inspector)에서 했었음. -> 코드상으로 설정하는 방식으로 변경하기.
         if(btnHowToGame != null)
         {
-            btnHowToGame.onClick.AddListener(ShowHowToGame);
+            // btnStartGame.onClick.AddListener(ShowHowToGame);
+            // #49 버튼 클릭할 때의 효과음 추가
+            btnHowToGame.onClick.AddListener(() => {
+                ShowHowToGame();
+                music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_CLICK);
+            });
 
             // #49 feat '게임 방법' 버튼에 마우스 올려 놓으면, '게임 방법' 버튼이 더 밝게 빛나도록 
             // EventTrigger 컴포넌트가 없으면 추가
@@ -121,7 +126,12 @@ public class LobbyManager : MonoBehaviour
 
         if(btnStartGame != null)
         {
-            btnStartGame.onClick.AddListener(StartGame);
+            // btnStartGame.onClick.AddListener(StartGame);
+            // #49 버튼 클릭할 때의 효과음 추가
+            btnStartGame.onClick.AddListener(() => {
+                StartGame();
+                music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_CLICK);
+            });
 
             // #49 feat '게임 시작' 버튼에 마우스 올려 놓으면, '게임 시작' 버튼이 더 밝게 빛나도록 
             // EventTrigger 컴포넌트가 없으면 추가
@@ -148,7 +158,12 @@ public class LobbyManager : MonoBehaviour
     
         if(btnStartGame2 != null)
         {
-            btnStartGame2.onClick.AddListener(StartGame);
+            // btnStartGame2.onClick.AddListener(StartGame);
+            // #49 버튼 클릭할 때의 효과음 추가
+            btnStartGame2.onClick.AddListener(() => {
+                StartGame();
+                music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_CLICK);
+            });
 
             // #49 feat '게임 시작' 버튼에 마우스 올려 놓으면, '게임 시작' 버튼이 더 밝게 빛나도록 
             // EventTrigger 컴포넌트가 없으면 추가

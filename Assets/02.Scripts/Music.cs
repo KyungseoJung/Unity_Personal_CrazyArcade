@@ -29,10 +29,11 @@ public class Music : MonoBehaviour
     6 : ef_playerRevival    // #45 #46 플레이어 부활 효과음 - 원래 이 효과음이 아닌데, 대체할 게 이것 뿐.
     7 : charClick           // #49 로비 화면에서 버튼에 마우스 hover 했을 때 효과음
     8 : gameStart           // #19 게임 시작 효과음
+    9 : button_click        // #49 마우스 클릭인데, 사실 'bomb_set'과 같은 효과음
     */
 
     public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC}; // #20 메인 배경음
-    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER, GAME_START};    // #21 #22 #28 #44 #43 #45 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER, GAME_START, BUTTON_CLICK};    // #21 #22 #28 #44 #43 #45 효과음 종류
 
     void Awake()
     {
