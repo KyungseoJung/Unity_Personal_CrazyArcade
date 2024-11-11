@@ -323,7 +323,12 @@ public class LobbyManager : MonoBehaviour
             objLogo_START.SetActive(true);
 
         music.BackGroundMusic(Music.BGM_TYPE.MAINMUSIC);
-        music.GameSoundEffect(Music.EFFECT_TYPE.GAME_START);    // #19 게임 시작 효과음
+
+        // music.GameSoundEffect(Music.EFFECT_TYPE.GAME_START);    // #19 게임 시작 효과음
+        music.PlayerSoundEffect(Music.EFFECT_TYPE.GAME_START);    // #19 게임 시작 효과음
+        // #19 fix: '게임 시작' 효과음이 들리지 않는 문제 해결하라 - 하나의 Audio Source에서 거의 동시에 2개의 효과음을 실행해서 생기는 문제를, 다른 AudioSource를 실행함으로써
+
+        Debug.Log("//#19 게임 스타트! 효과음");
 
         SceneManager.LoadScene("scStage1-3D");
     }
