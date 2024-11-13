@@ -87,6 +87,9 @@ public class PlayerCtrl : MonoBehaviour // #1
         trappedInWaterMaxSpeed = maxSpeed - 4f; // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
 
         anim.SetInteger("MoveDir", 2);  // #5 플레이어의 첫 방향을 DOWN으로 설정
+
+        lastMoveTime = Time.time;       // #19 lastMoveTime을 시작 Time.time으로 설정해야, Update 함수에서 SetTrigger("LookingAhead")이 실행이 안 되고,
+                                        // 그렇게 해야 처음에 플레이어가 '앞을 바라보는 애니메이션'이 아닌, 'PlayerSpin'애니메이션을 실행할 수 있게 됨.
     }
     void Update()
     {
@@ -105,6 +108,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             // anim.SetBool("LookingAhead", true); 
             // StartCoroutine(StartLookingAhead());
             anim.SetTrigger("LookingAhead");
+            Debug.Log("//#19 fix: (1번) 플레이어 LookingAhead Trigger 실행 체크");
             
             // Debug.Log("//#23 플레이어 정면 바라보기");
             // Debug.Log("Time.time: " + Time.time);

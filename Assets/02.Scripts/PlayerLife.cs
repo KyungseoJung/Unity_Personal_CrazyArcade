@@ -260,6 +260,8 @@ public class PlayerLife : MonoBehaviour
         // 자연스럽게 물풍선 탈출하는 애니메이션까지 완벽히 실행한 후, LookingAhead 애니메이션이 실행되도록
         anim.SetBool("canMove", true);
         anim.SetTrigger("LookingAhead");
+        Debug.Log("//#19 fix: (2번) 플레이어 LookingAhead Trigger 실행 체크");
+
     }
     
     private void CancleWaterApplied()   // #17 fix: 물풍선에 맞고나서 0.3초 후에 물풍선 적용 확인 변수를 false로
