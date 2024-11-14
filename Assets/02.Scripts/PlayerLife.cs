@@ -37,7 +37,8 @@ public class PlayerLife : MonoBehaviour
     void Start()
     {
         respawnPos = new Vector3(4, -3, -0.05f); // #29 리스폰 위치 지정
-        anim.SetBool("canMove", true);  // #17 첫 설정은 true로 해서 애니메이션 정상 작동하도록
+        // anim.SetBool("canMove", true);   // #17 #19 fix(주석 처리) 첫 설정은 true로 해서 애니메이션 정상 작동하도록
+        anim.SetBool("canMove", false);     // #19 fix: 처음에는 플레이어가 등장하는 애니메이션 (PlayerSpin)을 위해서 "canMove"를 false로 설정. PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
         trappedInWater = false;         // #17
     }
 
@@ -48,7 +49,6 @@ public class PlayerLife : MonoBehaviour
             PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
     }
-
     public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
     {
         if(!trappedInWater && !waterApplied)
@@ -254,9 +254,14 @@ public class PlayerLife : MonoBehaviour
         return randomNum;
         
     }
-
-    private void PlayerCanMove()    // #41 fix: PlayerEscapeWater 애니메이션 종료되는 시점에 실행 - 물풍선 탈출 애니메이션 후에, 원래 애니메이션이 정상적으로 작동하도록
+    private void PlayerCanMove()    // #19 fix: PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
     {
+        anim.SetBool("canMove", true);
+
+    }
+    private void PlayerCanMoveLookingAhead()    // #41 fix: PlayerEscapeWater 애니메이션 종료되는 시점에 실행 - 물풍선 탈출 애니메이션 후에, 원래 애니메이션이 정상적으로 작동하도록
+    {
+
         // 자연스럽게 물풍선 탈출하는 애니메이션까지 완벽히 실행한 후, LookingAhead 애니메이션이 실행되도록
         anim.SetBool("canMove", true);
         anim.SetTrigger("LookingAhead");
