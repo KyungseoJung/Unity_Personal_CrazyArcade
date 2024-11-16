@@ -19,6 +19,8 @@ public class Obstacle : MonoBehaviour
     private SphereCollider sphereCollider;  // #33
 
     // #38 WoodBlock이 사라진 위치에 랜덤으로 아이템 놓기
+    [SerializeField] private GameObject waterballoonObj; // #8 물풍선 터질 때, 물줄기 뿐만 아니라, 물풍선 자체에 있는 오브젝트도 물풍선 맞은 것으로 적용되어야 함.
+        // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
     [SerializeField] private GameObject itemBubble; // #38
     [SerializeField] private GameObject itemCoin;   // #38
     [SerializeField] private GameObject itemFluid;  // #38
@@ -59,6 +61,9 @@ public class Obstacle : MonoBehaviour
         {
             sphereCollider = this.GetComponent<SphereCollider>();
         }
+
+        waterballoonObj = transform.GetChild(0).gameObject; // #8 물풍선 터질 때, 물줄기 뿐만 아니라, 물풍선 자체에 있는 오브젝트도 물풍선 맞은 것으로 적용되어야 함.
+        // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
         
     }
     
@@ -320,9 +325,14 @@ public class Obstacle : MonoBehaviour
         // #31 3초 뒤에 자동으로 터지는 경우와 다른 물풍선에 의해 터지는 경우 둘 중 하나만 실행되도록 하기 위함
         if(alreadyBurst == false)   // #31 처음 물풍선이 터지는 거면, 그대로 아래 함수들 실행
             alreadyBurst = true;
-        else                        
+        else                        // #31 이미 alreadyBurst 값이 true이면, 아래 함수들 실행 X        
             yield break;
         
+        // #8 물풍선 터질 때, 물줄기 뿐만 아니라, 물풍선 자체에 있는 오브젝트도 물풍선 맞은 것으로 적용되어야 함.
+        // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
+        waterballoonObj.tag = "WaterBurst";
+
+
         Debug.Log("//#8 파괴 | 위치는" + transform.position.x + ", " + transform.position.y);
         anim.SetTrigger("Bursts");
         anim.SetInteger("WaterLength",  _waterLength);  // #9 물줄기 길이 설정
