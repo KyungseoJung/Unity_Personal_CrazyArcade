@@ -8,6 +8,7 @@ public class SkillInfo
     public int waterballoonNum = 1; // 놓을 수 있는 물풍선 개수
     public int roller = 0;   // #15 플레이어 달리는 속도
     public bool turtle = false; // #16 거북을 타고 있는지 확인
+    public bool fastTurtle = false; // #54 거북을 타고 있음 && 빠른 속도의 거북임
     public int turtleNum = 0;      // #16 거북 아이템 획득 개수
     public int coin = 0;    // #30
     public int needle = 1;  // #43 바늘 아이템
@@ -72,6 +73,12 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     {
         get {return skillInfo.turtle; }
         set {skillInfo.turtle = value;}
+    }
+    
+    public bool fastTurtle  // #54
+    {
+        get {return skillInfo.fastTurtle; }
+        set {skillInfo.fastTurtle = value;}
     }
 
     public int turtleNum

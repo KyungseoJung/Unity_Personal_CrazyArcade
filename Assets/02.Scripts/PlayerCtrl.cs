@@ -33,13 +33,15 @@ public class PlayerCtrl : MonoBehaviour // #1
 
 [SerializeField]    private float moveForce;  //#1 fix: 17f-> 50f로 변경(Start함수에서) // 이동할 때 주는 힘 - 처음 설정 값은 20
     private float originMoveForce;          // #1 fix 처음 설정 값 가져오기 - 처음 설정 값 저장용
-    private float turtleMountMoveForce;     // #35 fix: moveForce의 1/2배로 설정(Start함수에서) // #35 거북에 탔을 때, 이동 속도
+    private float slowTurtleMountMoveForce;     // #35 fix: moveForce의 1/2배로 설정(Start함수에서) // #35 거북에 탔을 때, 이동 속도
+    private float fastTurtleMountMoveForce;     // #54 moveForce의 2배로 설정(Start함수에서) - 빠른 거북에 탔을 때, 이동 속도
     private float trappedInWaterMoveForce;  // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
     private float slideSpeed = 3f;       // #5 장애물에 닿으면 옆으로 부드럽게 지나가게 하기 위한 변수
 
 [SerializeField]    private float maxSpeed;            // 가속도 적용 속도
     private float originMaxSpeed;           // #1 fix 처음 설정 값 가져오기
-    private float turtleMountMaxSpeed;      // #35 거북에 탔을 때, 가속도
+    private float slowTurtleMountMaxSpeed;      // #35 거북에 탔을 때, 가속도
+    private float fastTurtleMountMaxSpeed;      // #54 빠른 거북에 탔을 때, 가속도
     private float trappedInWaterMaxSpeed;   // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
 
     private float h;                        // 좌우 버튼 누르는 것 감지
@@ -80,8 +82,11 @@ public class PlayerCtrl : MonoBehaviour // #1
         originMoveForce = moveForce;    // #1 fix
         originMaxSpeed = maxSpeed;      // #1 fix
 
-        turtleMountMoveForce = moveForce/2f;  // #35 거북에 탔을 때 속도 설정
-        turtleMountMaxSpeed = maxSpeed - 3f;   // #35 거북에 탔을 때 가속도 설정
+        slowTurtleMountMoveForce = moveForce/2f;  // #35 거북에 탔을 때 속도 설정
+        slowTurtleMountMaxSpeed = maxSpeed - 3f;   // #35 거북에 탔을 때 가속도 설정
+
+        fastTurtleMountMoveForce = moveForce*2f;   // #54 빠른 거북에 탔을 때 속도 설정
+        fastTurtleMountMaxSpeed = maxSpeed + 3f;   // #54 빠른 거북에 탔을 때 가속도 설정
 
         trappedInWaterMoveForce = moveForce/5f; // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
         trappedInWaterMaxSpeed = maxSpeed - 4f; // #17 feat: 물풍선 안에 갇혔을 때의 속도 설정
@@ -156,6 +161,17 @@ public class PlayerCtrl : MonoBehaviour // #1
 
             }
             Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
+        }
+
+        // #54 거북 속도 변경
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if(PlayerGameMgr.Mgr.turtle == true)
+            {
+                // 플레이어가 타고 있는 거북의 이미지 & 속도 변경
+                PlayerGameMgr.Mgr.fastTurtle = true;
+
+            }
         }
     }
 
@@ -620,7 +636,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     }
 
-    public void TurtleMount(bool _mount = true) // #35 플레이어가 거북에 올라탐
+    public void TurtleMount(bool _mount = true, bool _fastTurtle = false) // #35 플레이어가 거북에 올라탐
     {
         if(_mount)
         {
@@ -628,14 +644,33 @@ public class PlayerCtrl : MonoBehaviour // #1
             
             Debug.Log("//#35 플레이어가 거북에 올라탐");
 
-            LimitToTurtleSpeed();
-            anim.SetBool("turtleMount", true);
+            LimitToTurtleSpeed(_fastTurtle);
+            
+            switch(_fastTurtle)
+            {
+                case false:
+                    anim.SetBool("turtleMount", true);
+                    break;
+                case true:  // #54 빠른 거북 설정
+                    anim.SetBool("fastTurtleMount", true);
+                    break;
+            }
+
         }
     }
 
-    private void LimitToTurtleSpeed()   // #35 플레이어의 움직임 속도를 거북 탔을 때 속도로 설정
+    private void LimitToTurtleSpeed(bool _fastTurtle = false)   // #35 플레이어의 움직임 속도를 거북 탔을 때 속도로 설정
     {
-        moveForce = turtleMountMoveForce;
-        maxSpeed = turtleMountMaxSpeed;
+        if(!_fastTurtle)
+        {
+            moveForce = slowTurtleMountMoveForce;
+            maxSpeed = slowTurtleMountMaxSpeed;
+        }
+        else if(_fastTurtle)    // #54 빠른 거북을 타고 있을 땐 속도 fastTurtle로 맞추기
+        {
+            moveForce = fastTurtleMountMoveForce;
+            maxSpeed = fastTurtleMountMaxSpeed;
+        }
+
     }
 }
