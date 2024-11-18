@@ -11,7 +11,7 @@ public class Item : MonoBehaviour   // #10
     private Music music;                            // #22
     private MapManager mapMgr;                      // #10 아이템 획득시 - ObstacleArr 배열을 0으로 만들기 위함
     private int randomTurtleNum;                    // #54 느린 거북 or 빠른 거북 랜덤 설정
-    private bool fastTurtle;                        // #54 느린 거북 or 빠른 거북 랜덤 설정
+    [SerializeField] private bool fastTurtle;                        // #54 느린 거북 or 빠른 거북 랜덤 설정
 
     void Awake()
     {

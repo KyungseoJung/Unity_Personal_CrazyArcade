@@ -652,7 +652,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                     anim.SetBool("turtleMount", true);
                     break;
                 case true:  // #54 빠른 거북 설정
-                    // anim.SetBool("fastTurtleMount", true);
+                    anim.SetBool("fastTurtleMount", true);
                     Debug.Log("//#54 빠른 거북 탑승 anim 설정");
                     break;
             }
