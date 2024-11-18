@@ -10,7 +10,8 @@ public class Item : MonoBehaviour   // #10
     private PlayerCtrl playerCtrl;                  // #15
     private Music music;                            // #22
     private MapManager mapMgr;                      // #10 아이템 획득시 - ObstacleArr 배열을 0으로 만들기 위함
-
+    private int randomTurtleNum;                    // #54 느린 거북 or 빠른 거북 랜덤 설정
+    private bool fastTurtle;                        // #54 느린 거북 or 빠른 거북 랜덤 설정
 
     void Awake()
     {
@@ -19,6 +20,17 @@ public class Item : MonoBehaviour   // #10
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #10
     }
     
+    void Start()
+    {
+        if(itemType == ITEM_TYPE.TURTLE)
+        {
+            randomTurtleNum = Random.Range(0,2);    // 0부터 1까지의 랜덤 숫자 생성
+            if(randomTurtleNum == 0)
+                fastTurtle = false;
+            else if(randomTurtleNum == 1)
+                fastTurtle = true;      
+        }
+    }
 
     private void OnTriggerEnter(Collider other)     
     {
@@ -53,7 +65,11 @@ public class Item : MonoBehaviour   // #10
                 case ITEM_TYPE.TURTLE :     // #16 TURTLE 아이템
                     PlayerGameMgr.Mgr.turtle = true;
                     PlayerGameMgr.Mgr.turtleNum += 1;   // #16 아이템 획득 수 추가
-                    other.gameObject.GetComponent<PlayerCtrl>().TurtleMount(true);  // #35 플레이어가 거북에 올라탐
+                    if(!fastTurtle)
+                        other.gameObject.GetComponent<PlayerCtrl>().TurtleMount(true);  // #35 플레이어가 거북에 올라탐
+                    else if(fastTurtle)
+                        other.gameObject.GetComponent<PlayerCtrl>().TurtleMount(true, true);  // #35 플레이어가 거북에 올라탐
+
                     DestroyItem();  // 플레이어 획득
                     break;
                 

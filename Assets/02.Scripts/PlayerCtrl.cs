@@ -645,14 +645,15 @@ public class PlayerCtrl : MonoBehaviour // #1
             Debug.Log("//#35 플레이어가 거북에 올라탐");
 
             LimitToTurtleSpeed(_fastTurtle);
-            
+
             switch(_fastTurtle)
             {
                 case false:
                     anim.SetBool("turtleMount", true);
                     break;
                 case true:  // #54 빠른 거북 설정
-                    anim.SetBool("fastTurtleMount", true);
+                    // anim.SetBool("fastTurtleMount", true);
+                    Debug.Log("//#54 빠른 거북 탑승 anim 설정");
                     break;
             }
 
