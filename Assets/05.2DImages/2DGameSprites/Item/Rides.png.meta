@@ -10,10 +10,10 @@ TextureImporter:
     second: 1_turtleUp_1
   - first:
       213: 5099098381443202286
-    second: Rides_2
+    second: 1_fastTurtleUp_0
   - first:
       213: 2228245179073784601
-    second: Rides_3
+    second: 1_fastTurtleUp_1
   - first:
       213: -3453869709789532281
     second: Rides_4
@@ -34,10 +34,10 @@ TextureImporter:
     second: 1_turtleDown_1
   - first:
       213: 8042153847027159267
-    second: Rides_10
+    second: 1_fastTurtleDown_0
   - first:
       213: 7841623509189752411
-    second: Rides_11
+    second: 1_fastTurtleDown_1
   - first:
       213: 1003511975780305881
     second: Rides_12
@@ -58,10 +58,10 @@ TextureImporter:
     second: 1_turtleLeft_1
   - first:
       213: 844669303640591032
-    second: Rides_18
+    second: 1_fastTurtleLeft_0
   - first:
       213: -230213113782761958
-    second: Rides_19
+    second: 1_fastTurtleLeft_1
   - first:
       213: 5911701016600202958
     second: Rides_20
@@ -82,10 +82,10 @@ TextureImporter:
     second: 1_turtleRight_1
   - first:
       213: -4233509821236438434
-    second: Rides_26
+    second: 1_fastTurtleRight_0
   - first:
       213: -515596812836897862
-    second: Rides_27
+    second: 1_fastTurtleRight_1
   - first:
       213: -3676132904283305440
     second: Rides_28
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_2
+      name: 1_fastTurtleUp_0
       rect:
         serializedVersion: 2
         x: 121
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_3
+      name: 1_fastTurtleUp_1
       rect:
         serializedVersion: 2
         x: 168
@@ -417,7 +417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_10
+      name: 1_fastTurtleDown_0
       rect:
         serializedVersion: 2
         x: 120
@@ -438,7 +438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_11
+      name: 1_fastTurtleDown_1
       rect:
         serializedVersion: 2
         x: 168
@@ -585,7 +585,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_18
+      name: 1_fastTurtleLeft_0
       rect:
         serializedVersion: 2
         x: 111
@@ -606,7 +606,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_19
+      name: 1_fastTurtleLeft_1
       rect:
         serializedVersion: 2
         x: 159
@@ -753,7 +753,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_26
+      name: 1_fastTurtleRight_0
       rect:
         serializedVersion: 2
         x: 118
@@ -774,7 +774,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rides_27
+      name: 1_fastTurtleRight_1
       rect:
         serializedVersion: 2
         x: 165
