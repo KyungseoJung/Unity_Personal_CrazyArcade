@@ -335,6 +335,8 @@ public class Obstacle : MonoBehaviour
 
         Debug.Log("//#8 파괴 | 위치는" + transform.position.x + ", " + transform.position.y);
         anim.SetTrigger("Bursts");
+        if(_waterLength > 2)    //#9 fix: 물줄기는 최대 2칸으로 제한 - 물풍선의 waterLength가 2보다 더 크게 설정된 경우의 애니메이션을 설정하지 않아서, 물풍선 자체가 안 터지는 문제를 해결
+            _waterLength = 2;
         anim.SetInteger("WaterLength",  _waterLength);  // #9 물줄기 길이 설정
 
         mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y);
