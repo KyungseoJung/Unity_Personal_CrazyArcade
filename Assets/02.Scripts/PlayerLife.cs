@@ -80,7 +80,9 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
             // Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
             playerCtrl.turtleMount = false;
+            //#35 느린 거북 or 빠른 거북 모두 내려오도록
             anim.SetBool("turtleMount", false);
+            anim.SetBool("fastTurtleMount", false);
 
             playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #15 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
             return;
