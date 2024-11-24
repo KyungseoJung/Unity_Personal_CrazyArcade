@@ -170,6 +170,11 @@ public class PlayerCtrl : MonoBehaviour // #1
             {
                 // 플레이어가 타고 있는 거북의 이미지 & 속도 변경
                 PlayerGameMgr.Mgr.fastTurtle = true;
+                //#54 animation 설정도 해주기
+                anim.SetBool("turtleMount", false);
+                anim.SetBool("fastTurtleMount", true);
+
+                LimitToTurtleSpeed(true);   //#54 플레이어의 속도를 빠른 거북 속도로 바꿔주기
 
             }
         }
