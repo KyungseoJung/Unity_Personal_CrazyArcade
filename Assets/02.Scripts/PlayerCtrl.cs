@@ -173,6 +173,10 @@ public class PlayerCtrl : MonoBehaviour // #1
                 //#54 animation 설정도 해주기
                 anim.SetBool("turtleMount", false);
                 anim.SetBool("fastTurtleMount", true);
+                
+                anim.SetBool("canMove", false);     //#54 거북 바뀌는 애니메이션 실행 목적
+                anim.SetTrigger("ChangeTurtle");    //#54 거북 바뀌는 애니메이션 실행 목적
+                Invoke("CanMoveTrue", 0.5f);        //#54 다시 canMove 변수를 True로 만들어주기
 
                 LimitToTurtleSpeed(true);   //#54 플레이어의 속도를 빠른 거북 속도로 바꿔주기
 
@@ -373,7 +377,12 @@ public class PlayerCtrl : MonoBehaviour // #1
         //     CheckObstacleBalloon(); // #33 fix
         // }
     }
-    
+
+    private void CanMoveTrue()
+    {
+        // 따로 invoke로 실행이 필요한 때를 위함.
+        anim.SetBool("canMove", true);  
+    }    
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos) // #5 fix   
     //# refactor 플레이어가 누르는 방향 키와, 플레이어의 위치(장애물과 비교했을 때 상대적 위치)를 parameter로 받기
     {
