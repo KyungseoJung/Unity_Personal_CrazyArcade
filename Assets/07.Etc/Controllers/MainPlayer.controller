@@ -729,6 +729,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: turtleMount
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: fastTurtleMount
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7360956308673314674}
   m_Solo: 0
@@ -1492,7 +1495,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7360956308673314674}
-    m_Position: {x: -360, y: -60, z: 0}
+    m_Position: {x: -360, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1267316712211278647}
     m_Position: {x: 430, y: -220, z: 0}
