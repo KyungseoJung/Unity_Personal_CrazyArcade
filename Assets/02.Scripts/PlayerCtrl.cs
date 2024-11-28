@@ -614,7 +614,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         if(turtleMount) // #35 만약 플레이어가 거북에 타고 있었다면
         {
-            LimitToTurtleSpeed();
+            // LimitToTurtleSpeed();    // 플레이어가 거북에 타고 있다면, 속도를 바꿀 필요 자체가 없음.
             return;
         }
 
@@ -650,7 +650,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     }
 
-    public void TurtleMount(bool _mount = true, bool _fastTurtle = false) // #35 플레이어가 거북에 올라탐
+    public void TurtleMount(bool _mount = true, bool _fastTurtle = false) // #35 플레이어가 거북에 올라탐 - 디폴트는 느린 거북
     {
         if(_mount)
         {
