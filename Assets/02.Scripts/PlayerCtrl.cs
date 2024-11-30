@@ -168,6 +168,8 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             if(PlayerGameMgr.Mgr.turtle == true)
             {
+                music.GameSoundEffect(Music.EFFECT_TYPE.TURTLE_CHANGE); //#54 빠른 거북으로 바뀔 때의 효과음
+                
                 // 플레이어가 타고 있는 거북의 이미지 & 속도 변경
                 PlayerGameMgr.Mgr.fastTurtle = true;
                 //#54 animation 설정도 해주기
@@ -177,7 +179,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 anim.SetBool("canMove", false);     //#54 거북 바뀌는 애니메이션 실행 목적
                 anim.SetTrigger("ChangeTurtle");    //#54 거북 바뀌는 애니메이션 실행 목적
                 Invoke("CanMoveTrue", 0.5f);        //#54 다시 canMove 변수를 True로 만들어주기
-
+                
                 LimitToTurtleSpeed(true);   //#54 플레이어의 속도를 빠른 거북 속도로 바꿔주기
 
             }

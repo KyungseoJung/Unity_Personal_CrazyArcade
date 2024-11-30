@@ -30,10 +30,11 @@ public class Music : MonoBehaviour
     7 : charClick           // #49 로비 화면에서 버튼에 마우스 hover 했을 때 효과음
     8 : gameStart           // #19 게임 시작 효과음
     9 : button_click        // #49 마우스 클릭인데, 사실 'bomb_set'과 같은 효과음
+    10 : ef_clickclick      // #54 통조림 아이템 사용해서 빠른 거북으로 바뀔 때의 효과음
     */
 
     public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC}; // #20 메인 배경음
-    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER, GAME_START, BUTTON_CLICK};    // #21 #22 #28 #44 #43 #45 효과음 종류
+    public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER, GAME_START, BUTTON_CLICK, TURTLE_CHANGE};    // #21 #22 #28 #44 #43 #45 #54 효과음 종류
 
     void Awake()
     {
