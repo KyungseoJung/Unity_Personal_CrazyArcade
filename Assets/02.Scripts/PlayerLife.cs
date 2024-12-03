@@ -9,6 +9,7 @@ public class PlayerLife : MonoBehaviour
     private PlayerCtrl playerCtrl;  // #17 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
     private MapManager mapMgr;      // #28  배열 확인 후, item들을 랜덤으로 놓기 위함
     private Music music;            // #28 플레이어 죽을 때, 효과음
+    private LobbyManager lobbyMgr;  // #28 플레이어 죽을 때, 남은 목숨 -1 표시
     private Vector3 respawnPos;     // #29 리스폰 위치 지정
 
     // #28 비어있는 공간 찾기
@@ -32,6 +33,7 @@ public class PlayerLife : MonoBehaviour
         playerCtrl = GetComponent<PlayerCtrl>();    // #17
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #28
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #28
+        lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); // #28
     }
 
     void Start()
@@ -99,11 +101,15 @@ public class PlayerLife : MonoBehaviour
 
     private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
+        if(PlayerGameMgr.Mgr.life <=0 )
+            return;
+
         Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
         // #28 PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         PlayerGameMgr.Mgr.life -=1;
+        lobbyMgr.txtPlayerLife.text = $"{PlayerGameMgr.Mgr.life}";
         Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
         
         trappedInWater = false; // #28 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로

@@ -415,7 +415,7 @@ MonoBehaviour:
   pnlHowToGameScreen: {fileID: 1556493544}
   imgNexonLogo: {fileID: 263707711}
   imgBnbLogo: {fileID: 1044319439}
-  txtPlayerLife: {fileID: 0}
+  txtPlayerLife: {fileID: 2115645029}
   imgLoadingText: {fileID: 1541326555}
   imgProgressBar: {fileID: 1265273055}
   time_loadingbar: 0.7
