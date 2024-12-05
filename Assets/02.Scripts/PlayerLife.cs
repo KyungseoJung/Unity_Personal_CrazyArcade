@@ -102,7 +102,10 @@ public class PlayerLife : MonoBehaviour
     private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
         if(PlayerGameMgr.Mgr.life <=0 )
+        {
+            playerDie = true;   // #45 플레이어 완전히 죽음
             return;
+        }
 
         Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
@@ -280,5 +283,11 @@ public class PlayerLife : MonoBehaviour
     private void CancleWaterApplied()   // #17 fix: 물풍선에 맞고나서 0.3초 후에 물풍선 적용 확인 변수를 false로
     {
         waterApplied = false; // #17 fix: 변수를 false로 설정
+    }
+
+    private void CheckAnyLivesLeft()    //#45 플레이어 목숨 남았는지 확인한 후, 부활 시도
+    {
+        if(playerDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
+            this.gameObject.SetActive(false);
     }
 }
