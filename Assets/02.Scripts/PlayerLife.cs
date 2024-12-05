@@ -289,5 +289,7 @@ public class PlayerLife : MonoBehaviour
     {
         if(playerDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
             this.gameObject.SetActive(false);
+
+        music.StopPlayerSoundEffect();  // #45 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
     }
 }
