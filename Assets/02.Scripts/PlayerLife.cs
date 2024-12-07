@@ -101,6 +101,8 @@ public class PlayerLife : MonoBehaviour
 
     private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
+        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
+
         if(PlayerGameMgr.Mgr.life <=0 )
         {
             playerDie = true;   // #45 플레이어 완전히 죽음
@@ -108,7 +110,6 @@ public class PlayerLife : MonoBehaviour
         }
 
         Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
-        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
         // #28 PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         PlayerGameMgr.Mgr.life -=1;

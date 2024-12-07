@@ -23,7 +23,7 @@ public class Music : MonoBehaviour
     0 : bomb_set
     1 : eatProp
     2 : bubbleBoom
-    3 : ef_playerDie        // #28 #46
+    3 : ef_playerDie        // #28 #46 뭔가 터지는 소리
     4 : ef_playerInBalloon  // #44 #46
     5 : bomb_pop            // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
     6 : ef_playerRevival    // #45 #46 플레이어 부활 효과음 - 원래 이 효과음이 아닌데, 대체할 게 이것 뿐.
