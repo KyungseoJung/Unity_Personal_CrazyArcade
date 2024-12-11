@@ -11,6 +11,7 @@ public class SkillInfo
     public bool fastTurtle = false; // #54 거북을 타고 있음 && 빠른 속도의 거북임
     public int turtleNum = 0;      // #16 거북 아이템 획득 개수
     public int coin = 0;    // #30
+    public int turtleCan = 1;   //#58 느린 거북을 빠르게 해주는 can item
     public int needle = 1;  // #43 바늘 아이템
 }
 
@@ -97,6 +98,12 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
     {
         get {return skillInfo.needle;}
         set {skillInfo.needle = value;}
+    }
+
+    public int turtleCan   // #58
+    {
+        get {return skillInfo.turtleCan;}
+        set {skillInfo.turtleCan = value;}
     }
 
     public int life // #28

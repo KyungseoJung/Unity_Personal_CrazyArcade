@@ -50,6 +50,11 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] Button btnStartGame;           // #49 '게임 시작' 버튼
     [SerializeField] Button btnStartGame2;           // #49 '게임 시작' 버튼
 
+    // #58 여기부터 - UI 이미지  ========================================
+    public Text txtNumberOfCan;                    // 느린 거북을 빠르게 해주는 can item
+    public Text txtNumberOfNeedle;                 // 물풍선에 갇혔을 때, 벗어나게 해주는 needle item
+
+
     void Awake()
     {
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #49
@@ -187,6 +192,10 @@ public class LobbyManager : MonoBehaviour
             eventTrigger3.triggers.Add(pointerEnter);
             eventTrigger3.triggers.Add(pointerExit);
         }
+
+        // #58 여기부터 - UI 이미지  ========================================
+        txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
+        txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
     }
     
     private void Update()

@@ -425,6 +425,8 @@ MonoBehaviour:
   btnHowToGame: {fileID: 1193526108}
   btnStartGame: {fileID: 1523175487}
   btnStartGame2: {fileID: 6022817}
+  txtNumberOfCan: {fileID: 881835940}
+  txtNumberOfNeedle: {fileID: 1116817074}
 --- !u!1 &107971709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,7 +2382,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: --
 --- !u!222 &881835941
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3058,7 +3060,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: --
 --- !u!222 &1090057500
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3178,7 +3180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: --
 --- !u!222 &1116817075
 CanvasRenderer:
   m_ObjectHideFlags: 0
