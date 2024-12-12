@@ -53,6 +53,7 @@ public class LobbyManager : MonoBehaviour
     // #58 여기부터 - UI 이미지  ========================================
     public Text txtNumberOfCan;                    // 느린 거북을 빠르게 해주는 can item
     public Text txtNumberOfNeedle;                 // 물풍선에 갇혔을 때, 벗어나게 해주는 needle item
+    public Text txtNumberOfShield;                 // 외부 공격으로부터 막아주는 shield item
 
 
     void Awake()
@@ -196,6 +197,7 @@ public class LobbyManager : MonoBehaviour
         // #58 여기부터 - UI 이미지  ========================================
         txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
         txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
+        txtNumberOfShield.text = $"{PlayerGameMgr.Mgr.shield}";
     }
     
     private void Update()

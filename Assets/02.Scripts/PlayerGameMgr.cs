@@ -13,6 +13,7 @@ public class SkillInfo
     public int coin = 0;    // #30
     public int turtleCan = 1;   //#58 느린 거북을 빠르게 해주는 can item
     public int needle = 1;  // #43 바늘 아이템
+    public int shield = 1;  //#58 외부 공격으로부터 막아주는 shield item
 }
 
 public class GivenQuota
@@ -93,17 +94,20 @@ public class PlayerGameMgr : MonoBehaviour    // #11 플레이어의 스킬 관�
         get {return skillInfo.coin;}
         set {skillInfo.coin = value;}
     }
-
+    public int turtleCan   // #58
+    {
+        get {return skillInfo.turtleCan;}
+        set {skillInfo.turtleCan = value;}
+    }
     public int needle   // #43
     {
         get {return skillInfo.needle;}
         set {skillInfo.needle = value;}
     }
-
-    public int turtleCan   // #58
+    public int shield    // #43
     {
-        get {return skillInfo.turtleCan;}
-        set {skillInfo.turtleCan = value;}
+        get {return skillInfo.shield;}
+        set {skillInfo.shield = value;}
     }
 
     public int life // #28
