@@ -26,6 +26,7 @@ public class PlayerLife : MonoBehaviour
     public bool playerFaint;       // #28 플레이어 기절했는지 확인
     private bool playerDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
     public bool waterApplied = false;      // #17 fix: 이미 물풍선이 적용되었는지 확인용 bool형 변수
+    private bool playerInvincible = false;  // #59 플레이어 무적 상태인지 확인하는 bool형 변수 (방패 아이템 이용시, 3초 동안 무적 상태)
 
     void Awake()
     {
@@ -43,6 +44,15 @@ public class PlayerLife : MonoBehaviour
         // anim.SetBool("canMove", true);   // #17 #19 fix(주석 처리) 첫 설정은 true로 해서 애니메이션 정상 작동하도록
         anim.SetBool("canMove", false);     // #19 fix: 처음에는 플레이어가 등장하는 애니메이션 (PlayerSpin)을 위해서 "canMove"를 false로 설정. PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
         trappedInWater = false;         // #17
+    }
+
+    void Update()
+    {
+        // #59 방패 아이템 사용 - 외부 공격으로부터 막아주는 shield item
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            StartCoroutine(PlayerBeInvincible(3.0f));
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -294,5 +304,14 @@ public class PlayerLife : MonoBehaviour
             this.gameObject.SetActive(false);
 
         music.StopPlayerSoundEffect();  // #45 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
+    }
+
+    IEnumerator PlayerBeInvincible(float time)
+    {
+        playerInvincible = true;
+        Debug.Log("//#59 플레이어 무적 상태 시작");
+        yield return  new WaitForSeconds(time);
+        playerInvincible = false;
+        Debug.Log("//#59 플레이어 무적 상태 종료");
     }
 }
