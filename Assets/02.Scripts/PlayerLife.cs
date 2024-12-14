@@ -57,7 +57,7 @@ public class PlayerLife : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "WaterBurst")
+        if((other.gameObject.tag == "WaterBurst") || !playerInvincible) //#59 플레이어가 무적 상태이면 물풍선 맞아도 아무 영향 받지 않도록
         {
             PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
