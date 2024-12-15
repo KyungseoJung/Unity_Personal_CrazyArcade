@@ -57,14 +57,14 @@ public class PlayerLife : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if((other.gameObject.tag == "WaterBurst") || !playerInvincible) //#59 플레이어가 무적 상태이면 물풍선 맞아도 아무 영향 받지 않도록
+        if((other.gameObject.tag == "WaterBurst"))
         {
             PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
         }
     }
     public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
     {
-        if(!trappedInWater && !waterApplied)
+        if(!trappedInWater && !waterApplied && !playerInvincible)   //#59 플레이어가 무적 상태이면 물풍선 맞아도 아무 영향 받지 않도록
         {
             if(!playerCtrl.CheckPlayerVisible())    // #17 만약 플레이어가 Bush 안에 가려져 있었다면, 다시 보이게 하기
             {
