@@ -25,6 +25,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     private MapManager mapMgr;             // #4 물풍선 놓기 위함
     private Obstacle obstacle;             // #6 플레이어가 숨을 수 있는 덤불
     private Music music;                   // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
+    private LobbyManager lobbyMgr;         // #59 플레이어가 아이템 사용할 때마다, UI에 표시되는 아이템 개수를 업데이트 하기 위함.
+
     private Vector2 slideDirection = new Vector2(0, 0); // #5
     private Vector3 pos;                   // #24 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
 
@@ -71,6 +73,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         playerLife = GetComponent<PlayerLife>();    // #28
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #4 
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #43
+        lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); // #59
     }
     
     void Start()
@@ -181,6 +184,9 @@ public class PlayerCtrl : MonoBehaviour // #1
                 Invoke("CanMoveTrue", 0.5f);        //#54 다시 canMove 변수를 True로 만들어주기
                 
                 LimitToTurtleSpeed(true);   //#54 플레이어의 속도를 빠른 거북 속도로 바꿔주기
+
+                PlayerGameMgr.Mgr.turtleCan -= 1;   //#59 아이템을 사용했으니까, 개수 -1
+                lobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
 
             }
         }

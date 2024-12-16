@@ -415,4 +415,11 @@ public class LobbyManager : MonoBehaviour
             pnlbtnPressGameStart2.SetActive(false);
         }
     }
+
+    public void UpdateNumberOfItems()  //#59 UI에 나타나는 아이템의 개수 업데이트
+    {
+        txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
+        txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
+        txtNumberOfShield.text = $"{PlayerGameMgr.Mgr.shield}";   
+    }
 }
