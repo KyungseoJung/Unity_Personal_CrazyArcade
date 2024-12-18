@@ -51,6 +51,9 @@ public class PlayerLife : MonoBehaviour
         // #59 방패 아이템 사용 - 외부 공격으로부터 막아주는 shield item
         if(Input.GetKeyDown(KeyCode.Alpha3))
         {
+            PlayerGameMgr.Mgr.shield -= 1;      // #59 방패 아이템 사용
+            lobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
+
             StartCoroutine(PlayerBeInvincible(3.0f));
         }
     }
