@@ -313,8 +313,11 @@ public class PlayerLife : MonoBehaviour
     {
         playerInvincible = true;
         Debug.Log("//#59 플레이어 무적 상태 시작");
+        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_SHIELD);   //#59 플레이어가 shield 아이템 사용하고 있는 동안의 효과음
+
         yield return  new WaitForSeconds(time);
         playerInvincible = false;
         Debug.Log("//#59 플레이어 무적 상태 종료");
+
     }
 }
