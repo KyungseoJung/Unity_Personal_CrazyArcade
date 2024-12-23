@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab55aed821300f44e928c142c7747619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerShield: {fileID: 0}
   trappedInWater: 0
   playerFaint: 0
   waterApplied: 0

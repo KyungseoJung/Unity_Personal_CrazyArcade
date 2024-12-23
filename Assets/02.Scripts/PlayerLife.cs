@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour
 {
     private Animator anim;  // #17 플레이어 물풍선에 갇힐 때 - 애니메이션 설정
-
+    [SerializeField] private GameObject playerShield;    // #59 방패 아이템 사용할 때의 애니메이션
     private PlayerCtrl playerCtrl;  // #17 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
     private MapManager mapMgr;      // #28  배열 확인 후, item들을 랜덤으로 놓기 위함
     private Music music;            // #28 플레이어 죽을 때, 효과음
@@ -31,6 +31,7 @@ public class PlayerLife : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();    // #17
+        playerShield = transform.GetChild(3).gameObject;  //#59
         playerCtrl = GetComponent<PlayerCtrl>();    // #17
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #28
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #28
@@ -44,6 +45,7 @@ public class PlayerLife : MonoBehaviour
         // anim.SetBool("canMove", true);   // #17 #19 fix(주석 처리) 첫 설정은 true로 해서 애니메이션 정상 작동하도록
         anim.SetBool("canMove", false);     // #19 fix: 처음에는 플레이어가 등장하는 애니메이션 (PlayerSpin)을 위해서 "canMove"를 false로 설정. PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
         trappedInWater = false;         // #17
+        playerShield.SetActive(false);  //#59 디폴트 상태에서는 방패 이미지 가리기
     }
 
     void Update()
@@ -312,10 +314,12 @@ public class PlayerLife : MonoBehaviour
     IEnumerator PlayerBeInvincible(float time)
     {
         playerInvincible = true;
+        playerShield.SetActive(true);
         Debug.Log("//#59 플레이어 무적 상태 시작");
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_SHIELD);   //#59 플레이어가 shield 아이템 사용하고 있는 동안의 효과음
 
         yield return  new WaitForSeconds(time);
+        playerShield.SetActive(false);
         playerInvincible = false;
         Debug.Log("//#59 플레이어 무적 상태 종료");
 
