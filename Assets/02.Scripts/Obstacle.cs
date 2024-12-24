@@ -80,10 +80,17 @@ public class Obstacle : MonoBehaviour
 
             case OBSTACLE_TYPE.WOODBLOCK :
             case OBSTACLE_TYPE.NORMALBLOCK :    // #38 NORMALBLOCK도 (물풍선에 의해 없어질 때) 랜덤 아이템 생기도록 설정
-                randomNumber = Random.Range(0, 6);  // #38 fix: 0부터 5까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
+                randomNumber = Random.Range(0, 100);  // #38 fix: 0부터 5까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
                 
-                if(randomNumber != 0)   // #38 fix 랜덤 아이템이 없는 경우는 배제한 if문
-                    randomItemType = (Item.ITEM_TYPE)randomNumber;
+                // if(randomNumber != 0)   // #38 fix 랜덤 아이템이 없는 경우는 배제한 if문 (randomNumber == 0 이면, 아이템이 없는 경우임)
+                //     randomItemType = (Item.ITEM_TYPE)randomNumber;                // #38 각 item별로 등장 확률 설정
+
+                // 아이템 없는 경우가 50%
+                // 나머지 ITEM_TYPE 5가지가 각각 10%
+                if(randomNumber <50)
+                    break;
+
+
 
                 Debug.Log("//#38 randomNumber: " + randomNumber);
                 Debug.Log("//#38 randomItemType: " + randomItemType);
