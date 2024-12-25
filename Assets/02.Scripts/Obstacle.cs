@@ -88,7 +88,9 @@ public class Obstacle : MonoBehaviour
                 // 아이템 없는 경우가 50%
                 // 나머지 ITEM_TYPE 5가지가 각각 10%
                 if(randomNumber <50)
-                    break;
+                    // break;
+                    randomItemType = Item.ITEM_TYPE.NONE;   // 아무것도 지정해주지 않으니까, 디폴트인 FLUID로 설정되는 문제가 발생함.
+
 
 
 
@@ -230,7 +232,7 @@ public class Obstacle : MonoBehaviour
                     DestroyBlock(); // #38 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
                     // PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록
                     // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
-                    mapMgr.PlaceRandomItem(randomNumber, randomItemType, this.transform.position); 
+                    mapMgr.PlaceRandomItem(randomItemType, this.transform.position); 
 
                     break;
 
@@ -239,7 +241,7 @@ public class Obstacle : MonoBehaviour
                     DestroyBlock(); // #39 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
                     // PlaceRandomItem();  // #38 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 생기도록
                     // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
-                    mapMgr.PlaceRandomItem(randomNumber, randomItemType, this.transform.position); 
+                    mapMgr.PlaceRandomItem(randomItemType, this.transform.position); 
 
                     break;
             }

@@ -294,18 +294,18 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void PlaceRandomItem(int randomNumber, Item.ITEM_TYPE randomItemType, Vector3 _itemPos)
+    public void PlaceRandomItem(Item.ITEM_TYPE randomItemType, Vector3 _itemPos)
     {
         // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
-        StartCoroutine(PlaceRandomItemByBlock(randomNumber, randomItemType, _itemPos, 0.5f));
+        StartCoroutine(PlaceRandomItemByBlock(randomItemType, _itemPos, 0.5f));
     }
 
-    IEnumerator PlaceRandomItemByBlock(int randomNumber, Item.ITEM_TYPE randomItemType, Vector3 _itemPos, float waitTime)  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기
+    IEnumerator PlaceRandomItemByBlock(Item.ITEM_TYPE randomItemType, Vector3 _itemPos, float waitTime)  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기
     {
         yield return new WaitForSeconds(waitTime); // waitTime 만큼 딜레이후 다음 코드가 실행된다.
 
         Debug.Log("//#38 fix: PlaceRandomItemByBlock 함수 실행");
-        if(randomNumber ==0)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
+        if(randomItemType == Item.ITEM_TYPE.NONE)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
             yield break;
 
         Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
