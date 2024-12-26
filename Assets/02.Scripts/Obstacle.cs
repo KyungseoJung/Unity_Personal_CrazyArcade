@@ -87,10 +87,11 @@ public class Obstacle : MonoBehaviour
 
                 // 아이템 없는 경우가 50%
                 // 나머지 ITEM_TYPE 5가지가 각각 10%
-                if(randomNumber <50)
+                if(randomNumber<50)
                     // break;
                     randomItemType = Item.ITEM_TYPE.NONE;   // 아무것도 지정해주지 않으니까, 디폴트인 FLUID로 설정되는 문제가 발생함.
-
+                if((randomNumber>=50) && (randomNumber<60))
+                    randomItemType = Item.ITEM_TYPE.FLUID;  // 10%의 확률로 FLUID 아이템이 설정되도록
 
 
 
