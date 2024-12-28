@@ -90,9 +90,10 @@ public class Obstacle : MonoBehaviour
                 if(randomNumber<50)
                     // break;
                     randomItemType = Item.ITEM_TYPE.NONE;   // 아무것도 지정해주지 않으니까, 디폴트인 FLUID로 설정되는 문제가 발생함.
-                if((randomNumber>=50) && (randomNumber<60))
+                else if((randomNumber>=50) && (randomNumber<60))
                     randomItemType = Item.ITEM_TYPE.FLUID;  // 10%의 확률로 FLUID 아이템이 설정되도록
-
+                else if((randomNumber>=60) && (randomNumber<70))
+                    randomItemType = Item.ITEM_TYPE.BUBBLE;  // 10%의 확률로 BUBBLE 아이템이 설정되도록
 
 
                 Debug.Log("//#38 randomNumber: " + randomNumber);
