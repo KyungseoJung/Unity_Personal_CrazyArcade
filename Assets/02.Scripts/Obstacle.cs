@@ -94,6 +94,8 @@ public class Obstacle : MonoBehaviour
                     randomItemType = Item.ITEM_TYPE.FLUID;  // 10%의 확률로 FLUID 아이템이 설정되도록
                 else if((randomNumber>=60) && (randomNumber<70))
                     randomItemType = Item.ITEM_TYPE.BUBBLE;  // 10%의 확률로 BUBBLE 아이템이 설정되도록
+                else if((randomNumber>=70) && (randomNumber<80))
+                    randomItemType = Item.ITEM_TYPE.ROLLER;  // 10%의 확률로 BUBBLE 아이템이 설정되도록
 
 
                 Debug.Log("//#38 randomNumber: " + randomNumber);
