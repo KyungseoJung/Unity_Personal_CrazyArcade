@@ -18,6 +18,7 @@ public class Obstacle : MonoBehaviour
     private Transform playerTrans;          // #17 플레이어가 물줄기에 닿았는지 확인
     private SphereCollider sphereCollider;  // #33
 
+    [SerializeField] private GameObject spriteObj;      // #60 해당 장애물의 spriteRenderer를 갖고 있는 게임오브젝트 가져오기. (하위 0번째 오브젝트)
     // #38 WoodBlock이 사라진 위치에 랜덤으로 아이템 놓기
     [SerializeField] private GameObject waterballoonObj; // #8 물풍선 터질 때, 물줄기 뿐만 아니라, 물풍선 자체에 있는 오브젝트도 물풍선 맞은 것으로 적용되어야 함.
         // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
@@ -57,6 +58,8 @@ public class Obstacle : MonoBehaviour
         layerSetting = this.GetComponent<LayerSetting>();   // #2
         anim = transform.GetComponent<Animator>();    
 
+        if(obstacleType == OBSTACLE_TYPE.WOODBLOCK)
+            spriteObj = transform.GetChild(0).gameObject;   // #60
         if(obstacleType == OBSTACLE_TYPE.WATERBALLOON)  // #33
         {
             sphereCollider = this.GetComponent<SphereCollider>();
@@ -253,6 +256,12 @@ public class Obstacle : MonoBehaviour
                     break;
             }
         }
+
+        if(other.gameObject.tag == "Bush")  // #60 장애물(WOODBLOCK만 해당)이 Bush 안으로 들어가면 눈에 보이지 않도록 SpriteRenderer로 이루어진 오브젝트를 비활성화
+        {
+            if(obstacleType == OBSTACLE_TYPE.WOODBLOCK)
+                ObjSetActive(spriteObj, false);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -266,6 +275,12 @@ public class Obstacle : MonoBehaviour
                 sphereCollider.enabled = true;
                 break;
         }
+    }
+
+    private void ObjSetActive(GameObject _obj, bool _active)
+    {
+        Debug.Log("//#60 fix: "+ _obj + "를 활성화?: " + _active);
+        _obj.SetActive(_active);
     }
 
     private bool IsThereObstacle(KeyCode _arrow)    // #14 해당 위치에 Obstacle 있는지 확인
