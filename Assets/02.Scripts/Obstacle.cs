@@ -67,6 +67,7 @@ public class Obstacle : MonoBehaviour
             waterballoonObj = transform.GetChild(0).gameObject; // #8 물풍선 터질 때, 물줄기 뿐만 아니라, 물풍선 자체에 있는 오브젝트도 물풍선 맞은 것으로 적용되어야 함.
             // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
 
+            spriteObj = transform.GetChild(0).gameObject;   // #60
         }
                 
     }
@@ -260,7 +261,7 @@ public class Obstacle : MonoBehaviour
 
         if(other.gameObject.tag == "Bush")  // #60 장애물(WOODBLOCK만 해당)이 Bush 안으로 들어가면 눈에 보이지 않도록 SpriteRenderer로 이루어진 오브젝트를 비활성화
         {
-            if(obstacleType == OBSTACLE_TYPE.WOODBLOCK)
+            if((obstacleType == OBSTACLE_TYPE.WOODBLOCK) || (obstacleType == OBSTACLE_TYPE.WATERBALLOON))
                 ObjSetActive(spriteObj, false);
         }
     }
