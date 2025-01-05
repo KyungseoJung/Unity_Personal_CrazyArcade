@@ -365,6 +365,10 @@ public class Obstacle : MonoBehaviour
         // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
         waterballoonObj.tag = "WaterBurst";
 
+        //#60 fix: 물풍선이 Bush 같은 것에 의해 가려져 있었다면(비활성화 되어 있었다면), 다시 활성화해주기.
+        if(!spriteObj.activeSelf)
+            spriteObj.SetActive(true);
+
         //#8 fix: 태그가 인식되기 전에 물풍선이 먼저 사라져 버려서 Bush가 사라지지 않는 경우가 존재함.
         // 직접 위치를 받아와서 배열 값을 확인한 뒤에, 해당 배열 값에 Bush가 있으면 직접 Destroy 하는 방법 적용.
         mapMgr.CheckBubbleInBush(this.transform);
