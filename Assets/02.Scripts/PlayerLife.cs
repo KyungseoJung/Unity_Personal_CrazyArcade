@@ -98,6 +98,8 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
             // Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
             playerCtrl.turtleMount = false;
+            PlayerGameMgr.Mgr.slowTurtle = false;   // PlayerGameMgr에사도 플레이어가 거북에 타있는 것을 의미하는 변수들은 모두 false로 만들어주기.
+            PlayerGameMgr.Mgr.fastTurtle = false;
             //#35 느린 거북 or 빠른 거북 모두 내려오도록
             anim.SetBool("turtleMount", false);
             anim.SetBool("fastTurtleMount", false);
