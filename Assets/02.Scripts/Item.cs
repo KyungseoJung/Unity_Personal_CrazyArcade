@@ -64,7 +64,7 @@ public class Item : MonoBehaviour   // #10
                 
                 case ITEM_TYPE.TURTLE :     // #16 TURTLE 아이템
                     PlayerGameMgr.Mgr.turtleNum += 1;   // #16 아이템 획득 수 추가
-                    if(playerCtrl.turtleMount == false) // #35 fix: 어떤 거북도 타고 있지 않을 때 적용
+                    if((!PlayerGameMgr.Mgr.slowTurtle) && (!PlayerGameMgr.Mgr.fastTurtle))// if(playerCtrl.turtleMount == false) // #35 fix: 어떤 거북도 타고 있지 않을 때 적용
                     {
                         if(!fastTurtle)
                         {

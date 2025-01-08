@@ -93,11 +93,12 @@ public class PlayerLife : MonoBehaviour
         // 여기서 이 처리를 안 해주면, 물풍선을 바라보는 상태에서 물풍선을 맞은 후, 계속 가만히 서 있는 경우가 있음
         // 결론적으로 MapManager.cs에서는 balloonInFront = false 처리를 해주지 않으므로, 계속 가만히 서 있는 경우를 방지하기 위해
         // #35 플레이어가 거북에 타고 있었다면 - 거북에서만 내려오게 하고 함수 탈출
-        if(playerCtrl.turtleMount) 
+        // if(playerCtrl.turtleMount) 
+        if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))
         {
             Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
             // Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
-            playerCtrl.turtleMount = false;
+            // playerCtrl.turtleMount = false;
             PlayerGameMgr.Mgr.slowTurtle = false;   // PlayerGameMgr에사도 플레이어가 거북에 타있는 것을 의미하는 변수들은 모두 false로 만들어주기.
             PlayerGameMgr.Mgr.fastTurtle = false;
             //#35 느린 거북 or 빠른 거북 모두 내려오도록

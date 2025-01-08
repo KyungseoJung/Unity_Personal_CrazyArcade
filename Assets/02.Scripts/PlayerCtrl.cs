@@ -56,7 +56,7 @@ public class PlayerCtrl : MonoBehaviour // #1
     private float posX, posY;               // #33
     private bool lookingAhead = false;              // #23 정면 바라보는지 체크
     // public bool balloonInFront = false;    // #33 앞에 물풍선 있는지 확인 - 있다면, 플레이어 이동 불가
-    public bool turtleMount = false;       // #35 거북에 올라탐
+    // public bool turtleMount = false;       // #35 거북에 올라탐  //#35 fix: 이 변수 대신, PlayerGameMgr 값만 이용해도 충분.
 
     void Awake()
     {
@@ -177,6 +177,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 music.GameSoundEffect(Music.EFFECT_TYPE.TURTLE_CHANGE); //#54 빠른 거북으로 바뀔 때의 효과음
                 
                 // 플레이어가 타고 있는 거북의 이미지 & 속도 변경
+                PlayerGameMgr.Mgr.slowTurtle = false;
                 PlayerGameMgr.Mgr.fastTurtle = true;
                 //#54 animation 설정도 해주기
                 anim.SetBool("turtleMount", false);
@@ -623,7 +624,7 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     public void ChangePlayerSpeed(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
     {
-        if(turtleMount) // #35 만약 플레이어가 거북에 타고 있었다면
+        if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))    //if(turtleMount) // #35 만약 플레이어가 거북에 타고 있었다면
         {
             // LimitToTurtleSpeed();    // 플레이어가 거북에 타고 있다면, 속도를 바꿀 필요 자체가 없음.
             return;
@@ -665,8 +666,8 @@ public class PlayerCtrl : MonoBehaviour // #1
     {
         if(_mount)
         {
-            turtleMount = true;
-            
+            // turtleMount = true;
+            // #35 fix: Item.cs에서 OnTriggerEnter 함수에서 직접 PlayerGameMgr.Mgr.slowTurtle 또는 PlayerGameMgr.Mgr.fastTurtle 값을 설정해줌.
             Debug.Log("//#35 플레이어가 거북에 올라탐");
 
             LimitToTurtleSpeed(_fastTurtle);
