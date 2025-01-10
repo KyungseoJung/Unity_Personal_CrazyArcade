@@ -85,25 +85,25 @@ public class Obstacle : MonoBehaviour
 
             case OBSTACLE_TYPE.WOODBLOCK :
             case OBSTACLE_TYPE.NORMALBLOCK :    // #38 NORMALBLOCK도 (물풍선에 의해 없어질 때) 랜덤 아이템 생기도록 설정
-                randomNumber = Random.Range(0, 100);  // #38 fix: 0부터 5까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
+                randomNumber = Random.Range(0, 100);  // #38 fix: 0부터 99까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
                 
                 // if(randomNumber != 0)   // #38 fix 랜덤 아이템이 없는 경우는 배제한 if문 (randomNumber == 0 이면, 아이템이 없는 경우임)
                 //     randomItemType = (Item.ITEM_TYPE)randomNumber;                // #38 각 item별로 등장 확률 설정
 
-                // 아이템 없는 경우가 50%
-                // 나머지 ITEM_TYPE 5가지가 각각 10%
-                if(randomNumber<50)
+                // 아이템 없는 경우가 40%
+                // 나머지 ITEM_TYPE 5가지가 각각 12(=60/5)%
+                if(randomNumber<40)
                     // break;
                     randomItemType = Item.ITEM_TYPE.NONE;   // 아무것도 지정해주지 않으니까, 디폴트인 FLUID로 설정되는 문제가 발생함.
-                else if((randomNumber>=50) && (randomNumber<60))
+                else if((randomNumber>=40) && (randomNumber<52))
                     randomItemType = Item.ITEM_TYPE.FLUID;  // 10%의 확률로 FLUID 아이템이 설정되도록
-                else if((randomNumber>=60) && (randomNumber<70))
+                else if((randomNumber>=52) && (randomNumber<64))
                     randomItemType = Item.ITEM_TYPE.BUBBLE;  // 10%의 확률로 BUBBLE 아이템이 설정되도록
-                else if((randomNumber>=70) && (randomNumber<80))
+                else if((randomNumber>=64) && (randomNumber<76))
                     randomItemType = Item.ITEM_TYPE.ROLLER;  // 10%의 확률로 ROLLER 아이템이 설정되도록
-                else if((randomNumber>=80) && (randomNumber<90))
+                else if((randomNumber>=76) && (randomNumber<88))
                     randomItemType = Item.ITEM_TYPE.TURTLE;  // 10%의 확률로 TURTLE 아이템이 설정되도록
-                else if((randomNumber>=90) && (randomNumber<100))
+                else if((randomNumber>=88) && (randomNumber<100))
                     randomItemType = Item.ITEM_TYPE.COIN;  // 10%의 확률로 COIN 아이템이 설정되도록
 
 
