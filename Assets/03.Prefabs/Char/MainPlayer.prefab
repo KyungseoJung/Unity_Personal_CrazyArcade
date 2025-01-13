@@ -324,7 +324,6 @@ MonoBehaviour:
   mainPlayerGroup: {fileID: 0}
   moveForce: 17
   maxSpeed: 1
-  turtleMount: 0
 --- !u!114 &3424069725932381565
 MonoBehaviour:
   m_ObjectHideFlags: 0
