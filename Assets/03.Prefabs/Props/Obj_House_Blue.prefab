@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3207420165616560694}
   - component: {fileID: 3207420165616560688}
   - component: {fileID: 3207420165616560689}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obj_House_Blue
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3207420165771801400}
   - component: {fileID: 3207420165771801351}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: house_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

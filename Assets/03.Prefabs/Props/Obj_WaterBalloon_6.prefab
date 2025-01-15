@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2222136219983930544}
   - component: {fileID: 6177457714640068090}
   - component: {fileID: 3046526112924328562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: up2
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2510547139892614220}
   - component: {fileID: 2355977918038759696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: waterUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8434319928653187021}
   - component: {fileID: 7437577083781446437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: waterDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2529917334855208409}
   - component: {fileID: 8246157296181918645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: waterLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 7151324417667699939}
   - component: {fileID: 6857393101987892521}
   - component: {fileID: 2278851317078576602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: down1
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3894256993214068373}
   - component: {fileID: 3894256993214068371}
   - component: {fileID: 3894256993214068370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: waterballoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 3894256993220591694}
   - component: {fileID: 6836998639070530992}
   - component: {fileID: -8175853245428407551}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obj_WaterBalloon_6
   m_TagString: WaterBalloon
   m_Icon: {fileID: 0}
@@ -523,6 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 1
   anim: {fileID: 0}
+  spriteObj: {fileID: 0}
   waterballoonObj: {fileID: 0}
   itemBubble: {fileID: 0}
   itemCoin: {fileID: 0}
@@ -598,7 +599,7 @@ GameObject:
   - component: {fileID: 4952577062641470004}
   - component: {fileID: 8879197773937873213}
   - component: {fileID: 5122932292306628626}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: left1
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -694,7 +695,7 @@ GameObject:
   - component: {fileID: 6366132316180905470}
   - component: {fileID: 7460006280280735156}
   - component: {fileID: 1906898239656638974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: left2
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -790,7 +791,7 @@ GameObject:
   - component: {fileID: 4183586194959087871}
   - component: {fileID: 1209046592287615928}
   - component: {fileID: 3203843011911942253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: right2
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -884,7 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6481455881449472197}
   - component: {fileID: 2491012520136032369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +968,7 @@ GameObject:
   - component: {fileID: 4612707561840150165}
   - component: {fileID: 3280631839553302948}
   - component: {fileID: 7116847431699351141}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: up1
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -1063,7 +1064,7 @@ GameObject:
   - component: {fileID: 3951045447351245451}
   - component: {fileID: 1325566053210834782}
   - component: {fileID: 2524496140928266605}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: down2
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -1159,7 +1160,7 @@ GameObject:
   - component: {fileID: 2835435691808607486}
   - component: {fileID: 6538097464823937831}
   - component: {fileID: 8463212963459777638}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: right1
   m_TagString: WaterBurst
   m_Icon: {fileID: 0}
@@ -1254,7 +1255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3183173545938721072}
   - component: {fileID: 5609610099299475595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: waterRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

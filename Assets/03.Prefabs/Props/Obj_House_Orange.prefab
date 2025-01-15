@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5230903403011813306}
   - component: {fileID: 5230903403011813253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: house_orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5230903403103254196}
   - component: {fileID: 5230903403103254194}
   - component: {fileID: 5230903403103254198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obj_House_Orange
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

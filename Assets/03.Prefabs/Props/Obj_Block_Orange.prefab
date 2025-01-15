@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4347210654181824025}
   - component: {fileID: 4347210654181824038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: orangeblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6139632727537072484}
   - component: {fileID: 5491142519092622345}
   - component: {fileID: 5331037426272272608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obj_Block_Orange
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 4
   anim: {fileID: 0}
+  spriteObj: {fileID: 0}
   waterballoonObj: {fileID: 0}
   itemBubble: {fileID: 8513862709648437680, guid: a0a52091819984f4484eb636ef2cb199,
     type: 3}

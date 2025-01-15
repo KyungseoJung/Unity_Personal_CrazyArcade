@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 383722405730546976}
   - component: {fileID: 383722405730546975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: woodblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7796715154310552157}
   - component: {fileID: 8445183298299189040}
   - component: {fileID: 8141525417617384409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obj_WoodBlock
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 3
   anim: {fileID: 0}
+  spriteObj: {fileID: 0}
   waterballoonObj: {fileID: 0}
   itemBubble: {fileID: 8513862709648437680, guid: a0a52091819984f4484eb636ef2cb199,
     type: 3}

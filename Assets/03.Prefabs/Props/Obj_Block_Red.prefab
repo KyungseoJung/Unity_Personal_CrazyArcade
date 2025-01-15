@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7384194465594516465}
   - component: {fileID: 9185588241432063644}
   - component: {fileID: 8842273175344159349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obj_Block_Red
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleType: 4
   anim: {fileID: 0}
+  spriteObj: {fileID: 0}
   waterballoonObj: {fileID: 0}
   itemBubble: {fileID: 8513862709648437680, guid: a0a52091819984f4484eb636ef2cb199,
     type: 3}
@@ -111,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088133740729863308}
   - component: {fileID: 1088133740729863347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: redblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
