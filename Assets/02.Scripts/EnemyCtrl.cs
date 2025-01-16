@@ -50,6 +50,8 @@ public class EnemyCtrl : MonoBehaviour
             pos = this.transform.position;
             pos.x = (int)this.transform.position.x; // -4 또는 4로 지정
             this.transform.position = pos;
+
+            ChooseNewDirection();   // 다른 방향으로 이동하도록
         }
         
         if((transform.position.y) * (transform.position.y) > 3*3)
@@ -58,6 +60,8 @@ public class EnemyCtrl : MonoBehaviour
             pos = this.transform.position;
             pos.y = (int)this.transform.position.y; // -3 또는 3으로 지정
             this.transform.position = pos;
+
+            ChooseNewDirection();   // 다른 방향으로 이동하도록
         }
 
     }
@@ -95,19 +99,20 @@ public class EnemyCtrl : MonoBehaviour
 
     void ChooseNewDirection()
     {
+        Debug.Log("#101 Enemy의 새로운 이동 방향 탐색");
         Vector2[] possibleDirections = GetPossibleDirections();
 
         if (possibleDirections.Length > 0)
         {
             // 랜덤으로 새로운 방향 선택
             currentDirection = possibleDirections[Random.Range(0, possibleDirections.Length)];
-            Debug.Log($"Enemy direction changed to: {currentDirection}");
+            Debug.Log($"#101 Enemy direction changed to: {currentDirection}");
         }
         else
         {
             // 모든 방향에 장애물이 있는 경우 정지
             rBody.velocity = Vector2.zero;
-            Debug.Log("No available directions. Enemy stopped.");
+            Debug.Log("#101 No available directions. Enemy stopped.");
         }
     }
 
