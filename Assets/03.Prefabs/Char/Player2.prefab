@@ -172,12 +172,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2030621264173623910}
+  - component: {fileID: 8835733106141580802}
   - component: {fileID: 1022618565478767437}
   - component: {fileID: 762961282226093884}
   - component: {fileID: 4649320806048802257}
   - component: {fileID: 2911320275791604654}
   m_Layer: 0
-  m_Name: EnemyPlayer
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,6 +201,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8835733106141580802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030621264173623909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192149b8c3dd6a04ea50721a1f0d1a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1022618565478767437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db5862e2d145394687fdab83c716655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bazziObj: {fileID: 0}
+  lodumaniObj: {fileID: 0}
   ridesObj: {fileID: 0}
   ridesSprite: {fileID: 0}
   mainPlayerGroup: {fileID: 0}
@@ -245,7 +258,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9, z: 0.1}
+  m_Size: {x: 0.7, y: 0.7, z: 0.1}
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!210 &2911320275791604654
 SortingGroup:

@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class EnemyCtrl : MonoBehaviour
+public class SubPlayerCtrl : MonoBehaviour
 {
+
 // #100 플레이어 기본 이동 =============================
     private enum MOVE_ARROW {UP = 1, DOWN, RIGHT, LEFT};    // refactor: 플레이어 움직이는 방향
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
 
-    [SerializeField] private GameObject bazziObj;        // fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
+    [SerializeField] private GameObject lodumaniObj;        // fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     [SerializeField] private GameObject ridesObj;        // fix: 'rides' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     [SerializeField] private SpriteRenderer ridesSprite;                  // fix: 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
 
     private GameObject shadowObj;       // fix: 'shadow' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     private Rigidbody rBody;               // 2D에서 3D로 변경
-    [SerializeField] private SortingGroup mainPlayerGroup;   // 최상위 오브젝트 'MainPlayer'의 SortingGroup 
+    [SerializeField] private SortingGroup Player2Group;   // 최상위 오브젝트 'MainPlayer'의 SortingGroup 
 
     private Obstacle obstacle;             // 플레이어가 숨을 수 있는 덤불
     private Music music;                   // 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
@@ -52,13 +53,13 @@ public class EnemyCtrl : MonoBehaviour
 
     void Awake()
     {
-        bazziObj = transform.GetChild(2).gameObject;    // 하위 3번째 오브젝트가 bazziObj
+        lodumaniObj = transform.GetChild(2).gameObject;    // 하위 3번째 오브젝트가 lodumaniObj
         ridesObj = transform.GetChild(1).gameObject;    // 하위 2번째 오브젝트가 ridesObj
         ridesSprite = transform.GetChild(1).GetComponent<SpriteRenderer>(); // 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
 
         shadowObj = transform.GetChild(0).gameObject;   // 하위 1번째 오브젝트가 shadowObj
         rBody = GetComponent<Rigidbody>();
-        mainPlayerGroup = transform.GetComponent<SortingGroup>();   // 최상위 오브젝트 'MainPlayer'의 SortingGroup
+        Player2Group = transform.GetComponent<SortingGroup>();   // 최상위 오브젝트 'MainPlayer'의 SortingGroup
 
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); 
         lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); 
@@ -93,7 +94,7 @@ public class EnemyCtrl : MonoBehaviour
         else if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             PlayerMove(false);  
             
-        mainPlayerGroup.sortingOrder = - Mathf.RoundToInt(transform.position.y);    
+        Player2Group.sortingOrder = - Mathf.RoundToInt(transform.position.y);    
 
     }
 
@@ -267,7 +268,7 @@ public class EnemyCtrl : MonoBehaviour
 
     public bool CheckPlayerVisible()    // 만약 플레이어가 (Bush 같은 것들로 인해) 가려져 있었다면, 다시 보이게 하기
     {
-        if((bazziObj.activeSelf))  // 플레이어가 잘 보이고 있다면, true return
+        if((lodumaniObj.activeSelf))  // 플레이어가 잘 보이고 있다면, true return
             return true;
 
         return false;               // 만약 (Bush 같은 것들로 인해) 가려져 있다면 false return
