@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2030621263679453000}
   - component: {fileID: 2030621263679453001}
   m_Layer: 0
-  m_Name: Lodumani
+  m_Name: Marid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,8 @@ SpriteRenderer:
   m_SortingLayerID: 1514923399
   m_SortingLayer: 1
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: f8a5094307d27254eb5f1733bb5a9e99, type: 3}
+  m_Sprite: {fileID: -2186906342611666750, guid: 2bca5a6ecf9660c42a62ede909a708fd,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -173,7 +174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2030621264173623910}
   - component: {fileID: 8835733106141580802}
-  - component: {fileID: 1022618565478767437}
   - component: {fileID: 762961282226093884}
   - component: {fileID: 4649320806048802257}
   - component: {fileID: 2911320275791604654}
@@ -213,22 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192149b8c3dd6a04ea50721a1f0d1a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1022618565478767437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2030621264173623909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db5862e2d145394687fdab83c716655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   lodumaniObj: {fileID: 0}
   ridesObj: {fileID: 0}
   ridesSprite: {fileID: 0}
-  mainPlayerGroup: {fileID: 0}
+  Player2Group: {fileID: 0}
   moveForce: 0
   maxSpeed: 0
 --- !u!54 &762961282226093884

@@ -11,7 +11,7 @@ public class SubPlayerCtrl : MonoBehaviour
     private enum PLAYER_POS {UP=1, DOWN, RIGHT, LEFT};      // refactor: 플레이어의 위치 - 장애물과 비교했을 때
     private PLAYER_POS playerPos = PLAYER_POS.UP;
 
-    [SerializeField] private GameObject lodumaniObj;        // fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
+    [SerializeField] private GameObject maridObj;        // fix: 'Bazzi' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     [SerializeField] private GameObject ridesObj;        // fix: 'rides' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     [SerializeField] private SpriteRenderer ridesSprite;                  // fix: 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
 
@@ -53,7 +53,7 @@ public class SubPlayerCtrl : MonoBehaviour
 
     void Awake()
     {
-        lodumaniObj = transform.GetChild(2).gameObject;    // 하위 3번째 오브젝트가 lodumaniObj
+        maridObj = transform.GetChild(2).gameObject;    // 하위 3번째 오브젝트가 maridObj
         ridesObj = transform.GetChild(1).gameObject;    // 하위 2번째 오브젝트가 ridesObj
         ridesSprite = transform.GetChild(1).GetComponent<SpriteRenderer>(); // 거북이 덤불로 들어가면 alpha로 설정해서 안 보이게 하기
 
@@ -268,7 +268,7 @@ public class SubPlayerCtrl : MonoBehaviour
 
     public bool CheckPlayerVisible()    // 만약 플레이어가 (Bush 같은 것들로 인해) 가려져 있었다면, 다시 보이게 하기
     {
-        if((lodumaniObj.activeSelf))  // 플레이어가 잘 보이고 있다면, true return
+        if((maridObj.activeSelf))  // 플레이어가 잘 보이고 있다면, true return
             return true;
 
         return false;               // 만약 (Bush 같은 것들로 인해) 가려져 있다면 false return
