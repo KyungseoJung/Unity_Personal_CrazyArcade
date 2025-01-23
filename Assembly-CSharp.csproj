@@ -47,8 +47,10 @@
      <Compile Include="Assets\02.Scripts\PlayerCtrl.cs" />
      <Compile Include="Assets\02.Scripts\PlayerGameMgr.cs" />
      <Compile Include="Assets\02.Scripts\PlayerLife.cs" />
+     <Compile Include="Assets\02.Scripts\SubLobbyManager.cs" />
      <Compile Include="Assets\02.Scripts\SubPlayerCtrl.cs" />
      <Compile Include="Assets\02.Scripts\SubPlayerGameMgr.cs" />
+     <Compile Include="Assets\02.Scripts\SubPlayerLife.cs" />
      <Compile Include="Assets\02.Scripts\WaterBurst.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.40f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
