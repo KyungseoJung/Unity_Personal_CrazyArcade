@@ -419,6 +419,7 @@ Transform:
   m_Children:
   - {fileID: 994844738}
   - {fileID: 81057706}
+  - {fileID: 238764312}
   - {fileID: 612813659}
   - {fileID: 408718321}
   m_Father: {fileID: 0}
@@ -728,6 +729,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228881435}
   m_CullTransparentMesh: 0
+--- !u!1 &238764311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238764312}
+  - component: {fileID: 238764313}
+  m_Layer: 0
+  m_Name: SubLobbyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &238764312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238764311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 49141803}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &238764313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238764311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28bff6f2c9f88e4a8a7793d790e0154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtPlayerLife: {fileID: 1861038810}
+  txtNumberOfCan: {fileID: 391526156}
+  txtNumberOfNeedle: {fileID: 1195345353}
+  txtNumberOfShield: {fileID: 764543393}
 --- !u!1 &243717331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,7 +1657,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 49141803}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418023521
 GameObject:
@@ -2247,7 +2295,7 @@ RectTransform:
   m_Children:
   - {fileID: 1959802676}
   m_Father: {fileID: 49141803}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
