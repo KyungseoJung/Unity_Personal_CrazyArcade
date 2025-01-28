@@ -50,7 +50,7 @@ public class SubPlayerLife : MonoBehaviour
     void Update()
     {
         // 방패 아이템 사용 - 외부 공격으로부터 막아주는 shield item
-        if(!trappedInWater && Input.GetKeyDown(KeyCode.Alpha3) && (PlayerGameMgr.Mgr.shield>0)) // 물풍선에 갇혀있을 땐 사용하지 못하도록
+        if(!trappedInWater && Input.GetKeyDown(KeyCode.Alpha0) && (PlayerGameMgr.Mgr.shield>0)) // 물풍선에 갇혀있을 땐 사용하지 못하도록
         {
             PlayerGameMgr.Mgr.shield -= 1;      // 방패 아이템 사용
             lobbyMgr.UpdateNumberOfItems();     // 아이템 개수 업데이트해서 UI에 표시

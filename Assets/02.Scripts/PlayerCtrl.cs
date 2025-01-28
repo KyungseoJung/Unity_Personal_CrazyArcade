@@ -147,7 +147,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if(Input.GetKeyDown(KeyCode.Alpha9))
         {
             if((playerLife.trappedInWater) && (PlayerGameMgr.Mgr.needle > 0))
             {
@@ -167,7 +167,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         }
 
         // #54 거북 속도 변경
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha8))
         {
             Debug.Log("slowTurtle 체크: " + PlayerGameMgr.Mgr.slowTurtle);
             Debug.Log("fastTurtle 체크: " + PlayerGameMgr.Mgr.fastTurtle);
