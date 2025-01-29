@@ -19,6 +19,8 @@ public class SubPlayerCtrl : MonoBehaviour
     private Rigidbody rBody;               // 2D에서 3D로 변경
     [SerializeField] private SortingGroup Player2Group;   // 최상위 오브젝트 'MainPlayer'의 SortingGroup 
 
+    private SubPlayerLife subPlayerLife;    // #102 플레이어2가 물풍선 놓을 수 있게 하기 위함.- 플레이어 기절 확인
+    private MapManager mapMgr;              // #102 플레이어2가 물풍선 놓을 수 있게 하기 위함.
     private Obstacle obstacle;             // 플레이어가 숨을 수 있는 덤불
     private Music music;                   // 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
     private LobbyManager lobbyMgr;         // 플레이어가 아이템 사용할 때마다, UI에 표시되는 아이템 개수를 업데이트 하기 위함.
@@ -61,6 +63,8 @@ public class SubPlayerCtrl : MonoBehaviour
         rBody = GetComponent<Rigidbody>();
         Player2Group = transform.GetComponent<SortingGroup>();   // 최상위 오브젝트 'MainPlayer'의 SortingGroup
 
+        subPlayerLife = GetComponent<SubPlayerLife>();  // #102
+        mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #102
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); 
         lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); 
     }
@@ -96,6 +100,10 @@ public class SubPlayerCtrl : MonoBehaviour
             
         Player2Group.sortingOrder = - Mathf.RoundToInt(transform.position.y);    
 
+        if((Input.GetKeyDown(KeyCode.LeftShift)) && (subPlayerLife.playerFaint == false))
+        {
+            mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
+        }
     }
 
     void FixedUpdate()
