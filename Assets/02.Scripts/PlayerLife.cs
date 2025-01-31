@@ -285,7 +285,7 @@ public class PlayerLife : MonoBehaviour
         return randomNum;
         
     }
-    private void PlayerCanMove()    // #19 fix: PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
+    private void PlayerCanMove()    // #19 fix: PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정. playerFaint를 false로 변경.
     {
         anim.SetBool("canMove", true);
         
