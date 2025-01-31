@@ -6,7 +6,7 @@ public class SubPlayerLife : MonoBehaviour
 {
     private Animator anim;  // 플레이어 물풍선에 갇힐 때 - 애니메이션 설정
     [SerializeField] private GameObject playerShield;    // 방패 아이템 사용할 때의 애니메이션
-    private PlayerCtrl playerCtrl;  // 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
+    private SubPlayerCtrl subPlayerCtrl;  // 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
     private MapManager mapMgr;      //  배열 확인 후, item들을 랜덤으로 놓기 위함
     private Music music;            // 플레이어 죽을 때, 효과음
     private LobbyManager lobbyMgr;  // 플레이어 죽을 때, 남은 목숨 -1 표시
@@ -32,7 +32,7 @@ public class SubPlayerLife : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         playerShield = transform.GetChild(3).gameObject;
-        playerCtrl = GetComponent<PlayerCtrl>();
+        subPlayerCtrl = GetComponent<SubPlayerCtrl>();
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>();
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
         lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
@@ -70,9 +70,9 @@ public class SubPlayerLife : MonoBehaviour
     {
         if(!trappedInWater && !waterApplied && !playerInvincible)   // 플레이어가 무적 상태이면 물풍선 맞아도 아무 영향 받지 않도록
         {
-            if(!playerCtrl.CheckPlayerVisible())    // 만약 플레이어가 Bush 안에 가려져 있었다면, 다시 보이게 하기
+            if(!subPlayerCtrl.CheckPlayerVisible())    // 만약 플레이어가 Bush 안에 가려져 있었다면, 다시 보이게 하기
             {
-                playerCtrl.MakePlayerVisible();
+                subPlayerCtrl.MakePlayerVisible();
             }
             
             SetStateInWaterBalloon();   // balloonInFront 변수 사용을 하지 않고, SphereCollider를 통해 이동 제한을 함 -> 함수를 바로 실행해도 됨
@@ -101,7 +101,7 @@ public class SubPlayerLife : MonoBehaviour
             anim.SetBool("turtleMount", false);
             anim.SetBool("fastTurtleMount", false);
 
-            playerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
+            subPlayerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
             return;
         }
         trappedInWater = true;  // 중복 실행 방지
@@ -110,7 +110,7 @@ public class SubPlayerLife : MonoBehaviour
 
         anim.SetBool("canMove", false);
         anim.SetTrigger("trappedInWater");
-        playerCtrl.SetPlayerSpeed();           // 플레이어 속도 느려짐
+        subPlayerCtrl.SetPlayerSpeed();           // 플레이어 속도 느려짐
     }
 
     private void PlayerDie()   // PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
@@ -148,7 +148,7 @@ public class SubPlayerLife : MonoBehaviour
         waterApplied = false;
         // 플레이어 죽은 후, 부활할 때
         anim.SetBool("canMove", true);  // 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
-        playerCtrl.SetPlayerSpeed(false);  // 플레이어 본래 속도로 돌아가기
+        subPlayerCtrl.SetPlayerSpeed(false);  // 플레이어 본래 속도로 돌아가기
 
         SkillReset();
     }

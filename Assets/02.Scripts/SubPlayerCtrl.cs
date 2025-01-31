@@ -273,6 +273,11 @@ public class SubPlayerCtrl : MonoBehaviour
 
     }
 
+    private void ObjSetActive(GameObject _obj, bool _active)
+    {
+        Debug.Log(_obj + "를 활성화한다?: " + _active);
+        _obj.SetActive(_active);
+    }
 
     public bool CheckPlayerVisible()    // 만약 플레이어가 (Bush 같은 것들로 인해) 가려져 있었다면, 다시 보이게 하기
     {
@@ -280,6 +285,28 @@ public class SubPlayerCtrl : MonoBehaviour
             return true;
 
         return false;               // 만약 (Bush 같은 것들로 인해) 가려져 있다면 false return
+    }
+
+    public void MakePlayerVisible() // 만약 플레이어가 (Bush 같은 것들로 인해) 가려져 있었다면, 다시 보이게 하기
+    {
+        ObjSetActive(maridObj, true);
+        ObjSetActive(ridesObj, true);
+        ObjSetActive(shadowObj, true);
+    }
+
+    public void ChangePlayerSpeed(int rollerCount)   // ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
+    {
+        if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))    // 만약 플레이어가 거북에 타고 있었다면
+        {
+            return;
+        }
+
+        // ROLLER 아이템 획득 개수에 따라 플레이어 이동 속도 설정
+        // moveForce 디폴트 값: 30f, maxSpeed 디폴트 값: 5f
+        moveForce = originMoveForce + (rollerCount) * 3;
+        maxSpeed = originMaxSpeed + (rollerCount) * 0.3f;
+
+        Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
 
     public void SetPlayerSpeed(bool _down = true)   // style: 함수 이름 변경
