@@ -275,6 +275,7 @@ public class SubPlayerLife : MonoBehaviour
     }
     private void PlayerCanMove()    // PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
     {
+        Debug.Log("//#103 (플레이어 등장) PlayerCanMove 함수 실행");
         anim.SetBool("canMove", true);
         
         playerFaint = false;    // 처음 시작할 때, 기절한 상태로 시작. 완전히 등장하면, 그때 기절 상태 false로 만들기. 물풍선 놓을 수 없도록 하기 위해
