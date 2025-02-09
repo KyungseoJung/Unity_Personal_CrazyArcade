@@ -18,6 +18,7 @@ public class SubPlayerCtrl : MonoBehaviour
     private GameObject shadowObj;       // fix: 'shadow' Object - 덤불(Bush)에 배찌가 숨는 것처럼 보이도록 오브젝트 자체를 활성화/ 비활성화
     private Rigidbody rBody;               // 2D에서 3D로 변경
     [SerializeField] private SortingGroup Player2Group;   // 최상위 오브젝트 'MainPlayer'의 SortingGroup 
+    private Animator anim;                 // #104 플레이어 애니메이터
 
     private SubPlayerLife subPlayerLife;    // #102 플레이어2가 물풍선 놓을 수 있게 하기 위함.- 플레이어 기절 확인
     private MapManager mapMgr;              // #102 플레이어2가 물풍선 놓을 수 있게 하기 위함.
@@ -62,6 +63,7 @@ public class SubPlayerCtrl : MonoBehaviour
         shadowObj = transform.GetChild(0).gameObject;   // 하위 1번째 오브젝트가 shadowObj
         rBody = GetComponent<Rigidbody>();
         Player2Group = transform.GetComponent<SortingGroup>();   // 최상위 오브젝트 'MainPlayer'의 SortingGroup
+        anim = GetComponent<Animator>();    //#104
 
         subPlayerLife = GetComponent<SubPlayerLife>();  // #102
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #102
@@ -98,6 +100,17 @@ public class SubPlayerCtrl : MonoBehaviour
         else if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             PlayerMove(false);  
             
+        // #23 플레이어가 2초동안 움직이지 않고 있다면, 정면을 바라보는 애니메이션 실행되도록
+        if((Time.time - lastMoveTime > checkTimeInterval) && !lookingAhead)
+        {
+            lookingAhead = true;
+            anim.SetInteger("MoveDir", 0);  //상하좌우 어느쪽도 쳐다보지 않도록
+
+            anim.SetTrigger("LookingAhead");
+            Debug.Log("//#104 플레이어2 LookingAhead Trigger 실행 체크");
+        }
+
+
         Player2Group.sortingOrder = - Mathf.RoundToInt(transform.position.y);    
 
         if((Input.GetKeyDown(KeyCode.LeftShift)) && (subPlayerLife.playerFaint == false))
