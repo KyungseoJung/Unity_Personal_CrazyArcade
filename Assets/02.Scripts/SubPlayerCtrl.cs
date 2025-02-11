@@ -184,6 +184,44 @@ public class SubPlayerCtrl : MonoBehaviour
         }    
     }
 
+    private void OnTriggerEnter(Collider other)     
+    {
+        if(other.gameObject.tag == "Bush")  // #105 Bush에 들어가면 플레이어가 아예 안 보이도록
+        {
+            ObjSetActive(maridObj, false);
+            ObjSetActive(ridesObj, false);
+            SetAlpha(ridesSprite, 0f);
+
+            ObjSetActive(shadowObj, false);
+
+            obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
+
+            if(obstacle != null)
+            {
+                obstacle.BushShake();
+            }
+        }    
+    }
+    
+    private void OnTriggerExit(Collider other)      
+    {
+        if(other.gameObject.tag == "Bush")  // #105 Bush에서 나오면 플레이어 모습이 보이도록
+        {
+            ObjSetActive(maridObj, true);
+            ObjSetActive(ridesObj, true);
+            SetAlpha(ridesSprite, 1f);
+
+            ObjSetActive(shadowObj, true);
+
+            obstacle = other.gameObject.GetComponentInParent<Obstacle>();   // 콜라이더 부모 위치에 스크립트가 있으므로
+
+            if(obstacle != null)
+            {
+                obstacle.BushShake();
+            }        
+        }
+    }
+
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos)    
     //# refactor 플레이어가 누르는 방향 키와, 플레이어의 위치(장애물과 비교했을 때 상대적 위치)를 parameter로 받기
     {
@@ -286,6 +324,12 @@ public class SubPlayerCtrl : MonoBehaviour
 
     }
 
+    void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
+    {
+        Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
+        _sprite.color = new Color(1f, 1f, 1f, _alpha);
+    }
+    
     private void ObjSetActive(GameObject _obj, bool _active)
     {
         Debug.Log(_obj + "를 활성화한다?: " + _active);
