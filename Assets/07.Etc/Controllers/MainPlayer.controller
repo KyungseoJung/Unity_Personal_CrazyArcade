@@ -212,7 +212,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: MoveDir
     m_EventTreshold: 4
-  - m_ConditionMode: 4
+  - m_ConditionMode: 3
     m_ConditionEvent: horizontalSpeed
     m_EventTreshold: 0.7
   - m_ConditionMode: 1
@@ -837,7 +837,7 @@ AnimatorStateTransition:
     m_EventTreshold: 3
   - m_ConditionMode: 4
     m_ConditionEvent: horizontalSpeed
-    m_EventTreshold: -0.1
+    m_EventTreshold: -0.7
   - m_ConditionMode: 1
     m_ConditionEvent: canMove
     m_EventTreshold: 0
@@ -973,10 +973,10 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: -280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5176454228763047659}
-    m_Position: {x: 540, y: -210, z: 0}
+    m_Position: {x: 610, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -337875040518020155}
-    m_Position: {x: 570, y: -50, z: 0}
+    m_Position: {x: 520, y: -230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1128,7 +1128,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: MoveDir
     m_EventTreshold: 4
-  - m_ConditionMode: 3
+  - m_ConditionMode: 4
     m_ConditionEvent: horizontalSpeed
     m_EventTreshold: 0.1
   - m_ConditionMode: 1
@@ -1756,7 +1756,7 @@ AnimatorStateTransition:
     m_EventTreshold: 3
   - m_ConditionMode: 3
     m_ConditionEvent: horizontalSpeed
-    m_EventTreshold: -0.7
+    m_EventTreshold: -0.1
   - m_ConditionMode: 1
     m_ConditionEvent: canMove
     m_EventTreshold: 0
