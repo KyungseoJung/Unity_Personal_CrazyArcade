@@ -205,7 +205,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         h = Input.GetAxis("Horizontal");  // 좌우 키
         v = Input.GetAxis("Vertical");    // 상하 키
 
-        CheckBorder();  // #24 플레이어가 경계선 넘어가지 않도록 확인
+        // CheckBorder();  // #24 플레이어가 경계선 넘어가지 않도록 확인 - 코드 대신에 BoxCollider로 움직임을 제어하는 게 더 자연스러워 보임.
 
         // Debug.Log("//#42 fix: 플레이어 위치: " + this.transform.position);
 
