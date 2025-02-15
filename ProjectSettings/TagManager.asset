@@ -12,6 +12,7 @@ TagManager:
   - Item
   - WaterBurst
   - Block
+  - SubPlayer
   layers:
   - Default
   - TransparentFX
