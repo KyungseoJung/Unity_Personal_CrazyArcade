@@ -8,6 +8,7 @@ public class Item : MonoBehaviour   // #10
     public ITEM_TYPE itemType = ITEM_TYPE.FLUID;    // #10 디폴트 = 물병
 
     private PlayerCtrl playerCtrl;                  // #15
+    private SubPlayerCtrl subPlayerCtrl;            // #106
     private Music music;                            // #22
     private MapManager mapMgr;                      // #10 아이템 획득시 - ObstacleArr 배열을 0으로 만들기 위함
     private int randomTurtleNum;                    // #54 느린 거북 or 빠른 거북 랜덤 설정
@@ -16,6 +17,7 @@ public class Item : MonoBehaviour   // #10
     void Awake()
     {
         playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>(); // #4 
+        subPlayerCtrl = GameObject.FindGameObjectWithTag("SubPlayer").GetComponent<SubPlayerCtrl>(); // #106
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #22
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #10
     }
@@ -90,6 +92,23 @@ public class Item : MonoBehaviour   // #10
             music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
         }  
     
+        if(other.gameObject.tag == "SubPlayer")     // #106 플레이어2에 닿으면 사라지도록
+        {
+
+            // #106 만약 플레이어2가 물풍선 안에 갇혀 있다면, 아이템 획득 불가능
+            if(other.gameObject.GetComponent<SubPlayerLife>().trappedInWater == true)  
+                return;
+
+            Debug.Log("//#106 플레이어2 - " + itemType + " 먹음");
+
+            switch(itemType) 
+            {
+
+            }
+
+            music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
+        }  
+ 
         if(other.gameObject.tag == "WaterBurst")    // #34 물풍선의 물줄기에 닿으면 사라지도록 (단, 두 오브젝트 중 하나는 Rigidbody와 Collider 모두 있어야 함)
         {
             // 물풍선에 Rigidbody가 있긴 한데, "WaterBurst" tag가 달린 오브젝트에는 Rigidbody가 달려있지 않음. 그런데도 Trigger 함수가 작동함.
