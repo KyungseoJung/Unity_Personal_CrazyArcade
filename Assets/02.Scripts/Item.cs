@@ -37,7 +37,7 @@ public class Item : MonoBehaviour   // #10
     private void OnTriggerEnter(Collider other)     
     {
         Debug.Log("//#10 OnTriggerEnter");   
-        if(other.gameObject.tag == "Player")     // #10 플레이어에 닿으면 사라지도록
+        if(other.gameObject.tag == "Player")     // #10 플레이어1(MainPlayer)에 닿으면 사라지도록
         {
 
             // #10 만약 플레이어가 물풍선 안에 갇혀 있다면, 아이템 획득 불가능
@@ -103,7 +103,10 @@ public class Item : MonoBehaviour   // #10
 
             switch(itemType) 
             {
-
+                case ITEM_TYPE.FLUID : 
+                    SubPlayerGameMgr.SubMgr.fluid +=1;  // #107 플레이어가 물병 하나 먹을 때마다, 물줄기 하나씩 증가하도록
+                    DestroyItem();
+                    break;
             }
 
             music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
