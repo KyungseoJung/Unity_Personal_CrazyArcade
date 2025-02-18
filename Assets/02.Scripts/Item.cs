@@ -107,6 +107,10 @@ public class Item : MonoBehaviour   // #10
                     SubPlayerGameMgr.SubMgr.fluid +=1;  // #107 플레이어가 물병 하나 먹을 때마다, 물줄기 하나씩 증가하도록
                     DestroyItem();
                     break;
+                case ITEM_TYPE.BUBBLE :     // #108 놓을 수 있는 물풍선 개수 늘어나는 아이템
+                    SubPlayerGameMgr.SubMgr.waterballoonNum += 1;
+                    DestroyItem();
+                    break;
             }
 
             music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
