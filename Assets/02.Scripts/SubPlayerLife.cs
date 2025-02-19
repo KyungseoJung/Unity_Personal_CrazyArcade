@@ -50,9 +50,9 @@ public class SubPlayerLife : MonoBehaviour
     void Update()
     {
         // 방패 아이템 사용 - 외부 공격으로부터 막아주는 shield item
-        if(!trappedInWater && Input.GetKeyDown(KeyCode.Alpha0) && (PlayerGameMgr.Mgr.shield>0)) // 물풍선에 갇혀있을 땐 사용하지 못하도록
+        if(!trappedInWater && Input.GetKeyDown(KeyCode.Alpha0) && (SubPlayerGameMgr.SubMgr.shield>0)) // 물풍선에 갇혀있을 땐 사용하지 못하도록
         {
-            PlayerGameMgr.Mgr.shield -= 1;      // 방패 아이템 사용
+            SubPlayerGameMgr.SubMgr.shield -= 1;      // 방패 아이템 사용
             lobbyMgr.UpdateNumberOfItems();     // 아이템 개수 업데이트해서 UI에 표시
 
             StartCoroutine(PlayerBeInvincible(3.0f));
@@ -92,16 +92,16 @@ public class SubPlayerLife : MonoBehaviour
         // 결론적으로 MapManager.cs에서는 balloonInFront = false 처리를 해주지 않으므로, 계속 가만히 서 있는 경우를 방지하기 위해
         // 플레이어가 거북에 타고 있었다면 - 거북에서만 내려오게 하고 함수 탈출
         // if(playerCtrl.turtleMount) 
-        if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))
+        if((SubPlayerGameMgr.SubMgr.slowTurtle) || (SubPlayerGameMgr.SubMgr.fastTurtle))
         {
             // playerCtrl.turtleMount = false;
-            PlayerGameMgr.Mgr.slowTurtle = false;   // PlayerGameMgr에사도 플레이어가 거북에 타있는 것을 의미하는 변수들은 모두 false로 만들어주기.
-            PlayerGameMgr.Mgr.fastTurtle = false;
+            SubPlayerGameMgr.SubMgr.slowTurtle = false;   // PlayerGameMgr에사도 플레이어가 거북에 타있는 것을 의미하는 변수들은 모두 false로 만들어주기.
+            SubPlayerGameMgr.SubMgr.fastTurtle = false;
             // 느린 거북 or 빠른 거북 모두 내려오도록
             anim.SetBool("turtleMount", false);
             anim.SetBool("fastTurtleMount", false);
 
-            subPlayerCtrl.ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
+            subPlayerCtrl.ChangePlayerSpeed(SubPlayerGameMgr.SubMgr.roller); // 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
             return;
         }
         trappedInWater = true;  // 중복 실행 방지
@@ -117,7 +117,7 @@ public class SubPlayerLife : MonoBehaviour
     {
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // 플레이어 죽을 때 효과음
 
-        if(PlayerGameMgr.Mgr.life <=0 )
+        if(SubPlayerGameMgr.SubMgr.life <=0 )
         {
             playerDie = true;   // 플레이어 완전히 죽음
             return;
@@ -125,8 +125,8 @@ public class SubPlayerLife : MonoBehaviour
 
         // PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
-        PlayerGameMgr.Mgr.life -=1;
-        lobbyMgr.txtPlayerLife.text = $"{PlayerGameMgr.Mgr.life}";
+        SubPlayerGameMgr.SubMgr.life -=1;
+        lobbyMgr.txtPlayerLife.text = $"{SubPlayerGameMgr.SubMgr.life}";
         
         trappedInWater = false; // 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
         playerFaint = true;     // 플레이어 기절 - 움직임 불가능
@@ -156,11 +156,11 @@ public class SubPlayerLife : MonoBehaviour
     private void SkillReset()   // 부활 시, 스킬 & 할당량 설정
     {
         // 스킬 리셋
-        PlayerGameMgr.Mgr.waterballoonNum = 1;
-        PlayerGameMgr.Mgr.fluid = 1;
-        PlayerGameMgr.Mgr.roller = 0;
-        PlayerGameMgr.Mgr.turtleNum = 0;
-        PlayerGameMgr.Mgr.coin = 0;
+        SubPlayerGameMgr.SubMgr.waterballoonNum = 1;
+        SubPlayerGameMgr.SubMgr.fluid = 1;
+        SubPlayerGameMgr.SubMgr.roller = 0;
+        SubPlayerGameMgr.SubMgr.turtleNum = 0;
+        SubPlayerGameMgr.SubMgr.coin = 0;
     }
 
     private void ReturnSkillToMap() // 플레이어 죽을 때마다 획득한 아이템을 모두 Map에 뱉도록 - 랜덤 위치
@@ -169,11 +169,11 @@ public class SubPlayerLife : MonoBehaviour
 
         Vector3 placePos;
 
-        int fluidNum = PlayerGameMgr.Mgr.fluid;
-        int waterballoonNum = PlayerGameMgr.Mgr.waterballoonNum;
-        int rollerNum = PlayerGameMgr.Mgr.roller;
-        int turtleNum = PlayerGameMgr.Mgr.turtleNum;
-        int coinNum = PlayerGameMgr.Mgr.coin;
+        int fluidNum = SubPlayerGameMgr.SubMgr.fluid;
+        int waterballoonNum = SubPlayerGameMgr.SubMgr.waterballoonNum;
+        int rollerNum = SubPlayerGameMgr.SubMgr.roller;
+        int turtleNum = SubPlayerGameMgr.SubMgr.turtleNum;
+        int coinNum = SubPlayerGameMgr.SubMgr.coin;
 
         for(int i=1; i<fluidNum; i++)
         {
