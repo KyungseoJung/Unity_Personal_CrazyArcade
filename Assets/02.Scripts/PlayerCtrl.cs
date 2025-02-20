@@ -144,7 +144,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         if((Input.GetKeyDown(KeyCode.Space)) && (playerLife.playerFaint == false))  //#14 플레이어 기절 상태가 종료된 상태여야 물풍선을 놓을 수 있게 하도록
         {
             Debug.Log("//#4 fix x좌표: " + transform.position.x + ", y좌표: " + transform.position.y);
-            mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
+            mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y, true);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha9))

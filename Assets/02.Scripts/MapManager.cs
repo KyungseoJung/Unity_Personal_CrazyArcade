@@ -227,13 +227,22 @@ public class MapManager : MonoBehaviour
         bushArr[bushRow, bushCol] = 0;
     }
 
-    public void PlaceWaterBalloon(float _x, float _y)    // #4 플레이어 물풍선 놓기 - 받아오는 parameter는 플레이어의 좌표
+    public void PlaceWaterBalloon(float _x, float _y, bool _player1 = true)    // #4 플레이어 물풍선 놓기 - 받아오는 parameter는 플레이어의 좌표
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
             return;
         Debug.Log("//#4 fix | 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
-        if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
-            return;
+        if(_player1)    //#4 만약 플레이어1 (MainPlayer)가 놓은 물풍선이라면 PlayerGameMgr에 접근해서 물풍선 개수 파악
+        {
+            if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
+                return;
+        }
+        else    //#4 만약 플레이어2가 놓은 물풍선이라면 SubPlayerGameMgr에 접근해서 물풍선 개수 파악
+        {
+            if(waterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
+                return;
+        }
+
 
         playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
         playerCol = ReturnColInMatrix(_x);    // #26 함수 이용

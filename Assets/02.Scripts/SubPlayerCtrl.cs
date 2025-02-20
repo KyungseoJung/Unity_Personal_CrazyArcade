@@ -115,7 +115,7 @@ public class SubPlayerCtrl : MonoBehaviour
 
         if((Input.GetKeyDown(KeyCode.LeftShift)) && (subPlayerLife.playerFaint == false))
         {
-            mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y);  // x위치는 열의 값으로, y위치는 행의 값으로 
+            mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y, false);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
     }
 
