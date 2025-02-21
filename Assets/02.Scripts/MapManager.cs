@@ -25,7 +25,8 @@ public class MapManager : MonoBehaviour
     private Vector3 itemPos;            // #28 아이템 배치 위치
     private Vector3 itemPosByBlock;     // #38 박스가 사라진 자리에 아이템 배치 위치
 
-    private int waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
+    private int waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수 (플레이어1에 의해)
+    private int subWaterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수 (플레이어2에 의해)
 
     int balloonRow, balloonCol;   // #4 선언 위치만 바꿈
     int obsRow, obsCol;           // #4 장애물 전용 row, col
@@ -118,7 +119,8 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수
+        waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수 (플레이어1에 의해)
+        subWaterballoonPlaceNum = 0;    // #13 맵에 놓여진 물풍선의 개수 (플레이어2에 의해)
         CheckObstaclePos();         // #25 장애물 위치 - 배열로 확인
         Debug.Log("//#25 Start");
 
@@ -231,18 +233,18 @@ public class MapManager : MonoBehaviour
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
             return;
-        Debug.Log("//#4 fix | 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
         if(_player1)    //#4 만약 플레이어1 (MainPlayer)가 놓은 물풍선이라면 PlayerGameMgr에 접근해서 물풍선 개수 파악
         {
+            Debug.Log("//#4 fix | 플레이어1에 의해 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
             if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
                 return;
         }
         else    //#4 만약 플레이어2가 놓은 물풍선이라면 SubPlayerGameMgr에 접근해서 물풍선 개수 파악
         {
-            if(waterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
+            Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
+            if(subWaterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
                 return;
         }
-
 
         playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
         playerCol = ReturnColInMatrix(_x);    // #26 함수 이용
@@ -268,10 +270,19 @@ public class MapManager : MonoBehaviour
         balloonPos.y = Mathf.RoundToInt(_y);
         Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
-        waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가
+        if(_player1)    //#4 만약 플레이어1 (MainPlayer)가 놓은 물풍선이라면 PlayerGameMgr에 접근해서 물풍선 개수 파악
+        {
+            waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가 (플레이어1에 의해)
+            Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
+        }
+        else
+        {
+            subWaterballoonPlaceNum += 1; // #13 맵에 놓여진 물풍선의 개수 (플레이어2에 의해)
+            Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
+        }
+
         music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_SET); // #21 물풍선 놓을 때의 효과음
 
-        Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
     }
 
     public void PlaceItemPrefab(Item.ITEM_TYPE _type, Vector3 _pos) // #28 맵 위에 특정 위치에 아이템 배치하기
