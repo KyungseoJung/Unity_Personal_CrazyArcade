@@ -6,7 +6,8 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
 
-    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK, NORMALBLOCK}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK) // #39 NORMALBLOCK
+    public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK, NORMALBLOCK, SUBWATERBALLOON}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK) // #39 NORMALBLOCK 
+    // // #4 플레이어1과 플레이어2가 놓는 물풍선 구분을 위해 SUBWATERBALLOON 추가 (끝에 추가해야 OBSTACLE_TYPE 번호가 밀리는 문제를 막을 수 있음)
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
     private Item.ITEM_TYPE randomItemType = Item.ITEM_TYPE.FLUID;   // #38  (1번부터 5번까지)
     
