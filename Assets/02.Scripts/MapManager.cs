@@ -7,7 +7,8 @@ public class MapManager : MonoBehaviour
 {
     public enum CHECK_TYPE {BALLOONBURST = 1, PLAYERMOVE}   // #33 물풍선 확인하는 TYPE 설정하기
     public CHECK_TYPE checkType = CHECK_TYPE.BALLOONBURST;    // #33 
-    [SerializeField] private GameObject waterBalloonObj;  // 배치할 물풍선 프리팹
+    [SerializeField] private GameObject waterBalloonObj;  // 배치할 물풍선 프리팹 (플레이어1에 의해 놓여진 물풍선)
+    [SerializeField] private GameObject subWaterBalloonObj;  // 배치할 물풍선 프리팹 (플레이어2에 의해 놓여진 물풍선)
     private GameObject[] obstacles;     // #25
     private GameObject[] items;         // #34
     private GameObject[] bushes;        // #25 Bush가 있는 곳에는 obstacleArr배열 값을 1로 설정해서 - 물풍선 놓을 수 없도록
@@ -233,19 +234,7 @@ public class MapManager : MonoBehaviour
     {
         if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
             return;
-        if(_player1)    //#4 만약 플레이어1 (MainPlayer)가 놓은 물풍선이라면 PlayerGameMgr에 접근해서 물풍선 개수 파악
-        {
-            Debug.Log("//#4 fix | 플레이어1에 의해 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
-            if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
-                return;
-        }
-        else    //#4 만약 플레이어2가 놓은 물풍선이라면 SubPlayerGameMgr에 접근해서 물풍선 개수 파악
-        {
-            Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
-            if(subWaterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
-                return;
-        }
-
+    // 장애물 있는지 확인 ---------------------
         playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
         playerCol = ReturnColInMatrix(_x);    // #26 함수 이용
 
@@ -258,6 +247,22 @@ public class MapManager : MonoBehaviour
             // Debug.Log("//#4 fix 장애물 이미 있음");
             return;
         }
+    
+     // 물풍선 놓을 수 있는 개수 초과했는지 확인 ---------------------
+        if(_player1)    //#4 만약 플레이어1(MainPlayer)이 놓은 물풍선이라면
+        {
+            Debug.Log("//#4 fix | 플레이어1에 의해 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
+            if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
+                return;
+        }
+        else    //#4 만약 플레이어2(Player2)가 놓은 물풍선이라면 SubPlayerGameMgr에 접근해서 물풍선 개수 파악
+        {
+            Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
+            if(subWaterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
+                return;
+        }
+
+
 
         // 위 조건들 모두 만족하면, 물풍선 놓기
 
@@ -268,15 +273,18 @@ public class MapManager : MonoBehaviour
         // 물풍선 놓기
         balloonPos.x = Mathf.RoundToInt(_x);    
         balloonPos.y = Mathf.RoundToInt(_y);
-        Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
-        if(_player1)    //#4 만약 플레이어1 (MainPlayer)가 놓은 물풍선이라면 PlayerGameMgr에 접근해서 물풍선 개수 파악
+        if(_player1)    //#4 만약 플레이어1(MainPlayer)이 놓은 물풍선이라면 
         {
+            Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
+
             waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가 (플레이어1에 의해)
             Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
         }
-        else
+        else        //#4 만약 플레이어2(Player2)가 놓은 물풍선이라면
         {
+            Instantiate(subWaterBalloonObj, balloonPos, Quaternion.identity);
+
             subWaterballoonPlaceNum += 1; // #13 맵에 놓여진 물풍선의 개수 (플레이어2에 의해)
             Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
         }
@@ -351,10 +359,11 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void RemoveWaterBalloon(float _x, float _y)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
+    public void RemoveWaterBalloon(float _x, float _y, bool _player1 = true)  // #8 시간이 지남에 따라 물풍선 터짐 - 받아오는 parameter는 물풍선의 좌표
     {
         // 실제로 물풍선 오브젝트가 사라지는 건, Animator에서 실행되도록
-        
+        // #4 _player1 변수를 이용해, 어떤 플레이어의 물풍선이 터지는지 확인 -> 물풍선 개수 차감할 때 참고
+
         balloonRow = ReturnRowInMatrix(_y);
         balloonCol = ReturnColInMatrix(_x);
 
@@ -364,7 +373,14 @@ public class MapManager : MonoBehaviour
         // obstacleArr[balloonRow, balloonCol] = 0;      // #25 배열 설정
         // #25 fix: 물풍선 배열과 장애물 배열은 별도로 관리하도록 (장애물 배열에 물풍선 배열이 포함되어 있지 않도록)
 
-        waterballoonPlaceNum -= 1; // #13 물풍선 개수 하나 감소
+        if(_player1)    // #4 _player1 변수를 이용해, 어떤 플레이어의 물풍선이 터지는지 확인 -> 물풍선 개수 차감할 때 참고
+        {
+            waterballoonPlaceNum -= 1; // #13 물풍선 개수 하나 감소
+        }
+        else
+        {
+            subWaterballoonPlaceNum -= 1; 
+        }
         music.GameSoundEffect(Music.EFFECT_TYPE.BUBBLE_BOOM); // #21 물풍선 터질 때의 효과음
 
         Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);

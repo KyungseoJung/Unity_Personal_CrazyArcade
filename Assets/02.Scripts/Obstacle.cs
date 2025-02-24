@@ -79,11 +79,17 @@ public class Obstacle : MonoBehaviour
         {
             case OBSTACLE_TYPE.WATERBALLOON :
                 fluidLength = PlayerGameMgr.Mgr.fluid;
-                StartCoroutine(WaterBalloonBursts(fluidLength));    
+                StartCoroutine(WaterBalloonBursts(fluidLength, true));    
                 // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: PlayerGameMgr.Mgr.fluid로 설정
                 // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
                 break;
-
+            case OBSTACLE_TYPE.SUBWATERBALLOON :
+                fluidLength = PlayerGameMgr.Mgr.fluid;
+                StartCoroutine(WaterBalloonBursts(fluidLength, false));    
+                // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: PlayerGameMgr.Mgr.fluid로 설정
+                // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
+                break;
+                
             case OBSTACLE_TYPE.WOODBLOCK :
             case OBSTACLE_TYPE.NORMALBLOCK :    // #38 NORMALBLOCK도 (물풍선에 의해 없어질 때) 랜덤 아이템 생기도록 설정
                 randomNumber = Random.Range(0, 100);  // #38 fix: 0부터 99까지의 랜덤 숫자 생성 (아이템이 없는 경우도 포함)
@@ -232,8 +238,14 @@ public class Obstacle : MonoBehaviour
                 case OBSTACLE_TYPE.WATERBALLOON:
                     // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
                     // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
-                    Debug.Log("//#31 물풍선이 다른 물줄기에 맞음");
-                    StartWaterBalloonBursts(true);
+                    Debug.Log("//#31 플레이어1이 놓은 물풍선이 다른 물줄기에 맞음");
+                    StartWaterBalloonBursts(true, true);
+                    break;
+                case OBSTACLE_TYPE.SUBWATERBALLOON:
+                    // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
+                    // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
+                    Debug.Log("//#31 플레이어2가 놓은 물풍선이 다른 물줄기에 맞음");
+                    StartWaterBalloonBursts(true, false);
                     break;
                 case OBSTACLE_TYPE.BUSH:
                     Debug.Log("//#36 물풍선이 Bush에 맞음");
@@ -339,13 +351,13 @@ public class Obstacle : MonoBehaviour
         anim.SetTrigger("Shake");
     }
 
-    public void StartWaterBalloonBursts(bool _burstedByAnoterBalloon = false)   // #31 Manager.cs에서 실행하기 위함
+    public void StartWaterBalloonBursts(bool _burstedByAnoterBalloon = false, bool _player1 = true)   // #31 Manager.cs에서 실행하기 위함
     {
         Debug.Log("//#31 WaterBalloonBursts 코루틴 실행");
-        StartCoroutine(WaterBalloonBursts(fluidLength, _burstedByAnoterBalloon));    
+        StartCoroutine(WaterBalloonBursts(fluidLength, _burstedByAnoterBalloon, _player1));    
     }
 
-    IEnumerator WaterBalloonBursts(int _waterLength, bool _burstedByAnoterBalloon = false)    // #8 3초 뒤에 해당 물풍선 파괴
+    IEnumerator WaterBalloonBursts(int _waterLength, bool _burstedByAnoterBalloon = false, bool _player1 = true)    // #8 3초 뒤에 해당 물풍선 파괴
     {
         if(_burstedByAnoterBalloon == true)
         {
@@ -381,7 +393,7 @@ public class Obstacle : MonoBehaviour
             _waterLength = 2;
         anim.SetInteger("WaterLength",  _waterLength);  // #9 물줄기 길이 설정
 
-        mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y);
+        mapMgr.RemoveWaterBalloon(this.transform.position.x, this.transform.position.y, _player1);  // #4 어떤 플레이어가 놓은 물풍선이 터지는 건지 구분
 
 
         // #17 플레이어가 물풍선의 물줄기와 닿았나 확인 // #17 fix: 콜라이더 Trigger 처리로 확인하기
