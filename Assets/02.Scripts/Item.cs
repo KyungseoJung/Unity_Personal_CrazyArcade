@@ -105,10 +105,15 @@ public class Item : MonoBehaviour   // #10
             {
                 case ITEM_TYPE.FLUID : 
                     SubPlayerGameMgr.SubMgr.fluid +=1;  // #107 플레이어가 물병 하나 먹을 때마다, 물줄기 하나씩 증가하도록
-                    DestroyItem();
+                    DestroyItem();  // 플레이어 획득했으니까 게임 맵에서 아이템 삭제
                     break;
                 case ITEM_TYPE.BUBBLE :     // #108 놓을 수 있는 물풍선 개수 늘어나는 아이템
                     SubPlayerGameMgr.SubMgr.waterballoonNum += 1;
+                    DestroyItem();
+                    break;
+                case ITEM_TYPE.ROLLER :
+                    SubPlayerGameMgr.SubMgr.roller += 1;  
+                    subPlayerCtrl.ChangePlayerSpeed(SubPlayerGameMgr.SubMgr.roller); // #109 플레이어2 이동 속도 증가
                     DestroyItem();
                     break;
             }
