@@ -351,9 +351,9 @@ public class SubPlayerCtrl : MonoBehaviour
         ObjSetActive(shadowObj, true);
     }
 
-    public void ChangePlayerSpeed(int rollerCount)   // ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
+    public void ChangePlayerSpeed(int rollerCount)   // #109 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
     {
-        if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))    // 만약 플레이어가 거북에 타고 있었다면
+        if((SubPlayerGameMgr.SubMgr.slowTurtle) || (SubPlayerGameMgr.SubMgr.fastTurtle))    // 만약 플레이어2가 거북에 타고 있었다면
         {
             return;
         }
@@ -363,7 +363,7 @@ public class SubPlayerCtrl : MonoBehaviour
         moveForce = originMoveForce + (rollerCount) * 3;
         maxSpeed = originMaxSpeed + (rollerCount) * 0.3f;
 
-        Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
+        Debug.Log("//#109 플레이어2 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
 
     public void SetPlayerSpeed(bool _down = true)   // style: 함수 이름 변경
