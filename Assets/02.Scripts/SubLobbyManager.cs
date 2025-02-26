@@ -15,15 +15,15 @@ public class SubLobbyManager : MonoBehaviour
     void Start()
     {
         // #101 여기부터 - UI 이미지  ========================================
-        txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
-        txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
-        txtNumberOfShield.text = $"{PlayerGameMgr.Mgr.shield}";
+        txtNumberOfCan.text = $"{SubPlayerGameMgr.SubMgr.turtleCan}";
+        txtNumberOfNeedle.text = $"{SubPlayerGameMgr.SubMgr.needle}";
+        txtNumberOfShield.text = $"{SubPlayerGameMgr.SubMgr.shield}";
     }
 
     public void UpdateNumberOfItems()  //#101 UI에 나타나는 아이템의 개수 업데이트
     {
-        txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
-        txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
-        txtNumberOfShield.text = $"{PlayerGameMgr.Mgr.shield}";   
+        txtNumberOfCan.text = $"{SubPlayerGameMgr.SubMgr.turtleCan}";
+        txtNumberOfNeedle.text = $"{SubPlayerGameMgr.SubMgr.needle}";
+        txtNumberOfShield.text = $"{SubPlayerGameMgr.SubMgr.shield}";   
     }
 }

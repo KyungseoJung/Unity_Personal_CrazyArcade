@@ -257,7 +257,7 @@ public class MapManager : MonoBehaviour
         }
         else    //#4 만약 플레이어2(Player2)가 놓은 물풍선이라면 SubPlayerGameMgr에 접근해서 물풍선 개수 파악
         {
-            Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
+            Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + SubPlayerGameMgr.SubMgr.waterballoonNum);
             if(subWaterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
                 return;
         }
