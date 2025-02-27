@@ -84,9 +84,9 @@ public class Obstacle : MonoBehaviour
                 // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
                 break;
             case OBSTACLE_TYPE.SUBWATERBALLOON :
-                fluidLength = PlayerGameMgr.Mgr.fluid;
+                fluidLength = SubPlayerGameMgr.SubMgr.fluid;
                 StartCoroutine(WaterBalloonBursts(fluidLength, false));    
-                // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: PlayerGameMgr.Mgr.fluid로 설정
+                // waterLength = 1;    // #9 첫 물풍선 길이는 일단 1로 설정 // #9 fix: SubPlayerGameMgr.SubMgr.fluid로 설정
                 // #9 feat: 물풍선을 놓는 순간의 fluid 스킬 실력만큼 나중에 터지도록. - 3초(물풍선 터지는 딜레이 시간) 전에 물풍선 길이를 input해야 함.
                 break;
                 
