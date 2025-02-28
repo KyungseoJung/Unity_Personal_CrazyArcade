@@ -65,6 +65,7 @@ public class Obstacle : MonoBehaviour
         {
             sphereCollider = this.GetComponent<SphereCollider>();
 
+            // # 물풍선 프리팹에서 waterballoonObj과 spriteObj은 완전히 동일한 GameObject를 지칭함.
             waterballoonObj = transform.GetChild(0).gameObject; // #8 물풍선 터질 때, 물줄기 뿐만 아니라, 물풍선 자체에 있는 오브젝트도 물풍선 맞은 것으로 적용되어야 함.
             // So, 물풍선이 터지는 순간에, waterballoon 오브젝트의 Tag를 "WaterBurst"로 바꿔주기
 
