@@ -8,7 +8,7 @@ public class Obstacle : MonoBehaviour
 
     public enum OBSTACLE_TYPE {WATERBALLOON = 1, BUSH, WOODBLOCK, NORMALBLOCK, SUBWATERBALLOON}    // #7 Obstacle마다 TYPE 설정하기   // #14 (WOODBLOCK) // #39 NORMALBLOCK 
     // // #4 플레이어1과 플레이어2가 놓는 물풍선 구분을 위해 SUBWATERBALLOON 추가 (끝에 추가해야 OBSTACLE_TYPE 번호가 밀리는 문제를 막을 수 있음)
-    public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7
+    public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7 디폴트 obstacleType 설정
     private Item.ITEM_TYPE randomItemType = Item.ITEM_TYPE.FLUID;   // #38  (1번부터 5번까지)
     
     [SerializeField]    
@@ -61,7 +61,7 @@ public class Obstacle : MonoBehaviour
 
         if(obstacleType == OBSTACLE_TYPE.WOODBLOCK)
             spriteObj = transform.GetChild(0).gameObject;   // #60
-        if(obstacleType == OBSTACLE_TYPE.WATERBALLOON)  // #33
+        if((obstacleType == OBSTACLE_TYPE.WATERBALLOON) || (obstacleType == OBSTACLE_TYPE.SUBWATERBALLOON))  // #33
         {
             sphereCollider = this.GetComponent<SphereCollider>();
 
@@ -276,7 +276,7 @@ public class Obstacle : MonoBehaviour
 
         if(other.gameObject.tag == "Bush")  // #60 장애물(WOODBLOCK만 해당)이 Bush 안으로 들어가면 눈에 보이지 않도록 SpriteRenderer로 이루어진 오브젝트를 비활성화
         {
-            if((obstacleType == OBSTACLE_TYPE.WOODBLOCK) || (obstacleType == OBSTACLE_TYPE.WATERBALLOON))
+            if((obstacleType == OBSTACLE_TYPE.WOODBLOCK) || (obstacleType == OBSTACLE_TYPE.WATERBALLOON) || (obstacleType == OBSTACLE_TYPE.SUBWATERBALLOON))
                 ObjSetActive(spriteObj, false);
         }
     }
@@ -286,6 +286,7 @@ public class Obstacle : MonoBehaviour
         switch(obstacleType)
         {
             case OBSTACLE_TYPE.WATERBALLOON:
+            case OBSTACLE_TYPE.SUBWATERBALLOON:
                 // #33 BoxCollider와 반응 - 
                 // 플레이어가 물풍선을 놓은 후, 물풍선에서 벗어나면 그제서야 물풍선의 Sphere Collider가 활성화되도록 
                 // - 플레이어가 물풍선을 놓은 후, 콜라이더 처리 때문에 물풍선을 벗어나지 못하는 문제를 방지하기 위해
