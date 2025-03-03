@@ -283,16 +283,20 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        switch(obstacleType)
+        if(other.gameObject.tag == "Player")
         {
-            case OBSTACLE_TYPE.WATERBALLOON:
-            case OBSTACLE_TYPE.SUBWATERBALLOON:
-                // #33 BoxCollider와 반응 - 
-                // 플레이어가 물풍선을 놓은 후, 물풍선에서 벗어나면 그제서야 물풍선의 Sphere Collider가 활성화되도록 
-                // - 플레이어가 물풍선을 놓은 후, 콜라이더 처리 때문에 물풍선을 벗어나지 못하는 문제를 방지하기 위해
-                sphereCollider.enabled = true;
-                break;
+            switch(obstacleType)
+            {
+                case OBSTACLE_TYPE.WATERBALLOON:
+                case OBSTACLE_TYPE.SUBWATERBALLOON:
+                    // #33 BoxCollider와 반응 - 
+                    // 플레이어가 물풍선을 놓은 후, 물풍선에서 벗어나면 그제서야 물풍선의 Sphere Collider가 활성화되도록 
+                    // - 플레이어가 물풍선을 놓은 후, 콜라이더 처리 때문에 물풍선을 벗어나지 못하는 문제를 방지하기 위해
+                    sphereCollider.enabled = true;
+                    break;
+            }
         }
+
     }
 
     private void ObjSetActive(GameObject _obj, bool _active)
