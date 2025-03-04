@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6535362595104587418}
   - component: {fileID: 4276725189168999092}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2030621263679453000}
   - component: {fileID: 2030621263679453001}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Marid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 6122079320774880297}
   - component: {fileID: 4649320806048802257}
   - component: {fileID: 2911320275791604654}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 7779381058215855042}
   - component: {fileID: 7754094830008733268}
   - component: {fileID: 9052942879629646384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3016700851564738712}
   - component: {fileID: 4122104268655010741}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
