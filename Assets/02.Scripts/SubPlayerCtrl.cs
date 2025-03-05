@@ -387,4 +387,42 @@ public class SubPlayerCtrl : MonoBehaviour
 
     }
 
+    public void TurtleMount(bool _mount = true, bool _fastTurtle = false) // #110 플레이어가 거북에 올라탐 - 디폴트는 느린 거북
+    {
+        if(_mount)
+        {
+            // turtleMount = true;
+            // ㄴItem.cs에서 OnTriggerEnter 함수에서 직접 PlayerGameMgr.Mgr.slowTurtle 또는 PlayerGameMgr.Mgr.fastTurtle 값을 설정해줌.
+            Debug.Log("//#110 플레이어2가 거북에 올라탐");
+
+            LimitToTurtleSpeed(_fastTurtle);
+
+            switch(_fastTurtle)
+            {
+                case false:
+                    anim.SetBool("turtleMount", true);
+                    break;
+                case true:  // 빠른 거북 설정
+                    anim.SetBool("fastTurtleMount", true);
+                    Debug.Log("//#110 빠른 거북 탑승 anim 설정");
+                    break;
+            }
+
+        }
+    }
+    private void LimitToTurtleSpeed(bool _fastTurtle = false)   // #110 플레이어의 움직임 속도를 거북 탔을 때 속도로 설정
+    {
+        if(!_fastTurtle)
+        {
+            moveForce = slowTurtleMountMoveForce;
+            maxSpeed = slowTurtleMountMaxSpeed;
+        }
+        else if(_fastTurtle)    // #110 빠른 거북을 타고 있을 땐 속도 fastTurtle로 맞추기
+        {
+            moveForce = fastTurtleMountMoveForce;
+            maxSpeed = fastTurtleMountMaxSpeed;
+        }
+
+    }
+
 }
