@@ -116,6 +116,23 @@ public class Item : MonoBehaviour   // #10
                     subPlayerCtrl.ChangePlayerSpeed(SubPlayerGameMgr.SubMgr.roller); // #109 플레이어2 이동 속도 증가
                     DestroyItem();
                     break;
+                case ITEM_TYPE.TURTLE :     // #110 TURTLE 아이템
+                    SubPlayerGameMgr.SubMgr.turtleNum += 1;   // #110 아이템 획득 수 추가
+                    if((!SubPlayerGameMgr.SubMgr.slowTurtle) && (!SubPlayerGameMgr.SubMgr.fastTurtle))//#110 fix: 어떤 거북도 타고 있지 않을 때 적용
+                    {
+                        if(!fastTurtle)
+                        {
+                            other.gameObject.GetComponent<SubPlayerCtrl>().TurtleMount(true, false);  // 플레이어가 거북에 올라탐
+                            SubPlayerGameMgr.SubMgr.slowTurtle = true;    // 빠른 거북과 느린 거북을 구분 지어서 설정
+                        }
+                        else if(fastTurtle)
+                        {
+                            other.gameObject.GetComponent<SubPlayerCtrl>().TurtleMount(true, true);  // 플레이어가 거북에 올라탐
+                            SubPlayerGameMgr.SubMgr.fastTurtle = true;    // 빠른 거북과 느린 거북을 구분 지어서 설정
+                        }
+                    }
+                    DestroyItem();  // 플레이어 획득했으니까 화면에서 없애기
+                    break;
             }
 
             music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
