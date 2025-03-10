@@ -89,6 +89,7 @@ public class SubPlayerCtrl : MonoBehaviour
         trappedInWaterMoveForce = moveForce/5f; // 물풍선 안에 갇혔을 때의 속도 설정
         trappedInWaterMaxSpeed = maxSpeed - 4f; // 물풍선 안에 갇혔을 때의 속도 설정
 
+        anim.SetInteger("MoveDir", 2);  // 플레이어의 첫 방향을 DOWN으로 설정
 
         lastMoveTime = Time.time;       // lastMoveTime을 시작 Time.time으로 설정해야, Update 함수에서 SetTrigger("LookingAhead")이 실행이 안 되고,
                                         // 그렇게 해야 처음에 플레이어가 '앞을 바라보는 애니메이션'이 아닌, 'PlayerSpin'애니메이션을 실행할 수 있게 됨.
@@ -110,6 +111,9 @@ public class SubPlayerCtrl : MonoBehaviour
             Debug.Log("//#104 플레이어2 LookingAhead Trigger 실행 체크");
         }
 
+        // 플레이어 방향키 누르는 값 Set - 방향키 누르고 있다면, 달리는 애니메이션 재생
+        anim.SetFloat("horizontalSpeed", h);    
+        anim.SetFloat("verticalSpeed", v);      
 
         Player2Group.sortingOrder = - Mathf.RoundToInt(transform.position.y);    
 
@@ -292,6 +296,11 @@ public class SubPlayerCtrl : MonoBehaviour
 
         if(moveHorizontal)
         {
+            if((h<0) && anim.GetInteger("MoveDir")!=3 ) // 중복 방지 - 이미 0인 값을 또 0이라 설정하지 않도록 
+                anim.SetInteger("MoveDir", 3);  //왼쪽 쳐다보도록
+            else if((h>0) && anim.GetInteger("MoveDir")!=4)     // 중복 방지
+                anim.SetInteger("MoveDir", 4);  //오른쪽 쳐다보도록
+
             // 좌우 움직임 
                 // maxSpeed에 아직 도달하지 않을때까지 플레이어 객체에 힘을 가해
                 // h(-1.0f~1.0f)는 velocity.x를 다르게 표시한다
@@ -310,6 +319,11 @@ public class SubPlayerCtrl : MonoBehaviour
         }
         else
         {
+            if((v>0) && anim.GetInteger("MoveDir")!=1 ) 
+                anim.SetInteger("MoveDir", 1);  //위쪽 쳐다보도록
+            else if((v<0) && anim.GetInteger("MoveDir")!=2 )
+                anim.SetInteger("MoveDir", 2);  //아래쪽 쳐다보도록
+
             // #1 상하 움직임 
             if(v * rBody.velocity.y < maxSpeed)
             {
