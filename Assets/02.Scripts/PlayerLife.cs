@@ -64,10 +64,10 @@ public class PlayerLife : MonoBehaviour
     {
         if((other.gameObject.tag == "WaterBurst"))
         {
-            PlayerInWaterBalloon(); // #17 플레이어 물풍선에 갇힘
+            PlayerInWaterBalloon(); // #17 플레이어 물풍선에 닿음
         }
     }
-    public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 갇힘
+    public void PlayerInWaterBalloon() // #17 플레이어가 물풍선에 닿음
     {
         if(!trappedInWater && !waterApplied && !playerInvincible)   //#59 플레이어가 무적 상태이면 물풍선 맞아도 아무 영향 받지 않도록
         {

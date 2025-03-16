@@ -624,6 +624,8 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     public void ChangePlayerSpeed(int rollerCount)   // #15 ROLLER 아이템 획득에 따라 플레이어 이동 속도 달라지도록
     {
+        // 거북을 탔을 때에는 속도가 올라가지 않음. 단, PlayerGameMgr.Mgr.roller 또는 SubPlayerGameMgr.SubMgr.roller 값이 증가하였기 때문에,
+        // 나중에 거북에서 내려왔을 때 획득한 ROLLER 수만큼 플레이어의 속도는 빨라질 것임.
         if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))    //if(turtleMount) // #35 만약 플레이어가 거북에 타고 있었다면
         {
             // LimitToTurtleSpeed();    // 플레이어가 거북에 타고 있다면, 속도를 바꿀 필요 자체가 없음.
