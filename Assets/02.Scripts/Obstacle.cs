@@ -123,16 +123,16 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        // Debug.Log("//#14 Obstacle 충돌 처리| 주체: " + this.gameObject.name + "상대:" + other.gameObject.name);
+        // Debug.Log("//#14 Obstacle 충돌 처리| 주체: " + this.gameObject.name + "상대 tag:" + other.gameObject.tag);
 
         switch(obstacleType)
         {
             case OBSTACLE_TYPE.WOODBLOCK:
                 // #14 플레이어가 WoodBlock 밀 수 있도록
-                if(other.gameObject.tag == "Player")
+                if((other.gameObject.tag == "Player") || (other.gameObject.tag == "SubPlayer")) // #14 Player2도 밀 수 있도록
                 {
                     // 플레이어가 미는 방향 확인
-                    Debug.Log("//#14 플레이어가 " + obstacleType + " 밀고 있음");
+                    // Debug.Log("//#14 플레이어가 " + obstacleType + " 밀고 있음");
 
                     playerTransform = other.gameObject.transform.position;
                     woodPos = this.gameObject.transform.position;
@@ -146,7 +146,7 @@ public class Obstacle : MonoBehaviour
                     if(xPosDiff * xPosDiff < 0.25)  //  위 or 아래로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
 
-                        if((yPosDiff <0) && (Input.GetKey(KeyCode.DownArrow)))  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면
+                        if((yPosDiff <0) && ((Input.GetKey(KeyCode.DownArrow) || (Input.GetKey(KeyCode.S)) )) )  // 플레이어가 더 위에 있고 && 아래 방향키 누르고 있다면 (플레이어2입장: S키)
                         {
                             if(IsThereObstacle(KeyCode.DownArrow) == true)  // #14
                                 return;
@@ -164,7 +164,7 @@ public class Obstacle : MonoBehaviour
                             mapMgr.blockArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
                         }
-                        else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow)))
+                        else if((yPosDiff >0) && (Input.GetKey(KeyCode.UpArrow) || (Input.GetKey(KeyCode.W) )) ) // (플레이어2입장: W키)
                         {
                             if(IsThereObstacle(KeyCode.UpArrow) == true)  // #14
                                 return;
@@ -185,7 +185,7 @@ public class Obstacle : MonoBehaviour
                     if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: y축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
                         Debug.Log("//#14 WoodBlock 밀고 있음 -2");
-                        if((xPosDiff <0) && (Input.GetKey(KeyCode.LeftArrow)))
+                        if((xPosDiff <0) && ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A) )) ) // (플레이어2입장: A키)
                         {
                             if(IsThereObstacle(KeyCode.LeftArrow) == true)  // #14
                                 return;
@@ -201,7 +201,7 @@ public class Obstacle : MonoBehaviour
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
                             mapMgr.blockArr[obsRow, obsCol] = 1; // #14 fix: 위치 바뀌었으니까 새로운 위치의 배열값을 1로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
                         }
-                        else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow)))
+                        else if((xPosDiff >0) && (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D) )) ) // (플레이어2입장: D키)
                         {
                             if(IsThereObstacle(KeyCode.RightArrow) == true)  // #14
                                 return;
@@ -219,13 +219,14 @@ public class Obstacle : MonoBehaviour
                         }
                     }
 
-                    this.gameObject.transform.position = woodPos; 
+                    this.gameObject.transform.position = woodPos; // 블록이 밀려서 위치 바뀜!
                     layerSetting.SetSortingOrder(); // #2 WOODBLOCK 위치 바뀔 때마다 Layer 번호 설정
 
                 }
                 break;
 
-        }
+            }
+
     }
 
     private void OnTriggerEnter(Collider other)
