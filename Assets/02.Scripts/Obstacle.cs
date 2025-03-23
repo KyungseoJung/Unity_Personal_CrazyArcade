@@ -16,7 +16,8 @@ public class Obstacle : MonoBehaviour
 
     private MapManager mapMgr;             // #8 물풍선 지우기 위함
     private LayerSetting layerSetting;      // #2 WOODBLOCK 층 번호 설정
-    private Transform playerTrans;          // #17 플레이어가 물줄기에 닿았는지 확인
+    private Transform player1Trans;          // #14 MainPlayer의 위치 파악
+    private Transform player2Trans;          // #14 Player2의 위치 파악
     private SphereCollider sphereCollider;  // #33
 
     [SerializeField] private GameObject spriteObj;      // #60 해당 장애물의 spriteRenderer를 갖고 있는 게임오브젝트 가져오기. (하위 0번째 오브젝트)
@@ -54,7 +55,7 @@ public class Obstacle : MonoBehaviour
     void Awake()
     {
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #8
-        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;   // #17 
+        // playerTrans = GameObject.FindGameObjectWithTag("Player").transform;   // #17 
 
         layerSetting = this.GetComponent<LayerSetting>();   // #2
         anim = transform.GetComponent<Animator>();    
@@ -308,6 +309,10 @@ public class Obstacle : MonoBehaviour
 
     private bool IsThereObstacle(KeyCode _arrow)    // #14 해당 위치에 Obstacle 있는지 확인
     {
+        // #14 플레이어1과 플레이어2의 위치 파악
+        player1Trans = GameObject.FindGameObjectWithTag("Player").transform;
+        player2Trans = GameObject.FindGameObjectWithTag("SubPlayer").transform;
+
         // #14 만약 밀고자 하는 위치에 이미 장애물이 있다면 밀리지 않도록
         switch(_arrow)
         {
@@ -345,6 +350,16 @@ public class Obstacle : MonoBehaviour
          // #14 fix: 고려되지 않았던 blockArr도 파악한 후, WOODBLOCK 밀기
         {
             // IndexOutOfRangeException 에러를 피하기 위해 바운더리 넘어간 것부터 확인 후, 배열 확인
+            return true;
+        }
+        else if((row == mapMgr.ReturnRowInMatrix(player1Trans.position.y)) && (col == mapMgr.ReturnColInMatrix(player1Trans.position.x)))
+        {
+            //#14 플레이어1이 '밀고자 하는 WOODBLOCK 너머의 위치'에 있다면
+            return true;
+        }
+        else if((row == mapMgr.ReturnRowInMatrix(player2Trans.position.y)) && (col == mapMgr.ReturnColInMatrix(player2Trans.position.x)))
+        {
+            //#14 플레이어2가 '밀고자 하는 WOODBLOCK 너머의 위치'에 있다면
             return true;
         }
         else
