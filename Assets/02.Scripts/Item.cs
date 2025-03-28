@@ -133,6 +133,10 @@ public class Item : MonoBehaviour   // #10
                     }
                     DestroyItem();  // 플레이어 획득했으니까 화면에서 없애기
                     break;
+                case ITEM_TYPE.COIN :   // #111 COIN 아이템 획득
+                    SubPlayerGameMgr.SubMgr.coin += 1;
+                    DestroyItem();  // 플레이어 획득
+                    break;
             }
 
             music.GameSoundEffect(Music.EFFECT_TYPE.EAT_PROP, 0.6f);  // #22 플레이어 아이템 획득시 효과음
