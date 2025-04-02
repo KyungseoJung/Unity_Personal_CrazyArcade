@@ -339,6 +339,12 @@ public class MapManager : MonoBehaviour
         Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
         itemPosByBlock = _itemPos;
 
+        int randomItemRow = ReturnRowInMatrix(itemPosByBlock.y);
+        int randomItemCol = ReturnColInMatrix(itemPosByBlock.x);
+        
+        blockArr[randomItemRow, randomItemCol] = 1; // #38 WOODBLOCK을 없앰으로써 생긴 랜덤 아이템도 blockArr 지정해주기
+                                                    // 그래야 해당 위치로 WOODBLOCK이 위로 안 겹치고, 다른 문제가 안 생김
+        
         switch(randomItemType)
         {
             case Item.ITEM_TYPE.FLUID:
@@ -355,7 +361,8 @@ public class MapManager : MonoBehaviour
                 yield break;
             case Item.ITEM_TYPE.ROLLER:
                 Instantiate(rollerItemPrefab, itemPosByBlock, Quaternion.identity);
-                yield break;            
+                yield break;
+
         }
     }
 
