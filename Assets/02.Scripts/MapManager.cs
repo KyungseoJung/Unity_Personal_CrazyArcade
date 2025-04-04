@@ -293,7 +293,7 @@ public class MapManager : MonoBehaviour
 
     }
 
-    public void PlaceItemPrefab(Item.ITEM_TYPE _type, Vector3 _pos) // #28 맵 위에 특정 위치에 아이템 배치하기
+    public void PlaceItemPrefab(Item.ITEM_TYPE _type, Vector3 _pos, int _row, int _col) // #28 맵 위에 특정 위치에 아이템 배치하기
     {
         // 아이템 배치 위치 지정
         itemPos = _pos;
@@ -320,6 +320,8 @@ public class MapManager : MonoBehaviour
                 Instantiate(coinItemPrefab, itemPos, Quaternion.identity);
                 break;
         }
+
+        blockArr[_row, _col] = 1;   // 플레이어가 죽은 뒤, 랜덤으로 맵에 뿌려지는 아이템들에 대해서도 blockArr 지정해주기
     }
 
     public void PlaceRandomItem(Item.ITEM_TYPE randomItemType, Vector3 _itemPos)
