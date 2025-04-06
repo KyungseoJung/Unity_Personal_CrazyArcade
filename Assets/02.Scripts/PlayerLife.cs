@@ -196,7 +196,7 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
-            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.FLUID, placePos);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.FLUID, placePos, mapPlaceRow, mapPlaceCol);
         }
 
         for(int i=1; i<waterballoonNum; i++)
@@ -210,7 +210,7 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
-            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.BUBBLE, placePos);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.BUBBLE, placePos, mapPlaceRow, mapPlaceCol);
         }
 
         for(int i=0; i<rollerNum; i++)
@@ -224,7 +224,7 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
-            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.ROLLER, placePos);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.ROLLER, placePos, mapPlaceRow, mapPlaceCol);
         }
 
         for(int i=0; i<turtleNum; i++)
@@ -238,7 +238,7 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
-            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.TURTLE, placePos);
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.TURTLE, placePos, mapPlaceRow, mapPlaceCol);
         }
 
         for(int i=0; i<coinNum; i++)
@@ -252,7 +252,7 @@ public class PlayerLife : MonoBehaviour
             Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
-            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.COIN, placePos);   
+            mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.COIN, placePos, mapPlaceRow, mapPlaceCol);   
         }
     }
 
