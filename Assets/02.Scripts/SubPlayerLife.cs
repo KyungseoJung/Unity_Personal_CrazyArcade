@@ -40,7 +40,7 @@ public class SubPlayerLife : MonoBehaviour
 
     void Start()
     {
-        playerFaint = false; // 처음 시작할 때, 기절한 상태로 시작. 완전히 등장하면, 그때 기절 상태 false로 만들기. 물풍선 놓을 수 없도록 하기 위해
+        playerFaint = true; // 처음 시작할 때, 기절한 상태로 시작. 완전히 등장하면, 그때 기절 상태 false로 만들기. 물풍선 놓을 수 없도록 하기 위해
         respawnPos = new Vector3(-4, 3, -0.05f); // 리스폰 위치 지정
         anim.SetBool("canMove", false);     // 처음에는 플레이어가 등장하는 애니메이션 (PlayerSpin)을 위해서 "canMove"를 false로 설정. PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
         trappedInWater = false;
