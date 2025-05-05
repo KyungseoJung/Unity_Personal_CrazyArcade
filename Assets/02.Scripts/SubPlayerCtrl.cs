@@ -24,7 +24,7 @@ public class SubPlayerCtrl : MonoBehaviour
     private MapManager mapMgr;              // #102 플레이어2가 물풍선 놓을 수 있게 하기 위함.
     private Obstacle obstacle;             // 플레이어가 숨을 수 있는 덤불
     private Music music;                   // 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
-    private LobbyManager lobbyMgr;         // 플레이어가 아이템 사용할 때마다, UI에 표시되는 아이템 개수를 업데이트 하기 위함.
+    private LobbyManager subLobbyMgr;         // 플레이어가 아이템 사용할 때마다, UI에 표시되는 아이템 개수를 업데이트 하기 위함.
 
     private Vector2 slideDirection = new Vector2(0, 0); 
     private Vector3 pos;                   // 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
@@ -68,7 +68,7 @@ public class SubPlayerCtrl : MonoBehaviour
         subPlayerLife = GetComponent<SubPlayerLife>();  // #102
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #102
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); 
-        lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); 
+        subLobbyMgr = GameObject.Find("SubLobbyManager").GetComponent<LobbyManager>(); 
     }
     
     void Start()
@@ -121,6 +121,33 @@ public class SubPlayerCtrl : MonoBehaviour
         {
             mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y, false);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
+
+        // #54 거북 속도 변경
+        if(Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            if((SubPlayerGameMgr.SubMgr.slowTurtle == true) && (SubPlayerGameMgr.SubMgr.fastTurtle == false))   //#54 플레이어가 느린 거북을 타고 있을 때에만 Can 아이템이 작동하도록
+            {
+                music.GameSoundEffect(Music.EFFECT_TYPE.TURTLE_CHANGE); //#54 빠른 거북으로 바뀔 때의 효과음
+                
+                // 플레이어가 타고 있는 거북의 이미지 & 속도 변경
+                SubPlayerGameMgr.SubMgr.slowTurtle = false;
+                SubPlayerGameMgr.SubMgr.fastTurtle = true;
+                //#54 animation 설정도 해주기
+                anim.SetBool("turtleMount", false);
+                anim.SetBool("fastTurtleMount", true);
+                
+                anim.SetBool("canMove", false);     //#54 거북 바뀌는 애니메이션 실행 목적
+                anim.SetTrigger("ChangeTurtle");    //#54 거북 바뀌는 애니메이션 실행 목적
+                Invoke("CanMoveTrue", 0.5f);        //#54 다시 canMove 변수를 True로 만들어주기
+                
+                LimitToTurtleSpeed(true);   //#54 플레이어의 속도를 빠른 거북 속도로 바꿔주기
+
+                SubPlayerGameMgr.SubMgr.turtleCan -= 1;   //#59 아이템을 사용했으니까, 개수 -1
+                subLobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
+
+            }
+        }
+ 
     }
 
     void FixedUpdate()
@@ -225,7 +252,11 @@ public class SubPlayerCtrl : MonoBehaviour
             }        
         }
     }
-
+    private void CanMoveTrue()
+    {
+        // 따로 invoke로 실행이 필요한 때를 위함.
+        anim.SetBool("canMove", true);  
+    }
     void SlideAlongObstacle(Vector2 obstacleNormal, MOVE_ARROW moveArrow, PLAYER_POS playerPos)    
     //# refactor 플레이어가 누르는 방향 키와, 플레이어의 위치(장애물과 비교했을 때 상대적 위치)를 parameter로 받기
     {
