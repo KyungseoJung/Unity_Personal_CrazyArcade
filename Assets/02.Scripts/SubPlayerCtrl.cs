@@ -122,6 +122,27 @@ public class SubPlayerCtrl : MonoBehaviour
             mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y, false);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
 
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if((subPlayerLife.trappedInWater) && (SubPlayerGameMgr.SubMgr.needle > 0))
+            {
+                // #41 만약 물풍선에 갇혀 있을 때, 키보드의 숫자 '2'를 누르면~ 물풍선에서 벗어나도록
+                subPlayerLife.trappedInWater = false;  // #41 물풍선 벗어나도록
+                subPlayerLife.waterApplied = false;    // #17 fix: 플레이어가 물풍선 벗어날 때, 변수 'waterApplied' 를 false로 설정하라 - 한번 물풍선 탈출하면, 그 이후에 물풍선 적용이 안 되는 문제 해결하기 위해
+                anim.SetTrigger("EscapeWater");     // #41 물풍선 벗어나는 애니메이션 실행 뒤, 기존 PlayerLookingAhead 애니메이션 실행
+
+                music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_POP, 0.6f);    // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
+                music.StopPlayerSoundEffect();  // #47 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
+                SubPlayerGameMgr.SubMgr.needle -= 1;      // #43 바늘 아이템 사용
+
+                ChangePlayerSpeed(SubPlayerGameMgr.SubMgr.roller); // #41 플레이어가 물풍선에서 벗어나면, 본래 속도로 돌아가도록 - 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
+                subLobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
+            }
+            Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
+        }
+
+
         // #54 거북 속도 변경
         if(Input.GetKeyDown(KeyCode.Alpha8))
         {
