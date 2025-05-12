@@ -144,7 +144,7 @@ public class SubPlayerCtrl : MonoBehaviour
 
 
         // #54 거북 속도 변경
-        if(Input.GetKeyDown(KeyCode.Alpha8))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             if((SubPlayerGameMgr.SubMgr.slowTurtle == true) && (SubPlayerGameMgr.SubMgr.fastTurtle == false))   //#54 플레이어가 느린 거북을 타고 있을 때에만 Can 아이템이 작동하도록
             {

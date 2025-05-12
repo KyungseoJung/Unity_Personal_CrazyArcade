@@ -163,7 +163,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #41 플레이어가 물풍선에서 벗어나면, 본래 속도로 돌아가도록 - 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
                 lobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
             }
-            Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
+            Debug.Log("//#41 키보드의 숫자 '9'를 누름");  
         }
 
         // #54 거북 속도 변경
