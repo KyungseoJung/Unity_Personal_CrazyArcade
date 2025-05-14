@@ -338,7 +338,7 @@ public class MapManager : MonoBehaviour
         if(randomItemType == Item.ITEM_TYPE.NONE)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
             yield break;
 
-        Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
+        // Debug.Log("//#38 WOODBLOCK 또는 NORMALBLOCK 이 사라진 자리에 랜덤 아이템 배치");
         itemPosByBlock = _itemPos;
 
         int randomItemRow = ReturnRowInMatrix(itemPosByBlock.y);
