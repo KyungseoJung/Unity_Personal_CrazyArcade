@@ -24,7 +24,7 @@ public class SubPlayerCtrl : MonoBehaviour
     private MapManager mapMgr;              // #102 플레이어2가 물풍선 놓을 수 있게 하기 위함.
     private Obstacle obstacle;             // 플레이어가 숨을 수 있는 덤불
     private Music music;                   // 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
-    private LobbyManager subLobbyMgr;         // 플레이어가 아이템 사용할 때마다, UI에 표시되는 아이템 개수를 업데이트 하기 위함.
+    private SubLobbyManager subLobbyMgr;         // 플레이어가 아이템 사용할 때마다, UI에 표시되는 아이템 개수를 업데이트 하기 위함.
 
     private Vector2 slideDirection = new Vector2(0, 0); 
     private Vector3 pos;                   // 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
@@ -68,7 +68,7 @@ public class SubPlayerCtrl : MonoBehaviour
         subPlayerLife = GetComponent<SubPlayerLife>();  // #102
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #102
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); 
-        subLobbyMgr = GameObject.Find("SubLobbyManager").GetComponent<LobbyManager>(); 
+        subLobbyMgr = GameObject.Find("SubLobbyManager").GetComponent<SubLobbyManager>(); 
     }
     
     void Start()
@@ -341,6 +341,11 @@ public class SubPlayerCtrl : MonoBehaviour
 
     void PlayerMove(bool moveHorizontal)
     {
+        if(subPlayerLife.playerFaint) // #28 플레이어 기절하고 있다면, 움직일 수 없도록
+            return; 
+
+        Debug.Log("//#28 플레이어 움직이고 있음. 기절 안 함.");
+
         Vector3 moveDirection = new Vector3(0, v);
 
         lastMoveTime = Time.time;   // #23 플레이어가 움직임을 보인 마지막 시각
