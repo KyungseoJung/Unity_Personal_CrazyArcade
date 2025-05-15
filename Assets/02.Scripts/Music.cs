@@ -63,7 +63,7 @@ public class Music : MonoBehaviour
     public void GameSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)
     // #21 효과음 크기도 설정
     {
-        Debug.Log("//#21 게임 효과음 시작");
+        // Debug.Log("//#21 게임 효과음 시작");
         soundEffectArr.Stop();
         soundEffectArr.clip = effectClips[(int)_type -1];
 

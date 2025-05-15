@@ -116,8 +116,8 @@ public class Obstacle : MonoBehaviour
                     randomItemType = Item.ITEM_TYPE.COIN;  // 10%의 확률로 COIN 아이템이 설정되도록
 
 
-                Debug.Log("//#38 randomNumber: " + randomNumber);
-                Debug.Log("//#38 randomItemType: " + randomItemType);
+                // Debug.Log("//#38 randomNumber: " + randomNumber);
+                // Debug.Log("//#38 randomItemType: " + randomItemType);
                 break;
         }
     }
@@ -241,22 +241,22 @@ public class Obstacle : MonoBehaviour
                 case OBSTACLE_TYPE.WATERBALLOON:
                     // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
                     // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
-                    Debug.Log("//#31 플레이어1이 놓은 물풍선이 다른 물줄기에 맞음");
+                    // Debug.Log("//#31 플레이어1이 놓은 물풍선이 다른 물줄기에 맞음");
                     StartWaterBalloonBursts(true, true);
                     break;
                 case OBSTACLE_TYPE.SUBWATERBALLOON:
                     // #31 물풍선이 다른 물풍선의 물줄기에 맞았는지 확인 - 만약 맞았다면, 이 물풍선도 터지도록
                     // #31 fix: 자꾸 Trigger 처리를 인식하지 못하는 문제 - 물풍선에 Rigidbody가 없어서 그랬음. 충돌하는 두 물체 중 하나라도 rigidbody가 있어야 인식함 
-                    Debug.Log("//#31 플레이어2가 놓은 물풍선이 다른 물줄기에 맞음");
+                    // Debug.Log("//#31 플레이어2가 놓은 물풍선이 다른 물줄기에 맞음");
                     StartWaterBalloonBursts(true, false);
                     break;
                 case OBSTACLE_TYPE.BUSH:
-                    Debug.Log("//#36 물풍선이 Bush에 맞음");
+                    // Debug.Log("//#36 물풍선이 Bush에 맞음");
                     // DestroyObstacle();
                     DestroyBush();  // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
                     break;
                 case OBSTACLE_TYPE.WOODBLOCK:
-                    Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
+                    // Debug.Log("//#38 물풍선이 WoodBlock에 맞음");
                     // DestroyObstacle();
                     DestroyBlock(); // #38 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
                     // PlaceRandomItem();  // #38 WoodBlock이 사라진 자리에 랜덤으로 아이템 생기도록

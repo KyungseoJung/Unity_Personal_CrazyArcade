@@ -344,7 +344,7 @@ public class SubPlayerCtrl : MonoBehaviour
         if(subPlayerLife.playerFaint) // #28 플레이어 기절하고 있다면, 움직일 수 없도록
             return; 
 
-        Debug.Log("//#28 플레이어 움직이고 있음. 기절 안 함.");
+        // Debug.Log("//#28 플레이어 움직이고 있음. 기절 안 함.");
 
         Vector3 moveDirection = new Vector3(0, v);
 
