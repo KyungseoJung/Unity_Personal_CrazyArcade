@@ -176,8 +176,10 @@ public class SubPlayerCtrl : MonoBehaviour
 
 // 플레이어 움직이기 ===============================
 
-        h = Input.GetAxis("Horizontal");  // 좌우 키
-        v = Input.GetAxis("Vertical");    // 상하 키
+        h = Input.GetAxis("SubHorizontal");  // 좌우 키
+        v = Input.GetAxis("SubVertical");    // 상하 키
+        Debug.Log("//#100 sub h: " + h);
+        Debug.Log("//#100 sub v: " + v);
 
         // CheckBorder();  // 플레이어가 경계선 넘어가지 않도록 확인 - 코드 대신에 BoxCollider로 움직임을 제어하는 게 더 자연스러워 보임.
     }
@@ -320,24 +322,24 @@ public class SubPlayerCtrl : MonoBehaviour
     }
 
 
-    private void CheckBorder()
-    {
-        // 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
-        if((transform.position.x) * (transform.position.x) > 16 )
-        {
-            pos = this.transform.position;
-            pos.x = (int)this.transform.position.x; // -4 또는 4로 지정
-            this.transform.position = pos;
-        }
+    // private void CheckBorder()
+    // {
+    //     // 플레이어가 게임 맵 경계선 밖으로 넘어가지 않도록 확인
+    //     if((transform.position.x) * (transform.position.x) > 16 )
+    //     {
+    //         pos = this.transform.position;
+    //         pos.x = (int)this.transform.position.x; // -4 또는 4로 지정
+    //         this.transform.position = pos;
+    //     }
         
-        if((transform.position.y) * (transform.position.y) > 9)
-        {
-            pos = this.transform.position;
-            pos.y = (int)this.transform.position.y; // -3 또는 3으로 지정
-            this.transform.position = pos;
-        }
+    //     if((transform.position.y) * (transform.position.y) > 9)
+    //     {
+    //         pos = this.transform.position;
+    //         pos.y = (int)this.transform.position.y; // -3 또는 3으로 지정
+    //         this.transform.position = pos;
+    //     }
 
-    }
+    // }
 
     void PlayerMove(bool moveHorizontal)
     {
@@ -364,6 +366,7 @@ public class SubPlayerCtrl : MonoBehaviour
                 if(h * rBody.velocity.x < maxSpeed)	// h가 음수이면-> rigidbody2d.velocity.x도 음수. // h가 양수이면-> 양수
                 {
                     rBody.AddForce(Vector3.right * h * moveForce);	//오른쪽방향(1,0) * 방향 * 힘 <-> 왼쪽 방향이면 (-1, 0)
+                    // Debug.Log("//#28 플레이어 이동 중");
                 }    
             // 좌우 움직임 
                 // 가속도해서 더래진 플레이어의 <<수평>> 속도가 maxSpeed 보다 커지면 maxSpeed로 속도 유지
@@ -372,6 +375,7 @@ public class SubPlayerCtrl : MonoBehaviour
                     //플레이어의 velocity(속도)를 x축방향으로 maxSpeed 로 셋팅해줘라 또한 기존 rigidbody2D.velocity.y 도 셋팅 해 줘야 한다.
                     // Mathf.Sign() 는 매개변수를 참조해서 1 또는 -1(float)을 반환  
                     rBody.velocity = new Vector2(Mathf.Sign(rBody.velocity.x) * maxSpeed, rBody.velocity.y);
+                    // Debug.Log("//#28 플레이어 이동 중");
                 }
         }
         else
