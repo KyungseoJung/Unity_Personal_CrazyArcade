@@ -9,7 +9,7 @@ public class SubPlayerLife : MonoBehaviour
     private SubPlayerCtrl subPlayerCtrl;  // 플레이어 물풍선에 갇힐 때 - 이동 속도 느려짐
     private MapManager mapMgr;      //  배열 확인 후, item들을 랜덤으로 놓기 위함
     private Music music;            // 플레이어 죽을 때, 효과음
-    private LobbyManager lobbyMgr;  // 플레이어 죽을 때, 남은 목숨 -1 표시
+    private SubLobbyManager subLobbyMgr;  // 플레이어 죽을 때, 남은 목숨 -1 표시
     private Vector3 respawnPos;     // 리스폰 위치 지정
 
     // 비어있는 공간 찾기
@@ -35,7 +35,7 @@ public class SubPlayerLife : MonoBehaviour
         subPlayerCtrl = GetComponent<SubPlayerCtrl>();
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>();
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
-        lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+        subLobbyMgr = GameObject.Find("SubLobbyManager").GetComponent<SubLobbyManager>();
     }
 
     void Start()
@@ -53,7 +53,7 @@ public class SubPlayerLife : MonoBehaviour
         if(!trappedInWater && Input.GetKeyDown(KeyCode.Alpha3) && (SubPlayerGameMgr.SubMgr.shield>0)) // 물풍선에 갇혀있을 땐 사용하지 못하도록
         {
             SubPlayerGameMgr.SubMgr.shield -= 1;      // 방패 아이템 사용
-            lobbyMgr.UpdateNumberOfItems();     // 아이템 개수 업데이트해서 UI에 표시
+            subLobbyMgr.UpdateNumberOfItems();     // 아이템 개수 업데이트해서 UI에 표시
 
             StartCoroutine(PlayerBeInvincible(3.0f));
         }
@@ -126,7 +126,7 @@ public class SubPlayerLife : MonoBehaviour
         // PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         SubPlayerGameMgr.SubMgr.life -=1;
-        lobbyMgr.txtPlayerLife.text = $"{SubPlayerGameMgr.SubMgr.life}";
+        subLobbyMgr.txtPlayerLife.text = $"{SubPlayerGameMgr.SubMgr.life}";
         
         trappedInWater = false; // 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
         playerFaint = true;     // 플레이어 기절 - 움직임 불가능
