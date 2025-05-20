@@ -172,7 +172,8 @@ public class PlayerCtrl : MonoBehaviour // #1
             Debug.Log("slowTurtle 체크: " + PlayerGameMgr.Mgr.slowTurtle);
             Debug.Log("fastTurtle 체크: " + PlayerGameMgr.Mgr.fastTurtle);
 
-            if((PlayerGameMgr.Mgr.slowTurtle == true) && (PlayerGameMgr.Mgr.fastTurtle == false))   //#54 플레이어가 느린 거북을 타고 있을 때에만 Can 아이템이 작동하도록
+            if((PlayerGameMgr.Mgr.slowTurtle == true) && (PlayerGameMgr.Mgr.fastTurtle == false)
+                && (PlayerGameMgr.Mgr.turtleCan > 0))   //#54 플레이어가 느린 거북을 타고 있을 때에만 Can 아이템이 작동하도록
             {
                 music.GameSoundEffect(Music.EFFECT_TYPE.TURTLE_CHANGE); //#54 빠른 거북으로 바뀔 때의 효과음
                 
