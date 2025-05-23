@@ -106,7 +106,7 @@ public class SubPlayerLife : MonoBehaviour
         }
         trappedInWater = true;  // 중복 실행 방지
         // 플레이어가 물풍선에 갇혀 있는 효과음 시작
-        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
+        music.SubPlayerSoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
 
         anim.SetBool("canMove", false);
         anim.SetTrigger("trappedInWater");
@@ -115,7 +115,7 @@ public class SubPlayerLife : MonoBehaviour
 
     private void PlayerDie()   // PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
-        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // 플레이어 죽을 때 효과음
+        music.SubPlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // 플레이어 죽을 때 효과음
 
         if(SubPlayerGameMgr.SubMgr.life <=0 )
         {
@@ -139,7 +139,9 @@ public class SubPlayerLife : MonoBehaviour
         this.gameObject.transform.position = respawnPos; // 리스폰 위치 지정
 
         // 플레이어 부활 효과음 - PlayerRespawn 애니메이션 시작될 때 실행되도록
-        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_REVIVAL, 0.6f);
+        music.SubPlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_REVIVAL, 0.6f);
+
+        Debug.Log("#100 플레이어 부활 | SpecifyLocation 함수 실행됨");
     }
     private void PlayerRespawn()    // 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {
@@ -293,19 +295,19 @@ public class SubPlayerLife : MonoBehaviour
         waterApplied = false; // 변수를 false로 설정
     }
 
-    private void CheckAnyLivesLeft()    // 플레이어 목숨 남았는지 확인한 후, 부활 시도
+    private void CheckAnyLivesLeft()    // (SubPlayerTimeOutTrapped.anim 에서 실행) 플레이어 목숨 남았는지 확인한 후, 부활 시도
     {
         if(playerDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
             this.gameObject.SetActive(false);
 
-        music.StopPlayerSoundEffect();  // 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
+        music.StopSubPlayerSoundEffect();  // 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
     }
 
     IEnumerator PlayerBeInvincible(float time)
     {
         playerInvincible = true;
         playerShield.SetActive(true);
-        music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_SHIELD);   // 플레이어가 shield 아이템 사용하고 있는 동안의 효과음
+        music.SubPlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_SHIELD);   // 플레이어가 shield 아이템 사용하고 있는 동안의 효과음
 
         yield return  new WaitForSeconds(time);
         playerShield.SetActive(false);

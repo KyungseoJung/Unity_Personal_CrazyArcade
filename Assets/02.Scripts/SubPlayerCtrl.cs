@@ -133,7 +133,7 @@ public class SubPlayerCtrl : MonoBehaviour
                 anim.SetTrigger("EscapeWater");     // #41 물풍선 벗어나는 애니메이션 실행 뒤, 기존 PlayerLookingAhead 애니메이션 실행
 
                 music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_POP, 0.6f);    // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
-                music.StopPlayerSoundEffect();  // #47 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
+                music.StopSubPlayerSoundEffect();  // #47 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
                 SubPlayerGameMgr.SubMgr.needle -= 1;      // #43 바늘 아이템 사용
 
                 ChangePlayerSpeed(SubPlayerGameMgr.SubMgr.roller); // #41 플레이어가 물풍선에서 벗어나면, 본래 속도로 돌아가도록 - 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
@@ -179,8 +179,8 @@ public class SubPlayerCtrl : MonoBehaviour
 
         h = Input.GetAxis("SubHorizontal");  // 좌우 키
         v = Input.GetAxis("SubVertical");    // 상하 키
-        Debug.Log("//#100 sub h: " + h);
-        Debug.Log("//#100 sub v: " + v);
+        // Debug.Log("//#100 sub h: " + h);
+        // Debug.Log("//#100 sub v: " + v);
 
         // CheckBorder();  // 플레이어가 경계선 넘어가지 않도록 확인 - 코드 대신에 BoxCollider로 움직임을 제어하는 게 더 자연스러워 보임.
     }

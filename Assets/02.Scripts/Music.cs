@@ -8,6 +8,7 @@ public class Music : MonoBehaviour
     public AudioSource gameMusicArr;
     public AudioSource soundEffectArr;  // #21
     public AudioSource playerSoundEffectArr;    // #46 gameEffectClips 플레이어 효과음은 따로 관리
+    public AudioSource subPlayerSoundEffectArr;    // #100
     public AudioClip[] audioClips;
     public AudioClip[] effectClips;
 
@@ -43,6 +44,7 @@ public class Music : MonoBehaviour
         gameMusicArr = gameObject.AddComponent<AudioSource>();  // #18 오디오소스 없기 때문에, 추가해서 지정해줘야 함
         soundEffectArr = gameObject.AddComponent<AudioSource>();    // #21 효과음 - 오디오소스 없기 때문에, 추가해서 지정해줘야 함
         playerSoundEffectArr = gameObject.AddComponent<AudioSource>();    // #46 플레이어 전용 효과음 - 오디오소스 없기 때문에, 추가해서 지정해줘야 함
+        subPlayerSoundEffectArr = gameObject.AddComponent<AudioSource>();    // #100 플레이어 전용 효과음 - 오디오소스 없기 때문에, 추가해서 지정해줘야 함
     }
 
     void Start()
@@ -86,9 +88,25 @@ public class Music : MonoBehaviour
 
         playerSoundEffectArr.loop = _loop;
     }
+    public void SubPlayerSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)    // #46 플레이어에게서 나타나는 효과음은 따로 관리 - 게임 효과음이 묻히지 않도록
+    {
+        Debug.Log("//#100 플레이어2 효과음 시작: " + _type);
+        subPlayerSoundEffectArr.Stop();
+        subPlayerSoundEffectArr.clip = effectClips[(int)_type -1];
 
+        subPlayerSoundEffectArr.volume = _volume;
+            
+        subPlayerSoundEffectArr.Play();
+
+        subPlayerSoundEffectArr.loop = _loop;
+    }
     public void StopPlayerSoundEffect() // #47
     {
         playerSoundEffectArr.Stop();
+    }
+    public void StopSubPlayerSoundEffect() // #100
+    {
+        Debug.Log("#100 플레이어2 효과음 종료");
+        subPlayerSoundEffectArr.Stop();
     }
 }
