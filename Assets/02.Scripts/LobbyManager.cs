@@ -19,6 +19,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField] GameObject pnlLoading0;                 // #53 로딩(로딩바) 화면 설정 - 처음 로딩될 때 pnlLoading0이 가장 먼저 보이도록 
     [SerializeField] GameObject pnlLoading1;                 // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
     [SerializeField] GameObject objLogo_START;               // #19 처음 게임 시작할 때, START 로고 보이도록
+    [SerializeField] GameObject objLogo_PLAYER1WIN;               // #19 처음 게임 시작할 때, START 로고 보이도록
+    [SerializeField] GameObject objLogo_PLAYER2WIN;               // #19 처음 게임 시작할 때, START 로고 보이도록
 
     [SerializeField] GameObject pnlbtnPressHowToGame;       // 버튼 눌렀을 때 보이는 panel ('게임 방법' 버튼)
     [SerializeField] GameObject pnlbtnPressGameStart;       // 버튼 눌렀을 때 보이는 panel ('게임 시작' 버튼)
@@ -91,6 +93,11 @@ public class LobbyManager : MonoBehaviour
             imgBnbLogo.gameObject.SetActive(false);
         if(objLogo_START.activeSelf)        // #19 맨 처음 로딩 화면 설정 | 게임 처음 시작할 때 보이는 START 로고 처음에는 보이지 않도록
             objLogo_START.SetActive(false);
+        if(objLogo_PLAYER1WIN.activeSelf)        // #19 맨 처음 로딩 화면 설정 | 게임 처음 시작할 때 보이는 PLAYER1WIN 로고 처음에는 보이지 않도록
+            objLogo_PLAYER1WIN.SetActive(false);
+        if(objLogo_PLAYER2WIN.activeSelf)        // #19 맨 처음 로딩 화면 설정 | 게임 처음 시작할 때 보이는 PLAYER2WIN 로고 처음에는 보이지 않도록
+            objLogo_PLAYER2WIN.SetActive(false);
+            
         if(pnlHowToGameScreen.activeSelf)   // 처음 시작할 때, 게임 방법 보여주는 창은 비활성화 되어 있어야 함.
             pnlHowToGameScreen.SetActive(false);
         
@@ -421,5 +428,17 @@ public class LobbyManager : MonoBehaviour
         txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
         txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
         txtNumberOfShield.text = $"{PlayerGameMgr.Mgr.shield}";   
+    }
+
+    public void Player1Win()
+    {
+        if(!objLogo_PLAYER1WIN.activeSelf)   // #19 게임 엔딩 | PLAEYR1WIN 로고 보이도록
+            objLogo_PLAYER1WIN.SetActive(true);
+    }
+
+    public void Plyaer2Win()
+    {
+        if(!objLogo_PLAYER2WIN.activeSelf)   // #19 게임 엔딩 | PLAYER2WIN 로고 보이도록
+            objLogo_PLAYER2WIN.SetActive(true);
     }
 }
