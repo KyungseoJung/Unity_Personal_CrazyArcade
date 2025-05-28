@@ -10,6 +10,8 @@ public class Obstacle : MonoBehaviour
     // // #4 플레이어1과 플레이어2가 놓는 물풍선 구분을 위해 SUBWATERBALLOON 추가 (끝에 추가해야 OBSTACLE_TYPE 번호가 밀리는 문제를 막을 수 있음)
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7 디폴트 obstacleType 설정
     private Item.ITEM_TYPE randomItemType = Item.ITEM_TYPE.FLUID;   // #38  (1번부터 5번까지)
+
+    private List<string> enteredPlayerNames = new List<string>(2);  // #17 Bush 들어간 플레이어 이름을 저장할 변수
     
     [SerializeField]    
     private Animator anim;  // #6 덤불 Animator 조정
@@ -281,6 +283,19 @@ public class Obstacle : MonoBehaviour
             if((obstacleType == OBSTACLE_TYPE.WOODBLOCK) || (obstacleType == OBSTACLE_TYPE.WATERBALLOON) || (obstacleType == OBSTACLE_TYPE.SUBWATERBALLOON))
                 ObjSetActive(spriteObj, false);
         }
+
+        if(obstacleType == OBSTACLE_TYPE.BUSH)  //#17 Bush안에 플레이어가 들어간다면 기억하도록 하기
+        {
+            //(Bush 안에서 플레이어가 방패를 사용해서 플레이어만 살아남고, Bush는 사라질 때, 해당 플레이어를 Visible 하게 바꾸기 위함)
+            if((other.gameObject.tag == "Player") || (other.gameObject.tag == "SubPlayer"))
+            {
+                Debug.Log("//#17 들어간 플레이어 확인: " + other.gameObject.name);
+
+                string name = other.gameObject.name;
+                enteredPlayerNames.Add(name);
+                Debug.Log($"#17 List 들어간 플레이어 확인: {name}");
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -298,7 +313,20 @@ public class Obstacle : MonoBehaviour
                     break;
             }
         }
+        if(obstacleType == OBSTACLE_TYPE.BUSH)
+        {
+            //(Bush 안에서 플레이어가 방패를 사용해서 플레이어만 살아남고, Bush는 사라질 때, 해당 플레이어를 Visible 하게 바꾸기 위함)
+            if((other.gameObject.tag == "Player") || (other.gameObject.tag == "SubPlayer"))
+            {
+                string name = other.gameObject.name;
+                if (enteredPlayerNames.Contains(name))
+                {
+                    enteredPlayerNames.Remove(name);  // 제거
+                    Debug.Log($"#17 List 제거한 플레이어 확인: {name}");
+                }
 
+            }
+        }
     }
 
     private void ObjSetActive(GameObject _obj, bool _active)
