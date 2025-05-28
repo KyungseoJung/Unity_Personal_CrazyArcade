@@ -253,7 +253,7 @@ public class Obstacle : MonoBehaviour
                     StartWaterBalloonBursts(true, false);
                     break;
                 case OBSTACLE_TYPE.BUSH:
-                    // Debug.Log("//#36 물풍선이 Bush에 맞음");
+                    Debug.Log("//#36 물풍선이 Bush에 맞음");
                     // DestroyObstacle();
                     DestroyBush();  // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
                     break;
@@ -289,10 +289,8 @@ public class Obstacle : MonoBehaviour
             //(Bush 안에서 플레이어가 방패를 사용해서 플레이어만 살아남고, Bush는 사라질 때, 해당 플레이어를 Visible 하게 바꾸기 위함)
             if((other.gameObject.tag == "Player") || (other.gameObject.tag == "SubPlayer"))
             {
-                Debug.Log("//#17 들어간 플레이어 확인: " + other.gameObject.name);
-
                 string name = other.gameObject.name;
-                enteredPlayerNames.Add(name);
+                enteredPlayerNames.Add(name);   // Bush 안에 들어간 사람을 List에 추가
                 Debug.Log($"#17 List 들어간 플레이어 확인: {name}");
             }
         }
@@ -484,10 +482,24 @@ public class Obstacle : MonoBehaviour
 
     public void DestroyBush()   // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
     {
+        Debug.Log("#17 Destroy 함수 실행");
+        foreach(var player in enteredPlayerNames)   //#17 Bush가 사라질 때 Bush안에 있는 플레이어가 존재한다면, 그 해당 플레이어를 Visible하도록 바꾸기
+        {
+            Debug.Log("//#17 player 확인: " + player);
+
+            GameObject playerObj = GameObject.Find(player);
+
+            if(playerObj != null)
+            {
+                playerObj.SetActive(true);
+            }
+        }
+
         Debug.Log("//#36: " + this.gameObject.name + " 덤불(Bush) 삭제");
-        Destroy(this.gameObject);
 
         mapMgr.RemoveBushPos(this.transform);   // #36 해당 위치의 bushArr 배열 값을 0으로 설정
+
+        Destroy(this.gameObject);
     }
 
     // private void PlaceRandomItem()  // #38 물풍선을 맞은 WOODBLOCK 또는 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 놓기

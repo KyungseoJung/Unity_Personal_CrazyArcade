@@ -460,6 +460,7 @@ public class MapManager : MonoBehaviour
     //     }
     // } 
     
+    // 아래 코드 실행 취소 -> 다른 코드로 이용하기
     public void CheckBushTouchFluid(Transform _balloonTrans, int _waterLength)  // #36 물풍선의 물줄기가 덤불(Bush)에 닿았나 확인 - 닿았으면 Bush Destroy
     {
         bushes = GameObject.FindGameObjectsWithTag("Bush");
@@ -489,7 +490,7 @@ public class MapManager : MonoBehaviour
         } 
     }
 
-    public void CheckBubbleInBush(Transform _balloonTrans)  //#8 fix: Bush와 물풍선의 위치가 겹치는지 확인
+    public void CheckBubbleInBush(Transform _balloonTrans)  //#8 fix: Bush와 물풍선의 위치가 겹치는지 확인 - Tag가 인식이 안되는 문제 해결을 위해, 겹치는 경우는 따로 코드를 만들어줌
     {
         bushes = GameObject.FindGameObjectsWithTag("Bush");
         for(int i=0; i<bushes.Length; i++)
