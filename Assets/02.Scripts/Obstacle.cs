@@ -256,6 +256,8 @@ public class Obstacle : MonoBehaviour
                     Debug.Log("//#36 물풍선이 Bush에 맞음");
                     // DestroyObstacle();
                     DestroyBush();  // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
+                        //#8 fix: 태그가 인식되기 전에 물풍선이 먼저 사라져 버려서 Bush가 사라지지 않는 경우가 존재함.-> 그래서, WaterBalloonBursts 함수에서 (mapMgr.CheckBubbleInBush코드로) 따로 실행해줌.
+                        
                     break;
                 case OBSTACLE_TYPE.WOODBLOCK:
                     // Debug.Log("//#38 물풍선이 WoodBlock에 맞음");

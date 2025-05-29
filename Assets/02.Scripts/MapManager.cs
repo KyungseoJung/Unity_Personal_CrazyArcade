@@ -505,6 +505,17 @@ public class MapManager : MonoBehaviour
             if((balloonRow == bushRow) && (balloonCol == bushCol))
             {
                 Debug.Log("//#8 fix: Bush와 물풍선이 같은 위치에 있음. Bush를 Destroy");
+
+                foreach(var player in enteredPlayerNames)   //#17 Bush가 사라질 때 Bush안에 있는 플레이어가 존재한다면, 그 해당 플레이어를 Visible하도록 바꾸기
+                {
+                    GameObject playerObj = GameObject.Find(player);
+
+                    if(playerObj != null)
+                    {
+                        playerObj.SetActive(true);
+                    }
+                }
+
                 bushes[i].gameObject.GetComponent<Obstacle>().DestroyObstacle(); // Bush 오브젝트 Destroy
             }
         } 
