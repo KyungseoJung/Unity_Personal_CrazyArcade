@@ -24,7 +24,7 @@ public class PlayerLife : MonoBehaviour
     
     public bool trappedInWater = false;    // #17 플레이어 물풍선에 갇혔는지 확인용 bool형 변수
     public bool playerFaint;       // #28 플레이어 기절했는지 확인
-    private bool playerDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
+    private bool playerCompletelyDie = false;         // #28 플레이어가 완전히 죽었는지 확인 (목숨 모두 소진)
     public bool waterApplied = false;      // #17 fix: 이미 물풍선이 적용되었는지 확인용 bool형 변수
     private bool playerInvincible = false;  // #59 플레이어 무적 상태인지 확인하는 bool형 변수 (방패 아이템 이용시, 3초 동안 무적 상태)
 
@@ -60,6 +60,17 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other) 
+    {
+        if((other.gameObject.tag == "SubPlayer")&& (this.gameObject.layer == 10))
+        {
+            Debug.Log("//#44 플레이어1에 플레이어2가 닿음");   // 물풍선에 갇힌 플레이어 1에 플레이어2가 닿은 것임
+
+            anim.Play("PlayerTimeOutTrapped");   // 무조건 PlayerTimeOutTrapped 애니메이션 실행하도록
+        }
+
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if((other.gameObject.tag == "WaterBurst"))
@@ -113,6 +124,8 @@ public class PlayerLife : MonoBehaviour
         // #44 플레이어가 물풍선에 갇혀 있는 효과음 시작
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
 
+        this.gameObject.layer = 10;    // #44 플레이어가 물풍선에 갇히면, 두 플레이어끼리 충돌이 가능하도록 하기 위해 Layer 변경 ("PlayerInWater")
+
         anim.SetBool("canMove", false);
         anim.SetTrigger("trappedInWater");
         playerCtrl.SetPlayerSpeed();           // #17 플레이어 속도 느려짐
@@ -120,11 +133,13 @@ public class PlayerLife : MonoBehaviour
 
     private void PlayerDie()   // - PlayerTimeOutTrapped 애니메이션 끝 부분에 연결
     {
+        this.gameObject.layer = 9;    // #44 플레이어가 물풍선에 벗어나 죽으면, 다시 두 플레이어끼리 충돌이 불가능하도록 설정
+
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_DIE, 0.6f);  // #28 플레이어 죽을 때 효과음
 
         if(PlayerGameMgr.Mgr.life <=0 )
         {
-            playerDie = true;   // #45 플레이어 완전히 죽음
+            playerCompletelyDie = true;   // #45 플레이어 완전히 죽음
             return;
         }
 
@@ -132,6 +147,8 @@ public class PlayerLife : MonoBehaviour
         // #28 PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         PlayerGameMgr.Mgr.life -=1;
+        Debug.Log("//#100 #44 플레이어1 목숨 -1");
+
         lobbyMgr.txtPlayerLife.text = $"{PlayerGameMgr.Mgr.life}";
         Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
         
@@ -306,11 +323,13 @@ public class PlayerLife : MonoBehaviour
         waterApplied = false; // #17 fix: 변수를 false로 설정
     }
 
-    private void CheckAnyLivesLeft()    //#45 플레이어 목숨 남았는지 확인한 후, 부활 시도
+    private void CheckAnyLivesLeft()    //#45 (PlayerTimeOutTrapped.anim 에서 실행) 플레이어 목숨 남았는지 확인한 후, 부활 시도
     {
-        if(playerDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
+        if(playerCompletelyDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
+        {
             this.gameObject.SetActive(false);
-
+            Debug.Log("//#100 #44 플레이어1 완전히 죽음");
+        }
         music.StopPlayerSoundEffect();  // #45 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
     }
 
