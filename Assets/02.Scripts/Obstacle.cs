@@ -11,7 +11,7 @@ public class Obstacle : MonoBehaviour
     public OBSTACLE_TYPE obstacleType = OBSTACLE_TYPE.WATERBALLOON; // #7 디폴트 obstacleType 설정
     private Item.ITEM_TYPE randomItemType = Item.ITEM_TYPE.FLUID;   // #38  (1번부터 5번까지)
 
-    private List<string> enteredPlayerNames = new List<string>(2);  // #17 Bush 들어간 플레이어 이름을 저장할 변수
+    public List<string> enteredPlayerNames = new List<string>(2);  // #17 Bush 들어간 플레이어 이름을 저장할 변수
     
     [SerializeField]    
     private Animator anim;  // #6 덤불 Animator 조정

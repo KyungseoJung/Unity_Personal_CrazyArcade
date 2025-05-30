@@ -506,13 +506,14 @@ public class MapManager : MonoBehaviour
             {
                 Debug.Log("//#8 fix: Bush와 물풍선이 같은 위치에 있음. Bush를 Destroy");
 
-                foreach(var player in enteredPlayerNames)   //#17 Bush가 사라질 때 Bush안에 있는 플레이어가 존재한다면, 그 해당 플레이어를 Visible하도록 바꾸기
+                foreach(var player in bushes[i].gameObject.GetComponent<Obstacle>().enteredPlayerNames)   //#17 Bush가 사라질 때 Bush안에 있는 플레이어가 존재한다면, 그 해당 플레이어를 Visible하도록 바꾸기
                 {
                     GameObject playerObj = GameObject.Find(player);
 
                     if(playerObj != null)
                     {
                         playerObj.SetActive(true);
+                        Debug.Log("//#17 fix: 플레이어 SetActive(true)");
                     }
                 }
 
