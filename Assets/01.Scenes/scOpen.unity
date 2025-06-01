@@ -559,6 +559,8 @@ MonoBehaviour:
   pnlLoading0: {fileID: 1777025534}
   pnlLoading1: {fileID: 890149290}
   objLogo_START: {fileID: 623040178}
+  objLogo_PLAYER1WIN: {fileID: 136789579}
+  objLogo_PLAYER2WIN: {fileID: 1551251218}
   pnlbtnPressHowToGame: {fileID: 1672826957}
   pnlbtnPressGameStart: {fileID: 554271533}
   pnlbtnPressGameStart2: {fileID: 2016333631}
@@ -682,7 +684,7 @@ Animator:
   m_GameObject: {fileID: 136789579}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9381c70e9ad7bfe4886163c3cbe8a62b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6241,7 +6243,7 @@ Animator:
   m_GameObject: {fileID: 1551251218}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc57cbaf6c4468c459f66cdd499b46fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
