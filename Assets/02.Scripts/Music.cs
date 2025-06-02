@@ -35,7 +35,7 @@ public class Music : MonoBehaviour
     11 : player_shield      // #59 플레이어 shield item 사용하고 있을 때의 효과음
     */
 
-    public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC}; // #20 메인 배경음
+    public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC, WINSOUND}; // #20 메인 배경음
     public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, 
     BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER, GAME_START, BUTTON_CLICK, TURTLE_CHANGE, PLAYER_SHIELD};    // #21 #22 #28 #44 #43 #45 #54 효과음 종류
 
@@ -59,7 +59,15 @@ public class Music : MonoBehaviour
         gameMusicArr.clip = audioClips[(int)_type -1];
         gameMusicArr.Play();
         gameMusicArr.loop = true;  // #20 메인 뮤직 BGM 반복되도록 설정
+    }
 
+    public void GameEndBGM()
+    {   
+        Debug.Log("//#45 게임 종료 배경음");
+        gameMusicArr.Stop();
+        gameMusicArr.clip = audioClips[(int)BGM_TYPE.WINSOUND -1];
+        gameMusicArr.Play();
+        gameMusicArr.loop = false;  // #45 WINSOUND BGM 반복되지 않도록 설정
     }
 
     public void GameSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)

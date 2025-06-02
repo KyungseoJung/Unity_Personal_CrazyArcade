@@ -140,6 +140,8 @@ public class PlayerLife : MonoBehaviour
         if(PlayerGameMgr.Mgr.life <=0 )
         {
             playerCompletelyDie = true;   // #45 플레이어 완전히 죽음
+
+            lobbyMgr.Player2Win();  // #45 플레이어2 우승
             return;
         }
 
