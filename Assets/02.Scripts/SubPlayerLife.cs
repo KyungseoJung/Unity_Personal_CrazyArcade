@@ -136,6 +136,7 @@ public class SubPlayerLife : MonoBehaviour
             playerCompletelyDie = true;   // 플레이어 완전히 죽음
 
             lobbyMgr.Player1Win();  // #45 플레이어1 우승
+            mapMgr.Player1Faint();  // #45 플레이어2 이동하지 못하도록 기절시키기
             return;
         }
 
