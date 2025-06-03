@@ -10,6 +10,7 @@ public class SubPlayerLife : MonoBehaviour
     private MapManager mapMgr;      //  배열 확인 후, item들을 랜덤으로 놓기 위함
     private Music music;            // 플레이어 죽을 때, 효과음
     private SubLobbyManager subLobbyMgr;  // 플레이어 죽을 때, 남은 목숨 -1 표시
+    private LobbyManager lobbyMgr;  // 플레이어 죽을 때, 남은 목숨 -1 표시
     private Vector3 respawnPos;     // 리스폰 위치 지정
 
     // 비어있는 공간 찾기
@@ -36,6 +37,7 @@ public class SubPlayerLife : MonoBehaviour
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>();
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
         subLobbyMgr = GameObject.Find("SubLobbyManager").GetComponent<SubLobbyManager>();
+        lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
     }
 
     void Start()
@@ -133,7 +135,7 @@ public class SubPlayerLife : MonoBehaviour
         {
             playerCompletelyDie = true;   // 플레이어 완전히 죽음
 
-            subLobbyMgr.Player1Win();  // #45 플레이어1 우승
+            lobbyMgr.Player1Win();  // #45 플레이어1 우승
             return;
         }
 
