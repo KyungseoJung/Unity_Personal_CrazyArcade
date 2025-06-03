@@ -132,6 +132,8 @@ public class SubPlayerLife : MonoBehaviour
         if(SubPlayerGameMgr.SubMgr.life <=0 )
         {
             playerCompletelyDie = true;   // 플레이어 완전히 죽음
+
+            subLobbyMgr.Player1Win();  // #45 플레이어1 우승
             return;
         }
 

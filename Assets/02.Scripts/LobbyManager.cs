@@ -434,6 +434,7 @@ public class LobbyManager : MonoBehaviour
     {
         if(!objLogo_PLAYER1WIN.activeSelf)   // #19 게임 엔딩 | PLAEYR1WIN 로고 보이도록
             objLogo_PLAYER1WIN.SetActive(true);
+        music.GameEndBGM(); // BGM 설정
     }
 
     public void Player2Win()
