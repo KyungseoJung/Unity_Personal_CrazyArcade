@@ -108,6 +108,7 @@ public class MapManager : MonoBehaviour
 
     private Music music; 
     private PlayerLife playerLife;   
+    private SubPlayerLife subPlayerLife;   
     private PlayerCtrl playerCtrl;                  // #33
 
 
@@ -115,6 +116,7 @@ public class MapManager : MonoBehaviour
     {
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #21
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>(); // #4
+        subPlayerLife = GameObject.FindGameObjectWithTag("SubPlayer").GetComponent<SubPlayerLife>(); // #4
         playerCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>(); // #4 
     }
 
@@ -520,6 +522,16 @@ public class MapManager : MonoBehaviour
                 bushes[i].gameObject.GetComponent<Obstacle>().DestroyObstacle(); // Bush 오브젝트 Destroy
             }
         } 
+    }
+
+    public void Player1Faint()
+    {
+        playerLife.playerFaint = true;
+    }
+
+    public void Player2Faint()
+    {
+        subPlayerLife.playerFaint = true;
     }
     // public void CheckBubbleTouchFluid(Transform _balloon, int _waterLength)
     // // #31 물풍선의 물줄기가 다른 물풍선에 닿았나 확인

@@ -142,6 +142,7 @@ public class PlayerLife : MonoBehaviour
             playerCompletelyDie = true;   // #45 플레이어 완전히 죽음
 
             lobbyMgr.Player2Win();  // #45 플레이어2 우승
+            mapMgr.Player2Faint();  // #45 플레이어2 이동하지 못하도록 기절시키기
             return;
         }
 
