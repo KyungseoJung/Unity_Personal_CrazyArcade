@@ -57,6 +57,11 @@ public class LobbyManager : MonoBehaviour
     public Text txtNumberOfNeedle;                 // 물풍선에 갇혔을 때, 벗어나게 해주는 needle item
     public Text txtNumberOfShield;                 // 외부 공격으로부터 막아주는 shield item
 
+    // #61 여기부터 - 게임 재시작  ========================================
+    [SerializeField] Button btnRestartGame;            // #61 '게임 재시작' 버튼
+    [SerializeField] GameObject pnlGameEnd;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
+    [SerializeField] GameObject sceneObject;
+
 
     void Awake()
     {
@@ -101,6 +106,9 @@ public class LobbyManager : MonoBehaviour
             
         if(pnlHowToGameScreen.activeSelf)   // 처음 시작할 때, 게임 방법 보여주는 창은 비활성화 되어 있어야 함.
             pnlHowToGameScreen.SetActive(false);
+
+        if(pnlGameEnd.activeSelf)   // #61
+            pnlGameEnd.SetActive(false);    
         
         // Invoke("ActivePnlStartScene", 3f);  // #51 나중에 고쳐야 하는 코드
         
@@ -201,6 +209,39 @@ public class LobbyManager : MonoBehaviour
             eventTrigger3.triggers.Add(pointerEnter);
             eventTrigger3.triggers.Add(pointerExit);
         }
+
+        // #61 게임 재시작 버튼
+        if(btnRestartGame != null)
+        {
+            // #61  버튼 클릭할 때의 효과음 추가
+            btnRestartGame.onClick.AddListener(() => {
+                RestartGame();
+                music.GameSoundEffect(Music.EFFECT_TYPE.BUTTON_CLICK);
+            });
+
+            // # '게임 시작' 버튼에 마우스 올려 놓으면, '게임 시작' 버튼이 더 밝게 빛나도록 
+            // EventTrigger 컴포넌트가 없으면 추가
+            EventTrigger eventTrigger4 = btnRestartGame.gameObject.GetComponent<EventTrigger>();
+            if (eventTrigger4 == null)
+            {
+                eventTrigger4 = btnRestartGame.gameObject.AddComponent<EventTrigger>();
+            }
+
+            // // 마우스 오버 이벤트
+            // EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
+            // pointerEnter.eventID = EventTriggerType.PointerEnter;
+            // pointerEnter.callback.AddListener((data) => { OnHoverEnterStartGame2(); });
+
+            // // 마우스 나가기 이벤트
+            // EventTrigger.Entry pointerExit = new EventTrigger.Entry();
+            // pointerExit.eventID = EventTriggerType.PointerExit;
+            // pointerExit.callback.AddListener((data) => { OnHoverExitStartGame2(); });
+
+            // // 이벤트 트리거에 추가
+            // eventTrigger4.triggers.Add(pointerEnter);
+            // eventTrigger4.triggers.Add(pointerExit);
+        }
+
 
         // #58 여기부터 - UI 이미지  ========================================
         txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
@@ -436,6 +477,8 @@ public class LobbyManager : MonoBehaviour
         if(!objLogo_PLAYER1WIN.activeSelf)   // #19 게임 엔딩 | PLAEYR1WIN 로고 보이도록
             objLogo_PLAYER1WIN.SetActive(true);
         music.GameEndBGM(); // BGM 설정
+
+        Invoke("ShowpnlGameEnd", 2.0f);  //#61
     }
 
     public void Player2Win()
@@ -443,5 +486,25 @@ public class LobbyManager : MonoBehaviour
         if(!objLogo_PLAYER2WIN.activeSelf)   // #19 게임 엔딩 | PLAYER2WIN 로고 보이도록
             objLogo_PLAYER2WIN.SetActive(true);
         music.GameEndBGM(); // BGM 설정
+
+        Invoke("ShowpnlGameEnd", 2.0f);  //#61
+    }
+
+    private void ShowpnlGameEnd()   // #61 게임 종료 화면(panel) 보여주기 (다시 시작 버튼 존재하는 화면)
+    {
+        if(!pnlGameEnd.activeSelf)  
+        {
+            pnlGameEnd.SetActive(true);
+        }
+    }
+    private void RestartGame()  //#61 다음 scene으로 넘어가도록 설정
+    {
+        Debug.Log("#61 게임 다시 시작");
+
+        // #61 모든 씬 제거 후, scOpen 씬만 (다시) 로드
+        // SceneManager.LoadScene("scOpen", LoadSceneMode.Single);
+        SceneManager.LoadScene("scOpen");
+
+        Destroy(sceneObject);   // DontDestroyOnLoad 설정되어 있는 scene 오브젝트 자체를 직접 삭제해주기
     }
 }
