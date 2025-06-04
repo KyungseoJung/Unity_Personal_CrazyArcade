@@ -259,6 +259,14 @@ public class LobbyManager : MonoBehaviour
         Loading_Check();    // 로딩바 길이 체크해서 채우기
     }
 
+    public void UpdateAllSkill_Player1()
+    {
+        txtPlayerLife.text = $"{PlayerGameMgr.Mgr.life}";   // 플레이어의 목숨 확인한 후 UI로 표시
+
+        txtNumberOfCan.text = $"{PlayerGameMgr.Mgr.turtleCan}";
+        txtNumberOfNeedle.text = $"{PlayerGameMgr.Mgr.needle}";
+        txtNumberOfShield.text = $"{PlayerGameMgr.Mgr.shield}";
+    }
     private void ActivePnlStartScene()  // #51 "Invoke"실행 - 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록 
     {
         // #50 fix: (로딩 모두 끝난 뒤) 로비 화면 입장할 때, 로비 BGM 시작

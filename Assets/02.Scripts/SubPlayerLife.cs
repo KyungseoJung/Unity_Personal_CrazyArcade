@@ -38,6 +38,9 @@ public class SubPlayerLife : MonoBehaviour
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
         subLobbyMgr = GameObject.Find("SubLobbyManager").GetComponent<SubLobbyManager>();
         lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+
+        AllSkillReset_Player2();   // #61 아예 게임을 처음 시작할 때
+        Debug.Log("//#61 SubPlayerLife.cs의 Awake 실행");
     }
 
     void Start()
@@ -182,7 +185,23 @@ public class SubPlayerLife : MonoBehaviour
         SubPlayerGameMgr.SubMgr.turtleNum = 0;
         SubPlayerGameMgr.SubMgr.coin = 0;
     }
+    private void AllSkillReset_Player2()
+    {
+        //#61 플레이어 목숨부터 기본 스킬, 획득한 스킬 모두 초기화
+        SubPlayerGameMgr.SubMgr.life = 3;  // #61 아예 게임을 처음 시작할 때
+    
+        SubPlayerGameMgr.SubMgr.waterballoonNum = 1;
+        SubPlayerGameMgr.SubMgr.fluid = 1;
+        SubPlayerGameMgr.SubMgr.roller = 0;
+        SubPlayerGameMgr.SubMgr.turtleNum = 0;
+        SubPlayerGameMgr.SubMgr.coin = 0;
+        
+        SubPlayerGameMgr.SubMgr.turtleCan = 1;
+        SubPlayerGameMgr.SubMgr.needle = 1;
+        SubPlayerGameMgr.SubMgr.shield = 1;
 
+        subLobbyMgr.UpdateAllSkill_Player2();
+    }
     private void ReturnSkillToMap() // 플레이어 죽을 때마다 획득한 아이템을 모두 Map에 뱉도록 - 랜덤 위치
     {
         // 플레이어가 갖고 있는 아이템 종류 & 수 확인

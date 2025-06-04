@@ -28,4 +28,14 @@ public class SubLobbyManager : MonoBehaviour
         txtNumberOfNeedle.text = $"{SubPlayerGameMgr.SubMgr.needle}";
         txtNumberOfShield.text = $"{SubPlayerGameMgr.SubMgr.shield}";   
     }
+
+
+    public void UpdateAllSkill_Player2()
+    {
+        txtPlayerLife.text = $"{SubPlayerGameMgr.SubMgr.life}";   // 플레이어의 목숨 확인한 후 UI로 표시
+
+        txtNumberOfCan.text = $"{SubPlayerGameMgr.SubMgr.turtleCan}";
+        txtNumberOfNeedle.text = $"{SubPlayerGameMgr.SubMgr.needle}";
+        txtNumberOfShield.text = $"{SubPlayerGameMgr.SubMgr.shield}";   
+    }
 }

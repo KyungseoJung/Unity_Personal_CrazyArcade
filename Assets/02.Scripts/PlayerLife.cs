@@ -36,6 +36,9 @@ public class PlayerLife : MonoBehaviour
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #28
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #28
         lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); // #28
+
+        AllSkillReset_Player1();   // #61 아예 게임을 처음 시작할 때
+        Debug.Log("//#61 PlayerLife.cs의 Awake 실행");
     }
 
     void Start()
@@ -191,6 +194,24 @@ public class PlayerLife : MonoBehaviour
         PlayerGameMgr.Mgr.roller = 0;
         PlayerGameMgr.Mgr.turtleNum = 0;
         PlayerGameMgr.Mgr.coin = 0;
+    }
+
+    private void AllSkillReset_Player1()
+    {
+        //#61 플레이어 목숨부터 기본 스킬, 획득한 스킬 모두 초기화
+        PlayerGameMgr.Mgr.life = 3;  // #61 아예 게임을 처음 시작할 때
+    
+        PlayerGameMgr.Mgr.waterballoonNum = 1;
+        PlayerGameMgr.Mgr.fluid = 1;
+        PlayerGameMgr.Mgr.roller = 0;
+        PlayerGameMgr.Mgr.turtleNum = 0;
+        PlayerGameMgr.Mgr.coin = 0;
+        
+        PlayerGameMgr.Mgr.turtleCan = 1;
+        PlayerGameMgr.Mgr.needle = 1;
+        PlayerGameMgr.Mgr.shield = 1;
+
+        lobbyMgr.UpdateAllSkill_Player1();  // UI에 업데이트
     }
 
     private void ReturnSkillToMap() // #28 플레이어 죽을 때마다 획득한 아이템을 모두 Map에 뱉도록 - 랜덤 위치
