@@ -173,18 +173,18 @@ public class SubPlayerLife : MonoBehaviour
         anim.SetBool("canMove", true);  // 플레이어 죽고 살아나면 다시 움직이는 애니메이션 정상 작동하도록
         subPlayerCtrl.SetPlayerSpeed(false);  // 플레이어 본래 속도로 돌아가기
 
-        SkillReset();
+        AllSkillResetUpdate_Player2();
     }
 
-    private void SkillReset()   // 부활 시, 스킬 & 할당량 설정
-    {
-        // 스킬 리셋
-        SubPlayerGameMgr.SubMgr.waterballoonNum = 1;
-        SubPlayerGameMgr.SubMgr.fluid = 1;
-        SubPlayerGameMgr.SubMgr.roller = 0;
-        SubPlayerGameMgr.SubMgr.turtleNum = 0;
-        SubPlayerGameMgr.SubMgr.coin = 0;
-    }
+    // private void SkillReset()   // 부활 시, 스킬 & 할당량 설정
+    // {
+    //     // 스킬 리셋
+    //     SubPlayerGameMgr.SubMgr.waterballoonNum = 1;
+    //     SubPlayerGameMgr.SubMgr.fluid = 1;
+    //     SubPlayerGameMgr.SubMgr.roller = 0;
+    //     SubPlayerGameMgr.SubMgr.turtleNum = 0;
+    //     SubPlayerGameMgr.SubMgr.coin = 0;
+    // }
     private void AllSkillResetUpdate_Player2()
     {
         //#61 플레이어 목숨부터 기본 스킬, 획득한 스킬 모두 초기화
