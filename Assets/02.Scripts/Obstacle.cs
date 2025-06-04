@@ -143,8 +143,8 @@ public class Obstacle : MonoBehaviour
                     xPosDiff = woodPos.x - playerTransform.x;
                     yPosDiff = woodPos.y - playerTransform.y;
 
-                    Debug.Log("yPosDiff: " + yPosDiff);
-                    Debug.Log("xPosDiff: " + xPosDiff);
+                    // Debug.Log("yPosDiff: " + yPosDiff);
+                    // Debug.Log("xPosDiff: " + xPosDiff);
 
                     if(xPosDiff * xPosDiff < 0.25)  //  위 or 아래로 밀기: x축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
@@ -160,7 +160,7 @@ public class Obstacle : MonoBehaviour
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
                             mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
-                            Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
+                            // Debug.Log("//#14 플레이어가 위에서 아래로 밀고 있음");
                             woodPos.y -=1;          // 우드블럭 위치 1칸씩 이동하기
 
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
@@ -177,7 +177,7 @@ public class Obstacle : MonoBehaviour
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
                             mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
-                            Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
+                            // Debug.Log("//#14 플레이어가 아래에서 위로 밀고 있음");
                             woodPos.y +=1;
 
                             obsRow = mapMgr.ReturnRowInMatrix(woodPos.y);
@@ -187,7 +187,7 @@ public class Obstacle : MonoBehaviour
 
                     if(yPosDiff * yPosDiff < 0.25)  // 좌 or 우로 밀기: y축 간의 위치 차이가 적을 때만 실행되도록 - 차이가 클 때에는 미끄러지도록
                     {
-                        Debug.Log("//#14 WoodBlock 밀고 있음 -2");
+                        // Debug.Log("//#14 WoodBlock 밀고 있음 -2");
                         if((xPosDiff <0) && ((Input.GetKey(KeyCode.LeftArrow)) || (Input.GetKey(KeyCode.A) )) ) // (플레이어2입장: A키)
                         {
                             if(IsThereObstacle(KeyCode.LeftArrow) == true)  // #14
@@ -198,7 +198,7 @@ public class Obstacle : MonoBehaviour
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
                             mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
-                            Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
+                            // Debug.Log("//#14 플레이어가 오른쪽에서 왼쪽으로 밀고 있음");
                             woodPos.x -=1;
                             
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
@@ -214,7 +214,7 @@ public class Obstacle : MonoBehaviour
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
                             mapMgr.blockArr[obsRow, obsCol] = 0; // #14 fix: 위치 바뀌었으니까 이전 위치의 배열값을 0으로 설정  // #40 fix: obstacleArr이 아닌 blockArr 값을 변경
 
-                            Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
+                            // Debug.Log("//#14 플레이어가 왼쪽에서 오른쪽으로 밀고 있음");
                             woodPos.x +=1;
 
                             obsCol = mapMgr.ReturnColInMatrix(woodPos.x);
@@ -253,7 +253,7 @@ public class Obstacle : MonoBehaviour
                     StartWaterBalloonBursts(true, false);
                     break;
                 case OBSTACLE_TYPE.BUSH:
-                    Debug.Log("//#36 물풍선이 Bush에 맞음");
+                    // Debug.Log("//#36 물풍선이 Bush에 맞음");
                     // DestroyObstacle();
                     DestroyBush();  // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
                         //#8 fix: 태그가 인식되기 전에 물풍선이 먼저 사라져 버려서 Bush가 사라지지 않는 경우가 존재함.-> 그래서, WaterBalloonBursts 함수에서 (mapMgr.CheckBubbleInBush코드로) 따로 실행해줌.
@@ -270,7 +270,7 @@ public class Obstacle : MonoBehaviour
                     break;
 
                 case OBSTACLE_TYPE.NORMALBLOCK:
-                    Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
+                    // Debug.Log("//#39 물풍선이 NormalBlock에 맞음");
                     DestroyBlock(); // #39 fix: DestroyObstacle(); 대신 DestroyBlock(); 함수 사용
                     // PlaceRandomItem();  // #38 NORMALBLOCK이 사라진 자리에 랜덤으로 아이템 생기도록
                     // #38 fix: (아이템이 생기자마자 블록을 깼던 물풍선에 의해 바로 사라지는 것을 방지하기 위함) 시간 term을 두고 랜덤 아이템이 생기도록
@@ -293,7 +293,7 @@ public class Obstacle : MonoBehaviour
             {
                 string name = other.gameObject.name;
                 enteredPlayerNames.Add(name);   // Bush 안에 들어간 사람을 List에 추가
-                Debug.Log($"#17 List 들어간 플레이어 확인: {name}");
+                // Debug.Log($"#17 List 들어간 플레이어 확인: {name}");
             }
         }
     }
@@ -322,7 +322,7 @@ public class Obstacle : MonoBehaviour
                 if (enteredPlayerNames.Contains(name))
                 {
                     enteredPlayerNames.Remove(name);  // 제거
-                    Debug.Log($"#17 List 제거한 플레이어 확인: {name}");
+                    // Debug.Log($"#17 List 제거한 플레이어 확인: {name}");
                 }
 
             }
@@ -331,7 +331,7 @@ public class Obstacle : MonoBehaviour
 
     private void ObjSetActive(GameObject _obj, bool _active)
     {
-        Debug.Log("//#60 fix: "+ _obj + "를 활성화?: " + _active);
+        // Debug.Log("//#60 fix: "+ _obj + "를 활성화?: " + _active);
         _obj.SetActive(_active);
     }
 
@@ -397,13 +397,13 @@ public class Obstacle : MonoBehaviour
 
     public void BushShake() // #6 애니메이터 설정: 플레이어가 덤불에 숨으면, 덤불 흔들리도록 
     {
-        Debug.Log("//#6 덤불 흔들림");
+        // Debug.Log("//#6 덤불 흔들림");
         anim.SetTrigger("Shake");
     }
 
     public void StartWaterBalloonBursts(bool _burstedByAnoterBalloon = false, bool _player1 = true)   // #31 Manager.cs에서 실행하기 위함
     {
-        Debug.Log("//#31 WaterBalloonBursts 코루틴 실행");
+        // Debug.Log("//#31 WaterBalloonBursts 코루틴 실행");
         StartCoroutine(WaterBalloonBursts(fluidLength, _burstedByAnoterBalloon, _player1));    
     }
 
@@ -411,11 +411,11 @@ public class Obstacle : MonoBehaviour
     {
         if(_burstedByAnoterBalloon == true)
         {
-            Debug.Log("//#31 다른 물풍선에 의해 터짐");
+            // Debug.Log("//#31 다른 물풍선에 의해 터짐");
         }
         if(_burstedByAnoterBalloon == false)
         {
-            Debug.Log("//#8 3초 기다림 시작");
+            // Debug.Log("//#8 3초 기다림 시작");
             yield return new WaitForSeconds(3.0f);
         }
 
@@ -437,7 +437,7 @@ public class Obstacle : MonoBehaviour
         // 직접 위치를 받아와서 배열 값을 확인한 뒤에, 해당 배열 값에 Bush가 있으면 직접 Destroy 하는 방법 적용.
         mapMgr.CheckBubbleInBush(this.transform);
 
-        Debug.Log("//#8 파괴 | 위치는" + transform.position.x + ", " + transform.position.y);
+        // Debug.Log("//#8 파괴 | 위치는" + transform.position.x + ", " + transform.position.y);
         anim.SetTrigger("Bursts");
         if(_waterLength > 2)    //#9 fix: 물줄기는 최대 2칸으로 제한 - 물풍선의 waterLength가 2보다 더 크게 설정된 경우의 애니메이션을 설정하지 않아서, 물풍선 자체가 안 터지는 문제를 해결
             _waterLength = 2;
@@ -468,7 +468,7 @@ public class Obstacle : MonoBehaviour
     // }
     public void DestroyObstacle()   // #36
     {
-        Debug.Log("//#36: " + this.gameObject.name + " 장애물(Obstacle) 삭제");
+        // Debug.Log("//#36: " + this.gameObject.name + " 장애물(Obstacle) 삭제");
         Destroy(this.gameObject);
 
         mapMgr.RemoveObsPos(this.transform);    // #36 해당 위치의 obstacleArr 배열값을 0으로 설정
@@ -476,7 +476,7 @@ public class Obstacle : MonoBehaviour
 
     public void DestroyBlock()  // #39 fix
     {
-        Debug.Log("//#39: " + this.gameObject.name + " 블록(Block) 삭제");
+        // Debug.Log("//#39: " + this.gameObject.name + " 블록(Block) 삭제");
         Destroy(this.gameObject);
 
         mapMgr.RemoveBlockPos(this.transform);    // #39 해당 위치의 blockArr 배열값을 0으로 설정
@@ -484,10 +484,10 @@ public class Obstacle : MonoBehaviour
 
     public void DestroyBush()   // #36 fix: Obstacle이 아닌 Bush의 배열 값을 0으로 설정하도록
     {
-        Debug.Log("#17 Destroy 함수 실행");
+        // Debug.Log("#17 Destroy 함수 실행");
         foreach(var player in enteredPlayerNames)   //#17 Bush가 사라질 때 Bush안에 있는 플레이어가 존재한다면, 그 해당 플레이어를 Visible하도록 바꾸기
         {
-            Debug.Log("//#17 player 확인: " + player);
+            // Debug.Log("//#17 player 확인: " + player);
 
             GameObject playerObj = GameObject.Find(player);
 
@@ -497,7 +497,7 @@ public class Obstacle : MonoBehaviour
             }
         }
 
-        Debug.Log("//#36: " + this.gameObject.name + " 덤불(Bush) 삭제");
+        // Debug.Log("//#36: " + this.gameObject.name + " 덤불(Bush) 삭제");
 
         mapMgr.RemoveBushPos(this.transform);   // #36 해당 위치의 bushArr 배열 값을 0으로 설정
 

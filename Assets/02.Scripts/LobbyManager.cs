@@ -347,14 +347,14 @@ public class LobbyManager : MonoBehaviour
         music.PlayerSoundEffect(Music.EFFECT_TYPE.GAME_START);    // #19 게임 시작 효과음
         // #19 fix: '게임 시작' 효과음이 들리지 않는 문제 해결하라 - 하나의 Audio Source에서 거의 동시에 2개의 효과음을 실행해서 생기는 문제를, 다른 AudioSource를 실행함으로써
 
-        Debug.Log("//#19 게임 스타트! 효과음");
+        // Debug.Log("//#19 게임 스타트! 효과음");
 
         SceneManager.LoadScene("scStage1-3D");
     }
 
     public void ShowHowToGame() // #49
     {
-        Debug.Log("#49 어떻게 게임하는지 보여주기!");
+        // Debug.Log("#49 어떻게 게임하는지 보여주기!");
 
         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
         if(!pnlHowToGameScreen.activeSelf)  

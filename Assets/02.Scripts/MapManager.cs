@@ -125,7 +125,7 @@ public class MapManager : MonoBehaviour
         waterballoonPlaceNum = 0;   // #13 맵에 놓여진 물풍선의 개수 (플레이어1에 의해)
         subWaterballoonPlaceNum = 0;    // #13 맵에 놓여진 물풍선의 개수 (플레이어2에 의해)
         CheckObstaclePos();         // #25 장애물 위치 - 배열로 확인
-        Debug.Log("//#25 Start");
+        // Debug.Log("//#25 Start");
 
     }
 
@@ -149,7 +149,7 @@ public class MapManager : MonoBehaviour
 
     private void CheckObstaclePos() // #25 장애물 위치 - 배열 확인 -> Start에서 1번 실행
     {
-        Debug.Log("//#25 CheckObstaclePos");
+        // Debug.Log("//#25 CheckObstaclePos");
         // #25 Obstacle 태그를 가진 모든 오브젝트에 접근
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         items = GameObject.FindGameObjectsWithTag("Item");
@@ -204,7 +204,7 @@ public class MapManager : MonoBehaviour
     {
         itemRow = ReturnRowInMatrix(_trans.position.y);     
         itemCol =  ReturnColInMatrix(_trans.position.x);    
-        Debug.Log("// #10 아이템 획득 - 해당 위치 배열을 0으로 전환");
+        // Debug.Log("// #10 아이템 획득 - 해당 위치 배열을 0으로 전환");
         itemArr[itemRow, itemCol] = 0;  // #10 
     }
 
@@ -212,7 +212,7 @@ public class MapManager : MonoBehaviour
     {
         obsRow = ReturnRowInMatrix(_trans.position.y);
         obsCol = ReturnColInMatrix(_trans.position.x);
-        Debug.Log("//# 36 장애물 배열 삭제");
+        // Debug.Log("//# 36 장애물 배열 삭제");
         obstacleArr[obsRow, obsCol] = 0;    // #36   
     }
 
@@ -220,7 +220,7 @@ public class MapManager : MonoBehaviour
     {
         blockRow = ReturnRowInMatrix(_trans.position.y);
         blockCol = ReturnColInMatrix(_trans.position.x);
-        Debug.Log("//#39 블록 배열 삭제");
+        // Debug.Log("//#39 블록 배열 삭제");
         blockArr[blockRow, blockCol] = 0;    
     }
 
@@ -228,7 +228,7 @@ public class MapManager : MonoBehaviour
     {
         bushRow = ReturnRowInMatrix(_trans.position.y);
         bushCol = ReturnColInMatrix(_trans.position.x);
-        Debug.Log("//#36 덤불 배열 삭제");
+        // Debug.Log("//#36 덤불 배열 삭제");
         bushArr[bushRow, bushCol] = 0;
     }
 
@@ -242,7 +242,7 @@ public class MapManager : MonoBehaviour
         playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
         playerCol = ReturnColInMatrix(_x);    // #26 함수 이용
 
-        Debug.Log("//#8 #4 물풍선 생성: balloonRow = " + playerRow + "/ balloonCol = " + playerCol);
+        // Debug.Log("//#8 #4 물풍선 생성: balloonRow = " + playerRow + "/ balloonCol = " + playerCol);
 
         if ((waterBalloonArr[playerRow, playerCol] == 1) || (obstacleArr[playerRow, playerCol] == 1)) 
         {
@@ -255,13 +255,13 @@ public class MapManager : MonoBehaviour
      // 물풍선 놓을 수 있는 개수 초과했는지 확인 ---------------------
         if(_player1)    //#4 만약 플레이어1(MainPlayer)이 놓은 물풍선이라면
         {
-            Debug.Log("//#4 fix | 플레이어1에 의해 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
+            // Debug.Log("//#4 fix | 플레이어1에 의해 놓여진 물풍선 수: " + waterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + PlayerGameMgr.Mgr.waterballoonNum);
             if(waterballoonPlaceNum >= PlayerGameMgr.Mgr.waterballoonNum)    //#13 물풍선 개수 제한
                 return;
         }
         else    //#4 만약 플레이어2(Player2)가 놓은 물풍선이라면 SubPlayerGameMgr에 접근해서 물풍선 개수 파악
         {
-            Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + SubPlayerGameMgr.SubMgr.waterballoonNum);
+            // Debug.Log("//#4 fix | 플레이어2에 의해 놓여진 물풍선 수: " + subWaterballoonPlaceNum + ", 놓을 수 있는 물풍선 수: " + SubPlayerGameMgr.SubMgr.waterballoonNum);
             if(subWaterballoonPlaceNum >= SubPlayerGameMgr.SubMgr.waterballoonNum)    //#13 물풍선 개수 제한
                 return;
         }
@@ -283,14 +283,14 @@ public class MapManager : MonoBehaviour
             Instantiate(waterBalloonObj, balloonPos, Quaternion.identity);
 
             waterballoonPlaceNum += 1; // #13 물풍선 개수 하나 증가 (플레이어1에 의해)
-            Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
+            // Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
         }
         else        //#4 만약 플레이어2(Player2)가 놓은 물풍선이라면
         {
             Instantiate(subWaterBalloonObj, balloonPos, Quaternion.identity);
 
             subWaterballoonPlaceNum += 1; // #13 맵에 놓여진 물풍선의 개수 (플레이어2에 의해)
-            Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
+            // Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
         }
 
         music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_SET); // #21 물풍선 놓을 때의 효과음
@@ -338,7 +338,7 @@ public class MapManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime); // waitTime 만큼 딜레이후 다음 코드가 실행된다.
 
-        Debug.Log("//#38 fix: PlaceRandomItemByBlock 함수 실행");
+        // Debug.Log("//#38 fix: PlaceRandomItemByBlock 함수 실행");
         if(randomItemType == Item.ITEM_TYPE.NONE)    // #38 fix: randomNumber가 0이면 랜덤 아이템이 없는 것 (아이템 생성 없이 return)
             yield break;
 
@@ -380,7 +380,7 @@ public class MapManager : MonoBehaviour
         balloonRow = ReturnRowInMatrix(_y);
         balloonCol = ReturnColInMatrix(_x);
 
-        Debug.Log("//#8 //#31 fix: 물풍선 소멸: balloonRow = " + balloonRow + "/ balloonCol = " + balloonCol);
+        // Debug.Log("//#8 //#31 fix: 물풍선 소멸: balloonRow = " + balloonRow + "/ balloonCol = " + balloonCol);
 
         waterBalloonArr[balloonRow, balloonCol] = 0;  // 배열 설정
         // obstacleArr[balloonRow, balloonCol] = 0;      // #25 배열 설정
@@ -396,7 +396,7 @@ public class MapManager : MonoBehaviour
         }
         music.GameSoundEffect(Music.EFFECT_TYPE.BUBBLE_BOOM); // #21 물풍선 터질 때의 효과음
 
-        Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
+        // Debug.Log("//#13 물풍선 개수: " + waterballoonPlaceNum);
 
     }
 
@@ -480,7 +480,7 @@ public class MapManager : MonoBehaviour
             if((balloonRow == bushRow) && 
                 ((bushCol - balloonCol)*(bushCol - balloonCol) <= (_waterLength)*(_waterLength)))
             {
-                Debug.Log("//#34 같은 행 - 아이템이 물줄기에 닿음");
+                // Debug.Log("//#34 같은 행 - 아이템이 물줄기에 닿음");
                 bushes[i].gameObject.GetComponent<Obstacle>().DestroyObstacle(); // Bush 오브젝트 Destroy
             }
             // 만약 플레이어가 터지는 물풍선과 같은 열이라면
@@ -488,7 +488,7 @@ public class MapManager : MonoBehaviour
             if((balloonCol == bushCol) &&
                 ((bushRow-balloonRow)*(bushRow-balloonRow) <= (_waterLength)*(_waterLength)))
             {
-                Debug.Log("//#17 같은 열 - 아이템이 물줄기에 닿음");
+                // Debug.Log("//#17 같은 열 - 아이템이 물줄기에 닿음");
                 bushes[i].gameObject.GetComponent<Obstacle>().DestroyObstacle(); // Bush 오브젝트 Destroy
             }
         } 
@@ -508,7 +508,7 @@ public class MapManager : MonoBehaviour
             // && 아이템과 물풍선과의 거리가 _waterLength보다 가깝다면
             if((balloonRow == bushRow) && (balloonCol == bushCol))
             {
-                Debug.Log("//#8 fix: Bush와 물풍선이 같은 위치에 있음. Bush를 Destroy");
+                // Debug.Log("//#8 fix: Bush와 물풍선이 같은 위치에 있음. Bush를 Destroy");
 
                 foreach(var player in bushes[i].gameObject.GetComponent<Obstacle>().enteredPlayerNames)   //#17 Bush가 사라질 때 Bush안에 있는 플레이어가 존재한다면, 그 해당 플레이어를 Visible하도록 바꾸기
                 {
@@ -517,7 +517,7 @@ public class MapManager : MonoBehaviour
                     if(playerObj != null)
                     {
                         playerObj.SetActive(true);
-                        Debug.Log("//#17 fix: 플레이어 SetActive(true)");
+                        // Debug.Log("//#17 fix: 플레이어 SetActive(true)");
                     }
                 }
 

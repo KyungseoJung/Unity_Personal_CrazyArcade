@@ -108,7 +108,7 @@ public class SubPlayerCtrl : MonoBehaviour
             anim.SetInteger("MoveDir", 0);  //상하좌우 어느쪽도 쳐다보지 않도록
 
             anim.SetTrigger("LookingAhead");
-            Debug.Log("//#104 플레이어2 LookingAhead Trigger 실행 체크");
+            // Debug.Log("//#104 플레이어2 LookingAhead Trigger 실행 체크");
         }
 
         // 플레이어 방향키 누르는 값 Set - 방향키 누르고 있다면, 달리는 애니메이션 재생
@@ -139,7 +139,7 @@ public class SubPlayerCtrl : MonoBehaviour
                 ChangePlayerSpeed(SubPlayerGameMgr.SubMgr.roller); // #41 플레이어가 물풍선에서 벗어나면, 본래 속도로 돌아가도록 - 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
                 subLobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
             }
-            Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
+            // Debug.Log("//#41 키보드의 숫자 '2'를 누름");  
         }
 
 
@@ -402,13 +402,13 @@ public class SubPlayerCtrl : MonoBehaviour
 
     void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
     {
-        Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
+        // Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
         _sprite.color = new Color(1f, 1f, 1f, _alpha);
     }
     
     private void ObjSetActive(GameObject _obj, bool _active)
     {
-        Debug.Log(_obj + "를 활성화한다?: " + _active);
+        // Debug.Log(_obj + "를 활성화한다?: " + _active);
         _obj.SetActive(_active);
     }
 
@@ -439,7 +439,7 @@ public class SubPlayerCtrl : MonoBehaviour
         moveForce = originMoveForce + (rollerCount) * 3;
         maxSpeed = originMaxSpeed + (rollerCount) * 0.3f;
 
-        Debug.Log("//#109 플레이어2 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
+        // Debug.Log("//#109 플레이어2 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
 
     public void SetPlayerSpeed(bool _down = true)   // style: 함수 이름 변경
@@ -448,7 +448,7 @@ public class SubPlayerCtrl : MonoBehaviour
         {
             case true:
                 // 플레이어가 물풍선에 갇히면, 플레이어 이동 속도 느려지도록
-                Debug.Log("//#17 플레이어 이동 속도 느려지도록");
+                // Debug.Log("//#17 플레이어 이동 속도 느려지도록");
 
                 moveForce = trappedInWaterMoveForce;    // originMoveForce - 10f;    // 7f - 2f 
                 maxSpeed = trappedInWaterMaxSpeed;      //  originMaxSpeed - 0.6f;      // 2f - 1f;
@@ -469,7 +469,7 @@ public class SubPlayerCtrl : MonoBehaviour
         {
             // turtleMount = true;
             // ㄴItem.cs에서 OnTriggerEnter 함수에서 직접 PlayerGameMgr.Mgr.slowTurtle 또는 PlayerGameMgr.Mgr.fastTurtle 값을 설정해줌.
-            Debug.Log("//#110 플레이어2가 거북에 올라탐");
+            // Debug.Log("//#110 플레이어2가 거북에 올라탐");
 
             LimitToTurtleSpeed(_fastTurtle);
 
@@ -480,7 +480,7 @@ public class SubPlayerCtrl : MonoBehaviour
                     break;
                 case true:  // 빠른 거북 설정
                     anim.SetBool("fastTurtleMount", true);
-                    Debug.Log("//#110 빠른 거북 탑승 anim 설정");
+                    // Debug.Log("//#110 빠른 거북 탑승 anim 설정");
                     break;
             }
 

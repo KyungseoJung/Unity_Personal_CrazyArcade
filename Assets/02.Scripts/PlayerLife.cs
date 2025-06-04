@@ -64,7 +64,7 @@ public class PlayerLife : MonoBehaviour
     {
         if((other.gameObject.tag == "SubPlayer")&& (this.gameObject.layer == 10))
         {
-            Debug.Log("//#44 플레이어1에 플레이어2가 닿음");   // 물풍선에 갇힌 플레이어 1에 플레이어2가 닿은 것임
+            // Debug.Log("//#44 플레이어1에 플레이어2가 닿음");   // 물풍선에 갇힌 플레이어 1에 플레이어2가 닿은 것임
 
             anim.Play("PlayerTimeOutTrapped");   // 무조건 PlayerTimeOutTrapped 애니메이션 실행하도록
         }
@@ -107,7 +107,7 @@ public class PlayerLife : MonoBehaviour
         // if(playerCtrl.turtleMount) 
         if((PlayerGameMgr.Mgr.slowTurtle) || (PlayerGameMgr.Mgr.fastTurtle))
         {
-            Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
+            // Debug.Log("//#35 플레이어 - 물 맞아서 거북에서 내려오기");
             // Debug.Log("//#35 balloonInFront 변수: " + playerCtrl.balloonInFront);
             // playerCtrl.turtleMount = false;
             PlayerGameMgr.Mgr.slowTurtle = false;   // PlayerGameMgr에사도 플레이어가 거북에 타있는 것을 의미하는 변수들은 모두 false로 만들어주기.
@@ -120,7 +120,7 @@ public class PlayerLife : MonoBehaviour
             return;
         }
         trappedInWater = true;  // #17 중복 실행 방지
-        Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
+        // Debug.Log("//#17 플레이어 물풍선에 닿음. 갇힘.");
         // #44 플레이어가 물풍선에 갇혀 있는 효과음 시작
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLYAER_IN_BALLOON, 0.6f, true);
 
@@ -146,14 +146,14 @@ public class PlayerLife : MonoBehaviour
             return;
         }
 
-        Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
+        // Debug.Log("//#28 PlayerLife.cs - PlayerDie()함수 실행");
         // #28 PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // #28 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         PlayerGameMgr.Mgr.life -=1;
-        Debug.Log("//#100 #44 플레이어1 목숨 -1");
+        // Debug.Log("//#100 #44 플레이어1 목숨 -1");
 
         lobbyMgr.txtPlayerLife.text = $"{PlayerGameMgr.Mgr.life}";
-        Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
+        // Debug.Log("//#28 플레이어 남은 목숨: " + PlayerGameMgr.Mgr.life);
         
         trappedInWater = false; // #28 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
         playerFaint = true;     // #28 플레이어 기절 - 움직임 불가능
@@ -164,7 +164,7 @@ public class PlayerLife : MonoBehaviour
 
     private void SpecifyLocation()  // #29  - PlayerRespawn 애니메이션 시작될 때 실행되도록
     {
-        Debug.Log("//#42 리스폰 위치로 이동");
+        // Debug.Log("//#42 리스폰 위치로 이동");
         this.gameObject.transform.position = respawnPos; // #29 리스폰 위치 지정
 
         // #45 플레이어 부활 효과음 - PlayerRespawn 애니메이션 시작될 때 실행되도록
@@ -210,10 +210,10 @@ public class PlayerLife : MonoBehaviour
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
             mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
             mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
-            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            // Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            // Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.FLUID, placePos, mapPlaceRow, mapPlaceCol);
@@ -224,10 +224,10 @@ public class PlayerLife : MonoBehaviour
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
             mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
             mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
-            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            // Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            // Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.BUBBLE, placePos, mapPlaceRow, mapPlaceCol);
@@ -238,10 +238,10 @@ public class PlayerLife : MonoBehaviour
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
             mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
             mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
-            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            // Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            // Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.ROLLER, placePos, mapPlaceRow, mapPlaceCol);
@@ -252,10 +252,10 @@ public class PlayerLife : MonoBehaviour
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
             mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
             mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
-            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            // Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            // Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.TURTLE, placePos, mapPlaceRow, mapPlaceCol);
@@ -266,10 +266,10 @@ public class PlayerLife : MonoBehaviour
             mapPlaceNum = FindEmptyPlace();   // Map에서 비어있는 공간 찾기
             mapPlaceRow = mapPlaceNum/9;    // mapPlaceNum을 9로 나누었을 때의 몫
             mapPlaceCol = mapPlaceNum%9;    // mapPlaceNum을 9로 나누었을 때의 나머지0 
-            Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
+            // Debug.Log("//#28 FLUID 아이템 놓을 행렬: " + mapPlaceRow+ "," + mapPlaceCol);
             mapPlaceX = mapMgr.ConvertColToXCoordinate(mapPlaceCol);
             mapPlaceY = mapMgr.ConvertRowToYCoordinate(mapPlaceRow);
-            Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
+            // Debug.Log("//#28 FLUID 아이템 놓을 좌표: " + mapPlaceX+ "," + mapPlaceY);
             
             placePos = new Vector3(mapPlaceX, mapPlaceY, 0);
             mapMgr.PlaceItemPrefab(Item.ITEM_TYPE.COIN, placePos, mapPlaceRow, mapPlaceCol);   
@@ -289,12 +289,12 @@ public class PlayerLife : MonoBehaviour
         mapRow = randomNum/9;   // randomNum을 9로 나누었을 때의 몫이 mapRow
         mapCol = randomNum%9;   // randomNum을 9로 나누었을 때의 나머지가 mapCol
 
-        Debug.Log("//#28 1번째 획득 randomNum: " + randomNum + " | 행: " + mapRow + ", 열 : " + mapCol);
+        // Debug.Log("//#28 1번째 획득 randomNum: " + randomNum + " | 행: " + mapRow + ", 열 : " + mapCol);
 
         while((mapMgr.obstacleArr[mapRow, mapCol] == 1) || (mapMgr.itemArr[mapRow, mapCol] == 1) || (mapMgr.waterBalloonArr[mapRow, mapCol] == 1)
                 || mapMgr.bushArr[mapRow, mapCol] == 1)   // 장애물 또는 아이템이 하나라도 겹쳐 있다면, 다시 좌표 찾기
         {
-            Debug.Log("//#28 다시 찾은 숫자: " + randomNum);
+            // Debug.Log("//#28 다시 찾은 숫자: " + randomNum);
             // waterBalloonArr, obstacleArr, itemArr 배열에 이미 놓인 것이 있다면, 다시 숫자 설정
             randomNum= Random.Range(0,63);
 
@@ -317,7 +317,7 @@ public class PlayerLife : MonoBehaviour
         // 자연스럽게 물풍선 탈출하는 애니메이션까지 완벽히 실행한 후, LookingAhead 애니메이션이 실행되도록
         anim.SetBool("canMove", true);
         anim.SetTrigger("LookingAhead");
-        Debug.Log("//#19 fix: (2번) 플레이어 LookingAhead Trigger 실행 체크");
+        // Debug.Log("//#19 fix: (2번) 플레이어 LookingAhead Trigger 실행 체크");
 
     }
     
@@ -331,7 +331,7 @@ public class PlayerLife : MonoBehaviour
         if(playerCompletelyDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
         {
             this.gameObject.SetActive(false);
-            Debug.Log("//#100 #44 플레이어1 완전히 죽음");
+            // Debug.Log("//#100 #44 플레이어1 완전히 죽음");
         }
         music.StopPlayerSoundEffect();  // #45 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
     }
@@ -340,13 +340,13 @@ public class PlayerLife : MonoBehaviour
     {
         playerInvincible = true;
         playerShield.SetActive(true);
-        Debug.Log("//#59 플레이어 무적 상태 시작");
+        // Debug.Log("//#59 플레이어 무적 상태 시작");
         music.PlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_SHIELD);   //#59 플레이어가 shield 아이템 사용하고 있는 동안의 효과음
 
         yield return  new WaitForSeconds(time);
         playerShield.SetActive(false);
         playerInvincible = false;
-        Debug.Log("//#59 플레이어 무적 상태 종료");
+        // Debug.Log("//#59 플레이어 무적 상태 종료");
 
     }
 }

@@ -36,7 +36,7 @@ public class Item : MonoBehaviour   // #10
 
     private void OnTriggerEnter(Collider other)     
     {
-        Debug.Log("//#10 OnTriggerEnter");   
+        // Debug.Log("//#10 OnTriggerEnter");   
         if(other.gameObject.tag == "Player")     // #10 플레이어1(MainPlayer)에 닿으면 사라지도록
         {
 
@@ -44,7 +44,7 @@ public class Item : MonoBehaviour   // #10
             if(other.gameObject.GetComponent<PlayerLife>().trappedInWater == true)  
                 return;
 
-            Debug.Log("//#10 플레이어 - " + itemType + " 먹음");
+            // Debug.Log("//#10 플레이어 - " + itemType + " 먹음");
 
             switch(itemType) 
             {
@@ -99,7 +99,7 @@ public class Item : MonoBehaviour   // #10
             if(other.gameObject.GetComponent<SubPlayerLife>().trappedInWater == true)  
                 return;
 
-            Debug.Log("//#106 플레이어2 - " + itemType + " 먹음");
+            // Debug.Log("//#106 플레이어2 - " + itemType + " 먹음");
 
             switch(itemType) 
             {
@@ -151,13 +151,13 @@ public class Item : MonoBehaviour   // #10
 
     private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log("//#10 OnCollisionEnter");   
+        // Debug.Log("//#10 OnCollisionEnter");   
 
     }
 
     public void DestroyItem()   // #34 아이템 제거 & 배열에서 0으로 설정을 동시에
     {
-        Debug.Log("//#34: " + this.gameObject.name + "아이템 삭제");
+        // Debug.Log("//#34: " + this.gameObject.name + "아이템 삭제");
         Destroy(this.gameObject);
         
         mapMgr.RemoveItemPos(this.transform);   // #10 아이템 획득시, ObstacleArr 배열 값을 0으로 설정

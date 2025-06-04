@@ -116,7 +116,7 @@ public class PlayerCtrl : MonoBehaviour // #1
             // anim.SetBool("LookingAhead", true); 
             // StartCoroutine(StartLookingAhead());
             anim.SetTrigger("LookingAhead");
-            Debug.Log("//#19 fix: (1번) 플레이어 LookingAhead Trigger 실행 체크");
+            // Debug.Log("//#19 fix: (1번) 플레이어 LookingAhead Trigger 실행 체크");
             
             // Debug.Log("//#23 플레이어 정면 바라보기");
             // Debug.Log("Time.time: " + Time.time);
@@ -143,7 +143,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         // #4 물풍선 놓기
         if((Input.GetKeyDown(KeyCode.RightShift)) && (playerLife.playerFaint == false))  //#14 플레이어 기절 상태가 종료된 상태여야 물풍선을 놓을 수 있게 하도록
         {
-            Debug.Log("//#4 fix x좌표: " + transform.position.x + ", y좌표: " + transform.position.y);
+            // Debug.Log("//#4 fix x좌표: " + transform.position.x + ", y좌표: " + transform.position.y);
             mapMgr.PlaceWaterBalloon(transform.position.x, transform.position.y, true);  // x위치는 열의 값으로, y위치는 행의 값으로 
         }
 
@@ -155,7 +155,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                 playerLife.trappedInWater = false;  // #41 물풍선 벗어나도록
                 playerLife.waterApplied = false;    // #17 fix: 플레이어가 물풍선 벗어날 때, 변수 'waterApplied' 를 false로 설정하라 - 한번 물풍선 탈출하면, 그 이후에 물풍선 적용이 안 되는 문제 해결하기 위해
                 anim.SetTrigger("EscapeWater");     // #41 물풍선 벗어나는 애니메이션 실행 뒤, 기존 PlayerLookingAhead 애니메이션 실행
-                Debug.Log("//#41 물풍선 탈출");
+                // Debug.Log("//#41 물풍선 탈출");
                 music.GameSoundEffect(Music.EFFECT_TYPE.BOMB_POP, 0.6f);    // #43 바늘 아이템 사용해서 물풍선 벗어날 때 효과음
                 music.StopPlayerSoundEffect();  // #47 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
                 PlayerGameMgr.Mgr.needle -= 1;      // #43 바늘 아이템 사용
@@ -163,14 +163,14 @@ public class PlayerCtrl : MonoBehaviour // #1
                 ChangePlayerSpeed(PlayerGameMgr.Mgr.roller); // #41 플레이어가 물풍선에서 벗어나면, 본래 속도로 돌아가도록 - 획득한 roller 아이템을 바탕으로 본래 속도로 돌아가기
                 lobbyMgr.UpdateNumberOfItems();     //#59 아이템 개수 업데이트해서 UI에 표시
             }
-            Debug.Log("//#41 키보드의 숫자 '9'를 누름");  
+            // Debug.Log("//#41 키보드의 숫자 '9'를 누름");  
         }
 
         // #54 거북 속도 변경
         if(Input.GetKeyDown(KeyCode.Alpha8))
         {
-            Debug.Log("slowTurtle 체크: " + PlayerGameMgr.Mgr.slowTurtle);
-            Debug.Log("fastTurtle 체크: " + PlayerGameMgr.Mgr.fastTurtle);
+            // Debug.Log("slowTurtle 체크: " + PlayerGameMgr.Mgr.slowTurtle);
+            // Debug.Log("fastTurtle 체크: " + PlayerGameMgr.Mgr.fastTurtle);
 
             if((PlayerGameMgr.Mgr.slowTurtle == true) && (PlayerGameMgr.Mgr.fastTurtle == false)
                 && (PlayerGameMgr.Mgr.turtleCan > 0))   //#54 플레이어가 느린 거북을 타고 있을 때에만 Can 아이템이 작동하도록
@@ -598,13 +598,13 @@ public class PlayerCtrl : MonoBehaviour // #1
 
     void SetAlpha(SpriteRenderer _sprite, float _alpha) // #6 플레이어가 덤불 오브젝트에 가까이에 가면 안 보이도록
     {
-        Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
+        // Debug.Log("//#6 플레이어 sprite의 alpha 설정: " + _alpha);
         _sprite.color = new Color(1f, 1f, 1f, _alpha);
     }
 
     private void ObjSetActive(GameObject _obj, bool _active)
     {
-        Debug.Log("//#6 fix: "+ _obj + "를 활성화한다?: " + _active);
+        // Debug.Log("//#6 fix: "+ _obj + "를 활성화한다?: " + _active);
         _obj.SetActive(_active);
     }
 
@@ -638,7 +638,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         moveForce = originMoveForce + (rollerCount) * 3;
         maxSpeed = originMaxSpeed + (rollerCount) * 0.3f;
 
-        Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
+        // Debug.Log("//#15 플레이어 속도 증가. moveForce: " + moveForce + "| maxSpeed: " + maxSpeed);
     }
 
     public void SetPlayerSpeed(bool _down = true)   // #17 style: 함수 이름 변경
@@ -647,7 +647,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             case true:
                 // #17 플레이어가 물풍선에 갇히면, 플레이어 이동 속도 느려지도록
-                Debug.Log("//#17 플레이어 이동 속도 느려지도록");
+                // Debug.Log("//#17 플레이어 이동 속도 느려지도록");
 
                 // #17 fix: 
                 moveForce = trappedInWaterMoveForce;    // originMoveForce - 10f;    // 7f - 2f 
@@ -671,7 +671,7 @@ public class PlayerCtrl : MonoBehaviour // #1
         {
             // turtleMount = true;
             // #35 fix: Item.cs에서 OnTriggerEnter 함수에서 직접 PlayerGameMgr.Mgr.slowTurtle 또는 PlayerGameMgr.Mgr.fastTurtle 값을 설정해줌.
-            Debug.Log("//#35 플레이어가 거북에 올라탐");
+            // Debug.Log("//#35 플레이어가 거북에 올라탐");
 
             LimitToTurtleSpeed(_fastTurtle);
 
@@ -682,7 +682,7 @@ public class PlayerCtrl : MonoBehaviour // #1
                     break;
                 case true:  // #54 빠른 거북 설정
                     anim.SetBool("fastTurtleMount", true);
-                    Debug.Log("//#54 빠른 거북 탑승 anim 설정");
+                    // Debug.Log("//#54 빠른 거북 탑승 anim 설정");
                     break;
             }
 

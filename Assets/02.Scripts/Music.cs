@@ -54,7 +54,7 @@ public class Music : MonoBehaviour
 
     public void BackGroundMusic(BGM_TYPE _type)
     {   
-        Debug.Log("//#20 메인 배경음 시작");
+        // Debug.Log("//#20 메인 배경음 시작");
         gameMusicArr.Stop();
         gameMusicArr.clip = audioClips[(int)_type -1];
         gameMusicArr.Play();
@@ -63,7 +63,7 @@ public class Music : MonoBehaviour
 
     public void GameEndBGM()
     {   
-        Debug.Log("//#45 게임 종료 배경음");
+        // Debug.Log("//#45 게임 종료 배경음");
         gameMusicArr.Stop();
         gameMusicArr.clip = audioClips[(int)BGM_TYPE.WINSOUND -1];
         gameMusicArr.Play();
@@ -86,7 +86,7 @@ public class Music : MonoBehaviour
 
     public void PlayerSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)    // #46 플레이어에게서 나타나는 효과음은 따로 관리 - 게임 효과음이 묻히지 않도록
     {
-        Debug.Log("//#46 플레이어 효과음 시작");
+        // Debug.Log("//#46 플레이어 효과음 시작");
         playerSoundEffectArr.Stop();
         playerSoundEffectArr.clip = effectClips[(int)_type -1];
 
@@ -98,7 +98,7 @@ public class Music : MonoBehaviour
     }
     public void SubPlayerSoundEffect(EFFECT_TYPE _type, float _volume = 1f, bool _loop = false)    // #46 플레이어에게서 나타나는 효과음은 따로 관리 - 게임 효과음이 묻히지 않도록
     {
-        Debug.Log("//#100 플레이어2 효과음 시작: " + _type);
+        // Debug.Log("//#100 플레이어2 효과음 시작: " + _type);
         subPlayerSoundEffectArr.Stop();
         subPlayerSoundEffectArr.clip = effectClips[(int)_type -1];
 
@@ -114,7 +114,7 @@ public class Music : MonoBehaviour
     }
     public void StopSubPlayerSoundEffect() // #100
     {
-        Debug.Log("#100 플레이어2 효과음 종료");
+        // Debug.Log("#100 플레이어2 효과음 종료");
         subPlayerSoundEffectArr.Stop();
     }
 }

@@ -20,8 +20,8 @@ public class WaterBurst : MonoBehaviour
     {
         mapMgr = GameObject.FindGameObjectWithTag("MapManager").GetComponent<MapManager>(); // #37
         // topWaterBurst = transform.parent.Find(this.gameObejct.name + "")
-        Debug.Log("상위 오브젝트: " + firstWaterObj.name);
-        Debug.Log("하위 오브젝트: " + secondWaterObj.name);
+        // Debug.Log("상위 오브젝트: " + firstWaterObj.name);
+        // Debug.Log("하위 오브젝트: " + secondWaterObj.name);
 
         // #37 콜라이더 처리가 먼저 되지 않도록, 장애물이 없는 걸 확인한 후에 각 오브젝트의 BoxCollider 활성화하기
         // firstWatObjCol = firstWaterObj.GetComponent<BoxCollider>();
@@ -29,27 +29,27 @@ public class WaterBurst : MonoBehaviour
 
         if (firstWaterObj == null)
         {
-            Debug.LogError("firstWaterObj가 null입니다.");
+            // Debug.LogError("firstWaterObj가 null입니다.");
         }
         else
         {
             firstWatObjCol = firstWaterObj.GetComponent<BoxCollider>();
             if (firstWatObjCol == null)
             {
-                Debug.LogError("firstWaterObj의 BoxCollider를 찾을 수 없습니다.");
+                // Debug.LogError("firstWaterObj의 BoxCollider를 찾을 수 없습니다.");
             }
         }
 
         if (secondWaterObj == null)
         {
-            Debug.LogError("secondWaterObj가 null입니다.");
+            // Debug.LogError("secondWaterObj가 null입니다.");
         }
         else
         {
             secondWatObjCol = secondWaterObj.GetComponent<BoxCollider>();
             if (secondWatObjCol == null)
             {
-                Debug.LogError("secondWaterObj의 BoxCollider를 찾을 수 없습니다.");
+                // Debug.LogError("secondWaterObj의 BoxCollider를 찾을 수 없습니다.");
             }
         }
 
@@ -79,14 +79,14 @@ public class WaterBurst : MonoBehaviour
         {
             // IndexOutOfRangeException 에러 방지 - 예외 처리 (바운더리 넘어가면 장애물 있는 것으로 파악. -> 물풍선이 아예 활성화 되지 않도록)
             firstWaterObj.SetActive(false);
-            Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
+            // Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
         }
         else if((mapMgr.obstacleArr[firstRow, firstCol] == 1) && (mapMgr.waterBalloonArr[firstRow, firstCol] == 0))   
         // #31 fix: 단, 물풍선이 아닌 장애물일 때만 적용되도록 
         // 만약 물풍선이라면, 이 물줄기가 다른 물풍선에 닿아서 그 물풍선도 터져야 하기 때문에 
         {
             firstWaterObj.SetActive(false);
-            Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | Obstacle에 닿음");
+            // Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화 | Obstacle에 닿음");
         }
         else    // #37 feat: 장애물 없는 거 확인한 후, 물줄기 콜라이더 켜기
         {
@@ -102,17 +102,17 @@ public class WaterBurst : MonoBehaviour
         {
             // IndexOutOfRangeException 에러 방지 - 예외 처리 (바운더리 넘어가면 장애물 있는 것으로 파악. -> 물풍선이 아예 활성화 되지 않도록)
             secondWaterObj.SetActive(false);
-            Debug.Log("//#37 " + secondWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
+            // Debug.Log("//#37 " + secondWaterObj.name + "물폭탄 비활성화 | 맵 경계에 닿음");
         }
         else if((mapMgr.obstacleArr[secondRow, secondCol] == 1) && (mapMgr.waterBalloonArr[secondRow, secondCol] == 0))   // 만약 하위 물줄기가 장애물에 닿으면, 하위 물줄기도 비활성화 하고, 상위 물줄기도 비활성화하기
         // #31 fix: 단, 물풍선이 아닌 장애물일 때만 적용되도록 
         // 만약 물풍선이라면, 이 물줄기가 다른 물풍선에 닿아서 그 물풍선도 터져야 하기 때문에
         {
             secondWaterObj.SetActive(false);
-            Debug.Log("//#37 " + secondWaterObj.name + "물폭탄 비활성화 | Obstacle에 닿음");
+            // Debug.Log("//#37 " + secondWaterObj.name + "물폭탄 비활성화 | Obstacle에 닿음");
 
             firstWaterObj.SetActive(false); 
-            Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화");
+            // Debug.Log("//#37 " + firstWaterObj.name + "물폭탄 비활성화");
         }
         else if((mapMgr.blockArr[secondRow, secondCol] == 1))   // #40 secondWatObjCol 자리에 블록이 있을 경우, firstWatObjCol 자리에는 물줄기가 생기지 않도록
         {

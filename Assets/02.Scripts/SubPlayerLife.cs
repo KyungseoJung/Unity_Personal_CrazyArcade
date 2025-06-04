@@ -64,7 +64,7 @@ public class SubPlayerLife : MonoBehaviour
     {
         if((other.gameObject.tag == "Player") && (this.gameObject.layer == 10))
         {
-            Debug.Log("//#44 플레이어2에 플레이어1이 닿음");    // 물풍선에 갇힌 플레이어 2에 플레이어1이 닿은 것임
+            // Debug.Log("//#44 플레이어2에 플레이어1이 닿음");    // 물풍선에 갇힌 플레이어 2에 플레이어1이 닿은 것임
 
             anim.Play("SubPlayerTimeOutTrapped");   // 무조건 SubPlayerTimeOutTrapped 애니메이션 실행하도록
         }
@@ -134,7 +134,7 @@ public class SubPlayerLife : MonoBehaviour
         if(SubPlayerGameMgr.SubMgr.life <=0 )
         {
             playerCompletelyDie = true;   // 플레이어 완전히 죽음
-            Debug.Log("//#45 플레이어2의 playerCompletelyDie: " + playerCompletelyDie);
+            // Debug.Log("//#45 플레이어2의 playerCompletelyDie: " + playerCompletelyDie);
             lobbyMgr.Player1Win();  // #45 플레이어1 우승
             mapMgr.Player1Faint();  // #45 플레이어2 이동하지 못하도록 기절시키기
             return;
@@ -159,7 +159,7 @@ public class SubPlayerLife : MonoBehaviour
         // 플레이어 부활 효과음 - PlayerRespawn 애니메이션 시작될 때 실행되도록
         music.SubPlayerSoundEffect(Music.EFFECT_TYPE.PLAYER_REVIVAL, 0.6f);
 
-        Debug.Log("#100 플레이어 부활 | SpecifyLocation 함수 실행됨");
+        // Debug.Log("#100 플레이어 부활 | SpecifyLocation 함수 실행됨");
     }
     private void PlayerRespawn()    // 플레이어 부활 - PlayerRespawn 애니메이션 끝날 때 실행되도록
     {
@@ -295,7 +295,7 @@ public class SubPlayerLife : MonoBehaviour
     }
     private void PlayerCanMove()    // PlayerSpin 애니메이션이 끝나면 PlayerCanMove함수를 이용해서 "canMove"를 true로 설정.
     {
-        Debug.Log("//#103 (플레이어 등장) PlayerCanMove 함수 실행");
+        // Debug.Log("//#103 (플레이어 등장) PlayerCanMove 함수 실행");
         anim.SetBool("canMove", true);
         
         playerFaint = false;    // 처음 시작할 때, 기절한 상태로 시작. 완전히 등장하면, 그때 기절 상태 false로 만들기. 물풍선 놓을 수 없도록 하기 위해
@@ -315,11 +315,11 @@ public class SubPlayerLife : MonoBehaviour
 
     private void CheckAnyLivesLeft()    // (SubPlayerTimeOutTrapped.anim 에서 실행) 플레이어 목숨 남았는지 확인한 후, 부활 시도
     {
-        Debug.Log("//#45 CheckAnyLivesLeft 함수 실행");
+        // Debug.Log("//#45 CheckAnyLivesLeft 함수 실행");
         if(playerCompletelyDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
         {
             this.gameObject.SetActive(false);
-            Debug.Log("//#100 #44 플레이어2 완전히 죽음");
+            // Debug.Log("//#100 #44 플레이어2 완전히 죽음");
         }
         music.StopSubPlayerSoundEffect();  // 플레이어에게 적용되었던 'PLYAER_IN_BALLOON' 효과음 멈추기
     }
