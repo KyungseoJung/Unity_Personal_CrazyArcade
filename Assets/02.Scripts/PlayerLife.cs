@@ -37,8 +37,8 @@ public class PlayerLife : MonoBehaviour
         music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>(); // #28
         lobbyMgr = GameObject.Find("LobbyManager").GetComponent<LobbyManager>(); // #28
 
-        AllSkillReset_Player1();   // #61 아예 게임을 처음 시작할 때
-        Debug.Log("//#61 PlayerLife.cs의 Awake 실행");
+        AllSkillResetUpdate_Player1();   // #61 아예 게임을 처음 시작할 때
+        // Debug.Log("//#61 PlayerLife.cs의 Awake 실행");
     }
 
     void Start()
@@ -196,7 +196,7 @@ public class PlayerLife : MonoBehaviour
         PlayerGameMgr.Mgr.coin = 0;
     }
 
-    private void AllSkillReset_Player1()
+    private void AllSkillResetUpdate_Player1()
     {
         //#61 플레이어 목숨부터 기본 스킬, 획득한 스킬 모두 초기화
         PlayerGameMgr.Mgr.life = 3;  // #61 아예 게임을 처음 시작할 때

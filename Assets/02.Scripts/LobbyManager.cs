@@ -77,7 +77,7 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {   
-        Debug.Log("//#61 LobbyManager.cs의 Start 실행");
+        // Debug.Log("//#61 LobbyManager.cs의 Start 실행");
         // #53 로딩바 이미지 설정
         Loading_Reset();    // 로딩바 첫 설정 해주기
         loadingSceneAnim.SetTrigger("startLoading");  // #53 로딩 화면 설정 - 로딩바 올라가는 애니메이션 시작하도록
