@@ -31,7 +31,7 @@ public class SubPlayerGameMgr : MonoBehaviour   // 플레이어의 스킬 관리
     {
         get
         {
-            Debug.Log("#100 체크1");
+            // Debug.Log("#100 체크1");
             if(submgr == null)
             {
                 Debug.Log("#100 체크2");

@@ -38,7 +38,6 @@
   <ItemGroup>
      <Compile Include="Assets\02.Scripts\Destructor.cs" />
      <Compile Include="Assets\02.Scripts\DontDestroy.cs" />
-     <Compile Include="Assets\02.Scripts\GameEndManager.cs" />
      <Compile Include="Assets\02.Scripts\Item.cs" />
      <Compile Include="Assets\02.Scripts\LayerSetting.cs" />
      <Compile Include="Assets\02.Scripts\LobbyManager.cs" />

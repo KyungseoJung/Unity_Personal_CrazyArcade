@@ -4245,6 +4245,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d35e16192a616f047a1f44e9f1a9cfec, type: 3}
   - {fileID: 8300000, guid: 98f1262b6b3bc5042a664181f36a15f2, type: 3}
   - {fileID: 8300000, guid: 472742fd7fe869247a56a5fe1687f692, type: 3}
+  - {fileID: 8300000, guid: 5632afb079c3ee44b84aa9455877486b, type: 3}
   effectClips:
   - {fileID: 8300000, guid: a3e4c82a41a843a40ac1469bc483dd7e, type: 3}
   - {fileID: 8300000, guid: 54f42d26f7a59014da56d32865c9bc0f, type: 3}
