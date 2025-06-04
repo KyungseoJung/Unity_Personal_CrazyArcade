@@ -280,7 +280,7 @@ public class SubPlayerLife : MonoBehaviour
 
 
         while((mapMgr.obstacleArr[mapRow, mapCol] == 1) || (mapMgr.itemArr[mapRow, mapCol] == 1) || (mapMgr.waterBalloonArr[mapRow, mapCol] == 1)
-                || (mapMgr.bushArr[mapRow, mapCol] == 1) || (mapMgr.blockArr[mapRow, mapCol == 1]))   // 장애물 또는 아이템이 하나라도 겹쳐 있다면, 다시 좌표 찾기
+                || (mapMgr.bushArr[mapRow, mapCol] == 1) || (mapMgr.blockArr[mapRow, mapCol] ==1))   // 장애물 또는 아이템이 하나라도 겹쳐 있다면, 다시 좌표 찾기
         {
 
             // waterBalloonArr, obstacleArr, itemArr 배열에 이미 놓인 것이 있다면, 다시 숫자 설정
