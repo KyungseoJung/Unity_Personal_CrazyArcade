@@ -234,7 +234,9 @@ public class MapManager : MonoBehaviour
 
     public void PlaceWaterBalloon(float _x, float _y, bool _player1 = true)    // #4 플레이어 물풍선 놓기 - 받아오는 parameter는 플레이어의 좌표
     {
-        if(playerLife.trappedInWater)   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
+        if(_player1 && (playerLife.trappedInWater))   // #4 플레이어가 물풍선에 갇혀 있다면, PlaceWaterBalloon 실행되지 않도록
+            return;
+        else if(!_player1 && (subPlayerLife.trappedInWater))
             return;
     // 장애물 있는지 확인 ---------------------
         playerRow = ReturnRowInMatrix(_y);    // #26 함수 이용 
