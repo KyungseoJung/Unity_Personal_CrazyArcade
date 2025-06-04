@@ -19,6 +19,8 @@ public class Music : MonoBehaviour
     - 배경음 -
     0 : BGSound1
     1 : login_scene (로비 화면 BGM)
+    2 : winSound
+    3 : lobby_scene
 
     - 효과음 -
     0 : bomb_set
@@ -35,7 +37,7 @@ public class Music : MonoBehaviour
     11 : player_shield      // #59 플레이어 shield item 사용하고 있을 때의 효과음
     */
 
-    public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC, WINSOUND}; // #20 메인 배경음
+    public enum BGM_TYPE {MAINMUSIC =1, LOBBYMUSIC, WINSOUND, ENDINGMUSIC}; // #20 메인 배경음
     public enum EFFECT_TYPE {BOMB_SET = 1, EAT_PROP, BUBBLE_BOOM, PLAYER_DIE, PLYAER_IN_BALLOON, 
     BOMB_POP, PLAYER_REVIVAL, BUTTON_HOVER, GAME_START, BUTTON_CLICK, TURTLE_CHANGE, PLAYER_SHIELD};    // #21 #22 #28 #44 #43 #45 #54 효과음 종류
 

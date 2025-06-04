@@ -507,6 +507,8 @@ public class LobbyManager : MonoBehaviour
             txtWhoWin.text = "Player1 WIN !!";
 
             pnlGameEnd.SetActive(true);
+
+            music.BackGroundMusic(Music.BGM_TYPE.ENDINGMUSIC); // BGM 설정
         }
     }
 
@@ -517,6 +519,8 @@ public class LobbyManager : MonoBehaviour
             txtWhoWin.text = "Player2 WIN !!";
 
             pnlGameEnd.SetActive(true);
+
+            music.BackGroundMusic(Music.BGM_TYPE.ENDINGMUSIC); // BGM 설정
         }
     }
 
