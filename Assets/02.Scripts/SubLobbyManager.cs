@@ -14,6 +14,8 @@ public class SubLobbyManager : MonoBehaviour
 
     void Start()
     {
+        txtPlayerLife.text = $"{SubPlayerGameMgr.SubMgr.life}";   // 플레이어의 목숨 확인한 후 UI로 표시
+
         // #101 여기부터 - UI 이미지  ========================================
         txtNumberOfCan.text = $"{SubPlayerGameMgr.SubMgr.turtleCan}";
         txtNumberOfNeedle.text = $"{SubPlayerGameMgr.SubMgr.needle}";

@@ -79,6 +79,7 @@ public class LobbyManager : MonoBehaviour
             imgLoadingText.SetActive(true);
         }
 
+        txtPlayerLife.text = $"{PlayerGameMgr.Mgr.life}";   // 플레이어의 목숨 확인한 후 UI로 표시
 
         // #51 처음 로딩될 때 pnlLoading1 먼저 보이고, 그 다음에 pnlStartScnee이 보이도록
         if(pnlStartScene.activeSelf)
