@@ -134,7 +134,7 @@ public class SubPlayerLife : MonoBehaviour
         if(SubPlayerGameMgr.SubMgr.life <=0 )
         {
             playerCompletelyDie = true;   // 플레이어 완전히 죽음
-
+            Debug.Log("//#45 플레이어2의 playerCompletelyDie: " + playerCompletelyDie);
             lobbyMgr.Player1Win();  // #45 플레이어1 우승
             mapMgr.Player1Faint();  // #45 플레이어2 이동하지 못하도록 기절시키기
             return;
@@ -143,7 +143,7 @@ public class SubPlayerLife : MonoBehaviour
         // PlayerTimeOutTrapped 애니메이션과 PlayerRespawn 애니메이션 사이에 Exit Tiem을 최소 1이상으로 설정하기
         // 플레이어가 물풍선에 갇힌 시간이 오래되면 - 죽는 애니메이션 재생 & 플레이어 죽음
         SubPlayerGameMgr.SubMgr.life -=1;
-        Debug.Log("//#100 #44 플레이어2 목숨 -1");
+        // Debug.Log("//#100 #44 플레이어2 목숨 -1");
         subLobbyMgr.txtPlayerLife.text = $"{SubPlayerGameMgr.SubMgr.life}";
         
         trappedInWater = false; // 물풍선이 터지면서 플레이어가 죽으면, 물풍선에 갇혀 있는지 확인하는 bool형 변수도 false로
@@ -315,6 +315,7 @@ public class SubPlayerLife : MonoBehaviour
 
     private void CheckAnyLivesLeft()    // (SubPlayerTimeOutTrapped.anim 에서 실행) 플레이어 목숨 남았는지 확인한 후, 부활 시도
     {
+        Debug.Log("//#45 CheckAnyLivesLeft 함수 실행");
         if(playerCompletelyDie)   // 만약 PlayerDie 함수에서 플레이어가 완전히 죽은 것이 확인된다면, 플레이어를 아예 비활성화 하기
         {
             this.gameObject.SetActive(false);
