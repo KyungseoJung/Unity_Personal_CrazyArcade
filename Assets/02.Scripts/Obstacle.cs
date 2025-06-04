@@ -38,7 +38,7 @@ public class Obstacle : MonoBehaviour
     // [SerializeField]    
     // private int waterLength;    // #9 물풍선 터질 때 길이->  PlayerGameMgr.Mgr.fluid로 설정하면 되니까 필요 x.
 
-    float pushForce = 10f;
+    // float pushForce = 10f;
 
     float xPosDiff;              // #14 WOODBLOCK 밀기: 장애물과 플레이어와의 x축 거리 차
 
