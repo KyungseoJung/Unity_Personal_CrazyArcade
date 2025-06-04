@@ -58,6 +58,7 @@ public class LobbyManager : MonoBehaviour
     public Text txtNumberOfShield;                 // 외부 공격으로부터 막아주는 shield item
 
     // #61 여기부터 - 게임 재시작  ========================================
+    public Text txtWhoWin;                    // #61 어떤 플레이어가 이겼는지 표시
     [SerializeField] Button btnRestartGame;            // #61 '게임 재시작' 버튼
     [SerializeField] GameObject pnlGameEnd;         // #52 '게임 방법' 버튼 눌렀을 때, '게임 방법' 보여주는 화면 보이도록 하기
     [SerializeField] GameObject sceneObject;
@@ -76,6 +77,7 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {   
+        Debug.Log("//#61 LobbyManager.cs의 Start 실행");
         // #53 로딩바 이미지 설정
         Loading_Reset();    // 로딩바 첫 설정 해주기
         loadingSceneAnim.SetTrigger("startLoading");  // #53 로딩 화면 설정 - 로딩바 올라가는 애니메이션 시작하도록
@@ -478,7 +480,7 @@ public class LobbyManager : MonoBehaviour
             objLogo_PLAYER1WIN.SetActive(true);
         music.GameEndBGM(); // BGM 설정
 
-        Invoke("ShowpnlGameEnd", 2.0f);  //#61
+        Invoke("ShowpnlGameEnd_Player1", 2.0f);  //#61
     }
 
     public void Player2Win()
@@ -487,16 +489,29 @@ public class LobbyManager : MonoBehaviour
             objLogo_PLAYER2WIN.SetActive(true);
         music.GameEndBGM(); // BGM 설정
 
-        Invoke("ShowpnlGameEnd", 2.0f);  //#61
+        Invoke("ShowpnlGameEnd_Player2", 2.0f);  //#61
     }
 
-    private void ShowpnlGameEnd()   // #61 게임 종료 화면(panel) 보여주기 (다시 시작 버튼 존재하는 화면)
+    private void ShowpnlGameEnd_Player1()   // #61 게임 종료 화면(panel) 보여주기 (다시 시작 버튼 존재하는 화면)
     {
         if(!pnlGameEnd.activeSelf)  
         {
+            txtWhoWin.text = "Player1 WIN !!";
+
             pnlGameEnd.SetActive(true);
         }
     }
+
+    private void ShowpnlGameEnd_Player2()   // #61 게임 종료 화면(panel) 보여주기 (다시 시작 버튼 존재하는 화면)
+    {
+        if(!pnlGameEnd.activeSelf)  
+        {
+            txtWhoWin.text = "Player2 WIN !!";
+
+            pnlGameEnd.SetActive(true);
+        }
+    }
+
     private void RestartGame()  //#61 다음 scene으로 넘어가도록 설정
     {
         Debug.Log("#61 게임 다시 시작");
