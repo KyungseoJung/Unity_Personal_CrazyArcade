@@ -257,6 +257,12 @@ public class LobbyManager : MonoBehaviour
             return;
         // #53 로딩바 이미지 설정
         Loading_Check();    // 로딩바 길이 체크해서 채우기
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            // ESC를 누르면 게임 종료
+            Application.Quit();
+        }
     }
 
     public void UpdateAllSkill_Player1()
