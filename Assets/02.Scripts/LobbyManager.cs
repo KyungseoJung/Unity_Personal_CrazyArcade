@@ -258,10 +258,14 @@ public class LobbyManager : MonoBehaviour
         // #53 로딩바 이미지 설정
         Loading_Check();    // 로딩바 길이 체크해서 채우기
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if((Input.GetKey("escape")) || (Input.GetKeyDown(KeyCode.Escape)) || (Input.GetButtonDown("Cancel")))
         {
             // ESC를 누르면 게임 종료
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
         }
     }
 
